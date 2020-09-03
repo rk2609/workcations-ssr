@@ -1,3 +1,5 @@
+import { useEffect, useState } from "react";
+
 import Head from "next/head";
 
 import Layout from "../components/layout/layout";
@@ -10,6 +12,27 @@ import Faqs from "../components/faq/faq";
 import SectionContainer from "../style-components/section-container/section-container.style";
 
 const Home = () => {
+  const isServer = typeof window === "undefined";
+
+  const [loadElements, setLoadElements] = useState(false);
+
+  const handleScroll = () => {
+    if (isServer || loadElements) return;
+    setLoadElements(true);
+  };
+
+  useEffect(() => {
+    if (!isServer) {
+      window.addEventListener("scroll", handleScroll);
+    }
+
+    return () => {
+      if (!isServer) {
+        window.removeEventListener("scroll", handleScroll);
+      }
+    };
+  }, [handleScroll]);
+
   return (
     <Layout>
       <Head>
@@ -19,10 +42,12 @@ const Home = () => {
       </Head>
       <Hero />
       <Outlook />
-      <Recreational />
-      <SectionContainer>
-        <Faqs />
-      </SectionContainer>
+      {loadElements && <Recreational />}
+      {loadElements && (
+        <SectionContainer>
+          <Faqs />
+        </SectionContainer>
+      )}
     </Layout>
   );
 };
