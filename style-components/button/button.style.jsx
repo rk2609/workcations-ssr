@@ -1,8 +1,6 @@
 import styled from "styled-components";
 
-import { Link } from "react-router-dom";
-
-const Button = styled(Link)`
+const Button = styled.a`
   margin: 40px auto 0px auto;
   font-weight: 700;
   font-size: 1.1em;

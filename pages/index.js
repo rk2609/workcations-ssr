@@ -6,6 +6,7 @@ import Layout from "../components/layout/layout";
 
 import Hero from "../components/hero/hero";
 import Outlook from "../components/outlook/outlook";
+import Destinations from "../components/destinations/destinations";
 import Recreational from "../components/recreational/recreational";
 import Faqs from "../components/faq/faq";
 
@@ -42,12 +43,13 @@ const Home = () => {
       </Head>
       <Hero />
       <Outlook />
-      {loadElements && <Recreational />}
-      {loadElements && (
+      {loadElements ? <Destinations /> : null}
+      {loadElements ? <Recreational /> : null}
+      {loadElements ? (
         <SectionContainer>
           <Faqs />
         </SectionContainer>
-      )}
+      ) : null}
     </Layout>
   );
 };
