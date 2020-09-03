@@ -1,17 +1,29 @@
 import Head from "next/head";
 
-import { Title } from "../styles/styled";
+import Layout from "../components/layout/layout";
+
+import Hero from "../components/hero/hero";
+import Outlook from "../components/outlook/outlook";
+import Recreational from "../components/recreational/recreational";
+import Faqs from "../components/faq/faq";
+
+import SectionContainer from "../style-components/section-container/section-container.style";
 
 export default function Home() {
   return (
-    <div>
+    <Layout>
       <Head>
         <title>Workcations - Think Remote Work! Think Workcations!</title>
         <link rel="icon" href="/favicon.ico" />
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
-
-      <Title>Styled Components</Title>
-    </div>
+      <Hero />
+      <Outlook />
+      <Recreational />
+      <SectionContainer>
+        <Faqs />
+      </SectionContainer>
+    </Layout>
   );
 }
 
