@@ -9,7 +9,7 @@ import Faqs from "../components/faq/faq";
 
 import SectionContainer from "../style-components/section-container/section-container.style";
 
-export default function Home() {
+const Home = () => {
   return (
     <Layout>
       <Head>
@@ -25,7 +25,15 @@ export default function Home() {
       </SectionContainer>
     </Layout>
   );
-}
+};
+
+export const getStaticProps = async () => {
+  return {
+    props: {},
+  };
+};
+
+export default Home;
 
 /*
 
