@@ -50,8 +50,8 @@ const reducer = (state, action) => {
 const makeConfiguredStore = (reducer) =>
   createStore(reducer, undefined, applyMiddleware(logger));
 
-const initStore = (reducer) => {
-  const store = createStore(reducer, undefined, bindMiddleware(middlewares));
+const initStore = () => {
+  const store = createStore(reducer, bindMiddleware(middlewares));
   store.sagaTask = sagaMiddleware.run(rootSaga);
 
   return store;
