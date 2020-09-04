@@ -10,7 +10,7 @@ import { toggleContactPopupPosition } from "../../redux/contact-popup/contact-po
 import Filters from "../../components/filters/filters";
 import PropertyList from "../../containers/property-list/property-list";
 
-import { Container, Heading } from "./style";
+import { Container, Heading } from "../../styles/properties/style";
 
 import Layout from "../../components/layout/layout";
 
