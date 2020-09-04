@@ -1,5 +1,6 @@
 import React, { Fragment } from "react";
 import { useSelector } from "react-redux";
+import Link from "next/link";
 
 import {
   selectPropertyList,
@@ -66,15 +67,21 @@ const PropertyList = ({ loadElements }) => {
         )}
       </PropertyListContainer>
       <FilterMobile>
-        <FilterItem to="/filters/type">
-          <img src="./type.svg" alt="Property Type" />
-        </FilterItem>
-        <FilterItem to="/filters/price">
-          <img src="./price.svg" alt="Property Type" />
-        </FilterItem>
-        <FilterItem to="/filters/states">
-          <img src="./states.svg" alt="Property Type" />
-        </FilterItem>
+        <Link href="/filters/type" passHref>
+          <FilterItem>
+            <img src="./type.svg" alt="Property Type" />
+          </FilterItem>
+        </Link>
+        <Link href="/filters/price" passHref>
+          <FilterItem>
+            <img src="./price.svg" alt="Property Type" />
+          </FilterItem>
+        </Link>
+        <Link href="/filters/states" passHref>
+          <FilterItem>
+            <img src="./states.svg" alt="Property Type" />
+          </FilterItem>
+        </Link>
       </FilterMobile>
     </Container>
   );

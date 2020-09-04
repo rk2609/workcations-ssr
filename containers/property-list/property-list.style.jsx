@@ -32,7 +32,7 @@ export const FilterMobile = styled.div`
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 0.8fr;
     height: 80px;
-    padding: 10px;
+    padding: 0px 10px;
     position: fixed;
     width: 100%;
     left: 0%;
@@ -45,11 +45,12 @@ export const FilterMobile = styled.div`
 
 export const FilterItem = styled.a`
   width: 100%;
+  height: 80px;
   display: flex;
   align-items: center;
   justify-content: center;
   img {
-    height: 70%;
+    height: 60%;
   }
 `;
 

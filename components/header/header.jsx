@@ -53,21 +53,16 @@ const Header = () => {
 
   return (
     <Container visible={visible}>
-      <Link
-        href="/"
-        /*onClick={() => {
-          setOpen(false);
-        }}*/
-      >
+      <Link href="/" passHref>
         <Logo>
           <img src="./logo.svg" alt="Workcations" />
         </Logo>
       </Link>
       <Menu open={open}>
-        <Link href="/properties">
+        <Link href="/properties" passHref>
           <MenuOption>Destinations</MenuOption>
         </Link>
-        <Link href="/blog">
+        <Link href="/blog" passHref>
           <MenuOption>Blog</MenuOption>
         </Link>
         <div onClick={() => dispatch(toggleContactPopupHidden())}>Connect</div>

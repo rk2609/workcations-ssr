@@ -19,7 +19,7 @@ const Hero = () => (
       Live and work remotely from the most charming and quaint destinations in
       India, nurturing your freedom and rejoicing in a new-found community.
     </Caption>
-    <Link href="/properties">
+    <Link href="/properties" passHref>
       <Button>Explore Destinations</Button>
     </Link>
   </HeroContainer>

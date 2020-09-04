@@ -29,7 +29,11 @@ const Carousel = ({ slug }) => {
     <CarouselFlex className="carousel">
       {propertyList.map((property) =>
         slug !== property.slug && property.visibility === "TRUE" ? (
-          <Link href={"/property/" + property.slug} key={property.slug}>
+          <Link
+            href={"/property/" + property.slug}
+            key={property.slug}
+            passHref
+          >
             <CarouselItem key={property.slug}>
               <Image
                 style={{
