@@ -1,5 +1,7 @@
 import React, { Fragment } from "react";
 
+import Head from "next/head";
+
 import Gallery from "../../components/gallery/gallery";
 import Facilities from "../../components/facilities/facilities";
 import About from "../../components/about/about";
@@ -43,75 +45,80 @@ const PropertyPage = ({
   loadElements,
 }) => {
   return (
-    <MegaContainer>
-      <Container>
-        <h1>
-          {title}
-          {/* <span>{type}</span> */}
-        </h1>
-        <Location>
-          {city}, {state}
-        </Location>
-        <Gallery loadElements={loadElements} images={images} slug={slug} />
-        <Facilities facilities={features} />
-        <Flex>
-          <PropertyDetails>
-            {loadElements ? (
-              <Fragment>
-                <About about={about} />
-                <Essentials {...essentials} />
-                <DivMobile>
+    <Fragment>
+      <Head>
+        <title>{title}</title>
+      </Head>
+      <MegaContainer>
+        <Container>
+          <h1>
+            {title}
+            {/* <span>{type}</span> */}
+          </h1>
+          <Location>
+            {city}, {state}
+          </Location>
+          <Gallery loadElements={loadElements} images={images} slug={slug} />
+          <Facilities facilities={features} />
+          <Flex>
+            <PropertyDetails>
+              {loadElements ? (
+                <Fragment>
+                  <About about={about} />
+                  <Essentials {...essentials} />
+                  <DivMobile>
+                    <PropertyDetailsContainer>
+                      <InclusionsExclusions
+                        inclusions={inclusions}
+                        exclusions={exclusions}
+                        features={features}
+                        breakfast={breakfast}
+                        lunch={lunch}
+                        dinner={dinner}
+                      />
+                    </PropertyDetailsContainer>
+                  </DivMobile>
                   <PropertyDetailsContainer>
-                    <InclusionsExclusions
-                      inclusions={inclusions}
-                      exclusions={exclusions}
-                      features={features}
-                      breakfast={breakfast}
-                      lunch={lunch}
-                      dinner={dinner}
-                    />
+                    <Nearby nearby={nearby} />
                   </PropertyDetailsContainer>
-                </DivMobile>
-                <PropertyDetailsContainer>
-                  <Nearby nearby={nearby} />
-                </PropertyDetailsContainer>
-                <DivDesktop>
+                  <DivDesktop>
+                    <PropertyDetailsContainer>
+                      <InclusionsExclusions
+                        inclusions={inclusions}
+                        exclusions={exclusions}
+                        features={features}
+                        breakfast={breakfast}
+                        lunch={lunch}
+                        dinner={dinner}
+                      />
+                    </PropertyDetailsContainer>
+                  </DivDesktop>
                   <PropertyDetailsContainer>
-                    <InclusionsExclusions
-                      inclusions={inclusions}
-                      exclusions={exclusions}
-                      features={features}
-                      breakfast={breakfast}
-                      lunch={lunch}
-                      dinner={dinner}
-                    />
+                    <SimilarProperties slug={slug} />
                   </PropertyDetailsContainer>
-                </DivDesktop>
-                <PropertyDetailsContainer>
-                  <SimilarProperties slug={slug} />
-                </PropertyDetailsContainer>
-                <PropertyDetailsContainer>
-                  <ImportantInformation />
-                </PropertyDetailsContainer>
-                <PropertyDetailsContainer>
-                  <Faqs />
-                </PropertyDetailsContainer>
-              </Fragment>
-            ) : null}
-          </PropertyDetails>
-          <BookNow
-            inventory={inventory}
-            slug={slug}
-            title={title}
-            minDuration={Number(minDuration)}
-            breakfast={breakfast}
-            lunch={lunch}
-            dinner={dinner}
-            type={type}
-          />
-        </Flex>
-      </Container>
-    </MegaContainer>
+                  <PropertyDetailsContainer>
+                    <ImportantInformation />
+                  </PropertyDetailsContainer>
+                  <PropertyDetailsContainer>
+                    <Faqs />
+                  </PropertyDetailsContainer>
+                </Fragment>
+              ) : null}
+            </PropertyDetails>
+            <BookNow
+              inventory={inventory}
+              slug={slug}
+              title={title}
+              minDuration={Number(minDuration)}
+              breakfast={breakfast}
+              lunch={lunch}
+              dinner={dinner}
+              type={type}
+            />
+          </Flex>
+        </Container>
+      </MegaContainer>
+    </Fragment>
   );
 };
 
