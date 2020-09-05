@@ -16,7 +16,7 @@ import {
   Source,
   Caption,
   SubHeading,
-} from "../blog-item.style";
+} from "../../../components/blogs/blog-item.style";
 
 const BlogItem = () => {
   const isServer = typeof window === "undefined";

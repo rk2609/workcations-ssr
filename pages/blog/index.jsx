@@ -17,7 +17,7 @@ import {
   Tags,
   Description,
   ReadMore,
-} from "./blog.style";
+} from "../../components/blogs/blog.style";
 
 const BlogCollection = () => {
   const isServer = typeof window === "undefined";
