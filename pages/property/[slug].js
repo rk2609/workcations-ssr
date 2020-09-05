@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 
 import Head from "next/head";
 
@@ -6,6 +7,12 @@ import Layout from "../../components/layout/layout";
 import PropertyPage from "../../containers/property-page/property-page";
 
 const Property = ({ property }) => {
+  const router = useRouter();
+
+  if (router.isFallback) {
+    return <div>Loading...</div>;
+  }
+
   const isServer = typeof window === "undefined";
 
   const [loadElements, setLoadElements] = useState(false);
@@ -98,7 +105,7 @@ export const getStaticPaths = async () => {
 
   return {
     paths: pathArray,
-    fallback: false,
+    fallback: true,
   };
 };
 
