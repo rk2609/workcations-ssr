@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Nouislider from "nouislider-react";
+import Link from "next/link";
 
 import {
   setPropertyListStart,
@@ -38,9 +39,7 @@ import {
   ApplyFilter,
 } from "./filters-mobile.style";
 
-import Background from "./filter-background.jpg";
-
-const FiltersMobile = ({ match }) => {
+const FiltersMobile = ({ filterType }) => {
   const [isOpen, setOpen] = useState(false);
 
   useEffect(() => {
@@ -148,17 +147,19 @@ const FiltersMobile = ({ match }) => {
   });
 
   return (
-    <Container style={{ backgroundImage: "url(./filter-background.jpg)" }}>
+    <Container style={{ backgroundImage: "url(/filter-background.jpg)" }}>
       <Container2 isOpen={isOpen}>
         <FilterTitle>
-          {match.params.filter === "type"
+          {filterType === "type"
             ? "Property Type"
-            : match.params.filter === "price"
+            : filterType === "price"
             ? "Price Range"
             : "States"}
         </FilterTitle>
-        <CloseButton to="/properties">&#10006;</CloseButton>
-        {match.params.filter === "type" ? (
+        <Link href="/properties">
+          <CloseButton>&#10006;</CloseButton>
+        </Link>
+        {filterType === "type" ? (
           <FilterList>
             {types.map((type, i) => (
               <CheckBoxFilter
@@ -188,7 +189,7 @@ const FiltersMobile = ({ match }) => {
               />
             ))}
           </FilterList>
-        ) : match.params.filter === "price" ? (
+        ) : filterType === "price" ? (
           <PriceFilter>
             <Nouislider
               range={range}
@@ -236,7 +237,9 @@ const FiltersMobile = ({ match }) => {
             ))}
           </FilterList>
         )}
-        <ApplyFilter to="/properties">Apply Filters</ApplyFilter>
+        <Link href="/properties">
+          <ApplyFilter>Apply Filters</ApplyFilter>
+        </Link>
       </Container2>
     </Container>
   );

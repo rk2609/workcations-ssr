@@ -69,17 +69,17 @@ const PropertyList = ({ loadElements }) => {
       <FilterMobile>
         <Link href="/filters/type" passHref>
           <FilterItem>
-            <img src="./type.svg" alt="Property Type" />
+            <img src="/type.svg" alt="Property Type" />
           </FilterItem>
         </Link>
         <Link href="/filters/price" passHref>
           <FilterItem>
-            <img src="./price.svg" alt="Property Type" />
+            <img src="/price.svg" alt="Property Type" />
           </FilterItem>
         </Link>
         <Link href="/filters/states" passHref>
           <FilterItem>
-            <img src="./states.svg" alt="Property Type" />
+            <img src="/states.svg" alt="Property Type" />
           </FilterItem>
         </Link>
       </FilterMobile>

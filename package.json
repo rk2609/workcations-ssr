@@ -8,6 +8,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@zeit/next-css": "1.0.1",
     "emailjs-com": "2.6.3",
     "next": "9.5.2",
     "next-google-fonts": "^1.2.1",

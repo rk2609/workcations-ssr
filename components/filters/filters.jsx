@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Nouislider from "nouislider-react";
 
+import "./slider.css";
+
 import {
   setPropertyListStart,
   initializeStateList,
