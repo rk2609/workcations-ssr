@@ -5,13 +5,10 @@ import Head from "next/head";
 
 import Layout from "../../components/layout/layout";
 import PropertyPage from "../../containers/property-page/property-page";
+import Spinner from "../../components/spinner/spinner";
 
 const Property = ({ property }) => {
   const router = useRouter();
-
-  if (router.isFallback) {
-    return <div>Loading...</div>;
-  }
 
   const isServer = typeof window === "undefined";
 
@@ -41,7 +38,11 @@ const Property = ({ property }) => {
         <link rel="icon" href="/favicon.ico" />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
-      <PropertyPage {...property} loadElements={loadElements} />
+      {router.isFallback ? (
+        <Spinner />
+      ) : (
+        <PropertyPage {...property} loadElements={loadElements} />
+      )}
     </Layout>
   );
 };
