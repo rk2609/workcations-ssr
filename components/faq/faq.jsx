@@ -84,9 +84,9 @@ const Faqs = () => {
                 Q{i + 1}. {item.Q}
               </span>
               {open[i] ? (
-                <img src="./minus.svg" alt="Collapse Answer" />
+                <img src="/minus.svg" alt="Collapse Answer" />
               ) : (
-                <img src="./plus.svg" alt="Expand Answer" />
+                <img src="/plus.svg" alt="Expand Answer" />
               )}
             </Ques>
             <Ans isOpen={open[i]}>

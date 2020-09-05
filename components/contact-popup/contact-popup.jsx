@@ -175,7 +175,7 @@ const ContactPopup = () => {
               <FormSubmit value="Submit" />
             </Form>
             <Image>
-              <img src="./contact-us.svg" alt="Contact Us" />
+              <img src="/contact-us.svg" alt="Contact Us" />
             </Image>
           </ContactForm>
         </ContactFormContainer>

@@ -20,7 +20,7 @@ const CallIcon = () => {
       hidden={hidden}
       iconPosition={iconPosition}
     >
-      <img src="./phone.svg" alt="Request a Call Back" />
+      <img src="/phone.svg" alt="Request a Call Back" />
     </Container>
   );
 };

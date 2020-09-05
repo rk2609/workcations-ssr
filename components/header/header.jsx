@@ -55,7 +55,7 @@ const Header = () => {
     <Container visible={visible}>
       <Link href="/" passHref>
         <Logo>
-          <img src="./logo.svg" alt="Workcations" />
+          <img src="/logo.svg" alt="Workcations" />
         </Logo>
       </Link>
       <Menu open={open}>

@@ -19,7 +19,7 @@ const Footer = () => (
         <Heading>Connect with Us</Heading>
         <div>
           <a href="tel:8814871652" target="_blank" rel="noopener noreferrer">
-            <img src="./phone.svg" alt="Call Us" />
+            <img src="/phone.svg" alt="Call Us" />
             +91-8814871652
           </a>
           <a
@@ -27,7 +27,7 @@ const Footer = () => (
             target="_blank"
             rel="noopener noreferrer"
           >
-            <img src="./mail.svg" alt="Email Us" />
+            <img src="/mail.svg" alt="Email Us" />
             workcations@wanderon.in
           </a>
           <a
@@ -35,7 +35,7 @@ const Footer = () => (
             target="_blank"
             rel="noopener noreferrer"
           >
-            <img src="./instagram.svg" alt="Instagram" />
+            <img src="/instagram.svg" alt="Instagram" />
             workcations.in
           </a>
           <a
@@ -43,7 +43,7 @@ const Footer = () => (
             target="_blank"
             rel="noopener noreferrer"
           >
-            <img src="./facebook.svg" alt="Facebook" />
+            <img src="/facebook.svg" alt="Facebook" />
             workcations.in
           </a>
         </div>
