@@ -36,11 +36,15 @@ const Gallery = ({ images, slug, loadElements }) => {
               setShowLightBox(true);
             }}
           >
-            <ImageDiv
-              style={{
-                backgroundImage: `url(https://www.wanderon.in/workcations/${slug}/${image}.jpg)`,
-              }}
-            ></ImageDiv>
+            {loadElements ? (
+              <ImageDiv
+                style={{
+                  backgroundImage: `url(https://www.wanderon.in/workcations/${slug}/${image}.jpg)`,
+                }}
+              ></ImageDiv>
+            ) : (
+              <ImageDiv></ImageDiv>
+            )}
           </ImageContainer>
         ) : i === 2 ? (
           <ImageContainer
@@ -51,11 +55,15 @@ const Gallery = ({ images, slug, loadElements }) => {
               setShowLightBox(true);
             }}
           >
-            <ImageDiv
-              style={{
-                backgroundImage: `url(https://www.wanderon.in/workcations/${slug}/${image}.jpg)`,
-              }}
-            ></ImageDiv>
+            {loadElements ? (
+              <ImageDiv
+                style={{
+                  backgroundImage: `url(https://www.wanderon.in/workcations/${slug}/${image}.jpg)`,
+                }}
+              ></ImageDiv>
+            ) : (
+              <ImageDiv></ImageDiv>
+            )}
           </ImageContainer>
         ) : i < 4 ? (
           <ImageContainer
@@ -65,11 +73,15 @@ const Gallery = ({ images, slug, loadElements }) => {
               setShowLightBox(true);
             }}
           >
-            <ImageDiv
-              style={{
-                backgroundImage: `url(https://www.wanderon.in/workcations/${slug}/${image}.jpg)`,
-              }}
-            ></ImageDiv>
+            {loadElements ? (
+              <ImageDiv
+                style={{
+                  backgroundImage: `url(https://www.wanderon.in/workcations/${slug}/${image}.jpg)`,
+                }}
+              ></ImageDiv>
+            ) : (
+              <ImageDiv></ImageDiv>
+            )}
           </ImageContainer>
         ) : i === 4 ? (
           <ImageContainer
@@ -80,17 +92,21 @@ const Gallery = ({ images, slug, loadElements }) => {
               setShowLightBox(true);
             }}
           >
-            <ImageDiv
-              style={{
-                backgroundImage: `linear-gradient(
+            {loadElements ? (
+              <ImageDiv
+                style={{
+                  backgroundImage: `linear-gradient(
                     to right,
                     rgba(0, 0, 0, 0.7),
                     rgba(0, 0, 0, 0.7)
                   ),url(https://www.wanderon.in/workcations/${slug}/${image}.jpg)`,
-              }}
-            >
-              + {images.length - 5} Photos
-            </ImageDiv>
+                }}
+              >
+                + {images.length - 5} Photos
+              </ImageDiv>
+            ) : (
+              <ImageDiv>+ {images.length - 5} Photos</ImageDiv>
+            )}
           </ImageContainer>
         ) : null
       )}
