@@ -217,6 +217,31 @@ const BlogCollection = () => {
               </Tags>
             </GridItem>
           </Link>
+
+          <Link href="/blog/the-travel-trend-of-2020-2021" passHref>
+            <GridItem>
+              <Title>Old Wine, New Bottle: The Travel Trend Of 2020-2021</Title>
+              <ImageCon>
+                <Image
+                  src="/the-travel-trend-of-2020-2021/the-travel-trend-of-2020-2021.jpg"
+                  alt="Old Wine, New Bottle: The Travel Trend Of 2020-2021"
+                />
+              </ImageCon>
+              <Description>
+                The Travel Industry has been shaken by the COVID-19 outbreak
+                from its core. Here're the future travel trends for 2020-2021!
+                Remember the good old days when we simply packed our bags and
+                embarked on impromptu trips? Well, the onset on new normal has
+                changed a lot of aspects in our lives including travel.
+              </Description>
+              <ReadMore>Read More</ReadMore>
+              <Date>07th Sep 2020</Date>
+              <Tags>
+                <span>Travel Trends</span>
+                <span>Future of Travel</span>
+              </Tags>
+            </GridItem>
+          </Link>
         </Grid>
       </BlogContainer>
     </Layout>
