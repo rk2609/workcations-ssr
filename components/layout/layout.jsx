@@ -8,12 +8,15 @@ import Footer from "../footer/footer";
 
 import { Container } from "./layout.style";
 
+import Pixel from "../pixel/index";
+
 const Layout = ({ children }) => (
   <Fragment>
     <Head>
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     </Head>
     <Container>
+      <Pixel name="FACEBOOK_PIXEL_1" />
       {children}
       <Header />
       <CallIcon />
