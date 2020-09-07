@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Fragment } from "react";
+import Head from "next/head";
 
 import FormInput from "../../components/form-input-text/form-input-text";
 
@@ -253,395 +254,403 @@ const BookingPage = ({ data, bookingSlug }) => {
   }, [totalPax]);
 
   return (
-    <PageContainer>
-      <div>
-        {cart ? (
-          <FlexItem className="carousel">
-            <h2>Booking Summary</h2>
-            <Summary>
-              <PropertyTitle>{property.title}</PropertyTitle>
-              <CheckInCheckOut>
-                <div>
-                  Check In
-                  <span>
-                    {checkInDate.getDate()} {monthNames[checkInDate.getMonth()]}
-                    {","}
-                    {checkInDate.getFullYear()}
-                  </span>
-                </div>
-                <div>
-                  Check Out
-                  <span>
-                    {checkOutDate.getDate()}{" "}
-                    {monthNames[checkOutDate.getMonth()]}
-                    {", "}
-                    {checkOutDate.getFullYear()}
-                  </span>
-                </div>
-              </CheckInCheckOut>
-              {cart.map((cartItem, i) => (
-                <SummaryItem key={i}>
-                  <Image
-                    src={
-                      "https://www.wanderon.in/workcations/" +
-                      property.slug +
-                      "/" +
-                      cartItem.image +
-                      ".jpg"
-                    }
-                    alt={cartItem.image}
-                  />
-                  <CartSharingTitle>{cartItem.type}</CartSharingTitle>
-                  <Sharing>
-                    {cartItem.rooms.map((room, j) => (
-                      <SharingItem key={i + "room" + j}>
-                        <CartSharingSharingTitle>
-                          {room.sharing}
-                          <span>
-                            INR{" "}
-                            {Math.round(
-                              getNoOfDays(checkInDate, checkOutDate)
-                            ) < 21
-                              ? Math.round(
-                                  getNoOfDays(checkInDate, checkOutDate)
-                                ) < 16
+    <Fragment>
+      <Head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      </Head>
+      <PageContainer>
+        <div>
+          {cart ? (
+            <FlexItem className="carousel">
+              <h2>Booking Summary</h2>
+              <Summary>
+                <PropertyTitle>{property.title}</PropertyTitle>
+                <CheckInCheckOut>
+                  <div>
+                    Check In
+                    <span>
+                      {checkInDate.getDate()}{" "}
+                      {monthNames[checkInDate.getMonth()]}
+                      {","}
+                      {checkInDate.getFullYear()}
+                    </span>
+                  </div>
+                  <div>
+                    Check Out
+                    <span>
+                      {checkOutDate.getDate()}{" "}
+                      {monthNames[checkOutDate.getMonth()]}
+                      {", "}
+                      {checkOutDate.getFullYear()}
+                    </span>
+                  </div>
+                </CheckInCheckOut>
+                {cart.map((cartItem, i) => (
+                  <SummaryItem key={i}>
+                    <Image
+                      src={
+                        "https://www.wanderon.in/workcations/" +
+                        property.slug +
+                        "/" +
+                        cartItem.image +
+                        ".jpg"
+                      }
+                      alt={cartItem.image}
+                    />
+                    <CartSharingTitle>{cartItem.type}</CartSharingTitle>
+                    <Sharing>
+                      {cartItem.rooms.map((room, j) => (
+                        <SharingItem key={i + "room" + j}>
+                          <CartSharingSharingTitle>
+                            {room.sharing}
+                            <span>
+                              INR{" "}
+                              {Math.round(
+                                getNoOfDays(checkInDate, checkOutDate)
+                              ) < 21
                                 ? Math.round(
                                     getNoOfDays(checkInDate, checkOutDate)
-                                  ) < 11
+                                  ) < 16
                                   ? Math.round(
                                       getNoOfDays(checkInDate, checkOutDate)
-                                    ) < 6
-                                    ? room.ultrashort
-                                    : room.short
-                                  : room.normal
-                                : room.long
-                              : room.ultralong}
-                            /- per night
-                          </span>
-                        </CartSharingSharingTitle>
-                        <SharingCount>X {room.count}</SharingCount>
-                        <SharingTotal>
-                          =&nbsp;&nbsp;&nbsp;
-                          {(
-                            room.count *
-                            (Math.round(
-                              getNoOfDays(checkInDate, checkOutDate)
-                            ) < 21
-                              ? Math.round(
-                                  getNoOfDays(checkInDate, checkOutDate)
-                                ) < 16
+                                    ) < 11
+                                    ? Math.round(
+                                        getNoOfDays(checkInDate, checkOutDate)
+                                      ) < 6
+                                      ? room.ultrashort
+                                      : room.short
+                                    : room.normal
+                                  : room.long
+                                : room.ultralong}
+                              /- per night
+                            </span>
+                          </CartSharingSharingTitle>
+                          <SharingCount>X {room.count}</SharingCount>
+                          <SharingTotal>
+                            =&nbsp;&nbsp;&nbsp;
+                            {(
+                              room.count *
+                              (Math.round(
+                                getNoOfDays(checkInDate, checkOutDate)
+                              ) < 21
                                 ? Math.round(
                                     getNoOfDays(checkInDate, checkOutDate)
-                                  ) < 11
+                                  ) < 16
                                   ? Math.round(
                                       getNoOfDays(checkInDate, checkOutDate)
-                                    ) < 6
-                                    ? room.ultrashort
-                                    : room.short
-                                  : room.normal
-                                : room.long
-                              : room.ultralong)
-                          ).toLocaleString("en-IN", {
-                            style: "currency",
-                            currency: "INR",
-                          })}
-                        </SharingTotal>
-                      </SharingItem>
-                    ))}
-                  </Sharing>
-                </SummaryItem>
-              ))}
-              <CartTotal>
-                <div>
-                  <span>Total</span>
-                  <span>
-                    {TotalAmount.toLocaleString("en-IN", {
-                      maximumFractionDigits: 2,
-                      style: "currency",
-                      currency: "INR",
-                    })}
-                  </span>
-                </div>
-                <div>
-                  <span>
-                    Discount(
-                    {(
-                      ((TotalAmount - Number(amount) / 1.05) * 100) /
-                      TotalAmount
-                    ).toFixed(2)}
-                    %)
-                  </span>
-                  <span>
-                    {(TotalAmount - Number(amount) / 1.05).toLocaleString(
-                      "en-IN",
-                      {
+                                    ) < 11
+                                    ? Math.round(
+                                        getNoOfDays(checkInDate, checkOutDate)
+                                      ) < 6
+                                      ? room.ultrashort
+                                      : room.short
+                                    : room.normal
+                                  : room.long
+                                : room.ultralong)
+                            ).toLocaleString("en-IN", {
+                              style: "currency",
+                              currency: "INR",
+                            })}
+                          </SharingTotal>
+                        </SharingItem>
+                      ))}
+                    </Sharing>
+                  </SummaryItem>
+                ))}
+                <CartTotal>
+                  <div>
+                    <span>Total</span>
+                    <span>
+                      {TotalAmount.toLocaleString("en-IN", {
                         maximumFractionDigits: 2,
                         style: "currency",
                         currency: "INR",
-                      }
-                    )}
-                  </span>
-                </div>
-                <div>
-                  <span>GST(5%)</span>
-                  <span>
-                    {(Number(amount) / 21).toLocaleString("en-IN", {
-                      maximumFractionDigits: 2,
-                      style: "currency",
-                      currency: "INR",
-                    })}
-                  </span>
-                </div>
-                <Line />
-                <div>
-                  <span>Grand Total</span>
-                  <span>
-                    {Number(amount).toLocaleString("en-IN", {
-                      maximumFractionDigits: 2,
-                      style: "currency",
-                      currency: "INR",
-                    })}
-                  </span>
-                </div>
-                <Line />
-              </CartTotal>
-            </Summary>
-          </FlexItem>
-        ) : null}
-      </div>
-      {!userSubmitted ? (
-        <form onSubmit={submitDataFinal} style={{ textAlign: "center" }}>
-          <FormInput
-            name="bookingId"
-            type="text"
-            value={bookingId}
-            required
-            label="Booking Id"
-            warningMessage=""
-            handleChange={handleChange}
-          />
-          <GridTraveler>
-            <RadioGroup>
-              <RadioGroupLabel>Gender</RadioGroupLabel>
-              <RadioGroupButtons>
-                <RadioButton>
-                  <input
-                    id="userGenderMale"
-                    onChange={(e) => {
-                      setUserGender(e.target.value);
-                    }}
-                    value="m"
-                    type="radio"
-                    checked={userGender === "m"}
-                  />
-                  <label htmlFor="userGenderMale">Male</label>
-                </RadioButton>
-                <RadioButton>
-                  <input
-                    id="userGenderFemale"
-                    onChange={(e) => {
-                      setUserGender(e.target.value);
-                    }}
-                    value="f"
-                    type="radio"
-                    checked={userGender === "f"}
-                  />
-                  <label htmlFor="userGenderFemale">Female</label>
-                </RadioButton>
-                <RadioButton>
-                  <input
-                    id="userGenderOther"
-                    onChange={(e) => {
-                      setUserGender(e.target.value);
-                    }}
-                    value="o"
-                    type="radio"
-                    checked={userGender === "o"}
-                  />
-                  <label htmlFor="userGenderOther">Other</label>
-                </RadioButton>
-              </RadioGroupButtons>
-            </RadioGroup>
+                      })}
+                    </span>
+                  </div>
+                  <div>
+                    <span>
+                      Discount(
+                      {(
+                        ((TotalAmount - Number(amount) / 1.05) * 100) /
+                        TotalAmount
+                      ).toFixed(2)}
+                      %)
+                    </span>
+                    <span>
+                      {(TotalAmount - Number(amount) / 1.05).toLocaleString(
+                        "en-IN",
+                        {
+                          maximumFractionDigits: 2,
+                          style: "currency",
+                          currency: "INR",
+                        }
+                      )}
+                    </span>
+                  </div>
+                  <div>
+                    <span>GST(5%)</span>
+                    <span>
+                      {(Number(amount) / 21).toLocaleString("en-IN", {
+                        maximumFractionDigits: 2,
+                        style: "currency",
+                        currency: "INR",
+                      })}
+                    </span>
+                  </div>
+                  <Line />
+                  <div>
+                    <span>Grand Total</span>
+                    <span>
+                      {Number(amount).toLocaleString("en-IN", {
+                        maximumFractionDigits: 2,
+                        style: "currency",
+                        currency: "INR",
+                      })}
+                    </span>
+                  </div>
+                  <Line />
+                </CartTotal>
+              </Summary>
+            </FlexItem>
+          ) : null}
+        </div>
+        {!userSubmitted ? (
+          <form onSubmit={submitDataFinal} style={{ textAlign: "center" }}>
             <FormInput
-              name="fullName"
+              name="bookingId"
               type="text"
-              value={fullName.value}
+              value={bookingId}
               required
-              label="Full Name"
-              warningMessage={fullName.warningMessage}
-              handleChange={handleChange}
-            />
-            <FormInput
-              name="phoneNo"
-              type="number"
-              value={phoneNo.value}
-              required
-              label="Phone No"
-              warningMessage={phoneNo.warningMessage}
-              handleChange={handleChange}
-            />
-          </GridTraveler>
-          <Grid>
-            <FormInput
-              name="alternatePhoneNo"
-              type="number"
-              value={alternatePhoneNo.value}
-              label="Alternate Phone No"
-              warningMessage={alternatePhoneNo.warningMessage}
-              handleChange={handleChange}
-            />
-            <FormInput
-              name="email"
-              type="email"
-              value={email.value}
-              required
-              label="Email Id"
-              warningMessage={email.warningMessage}
-              handleChange={handleChange}
-            />
-          </Grid>
-          <FormInput
-            name="address"
-            type="text"
-            value={address.value}
-            required
-            label="Full Address"
-            warningMessage={address.warningMessage}
-            handleChange={handleChange}
-          />
-          <Grid>
-            <FormInput
-              name="company"
-              type="text"
-              value={company.value}
-              required
-              label="Company"
-              warningMessage={company.warningMessage}
-              handleChange={handleChange}
-            />
-            <FormInput
-              name="post"
-              type="text"
-              value={post.value}
-              required
-              label="Designation"
-              warningMessage={post.warningMessage}
-              handleChange={handleChange}
-            />
-            <FormInput
-              name="noOfPax"
-              type="number"
-              value={totalPax.value}
-              required
-              label="No Of Pax"
+              label="Booking Id"
               warningMessage=""
               handleChange={handleChange}
             />
-          </Grid>
-          {travelersNames.map((item, i) => (
-            <GridTravelerList key={"extra traveler" + (i + 1)}>
-              <GridTravelerTitle>Traveler {i + 2} Details</GridTravelerTitle>
+            <GridTraveler>
               <RadioGroup>
                 <RadioGroupLabel>Gender</RadioGroupLabel>
                 <RadioGroupButtons>
                   <RadioButton>
                     <input
-                      id={"userGenderMale" + (i + 2)}
+                      id="userGenderMale"
                       onChange={(e) => {
-                        let gendersArray = new Array(totalPax.value - 1).fill(
-                          "m"
-                        );
-
-                        for (let i = 0; i < gendersArray.length; i++) {
-                          gendersArray[i] = travelersGenders[i];
-                        }
-                        gendersArray[i] = e.target.value;
-                        setTravelersGenders(gendersArray);
+                        setUserGender(e.target.value);
                       }}
                       value="m"
                       type="radio"
-                      checked={travelersGenders[i] === "m"}
+                      checked={userGender === "m"}
                     />
-                    <label htmlFor={"userGenderMale" + (i + 2)}>Male</label>
+                    <label htmlFor="userGenderMale">Male</label>
                   </RadioButton>
                   <RadioButton>
                     <input
-                      id={"userGenderFemale" + (i + 2)}
+                      id="userGenderFemale"
                       onChange={(e) => {
-                        let gendersArray = new Array(totalPax.value - 1).fill(
-                          "m"
-                        );
-
-                        for (let i = 0; i < gendersArray.length; i++) {
-                          gendersArray[i] = travelersGenders[i];
-                        }
-
-                        gendersArray[i] = e.target.value;
-                        setTravelersGenders(gendersArray);
+                        setUserGender(e.target.value);
                       }}
                       value="f"
                       type="radio"
-                      checked={travelersGenders[i] === "f"}
+                      checked={userGender === "f"}
                     />
-                    <label htmlFor={"userGenderFemale" + (i + 2)}>Female</label>
+                    <label htmlFor="userGenderFemale">Female</label>
                   </RadioButton>
                   <RadioButton>
                     <input
-                      id={"userGenderOther" + (i + 2)}
+                      id="userGenderOther"
                       onChange={(e) => {
-                        let gendersArray = new Array(totalPax.value - 1).fill(
-                          "m"
-                        );
-
-                        for (let i = 0; i < gendersArray.length; i++) {
-                          gendersArray[i] = travelersGenders[i];
-                        }
-
-                        gendersArray[i] = e.target.value;
-                        setTravelersGenders(gendersArray);
+                        setUserGender(e.target.value);
                       }}
                       value="o"
                       type="radio"
-                      checked={travelersGenders[i] === "o"}
+                      checked={userGender === "o"}
                     />
-                    <label htmlFor={"userGenderOther" + (i + 2)}>Other</label>
+                    <label htmlFor="userGenderOther">Other</label>
                   </RadioButton>
                 </RadioGroupButtons>
               </RadioGroup>
               <FormInput
-                name={"travelerName " + (i + 2)}
+                name="fullName"
                 type="text"
-                value={travelersNames[i]}
-                label={"Name"}
-                warningMessage=""
-                handleChange={handleChangeTravelers}
+                value={fullName.value}
                 required
+                label="Full Name"
+                warningMessage={fullName.warningMessage}
+                handleChange={handleChange}
               />
               <FormInput
-                name={"travelerPhone " + (i + 2)}
+                name="phoneNo"
                 type="number"
-                value={travelersPhones[i]}
-                label={"Phone"}
-                warningMessage=""
-                handleChange={handleChangeTravelers}
+                value={phoneNo.value}
                 required
+                label="Phone No"
+                warningMessage={phoneNo.warningMessage}
+                handleChange={handleChange}
               />
-            </GridTravelerList>
-          ))}
-          <Submit type="submit" value="Submit"></Submit>
-        </form>
-      ) : (
-        <DownloadContainer>
-          <DownloadInvoice
-            href={`https://taxilead.herokuapp.com/pdf/${bookingSlug}`}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Download Booking Voucher
-          </DownloadInvoice>
-        </DownloadContainer>
-      )}
-    </PageContainer>
+            </GridTraveler>
+            <Grid>
+              <FormInput
+                name="alternatePhoneNo"
+                type="number"
+                value={alternatePhoneNo.value}
+                label="Alternate Phone No"
+                warningMessage={alternatePhoneNo.warningMessage}
+                handleChange={handleChange}
+              />
+              <FormInput
+                name="email"
+                type="email"
+                value={email.value}
+                required
+                label="Email Id"
+                warningMessage={email.warningMessage}
+                handleChange={handleChange}
+              />
+            </Grid>
+            <FormInput
+              name="address"
+              type="text"
+              value={address.value}
+              required
+              label="Full Address"
+              warningMessage={address.warningMessage}
+              handleChange={handleChange}
+            />
+            <Grid>
+              <FormInput
+                name="company"
+                type="text"
+                value={company.value}
+                required
+                label="Company"
+                warningMessage={company.warningMessage}
+                handleChange={handleChange}
+              />
+              <FormInput
+                name="post"
+                type="text"
+                value={post.value}
+                required
+                label="Designation"
+                warningMessage={post.warningMessage}
+                handleChange={handleChange}
+              />
+              <FormInput
+                name="noOfPax"
+                type="number"
+                value={totalPax.value}
+                required
+                label="No Of Pax"
+                warningMessage=""
+                handleChange={handleChange}
+              />
+            </Grid>
+            {travelersNames.map((item, i) => (
+              <GridTravelerList key={"extra traveler" + (i + 1)}>
+                <GridTravelerTitle>Traveler {i + 2} Details</GridTravelerTitle>
+                <RadioGroup>
+                  <RadioGroupLabel>Gender</RadioGroupLabel>
+                  <RadioGroupButtons>
+                    <RadioButton>
+                      <input
+                        id={"userGenderMale" + (i + 2)}
+                        onChange={(e) => {
+                          let gendersArray = new Array(totalPax.value - 1).fill(
+                            "m"
+                          );
+
+                          for (let i = 0; i < gendersArray.length; i++) {
+                            gendersArray[i] = travelersGenders[i];
+                          }
+                          gendersArray[i] = e.target.value;
+                          setTravelersGenders(gendersArray);
+                        }}
+                        value="m"
+                        type="radio"
+                        checked={travelersGenders[i] === "m"}
+                      />
+                      <label htmlFor={"userGenderMale" + (i + 2)}>Male</label>
+                    </RadioButton>
+                    <RadioButton>
+                      <input
+                        id={"userGenderFemale" + (i + 2)}
+                        onChange={(e) => {
+                          let gendersArray = new Array(totalPax.value - 1).fill(
+                            "m"
+                          );
+
+                          for (let i = 0; i < gendersArray.length; i++) {
+                            gendersArray[i] = travelersGenders[i];
+                          }
+
+                          gendersArray[i] = e.target.value;
+                          setTravelersGenders(gendersArray);
+                        }}
+                        value="f"
+                        type="radio"
+                        checked={travelersGenders[i] === "f"}
+                      />
+                      <label htmlFor={"userGenderFemale" + (i + 2)}>
+                        Female
+                      </label>
+                    </RadioButton>
+                    <RadioButton>
+                      <input
+                        id={"userGenderOther" + (i + 2)}
+                        onChange={(e) => {
+                          let gendersArray = new Array(totalPax.value - 1).fill(
+                            "m"
+                          );
+
+                          for (let i = 0; i < gendersArray.length; i++) {
+                            gendersArray[i] = travelersGenders[i];
+                          }
+
+                          gendersArray[i] = e.target.value;
+                          setTravelersGenders(gendersArray);
+                        }}
+                        value="o"
+                        type="radio"
+                        checked={travelersGenders[i] === "o"}
+                      />
+                      <label htmlFor={"userGenderOther" + (i + 2)}>Other</label>
+                    </RadioButton>
+                  </RadioGroupButtons>
+                </RadioGroup>
+                <FormInput
+                  name={"travelerName " + (i + 2)}
+                  type="text"
+                  value={travelersNames[i]}
+                  label={"Name"}
+                  warningMessage=""
+                  handleChange={handleChangeTravelers}
+                  required
+                />
+                <FormInput
+                  name={"travelerPhone " + (i + 2)}
+                  type="number"
+                  value={travelersPhones[i]}
+                  label={"Phone"}
+                  warningMessage=""
+                  handleChange={handleChangeTravelers}
+                  required
+                />
+              </GridTravelerList>
+            ))}
+            <Submit type="submit" value="Submit"></Submit>
+          </form>
+        ) : (
+          <DownloadContainer>
+            <DownloadInvoice
+              href={`https://taxilead.herokuapp.com/pdf/${bookingSlug}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Download Booking Voucher
+            </DownloadInvoice>
+          </DownloadContainer>
+        )}
+      </PageContainer>
+    </Fragment>
   );
 };
 
