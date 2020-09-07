@@ -1,5 +1,6 @@
 import { useEffect, useState, Fragment } from "react";
 import { useRouter } from "next/router";
+import Head from "next/head";
 import Spinner from "../../components/spinner/spinner";
 import BookingPage from "../../containers/booking-page/booking-page";
 import Layout from "../../components/layout/layout";
@@ -47,6 +48,10 @@ const Bookings = () => {
 
   return (
     <Layout>
+      <Head>
+        <link rel="icon" href="/favicon.ico" />
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      </Head>
       {fetchingBooking ? (
         <Spinner />
       ) : !bookingDetails ? (
