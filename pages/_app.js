@@ -3,7 +3,8 @@ import { ThemeProvider } from "styled-components";
 import Head from "next/head";
 import { useEffect } from "react";
 
-import { initGA, logPageView } from "../components/ga";
+import * as gtag from "../components/ga";
+import { useRouter } from "next/router";
 
 import { wrapper } from "../redux/store";
 
@@ -14,11 +15,18 @@ const theme = {
 };
 
 const MyApp = ({ Component, pageProps }) => {
+  const router = useRouter();
+
   useEffect(() => {
-    initGA();
-    logPageView();
-    Router.events.on("routeChangeComplete", logPageView);
-  }, []);
+    const handleRouteChange = (url) => {
+      gtag.pageview(url);
+    };
+    router.events.on("routeChangeComplete", handleRouteChange);
+    return () => {
+      router.events.off("routeChangeComplete", handleRouteChange);
+    };
+  }, [router.events]);
+
   return (
     <ThemeProvider theme={theme}>
       <Head>
