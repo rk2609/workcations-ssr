@@ -2,7 +2,6 @@ import "../styles/globals.css";
 import { ThemeProvider } from "styled-components";
 import Head from "next/head";
 import { useEffect } from "react";
-import ReactPixel from "react-facebook-pixel";
 
 import { initGA, logPageView } from "../components/ga";
 
@@ -18,16 +17,7 @@ const MyApp = ({ Component, pageProps }) => {
   useEffect(() => {
     initGA();
     logPageView();
-    const options = {
-      autoConfig: true,
-      debug: false,
-    };
-    ReactPixel.init("717219922161498", options);
-    ReactPixel.pageView();
-    Router.events.on("routeChangeComplete", () => {
-      logPageView();
-      ReactPixel.pageView();
-    });
+    Router.events.on("routeChangeComplete", logPageView);
   }, []);
   return (
     <ThemeProvider theme={theme}>
