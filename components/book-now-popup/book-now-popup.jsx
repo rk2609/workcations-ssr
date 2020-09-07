@@ -1,7 +1,7 @@
 import React, { useState, Fragment } from "react";
 import { useDispatch } from "react-redux";
 import * as emailjs from "emailjs-com";
-import ReactGA from "react-ga";
+import { logEvent } from "../ga";
 
 import { hideBookingPopup } from "../../redux/property/properties.actions";
 
@@ -63,7 +63,7 @@ const BookNowPopup = ({
   const dispatch = useDispatch();
 
   const sendEvent = () => {
-    ReactGA.event({
+    logEvent({
       category: "Book Now Contact Form Submitted",
       action: "Book Now Contact Form Submitted",
       label: "Book Now Contact Form Submitted",

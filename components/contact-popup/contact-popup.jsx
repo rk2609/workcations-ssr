@@ -1,6 +1,6 @@
 import React, { useState, Fragment } from "react";
 import * as emailjs from "emailjs-com";
-import ReactGA from "react-ga";
+import { logEvent } from "../ga";
 
 import { useDispatch, useSelector } from "react-redux";
 import { toggleContactPopupHidden } from "../../redux/contact-popup/contact-popup.actions";
@@ -37,7 +37,7 @@ const ContactPopup = () => {
   const [formSubmitAlert, setFormSubmitAlert] = useState(false);
 
   const sendEvent = () => {
-    ReactGA.event({
+    logEvent({
       category: "Contact Form Submitted",
       action: "Contact Form Submitted",
       label: "Contact Form Submitted",
