@@ -468,6 +468,8 @@ const BookingPage = ({ data, bookingSlug }) => {
                   </RadioButton>
                 </RadioGroupButtons>
               </RadioGroup>
+            </GridTraveler>
+            <Grid>
               <FormInput
                 name="fullName"
                 type="text"
@@ -486,7 +488,7 @@ const BookingPage = ({ data, bookingSlug }) => {
                 warningMessage={phoneNo.warningMessage}
                 handleChange={handleChange}
               />
-            </GridTraveler>
+            </Grid>
             <Grid>
               <FormInput
                 name="alternatePhoneNo"
@@ -616,24 +618,26 @@ const BookingPage = ({ data, bookingSlug }) => {
                     </RadioButton>
                   </RadioGroupButtons>
                 </RadioGroup>
-                <FormInput
-                  name={"travelerName " + (i + 2)}
-                  type="text"
-                  value={travelersNames[i]}
-                  label={"Name"}
-                  warningMessage=""
-                  handleChange={handleChangeTravelers}
-                  required
-                />
-                <FormInput
-                  name={"travelerPhone " + (i + 2)}
-                  type="number"
-                  value={travelersPhones[i]}
-                  label={"Phone"}
-                  warningMessage=""
-                  handleChange={handleChangeTravelers}
-                  required
-                />
+                <Grid>
+                  <FormInput
+                    name={"travelerName " + (i + 2)}
+                    type="text"
+                    value={travelersNames[i]}
+                    label={"Name"}
+                    warningMessage=""
+                    handleChange={handleChangeTravelers}
+                    required
+                  />
+                  <FormInput
+                    name={"travelerPhone " + (i + 2)}
+                    type="number"
+                    value={travelersPhones[i]}
+                    label={"Phone"}
+                    warningMessage=""
+                    handleChange={handleChangeTravelers}
+                    required
+                  />
+                </Grid>
               </GridTravelerList>
             ))}
             <Submit type="submit" value="Submit"></Submit>
