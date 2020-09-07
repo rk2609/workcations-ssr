@@ -1,4 +1,5 @@
-import React from "react";
+import React, { Fragment } from "react";
+import Head from "next/head";
 
 import Header from "../header/header";
 import CallIcon from "../call-icon/call";
@@ -8,13 +9,18 @@ import Footer from "../footer/footer";
 import { Container } from "./layout.style";
 
 const Layout = ({ children }) => (
-  <Container>
-    {children}
-    <Header />
-    <CallIcon />
-    <ContactPopup />
-    <Footer />
-  </Container>
+  <Fragment>
+    <Head>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    </Head>
+    <Container>
+      {children}
+      <Header />
+      <CallIcon />
+      <ContactPopup />
+      <Footer />
+    </Container>
+  </Fragment>
 );
 
 export default Layout;
