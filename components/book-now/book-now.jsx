@@ -9,8 +9,6 @@ import FormInput from "../form-input-text/form-input-text";
 import { CheckBox } from "../checkbox/checkbox";
 import BookNowPopup from "../book-now-popup/book-now-popup";
 
-import "./datepicker.css";
-
 import {
   EmptyCartAlert,
   PropertyRoomsContainer,
