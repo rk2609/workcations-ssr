@@ -2,10 +2,9 @@ import React, { Fragment } from "react";
 
 import Carousel from "../carousel/carousel";
 
-const SimilarProperties = ({ slug }) => (
+const SimilarProperties = ({ slug, type, city, state }) => (
   <Fragment>
-    <h2>Similar Properties</h2>
-    <Carousel slug={slug} />
+    <Carousel slug={slug} type={type} city={city} state={state} />
   </Fragment>
 );
 

@@ -1,168 +1,128 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  margin: 1em 0px;
-  height: 15em;
-  display: grid;
-  grid-gap: 0.7em;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
-  font-size: 2em;
-  border-radius: 5px;
-  background-color: white;
-  padding: 1.5vw;
+  grid-area: slideshow;
+  height: 37vw;
+  margin-top: 2.5vw;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 
-  div:first-child {
-    grid-area: 1 / 1 / span 2 / span 2;
-  }
-
-  div:last-child {
-    display: flex;
-    -webkit-box-pack: center;
-    justify-content: center;
-    -webkit-box-align: center;
+  @media only screen and (max-width: 900px) {
+    height: 61vw;
     align-items: center;
-    color: white;
-  }
-
-  @media only screen and (max-width: 900px) {
-    height: 40vw;
-    grid-gap: 1.5vw;
-    font-size: 3.5vw;
-    margin: 2.5vw 0px;
-    padding: 1.5vw;
   }
 `;
 
-export const ImageContainer = styled.div`
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  background-color: rgba(0, 0, 0, 0.3);
-`;
-
-export const ImageDiv = styled.div`
-  width: 100%;
-  height: 100%;
-  background-position: center;
+export const HeroImage = styled.div`
+  height: 30vw;
+  width: 50vw;
+  border-radius: 10px;
   background-size: cover;
-  background-repeat: no-repeat;
-  transition: all 6s ease-in-out;
   cursor: pointer;
-
-  &:hover {
-    transform: scale(1.06);
-  }
-
-  @media only screen and (max-width: 900px) {
-    transition: all 3s ease-in-out;
-  }
-`;
-
-export const LightBox = styled.div`
-  position: fixed;
-  top: ${(props) => (props.active ? "0vh" : "-100vh")};
-  left: ${(props) => (props.active ? "0vw" : "-100vw")};
-  width: 100vw;
-  height: 100vh;
-  background-color: white;
-  z-index: 1000;
+  background-position: center center;
+  background-repeat: no-repeat;
+  box-shadow: 0px 3px 20px rgba(0, 0, 0, 0.29);
+  margin-bottom: 0.5vw;
   display: flex;
   align-items: center;
-  overflow: hidden;
-  transition: top 400ms ease-in-out;
-`;
+  transition: all 0.6s ease-in-out;
 
-export const LightBoxFlex = styled.div`
-  width: 900px;
-  overflow: hidden;
-
-  @media only screen and (max-width: 768px) {
-    width: 100vw;
+  @media only screen and (max-width: 900px) {
+    height: 50vw;
+    width: 90vw;
+    margin-bottom: 1.5vw;
   }
 `;
 
-export const ImageLightBox = styled.div`
-  position: relative;
-  left: ${(props) =>
-    (props.imagesLength / 2 - 0.5) * 900 - props.position * 900}px;
+export const GalleryArrow = styled.div`
+  width: 100%;
   display: flex;
-  justify-content: flex-start;
-  transition: left 400ms ease-in-out;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 
-  img {
-    width: 900px;
-    height: auto;
+  svg {
+    height: 3vw;
+    fill: white;
 
-    @media only screen and (max-width: 768px) {
-      width: 100vw;
+    @media only screen and (max-width: 900px) {
+      height: 7vw;
     }
-  }
 
-  @media only screen and (max-width: 768px) {
-    left: ${(props) =>
-      (props.imagesLength / 2 - 0.5) * 100 - props.position * 100}vw;
+    :hover {
+      transform: scale(1.2);
+    }
   }
 `;
 
-export const CloseLightBox = styled.div`
-  position: absolute;
-  top: 20px;
-  width: 90%;
-  color: #000000;
+export const ThumbnailContainer = styled.div`
+  display: grid;
+  grid-template-columns: 30px 1fr 30px;
+  column-gap: 10px;
+  margin-top: 10px;
 
-  span {
-    font-size: 0.6em;
-    border: 1px solid black;
-    padding: 5px 15px;
-    border-radius: 3px;
+  @media only screen and (max-width: 900px) {
+    margin-top: 10px;
+  }
+`;
+
+export const ArrowContainer = styled.div`
+  height: 4vw;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 2px;
+
+  @media only screen and (max-width: 900px) {
+    height: 7vw;
+  }
+
+  svg {
+    fill: white;
+    height: 2.5vw;
+
+    @media only screen and (max-width: 900px) {
+      height: 4vw;
+    }
+  }
+`;
+
+export const Thumbnails = styled.div`
+  height: 5vw;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  overflow: scroll;
+  scroll-behavior: smooth;
+
+  @media only screen and (max-width: 900px) {
+    height: 10vw;
+  }
+
+  div {
+    height: 4vw;
+    width: 6vw;
+    flex-shrink: 0;
+    background-size: cover;
     cursor: pointer;
+    background-position: center center;
+    background-repeat: no-repeat;
+    box-shadow: 3px 6px 6px rgba(0, 0, 0, 0.29);
+    border-radius: 2px;
+    margin-right: 0.5vw;
 
-    @media only screen and (max-width: 768px) {
-      font-size: 1em;
+    @media only screen and (max-width: 900px) {
+      height: 7vw;
+      width: 13vw;
+      box-shadow: 0px 6px 6px rgba(0, 0, 0, 0.29);
+      margin-right: 1.5vw;
     }
-  }
-`;
 
-export const LeftArrow = styled.div`
-  background-color: black;
-  border-radius: 5px;
-  font-size: 1em;
-  line-height: 2em;
-  height: 2em;
-  cursor: pointer;
-  z-index: 1050;
-  color: white;
-  position: fixed;
-  left: ${(props) => (props.active && props.currentSlide ? "10px" : "-100vw")};
-  top: 50vh;
-  transition: left 500ms ease-in-out;
-  padding: 0px 15px;
-
-  @media only screen and (max-width: 768px) {
-    font-size: 1.5em;
-  }
-`;
-
-export const RightArrow = styled.div`
-  background-color: black;
-  border-radius: 5px;
-  font-size: 1em;
-  line-height: 2em;
-  height: 2em;
-  cursor: pointer;
-  z-index: 1050;
-  color: white;
-  position: fixed;
-  right: ${(props) =>
-    props.active && props.imagesLength - props.currentSlide - 1
-      ? "10px"
-      : "-100vw"};
-  top: 50vh;
-  transition: right 500ms ease-in-out;
-  padding: 0px 15px;
-
-  @media only screen and (max-width: 768px) {
-    font-size: 1.5em;
+    :hover {
+      transform: scale(1.1);
+    }
   }
 `;

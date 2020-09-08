@@ -47,7 +47,7 @@ const Home = () => {
       {loadElements ? <Recreational /> : null}
       {loadElements ? (
         <SectionContainer>
-          <Faqs />
+          <Faqs heading={true} />
         </SectionContainer>
       ) : null}
     </Layout>

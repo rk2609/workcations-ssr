@@ -11,7 +11,6 @@ import {
 
 const Nearby = ({ nearby }) => (
   <Fragment>
-    <h2>Nearby Attractions</h2>
     <Grid>
       {nearby.map((item) => (
         <GridItem key={item.title}>

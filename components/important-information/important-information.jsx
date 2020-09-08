@@ -35,7 +35,6 @@ const ImportantInformation = () => {
 
   return (
     <Fragment>
-      <h2>Important Information</h2>
       <Flex>
         {Info.map((item, i) => (
           <FlexItem key={i}>

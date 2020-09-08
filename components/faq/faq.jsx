@@ -56,7 +56,7 @@ const FAQ = [
   },
 ];
 
-const Faqs = () => {
+const Faqs = ({ heading }) => {
   const [open, setOpen] = useState(new Array(FAQ.length).fill(false));
 
   const expandFaq = (i) => {
@@ -71,7 +71,7 @@ const Faqs = () => {
 
   return (
     <Fragment>
-      <h2>FAQs</h2>
+      {heading && <h2>FAQs</h2>}
       <Flex>
         {FAQ.map((item, i) => (
           <FlexItem key={i}>

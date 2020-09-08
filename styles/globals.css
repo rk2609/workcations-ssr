@@ -1560,3 +1560,7 @@ img {
 .facilities_container::-webkit-scrollbar {
   display: none;
 }
+
+.thumbnail-container::-webkit-scrollbar {
+  display: none;
+}

@@ -1,26 +1,14 @@
 import styled from "styled-components";
 
-import PropertyDetailsContainer from "../../style-components/property-page-container/property-page-container.style";
-
-export const Container = styled(PropertyDetailsContainer)`
-  @media only screen and (max-width: 900px) {
-    display: none;
-  }
-`;
-
-export const Content = styled.div`
-  background-color: white;
-  box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 3px;
-  color: rgb(49, 49, 49);
-  font-size: 1em;
-  border-radius: 5px;
-  padding: 25px 20px;
-  margin: 0px;
-`;
+export const Container = styled.div``;
 
 export const Grid = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
+
+  @media only screen and (max-width: 900px) {
+    grid-template-columns: 1fr;
+  }
 `;
 
 export const FlexItem = styled.div`
@@ -29,6 +17,11 @@ export const FlexItem = styled.div`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  font-size: 0.9vw;
+
+  @media only screen and (max-width: 900px) {
+    font-size: 2.5vw;
+  }
 
   img {
     width: 2em;

@@ -12,7 +12,7 @@ const Destinations = () => (
     <Heading>
       Your Home <span>away from Home</span>
     </Heading>
-    <Carousel slug={""} className="carousel" />
+    <Carousel slug={""} type={""} city={""} state={""} className="carousel" />
     <Link href="/properties" passHref>
       <Button>Explore</Button>
     </Link>

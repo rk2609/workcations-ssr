@@ -1,138 +1,110 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 
 import {
   Container,
-  ImageContainer,
-  ImageDiv,
-  LightBox,
-  LightBoxFlex,
-  ImageLightBox,
-  CloseLightBox,
-  LeftArrow,
-  RightArrow,
+  HeroImage,
+  GalleryArrow,
+  ThumbnailContainer,
+  ArrowContainer,
+  Thumbnails,
 } from "./gallery.style";
 
-const Gallery = ({ images, slug, loadElements }) => {
-  const [showLightBox, setShowLightBox] = useState(false);
+const Gallery = ({ images, slug }) => {
+  const thumbnailContainer = useRef(null);
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const nextSlide = () => {
-    setCurrentSlide(currentSlide + 1);
+    if (currentSlide !== images.length - 1) {
+      setCurrentSlide(currentSlide + 1);
+    } else {
+      setCurrentSlide(0);
+    }
+  };
+
+  const nextThumbnail = () => {
+    thumbnailContainer.current.scrollLeft += 200;
+  };
+
+  const previousThumbnail = () => {
+    thumbnailContainer.current.scrollLeft -= 200;
   };
 
   const previousSlide = () => {
-    setCurrentSlide(currentSlide - 1);
+    if (currentSlide !== 0) {
+      setCurrentSlide(currentSlide - 1);
+    } else {
+      setCurrentSlide(images.length - 1);
+    }
+  };
+
+  const activeSlide = (i) => {
+    setCurrentSlide(i);
   };
 
   return (
     <Container>
-      {images.map((image, i) =>
-        i === 0 ? (
-          <ImageContainer
-            style={{ borderRadius: "5px 0px 0px 5px" }}
-            key={i}
-            onClick={() => {
-              setCurrentSlide(i);
-              setShowLightBox(true);
-            }}
+      <HeroImage
+        style={{
+          backgroundImage: `url(https://www.wanderon.in/workcations/${slug}/${images[currentSlide]}.jpg)`,
+        }}
+      >
+        <GalleryArrow>
+          <svg
+            viewBox="0 0 32 32"
+            viewBox="0 0 32 32"
+            aria-hidden="true"
+            onClick={previousSlide}
           >
-            <ImageDiv
-              style={{
-                backgroundImage: `url(https://www.wanderon.in/workcations/${slug}/${image}.jpg)`,
-              }}
-            ></ImageDiv>
-          </ImageContainer>
-        ) : i === 2 ? (
-          <ImageContainer
-            style={{ borderRadius: "0px 5px 0px 0px" }}
-            key={i}
-            onClick={() => {
-              setCurrentSlide(i);
-              setShowLightBox(true);
-            }}
+            <path d="M14.19 16.005l7.869 7.868-2.129 2.129-9.996-9.997L19.937 6.002l2.127 2.129z" />
+          </svg>
+          <svg
+            viewBox="0 0 32 32"
+            viewBox="0 0 32 32"
+            aria-hidden="true"
+            onClick={nextSlide}
           >
-            <ImageDiv
-              style={{
-                backgroundImage: `url(https://www.wanderon.in/workcations/${slug}/${image}.jpg)`,
-              }}
-            ></ImageDiv>
-          </ImageContainer>
-        ) : i < 4 ? (
-          <ImageContainer
-            key={i}
-            onClick={() => {
-              setCurrentSlide(i);
-              setShowLightBox(true);
-            }}
-          >
-            <ImageDiv
-              style={{
-                backgroundImage: `url(https://www.wanderon.in/workcations/${slug}/${image}.jpg)`,
-              }}
-            ></ImageDiv>
-          </ImageContainer>
-        ) : i === 4 ? (
-          <ImageContainer
-            style={{ borderRadius: "0px 0px 5px 0px" }}
-            key={i}
-            onClick={() => {
-              setCurrentSlide(i);
-              setShowLightBox(true);
-            }}
-          >
-            <ImageDiv
-              style={{
-                backgroundImage: `linear-gradient(
-                    to right,
-                    rgba(0, 0, 0, 0.7),
-                    rgba(0, 0, 0, 0.7)
-                  ),url(https://www.wanderon.in/workcations/${slug}/${image}.jpg)`,
-              }}
-            >
-              + {images.length - 5} Photos
-            </ImageDiv>
-          </ImageContainer>
-        ) : null
-      )}
-      {showLightBox ? (
-        <LightBox active={showLightBox}>
-          <CloseLightBox>
-            <span onClick={() => setShowLightBox(false)}>Close</span>
-          </CloseLightBox>
-          <LightBoxFlex>
-            <ImageLightBox imagesLength={images.length} position={currentSlide}>
-              {images.map((image, i) => (
-                <img
-                  key={i}
-                  src={
-                    "https://www.wanderon.in/workcations/" +
-                    slug +
-                    "/" +
-                    image +
-                    ".jpg"
-                  }
-                  alt={image}
-                />
-              ))}
-              <LeftArrow
-                active={showLightBox}
-                currentSlide={currentSlide}
-                onClick={previousSlide}
-              >
-                &#8249;
-              </LeftArrow>
-              <RightArrow
-                active={showLightBox}
-                currentSlide={currentSlide}
-                imagesLength={images.length}
-                onClick={nextSlide}
-              >
-                &#8250;
-              </RightArrow>
-            </ImageLightBox>
-          </LightBoxFlex>
-        </LightBox>
-      ) : null}
+            <path d="M18.629 15.997l-7.083-7.081L13.462 7l8.997 8.997L13.457 25l-1.916-1.916z" />
+          </svg>
+        </GalleryArrow>
+      </HeroImage>
+      <ThumbnailContainer>
+        <ArrowContainer onClick={previousThumbnail}>
+          <svg viewBox="0 0 32 32" viewBox="0 0 32 32" aria-hidden="true">
+            <path d="M14.19 16.005l7.869 7.868-2.129 2.129-9.996-9.997L19.937 6.002l2.127 2.129z" />
+          </svg>
+        </ArrowContainer>
+
+        <Thumbnails ref={thumbnailContainer} className="thumbnail-container">
+          {images.map((image, i) =>
+            i === currentSlide ? (
+              <div
+                key={image}
+                style={{
+                  backgroundImage: `url(https://www.wanderon.in/workcations/${slug}/${image}.jpg)`,
+                }}
+                onClick={() => {
+                  activeSlide(i);
+                }}
+              ></div>
+            ) : (
+              <div
+                key={image}
+                style={{
+                  backgroundImage: `linear-gradient(to top,rgba(0,0,0,0.7) 0%,rgba(0,0,0,0.7) 100%),url(https://www.wanderon.in/workcations/${slug}/${image}.jpg)`,
+                }}
+                onClick={() => {
+                  activeSlide(i);
+                }}
+              ></div>
+            )
+          )}
+        </Thumbnails>
+        <ArrowContainer onClick={nextThumbnail}>
+          <svg viewBox="0 0 32 32" viewBox="0 0 32 32" aria-hidden="true">
+            <path d="M18.629 15.997l-7.083-7.081L13.462 7l8.997 8.997L13.457 25l-1.916-1.916z" />
+          </svg>
+        </ArrowContainer>
+      </ThumbnailContainer>
     </Container>
   );
 };

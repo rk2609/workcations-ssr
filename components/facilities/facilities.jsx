@@ -2,14 +2,14 @@ import React from "react";
 
 import Amenities from "../amenities/amenties";
 
-import { Flex } from "./facilities.style";
+import { Container } from "./facilities.style";
 
 const Facilities = ({ facilities }) => (
-  <Flex className="facilities_container">
+  <Container className="facilities_container">
     {facilities.map((feature, i) => (
       <Amenities key={i} value={feature}></Amenities>
     ))}
-  </Flex>
+  </Container>
 );
 
 export default Facilities;

@@ -1,14 +1,17 @@
 import styled from "styled-components";
 
-export const Flex = styled.div`
+export const Container = styled.div`
+  grid-area: inc;
   display: flex;
   flex-direction: row;
   align-items: flex-start;
-  width: 100%;
+  width: 50vw;
   overflow: scroll;
+  margin-bottom: 2vw;
 
   @media only screen and (max-width: 900px) {
-    margin-top: 4vw;
-    gap: 1vw;
+    width: unset;
+    margin: unset;
+    align-items: unset;
   }
 `;

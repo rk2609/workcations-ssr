@@ -242,6 +242,38 @@ const BlogCollection = () => {
               </Tags>
             </GridItem>
           </Link>
+
+          <Link href="/blog/safe-tourism-during-covid19" passHref>
+            <GridItem>
+              <Title>
+                Step Out With CARE: Here’s How Communities Can Promote Safe
+                Tourism During COVID19
+              </Title>
+              <ImageCon>
+                <Image
+                  src="/safe-tourism-during-covid19/safe-tourism-during-covid19.jpg"
+                  alt="Step Out With CARE: Here’s How Communities Can Promote Safe Tourism
+            During COVID19"
+                />
+              </ImageCon>
+              <Description>
+                It will be entirely different this time. Say Hi to COVID19-free
+                road trips with our tips and tricks. Coronavirus Precautions
+                planning a Trip. To travel or not to travel is the big question
+                looming. However, the answer is an eternal YES if safety
+                measures are taken. The thing of utmost importance is safety
+                nowadays and one should make sure that the place you are
+                visiting and the hotel you are planning to lodge at are adhering
+                to safety measures.
+              </Description>
+              <ReadMore>Read More</ReadMore>
+              <Date>08th Sep 2020</Date>
+              <Tags>
+                <span>Covid19 Precautions</span>
+                <span>Safety Tips</span>
+              </Tags>
+            </GridItem>
+          </Link>
         </Grid>
       </BlogContainer>
     </Layout>

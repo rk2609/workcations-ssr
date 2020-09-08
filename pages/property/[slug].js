@@ -157,6 +157,10 @@ export const getStaticProps = async ({ params }) => {
             type: obj[0].gsx$type.$t,
             location: { city: obj[0].gsx$city.$t, state: obj[0].gsx$state.$t },
             minDuration: Number(obj[0].gsx$minduration.$t),
+            checkIn: obj[0].gsx$checkin.$t,
+            checkOut: obj[0].gsx$checkout.$t,
+            upload: Number(obj[0].gsx$upload.$t),
+            download: Number(obj[0].gsx$download.$t),
             about: obj[0].gsx$about.$t,
             breakfast: Number(obj[0].gsx$breakfast.$t),
             lunch: Number(obj[0].gsx$lunch.$t),
@@ -164,6 +168,9 @@ export const getStaticProps = async ({ params }) => {
             features: obj
               .filter((item) => item.gsx$features.$t !== "")
               .map((item) => item.gsx$features.$t),
+            houseRules: obj
+              .filter((item) => item.gsx$houserules.$t !== "")
+              .map((item) => item.gsx$houserules.$t),
             inventory: [
               ...new Set(
                 obj
@@ -176,7 +183,15 @@ export const getStaticProps = async ({ params }) => {
                 .indexOf(roomType);
               return {
                 type: roomType,
-                image: obj[index].gsx$image.$t,
+                size: obj[index].gsx$roomsize.$t,
+                view: obj[index].gsx$roomview.$t,
+                balcony: obj[index].gsx$roombalcony.$t,
+                features: obj[index].gsx$roomfeatures.$t
+                  .split(",")
+                  .map((item) => item.trim()),
+                image: obj[index].gsx$image.$t
+                  .split(",")
+                  .map((item) => item.trim()),
                 max: Number(obj[index].gsx$max.$t),
                 unit: obj[index].gsx$unit.$t,
                 ultrashort: obj
@@ -185,6 +200,9 @@ export const getStaticProps = async ({ params }) => {
                     return {
                       sharing: item.gsx$sharing.$t,
                       cost: Number(item.gsx$ultrashort.$t),
+                      costFri: Number(item.gsx$ultrashortfri.$t),
+                      costSat: Number(item.gsx$ultrashortsat.$t),
+                      costSun: Number(item.gsx$ultrashortsun.$t),
                     };
                   }),
                 short: obj
@@ -193,6 +211,9 @@ export const getStaticProps = async ({ params }) => {
                     return {
                       sharing: item.gsx$sharing.$t,
                       cost: Number(item.gsx$short.$t),
+                      costFri: Number(item.gsx$shortfri.$t),
+                      costSat: Number(item.gsx$shortsat.$t),
+                      costSun: Number(item.gsx$shortsun.$t),
                     };
                   }),
                 normal: obj
@@ -201,6 +222,9 @@ export const getStaticProps = async ({ params }) => {
                     return {
                       sharing: item.gsx$sharing.$t,
                       cost: Number(item.gsx$normal.$t),
+                      costFri: Number(item.gsx$normalfri.$t),
+                      costSat: Number(item.gsx$normalsat.$t),
+                      costSun: Number(item.gsx$normalsun.$t),
                     };
                   }),
                 long: obj
@@ -209,6 +233,9 @@ export const getStaticProps = async ({ params }) => {
                     return {
                       sharing: item.gsx$sharing.$t,
                       cost: Number(item.gsx$long.$t),
+                      costFri: Number(item.gsx$longfri.$t),
+                      costSat: Number(item.gsx$longsat.$t),
+                      costSun: Number(item.gsx$longsun.$t),
                     };
                   }),
                 ultralong: obj
@@ -217,6 +244,9 @@ export const getStaticProps = async ({ params }) => {
                     return {
                       sharing: item.gsx$sharing.$t,
                       cost: Number(item.gsx$ultralong.$t),
+                      costFri: Number(item.gsx$ultralongfri.$t),
+                      costSat: Number(item.gsx$ultralongsat.$t),
+                      costSun: Number(item.gsx$ultralongsun.$t),
                     };
                   }),
               };

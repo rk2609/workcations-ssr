@@ -1,74 +1,62 @@
 import styled from "styled-components";
 
-export const PropertyRoomsContainer = styled.div`
+export const Container = styled.div`
   position: sticky;
-  top: 0px;
-  max-height: 95vh;
-  width: 24vw;
-  margin-top: 3vw;
-  border-radius: 5px;
-
-  @media only screen and (max-width: 900px) {
-    position: static;
-    max-height: none;
-    margin-top: 0;
-    border-radius: 0px;
-    width: unset;
-    margin-bottom: 50px;
-  }
-`;
-
-export const PropertyRooms = styled.div`
-  position: sticky;
+  margin: 2.5vw 0vw 0vw 7vw;
   top: 0px;
   max-height: 100%;
-  width: 24vw;
-  border-radius: 5px;
+  width: 29vw;
+  border-radius: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.29);
 
   @media only screen and (max-width: 900px) {
+    margin: 0px;
+    position: unset;
+    max-height: unset;
     width: 90vw;
     margin-top: 40px;
     background-color: white;
     box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 3px;
+    border-radius: 5px;
     margin-bottom: 4vw;
-    max-height: none;
   }
 `;
 
-export const PropertyFlexContainer = styled.div`
+export const SubContainer = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
-  border-radius: 5px;
   background-color: white;
   box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 3px;
+  border-radius: 10px;
 
   @media only screen and (max-width: 900px) {
+    width: auto;
+    justify-content: unset;
     border-radius: 0px;
     background-color: transparent;
     box-shadow: none;
   }
 `;
 
-export const PropertyRoomsTop = styled.div`
+export const Top = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  border-radius: 10px;
 
   @media only screen and (max-width: 900px) {
-    position: sticky;
     width: 90vw;
-    top: 0vw;
     background-color: white;
   }
 `;
 
-export const BookingHead = styled.h2`
+export const Heading = styled.h2`
   font-size: 1.6vw;
   color: rgb(65 65 65);
   line-height: 2vw;
@@ -83,14 +71,16 @@ export const BookingHead = styled.h2`
 `;
 
 export const CinCoutContainer = styled.div`
+  height: 3.5vw;
   width: 100%;
-  margin-bottom: 10px;
+  margin-bottom: 1.5vw;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
 
   @media only screen and (max-width: 900px) {
+    height: auto;
     width: 80vw;
   }
 `;
@@ -98,29 +88,29 @@ export const CinCoutContainer = styled.div`
 export const CinCoutWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   margin: 0.5vw 0.5vw;
   font-size: 1vw;
+  line-height: 2vw;
 
   @media only screen and (max-width: 900px) {
-    margin: 0.5vw 0.5vw;
-    font-size: 1em;
+    font-size: unset;
+    line-height: unset;
   }
 `;
 
-export const CinCoutLabel = styled.label`
-  margin: 0px;
+export const CinCoutHeading = styled.span`
+  font-size: 1.2vw;
+  font-weight: bold;
+  color: #414141;
+  line-height: 2vw;
+  margin: 0.5vw;
 
-  span {
-    font-size: 1.2vw;
-    font-weight: bold;
-    color: #414141;
-    margin: 0px;
-
-    @media only screen and (max-width: 900px) {
-      font-size: 4vw;
-    }
+  @media only screen and (max-width: 900px) {
+    font-size: 3vw;
+    line-height: 10vw;
+    margin: 2vw 0vw;
   }
 `;
 
@@ -128,7 +118,7 @@ export const DatePickerDiv = styled.div`
   text-align: center;
   border-bottom: 1.5px solid #ff6b6c;
   cursor: pointer;
-  width: 10vw;
+  width: 12vw;
   height: 2vw;
   font-size: 0.9vw;
   display: flex;
@@ -150,7 +140,6 @@ export const Disclaimer = styled.span`
   color: #ff6b6c;
   font-weight: 600;
   line-height: 2vw;
-  font-style: italic;
 
   @media only screen and (max-width: 900px) {
     align-self: unset;
@@ -158,40 +147,26 @@ export const Disclaimer = styled.span`
     width: 80vw;
     font-size: 3vw;
     line-height: 3vw;
+    margin-bottom: 3vw;
   }
 `;
 
-export const Line = styled.div`
-  height: 0px;
-  width: 22vw;
-  margin-bottom: 1vw;
-  border: solid 0.5px #c9c9c9;
+export const Line = styled.hr`
+  width: 100%;
+  margin: 0;
 
   @media only screen and (max-width: 900px) {
-    width: 80vw;
-    margin-bottom: none;
-    margin-top: 5vw;
-    border: solid 1px #c9c9c9;
-  }
-`;
-
-export const SelectRooms = styled.span`
-  font-size: 1.2vw;
-  font-weight: bold;
-  color: #414141;
-  line-height: 2vw;
-  margin-bottom: 0.5vw;
-
-  @media only screen and (max-width: 900px) {
-    font-size: 4vw;
-    line-height: 10vw;
-    margin: 2vw 0vw;
+    width: 95%;
+    height: 1px;
+    border-width: 0;
+    color: silver;
+    background-color: silver;
   }
 `;
 
 export const RoomsContainer = styled.div`
-  max-height: 50vh;
-  width: 22vw;
+  max-height: 40vh;
+  width: 26.5vw;
   background-color: #f5f5f5;
   box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 3px;
   border-radius: 5px;
@@ -202,15 +177,14 @@ export const RoomsContainer = styled.div`
   padding-bottom: 1vw;
 
   @media only screen and (max-width: 900px) {
-    max-height: none;
+    max-height: 1000vw;
     width: 80vw;
-    display: flex;
     padding-bottom: 4vw;
   }
 `;
 
 export const RoomCard = styled.div`
-  width: 20vw;
+  width: 25vw;
   margin-top: 1vw;
   background-color: white;
   box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 3px;
@@ -226,80 +200,90 @@ export const RoomCard = styled.div`
   }
 `;
 
-export const RoomImageContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-start;
+export const ImageCon = styled.div`
+  @media only screen and (max-width: 900px) {
+    width: 25vw;
+  }
 `;
 
 export const RoomImage = styled.div`
-  height: 4.2vw;
-  width: 6vw;
-  margin: 0.4vw 0vw 0.2vw 0.5vw;
+  height: 6vw;
+  width: 9vw;
+  margin: 0.4vw 0vw 0vw 0.5vw;
   overflow: hidden;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  border-radius: 5px;
 
   @media only screen and (max-width: 900px) {
-    height: 15vw;
-    width: 22.5vw;
-    margin: 0.7vw 0vw 0.4vw 0.5vw;
+    height: 17vw;
+    width: 25vw;
+    margin: 0.7vw 0vw 0.7vw 0.5vw;
   }
 `;
 
-export const RoomImageDetails = styled.div`
-  color: #707070;
-  font-size: 0.6vw;
-  margin: 0vw 0vw 0.4vw 0.5vw;
-  width: 6vw;
+export const MicroDetails = styled.div`
+  display: flex;
+  flex-direction: column;
+  font-size: 0.8vw;
+  padding: 0.5vw 0vw;
+  color: #414141;
 
   @media only screen and (max-width: 900px) {
-    font-size: 2.4vw;
-    width: 22.5vw;
-    margin: 0vw 0vw 0.7vw 0.5vw;
+    font-size: 2.2vw;
+    padding: 1vw 0vw;
+  }
+
+  span {
+    padding-left: 0.6vw;
+    text-transform: capitalize;
+
+    @media only screen and (max-width: 900px) {
+      padding-left: 1vw;
+    }
   }
 `;
 
 export const RoomDetails = styled.div`
-  width: 13vw;
+  width: 15vw;
   min-height: 4.7vw;
-  margin: 0.3vw 0.5vw;
+  margin: 0.5vw 0.5vw 1.5vw 0.5vw;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   color: #424950;
 
   @media only screen and (max-width: 900px) {
-    min-height: none;
-    width: 48.75vw;
+    width: 46vw;
     margin: 1vw 2vw;
   }
 `;
 
-export const RoomCategory = styled.span`
-  font-size: 1.2vw;
+export const Category = styled.span`
+  font-size: 1.4vw;
   font-weight: 600;
   padding-left: 5px;
 
   @media only screen and (max-width: 900px) {
-    font-size: 4vw;
+    font-size: 3.5vw;
+    font-weight: 600;
   }
 `;
 
 export const SubCategory = styled.div`
   background-color: white;
   margin-top: 0.6vw;
+  min-height: 7vw;
 
   @media only screen and (max-width: 900px) {
     margin-top: 2.25vw;
+    min-height: 15vw;
   }
 `;
 
 export const RoomSharing = styled.div`
-  padding-left: 5px;
-  height: 2.2vw;
+  height: 2.5vw;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -307,12 +291,16 @@ export const RoomSharing = styled.div`
   font-weight: 600;
 
   @media only screen and (max-width: 900px) {
-    height: 8.25vw;
-    font-size: 3.75vw;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: 3vw;
+    font-weight: 600;
   }
 
   img {
-    height: 0.8vw;
+    height: 1vw;
 
     @media only screen and (max-width: 900px) {
       height: 3vw;
@@ -324,38 +312,110 @@ export const RoomSharing = styled.div`
   }
 `;
 
-export const RoomQtyContainer = styled.div`
+export const RoomQuantity = styled.div`
   width: 100%;
+  height: 3.5vw;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: flex-end;
+
+  @media only screen and (max-width: 900px) {
+    align-items: flex-end;
+  }
 `;
 
 export const RoomPriceContainer = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-`;
-
-export const RoomPrice = styled.span`
-  font-size: 1.5vw;
-  font-weight: 700;
-  line-height: 1.5vw;
-  padding-left: 5px;
+  align-self: flex-start;
 
   @media only screen and (max-width: 900px) {
-    font-size: 4vw;
-    line-height: 5.5vw;
+    align-self: flex-start;
   }
 `;
 
-export const RoomUnit = styled.span`
+export const PriceObject = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas:
+    "str str"
+    "rp dp";
   padding-left: 5px;
-  font-size: 0.7vw;
 
   @media only screen and (max-width: 900px) {
-    font-size: 2.5vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+  }
+`;
+
+export const Striked = styled.span`
+  text-decoration: line-through;
+  grid-area: str;
+  margin-right: 0.5vw;
+  font-size: 1vw;
+  font-weight: 600;
+  color: #949494;
+  margin-bottom: 0.2vw;
+
+  @media only screen and (max-width: 900px) {
+    align-self: flex-end;
+    margin-right: 2vw;
+    font-size: unset;
+    font-weight: unset;
+    color: unset;
+    margin-bottom: unset;
+  }
+`;
+
+export const RoomPrice = styled.span`
+  grid-area: rp;
+  font-size: 1.5vw;
+  font-weight: 700;
+  align-self: flex-start;
+  margin-right: 0.3vw;
+
+  @media only screen and (max-width: 900px) {
+    font-size: 4vw;
+    align-self: flex-end;
+    margin-right: 1vw;
+  }
+`;
+
+export const Discount = styled.span`
+  grid-area: dp;
+  padding: 0.2vw;
+  line-height: 0.5vw;
+  width: 3.5vw;
+  background-color: #00c4ab;
+  color: white;
+  font-size: 0.8vw;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 2px;
+
+  @media only screen and (max-width: 900px) {
+    padding: 0.5vw;
+    line-height: 1vw;
+    width: auto;
+    height: 2vw;
+    font-size: 1.5vw;
+    display: unset;
+    border-radius: 0px;
+  }
+`;
+
+export const PerUnit = styled.span`
+  font-size: 0.7vw;
+  font-weight: 700;
+  padding-left: 5px;
+
+  @media only screen and (max-width: 900px) {
+    font-size: 2vw;
+    font-weight: 400;
   }
 `;
 
@@ -390,18 +450,15 @@ export const PlusMinusButton = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   height: 100%;
-
   span {
     height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-
     &:first-child,
     &:last-child {
       cursor: pointer;
     }
-
     &:nth-child(2) {
       background-color: white;
       color: #ff6b6c;
@@ -416,75 +473,13 @@ export const PlusButton = styled.span`
   border-radius: 0px 3px 3px 0px;
 `;
 
-export const SelectButton = styled.div`
-  border-radius: 5px;
-  height: 1.7vw;
-
+export const Abc = styled.div`
   @media only screen and (max-width: 900px) {
-    border-radius: 3px;
-    height: 6vw;
-  }
-`;
-
-export const SelectButtonObject = styled.div`
-  /*width: 5.1vw;*/
-  height: 100%;
-  background-color: #ff6b6c;
-  color: white;
-  font-weight: bold;
-  font-size: 0.95vw;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 5px;
-
-  @media only screen and (max-width: 900px) {
-    /*width: 18vw;*/
-    font-size: 3.5vw;
-    border-radius: 3px;
-  }
-`;
-
-export const AddRoom = styled.div`
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  border-radius: 5px;
-
-  span {
-    width: 30%;
-    text-align: center;
-    font-weight: 600;
-    background-color: #ffffff;
-    color: #ff6b6c;
-
-    &:first-child,
-    &:last-child {
-      cursor: pointer;
-      color: white;
-      background-color: #ff6b6c;
-    }
-
-    &:first-child {
-      border-radius: 5px 0px 0px 5px;
-
-      @media only screen and (max-width: 900px) {
-        border-radius: 3px 0px 0px 3px;
-      }
-    }
-
-    &:last-child {
-      border-radius: 0px 5px 5px 0px;
-
-      @media only screen and (max-width: 900px) {
-        border-radius: 0px 3px 3px 0px;
-      }
-    }
   }
 `;
 
 export const AddMeals = styled.div`
-  width: 22vw;
+  width: 26.5vw;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -507,10 +502,12 @@ export const AddMealsHeading = styled.div`
 `;
 
 export const AddMealsGrid = styled.div`
+  width: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 10px;
   margin: 5px 0px 0px 0px;
+  font-size: 16px;
 `;
 
 export const CostingContainer = styled.div`
@@ -520,7 +517,6 @@ export const CostingContainer = styled.div`
   justify-content: space-between;
   align-items: flex-end;
   margin: 0vw 0vw 1vw 0vw;
-
   @media only screen and (max-width: 768px) {
     width: 80vw;
     margin: 0vw 0vw 4vw 0vw;
@@ -531,7 +527,6 @@ export const CostingText = styled.span`
   font-size: 1vw;
   font-weight: bold;
   color: #414141;
-
   @media only screen and (max-width: 900px) {
     font-size: 3.5vw;
   }
@@ -541,7 +536,6 @@ export const CostingValue = styled.span`
   color: #ff6b6c;
   font-weight: 600;
   font-size: 1.5vw;
-
   @media only screen and (max-width: 900px) {
     font-size: 5.5vw;
   }
@@ -557,13 +551,11 @@ export const PaymentButton = styled.div`
   padding: 0.5vw 0vw;
   margin-bottom: 1vw;
   cursor: pointer;
-
   @media only screen and (max-width: 900px) {
     width: 80vw;
     padding: 2vw 0vw;
     margin-bottom: 4vw;
   }
-
   span {
     font-weight: 600;
     font-size: 1.7vw;
@@ -571,7 +563,6 @@ export const PaymentButton = styled.div`
     margin-top: 0.5vw;
     color: white;
     text-transform: uppercase;
-
     @media only screen and (max-width: 900px) {
       font-size: 4vw;
       line-height: unset;
@@ -593,7 +584,6 @@ export const EmptyCartAlert = styled.div`
   border-radius: 5px;
   opacity: ${(props) => (props.active ? 1 : 0)};
   transition: all 0.5s ease-out;
-
   span {
     border-radius: 5px;
     border: 1px dotted red;

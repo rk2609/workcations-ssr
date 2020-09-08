@@ -12,19 +12,24 @@ export const Container = styled.div`
     padding-bottom: 0.5vw;
 
     @media only screen and (max-width: 900px) {
-      width: 7vw;
+      width: 4vw;
+      padding: 0px;
       margin-bottom: 0.5vw;
     }
   }
 
   span {
     text-align: center;
+    font-size: 1vw;
+
+    @media only screen and (max-width: 900px) {
+      font-size: 2vw;
+    }
   }
 
   @media only screen and (max-width: 900px) {
-    width: 17vw;
-    font-size: 2.4vw;
-    margin: 1vw;
-    text-align: center;
+    padding: 3vw 7vw 1vw 0vw;
+    width: auto;
+    max-width: 22vw;
   }
 `;
