@@ -4,6 +4,7 @@ export const Container = styled.div`
   position: sticky;
   margin: 2.5vw 0vw 0vw 7vw;
   top: 0px;
+  height: 98vh;
   max-height: 100%;
   width: 29vw;
   border-radius: 10px;
@@ -16,6 +17,7 @@ export const Container = styled.div`
     margin: 0px;
     position: unset;
     max-height: unset;
+    height: auto;
     width: 90vw;
     margin-top: 40px;
     background-color: white;
@@ -34,8 +36,10 @@ export const SubContainer = styled.div`
   background-color: white;
   box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 3px;
   border-radius: 10px;
+  height: 98vh;
 
   @media only screen and (max-width: 900px) {
+    height: auto;
     width: auto;
     justify-content: unset;
     border-radius: 0px;
@@ -165,7 +169,7 @@ export const Line = styled.hr`
 `;
 
 export const RoomsContainer = styled.div`
-  max-height: 40vh;
+  max-height: 50vh;
   width: 26.5vw;
   background-color: #f5f5f5;
   box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 3px;
@@ -318,6 +322,7 @@ export const RoomQuantity = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: flex-end;
 
   @media only screen and (max-width: 900px) {
     align-items: flex-end;
@@ -336,12 +341,11 @@ export const RoomPriceContainer = styled.div`
 `;
 
 export const PriceObject = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-areas:
-    "str str"
-    "rp dp";
   padding-left: 5px;
+  display: flex;
+  flex-direction: row;
+  align-self: flex-start;
+  flex-wrap: wrap;
 
   @media only screen and (max-width: 900px) {
     display: flex;
@@ -358,6 +362,7 @@ export const Striked = styled.span`
   font-weight: 600;
   color: #949494;
   margin-bottom: 0.2vw;
+  width: 100%;
 
   @media only screen and (max-width: 900px) {
     align-self: flex-end;
@@ -386,7 +391,8 @@ export const RoomPrice = styled.span`
 export const Discount = styled.span`
   grid-area: dp;
   padding: 0.2vw;
-  line-height: 0.5vw;
+  line-height: 1em;
+  height: 1.4em;
   width: 3.5vw;
   background-color: #00c4ab;
   color: white;
@@ -558,15 +564,11 @@ export const PaymentButton = styled.div`
   }
   span {
     font-weight: 600;
-    font-size: 1.7vw;
-    line-height: 1.8vw;
-    margin-top: 0.5vw;
+    font-size: 1.5vw;
     color: white;
     text-transform: uppercase;
     @media only screen and (max-width: 900px) {
       font-size: 4vw;
-      line-height: unset;
-      margin-top: unset;
     }
   }
 `;

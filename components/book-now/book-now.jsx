@@ -398,7 +398,9 @@ const BookNow = ({
                 />
               </CinCoutWrapper>
             </CinCoutContainer>
-            <Disclaimer>*Discounted Prices for Longer Stays</Disclaimer>
+            <Disclaimer>
+              OFFER: Upto 20% & 40% Off on 5+ and 15+ days stay
+            </Disclaimer>
             <Line />
             <CinCoutHeading>Select Rooms</CinCoutHeading>
           </Top>

@@ -35,7 +35,10 @@ const Property = ({ property }) => {
     <Layout>
       <Head>
         <link rel="icon" href="/favicon.ico" />
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <meta
+          name="viewport"
+          content="initial-scale=1.0, width=device-width, maximum-scale=1.0, user-scalable=no"
+        />
       </Head>
       {router.isFallback ? (
         <Spinner />

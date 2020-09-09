@@ -21,7 +21,6 @@ export const Title = styled.div`
     font-weight: 700;
     font-size: 2.5vw;
     color: #1c1c1c;
-    text-shadow: 0px 3px 6px rgba(0, 0, 0, 0.29);
     text-transform: capitalize;
     margin: 0vw;
 

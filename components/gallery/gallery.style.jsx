@@ -57,6 +57,8 @@ export const GalleryArrow = styled.div`
 `;
 
 export const ThumbnailContainer = styled.div`
+  width: 100%;
+  max-width: 100%;
   display: grid;
   grid-template-columns: 30px 1fr 30px;
   column-gap: 10px;

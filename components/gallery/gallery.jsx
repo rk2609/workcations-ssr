@@ -90,7 +90,7 @@ const Gallery = ({ images, slug }) => {
               <div
                 key={image}
                 style={{
-                  backgroundImage: `linear-gradient(to top,rgba(0,0,0,0.7) 0%,rgba(0,0,0,0.7) 100%),url(https://www.wanderon.in/workcations/${slug}/${image}.jpg)`,
+                  backgroundImage: `linear-gradient(to top,rgba(0,0,0,0.45) 0%,rgba(0,0,0,0.45) 100%),url(https://www.wanderon.in/workcations/${slug}/${image}.jpg)`,
                 }}
                 onClick={() => {
                   activeSlide(i);
