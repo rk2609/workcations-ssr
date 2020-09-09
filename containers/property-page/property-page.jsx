@@ -81,89 +81,91 @@ const PropertyPage = ({
               type={type}
             />
           </BookNowContainer>
-          <Details>
-            <div>
-              <Content>
-                <About>
-                  <Heading>About</Heading>
-                  <p>{about}</p>
-                </About>
-                {upload !== -1 ? (
-                  <Fragment>
-                    <Heading>Internet Speed</Heading>
-                    <Internet>
-                      <p> Download Speed </p> <b> {download} Mbps</b>
-                      <p> Upload Speed </p> <b> {upload} Mbps</b>
-                    </Internet>
-                  </Fragment>
-                ) : null}
-                {checkIn !== "-1" || houseRules[0] !== "-1" ? (
-                  <Fragment>
-                    <Heading>House Rules</Heading>
-                    {checkIn !== "-1" ? (
+          {loadElements ? (
+            <Details>
+              <div>
+                <Content>
+                  <About>
+                    <Heading>About</Heading>
+                    <p>{about}</p>
+                  </About>
+                  {upload !== -1 ? (
+                    <Fragment>
+                      <Heading>Internet Speed</Heading>
                       <Internet>
-                        <p> Check-In: </p> <b> {checkIn} </b>
-                        <p> Check-Out: </p> <b> {checkOut} </b>
+                        <p> Download Speed </p> <b> {download} Mbps</b>
+                        <p> Upload Speed </p> <b> {upload} Mbps</b>
                       </Internet>
-                    ) : null}
-                    {houseRules[0] !== "-1"
-                      ? houseRules.map((rule) => (
-                          <p key={rule}>&bull; {rule}</p>
-                        ))
-                      : null}
-                  </Fragment>
-                ) : null}
-              </Content>
-            </div>
-            <div>
-              <Content>
-                <Heading>Inclusions:</Heading>
-                <Inclusions
-                  inclusions={inclusions}
-                  exclusions={exclusions}
-                  features={features}
-                  breakfast={breakfast}
-                  lunch={lunch}
-                  dinner={dinner}
-                />
-                <Internet />
-                <Heading>Exclusions:</Heading>
-                <Exclusions
-                  inclusions={inclusions}
-                  exclusions={exclusions}
-                  features={features}
-                  breakfast={breakfast}
-                  lunch={lunch}
-                  dinner={dinner}
-                />
-              </Content>
-            </div>
-            <div>
-              <Content>
-                <Heading>Nearby Attractions</Heading>
-                <Nearby nearby={nearby} />
-              </Content>
-            </div>
-            <div>
-              <Content>
-                <Heading>Essentials</Heading>
-                <Essentials {...essentials} />
-              </Content>
-            </div>
-            <Heading>Similar Properties</Heading>
-            <SimilarProperties
-              slug={slug}
-              type={type}
-              city={city}
-              state={state}
-            />
-            <EmptySpace />
-            <Heading>Important Information</Heading>
-            <ImportantInformation />
-            <EmptySpace />
-            <Heading>FAQs</Heading>
-            <Faqs heading={false} />
-          </Details>
+                    </Fragment>
+                  ) : null}
+                  {checkIn !== "-1" || houseRules[0] !== "-1" ? (
+                    <Fragment>
+                      <Heading>House Rules</Heading>
+                      {checkIn !== "-1" ? (
+                        <Internet>
+                          <p> Check-In: </p> <b> {checkIn} </b>
+                          <p> Check-Out: </p> <b> {checkOut} </b>
+                        </Internet>
+                      ) : null}
+                      {houseRules[0] !== "-1"
+                        ? houseRules.map((rule) => (
+                            <p key={rule}>&bull; {rule}</p>
+                          ))
+                        : null}
+                    </Fragment>
+                  ) : null}
+                </Content>
+              </div>
+              <div>
+                <Content>
+                  <Heading>Inclusions:</Heading>
+                  <Inclusions
+                    inclusions={inclusions}
+                    exclusions={exclusions}
+                    features={features}
+                    breakfast={breakfast}
+                    lunch={lunch}
+                    dinner={dinner}
+                  />
+                  <Internet />
+                  <Heading>Exclusions:</Heading>
+                  <Exclusions
+                    inclusions={inclusions}
+                    exclusions={exclusions}
+                    features={features}
+                    breakfast={breakfast}
+                    lunch={lunch}
+                    dinner={dinner}
+                  />
+                </Content>
+              </div>
+              <div>
+                <Content>
+                  <Heading>Nearby Attractions</Heading>
+                  <Nearby nearby={nearby} />
+                </Content>
+              </div>
+              <div>
+                <Content>
+                  <Heading>Essentials</Heading>
+                  <Essentials {...essentials} />
+                </Content>
+              </div>
+              <Heading>Similar Properties</Heading>
+              <SimilarProperties
+                slug={slug}
+                type={type}
+                city={city}
+                state={state}
+              />
+              <EmptySpace />
+              <Heading>Important Information</Heading>
+              <ImportantInformation />
+              <EmptySpace />
+              <Heading>FAQs</Heading>
+              <Faqs heading={false} />
+            </Details>
+          ) : null}
         </Container>
       </MegaContainer>
     </Fragment>

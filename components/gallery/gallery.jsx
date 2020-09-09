@@ -9,7 +9,7 @@ import {
   Thumbnails,
 } from "./gallery.style";
 
-const Gallery = ({ images, slug }) => {
+const Gallery = ({ images, slug, loadElements }) => {
   const thumbnailContainer = useRef(null);
   const [currentSlide, setCurrentSlide] = useState(0);
 
@@ -86,11 +86,21 @@ const Gallery = ({ images, slug }) => {
                   activeSlide(i);
                 }}
               ></div>
-            ) : (
+            ) : loadElements ? (
               <div
                 key={image}
                 style={{
                   backgroundImage: `linear-gradient(to top,rgba(0,0,0,0.45) 0%,rgba(0,0,0,0.45) 100%),url(https://www.wanderon.in/workcations/${slug}/${image}.jpg)`,
+                }}
+                onClick={() => {
+                  activeSlide(i);
+                }}
+              ></div>
+            ) : (
+              <div
+                key={image}
+                style={{
+                  backgroundImage: `linear-gradient(to top,rgba(0,0,0,0.45) 0%,rgba(0,0,0,0.45) 100%)`,
                 }}
                 onClick={() => {
                   activeSlide(i);

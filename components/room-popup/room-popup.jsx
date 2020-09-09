@@ -94,13 +94,13 @@ const RoomPopup = ({
                 </svg>
               </GalleryArrow>
             </Gallery>
-          ) : (
+          ) : isOpen ? (
             <Gallery
               style={{
                 backgroundImage: `url(https://www.wanderon.in/workcations/${slug}/${images[0]}.jpg)`,
               }}
             ></Gallery>
-          )}
+          ) : null}
           <Features>
             <ul>
               {featuresList.map((feature) => (
