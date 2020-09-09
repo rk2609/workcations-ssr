@@ -84,7 +84,6 @@ const BookNow = ({
   dinner,
   type,
 }) => {
-  console.log(inventory);
   const [cartDetails, setCart] = useState(
     inventory.map((room, roomIndex) => {
       return {

@@ -100,7 +100,7 @@ const Carousel = ({ slug, type, city, state }) => {
 
       setSimilarProperties(list);
     }
-  }, []);
+  }, [propertyList]);
 
   return (
     <CarouselFlex className="carousel">
