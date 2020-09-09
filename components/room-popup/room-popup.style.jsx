@@ -70,6 +70,8 @@ export const Features = styled.div`
   flex-wrap: wrap;
   align-items: flex-start;
   justify-content: flex-start;
+  max-height: 50vh;
+  overflow-y: scroll;
 
   ul {
     width: 100%;
