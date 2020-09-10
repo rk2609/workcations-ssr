@@ -274,6 +274,32 @@ const BlogCollection = () => {
               </Tags>
             </GridItem>
           </Link>
+
+          <Link href="/blog/tips-to-travel-safely-during-covid19" passHref>
+            <GridItem>
+              <Title>How To Travel Safe During COVID19 Times?</Title>
+              <ImageCon>
+                <Image
+                  src="/tips-to-travel-safely-during-covid19/tips-to-travel-safely-during-covid19.jpg"
+                  alt="How To Travel Safe During COVID19 Times?"
+                />
+              </ImageCon>
+              <Description>
+                Want to plan to a trip but worried about corona? Check out this
+                Road trip checklist to keep yourself safe during Corona.The
+                times are tough and mental health of people as well as our
+                economy graph is on a downward spiral. Resuming travel can be
+                considered as an excellent move if both, the service providers
+                as well as travellers cooperate.
+              </Description>
+              <ReadMore>Read More</ReadMore>
+              <Date>10th Sep 2020</Date>
+              <Tags>
+                <span>COVID Safety</span>
+                <span>Travel Tips</span>
+              </Tags>
+            </GridItem>
+          </Link>
         </Grid>
       </BlogContainer>
     </Layout>
