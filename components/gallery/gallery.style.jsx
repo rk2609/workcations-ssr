@@ -66,6 +66,7 @@ export const ThumbnailContainer = styled.div`
 
   @media only screen and (max-width: 900px) {
     margin-top: 10px;
+    grid-template-columns: 1fr;
   }
 `;
 
@@ -80,6 +81,7 @@ export const ArrowContainer = styled.div`
 
   @media only screen and (max-width: 900px) {
     height: 7vw;
+    display: none;
   }
 
   svg {
@@ -102,6 +104,7 @@ export const Thumbnails = styled.div`
 
   @media only screen and (max-width: 900px) {
     height: 10vw;
+    max-width: 90vw;
   }
 
   div {

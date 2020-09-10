@@ -7,19 +7,15 @@ export const Container = styled.a`
   background-color: white;
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
   border-radius: 5px;
   padding: 0.5vw;
-  gap: 0.6vw;
   cursor: pointer;
   height: 100%;
 
   @media only screen and (max-width: 900px) {
-    flex-direction: row;
     padding: 1vw;
-    gap: 1vw;
     width: 100%;
-    flex-direction: column;
-    justify-content: start;
     margin-bottom: 0vw;
   }
 `;
@@ -27,11 +23,9 @@ export const Container = styled.a`
 export const ImageContainer = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 0.35vw;
 
   @media only screen and (max-width: 900px) {
     width: 100%;
-    gap: 1vw;
   }
 `;
 
@@ -81,9 +75,9 @@ export const Type = styled.span`
 `;
 
 export const SmallImageContainer = styled.div`
+  margin-top: 0.5vw;
   width: 21vw;
   display: flex;
-  -webkit-box-pack: justify;
   justify-content: space-between;
   align-items: flex-end;
 
@@ -102,15 +96,13 @@ export const SmallImage = styled.div`
 `;
 
 export const Details = styled.div`
-  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  /*padding-left: 1vw;*/
-  justify-content: space-between;
+  justify-content: flex-start;
+  flex-wrap: wrap;
 
   @media only screen and (max-width: 900px) {
-    height: auto;
     padding: 2vw;
   }
 `;
@@ -136,19 +128,13 @@ export const Title = styled.div`
 `;
 
 export const DetailsContainer = styled.div`
-  height: 100%;
   width: 100%;
   display: grid;
   grid-template-columns: 2fr 1fr;
   align-items: center;
-
-  @media only screen and (max-width: 900px) {
-    height: auto;
-  }
 `;
 
 export const DetailsWrapper = styled.div`
-  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -167,7 +153,7 @@ export const Location = styled.div`
 
 export const Safety = styled.div`
   display: flex;
-  -webkit-box-align: center;
+  justify-content: flex-start;
   align-items: center;
   margin: 0.5vw 0vw;
 
@@ -202,35 +188,33 @@ export const Safety = styled.div`
 
 export const AmenitiesContainer = styled.div`
   width: 100%;
-  height: 2.5em;
+
   span {
     display: none;
   }
+
   @media only screen and (max-width: 900px) {
     font-size: 3vw;
-    height: 4vw;
   }
 `;
 
 export const AmenitiesItem = styled.div`
   width: 95%;
   display: flex;
-  flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
+  align-items: center;
 
   @media only screen and (max-width: 900px) {
-    align-items: center;
     justify-content: flex-start;
     font-size: 2.5vw;
-    margin-bottom: 2vw;
   }
 `;
 
 export const AmenitiesIcon = styled.div`
   display: flex;
   font-size: 0.9vw;
-  -webkit-box-align: center;
+  justify-content: flex-start;
   align-items: center;
   color: rgb(112, 112, 112);
 
@@ -238,6 +222,7 @@ export const AmenitiesIcon = styled.div`
     margin: 0.5vw 3vw 0.5vw 0vw;
     font-size: 2.5vw;
   }
+
   img {
     height: 1em;
     margin-right: 10px;
@@ -247,6 +232,7 @@ export const AmenitiesIcon = styled.div`
       margin-right: 1vw;
     }
   }
+
   div {
   }
 `;
@@ -256,9 +242,7 @@ export const Pricing = styled.div`
   display: flex;
   font-size: 0.9vw;
   flex-direction: column;
-  -webkit-box-pack: center;
   justify-content: center;
-  -webkit-box-align: center;
   align-items: center;
   color: white;
   background-color: #ff6b6c;

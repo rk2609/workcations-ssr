@@ -214,7 +214,6 @@ export const RoomImage = styled.div`
   height: 6vw;
   width: 9vw;
   margin: 0.4vw 0vw 0vw 0.5vw;
-  overflow: hidden;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -251,11 +250,10 @@ export const MicroDetails = styled.div`
 
 export const RoomDetails = styled.div`
   width: 15vw;
-  min-height: 4.7vw;
   margin: 0.5vw 0.5vw 1.5vw 0.5vw;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
   color: #424950;
 
   @media only screen and (max-width: 900px) {
@@ -278,29 +276,22 @@ export const Category = styled.span`
 export const SubCategory = styled.div`
   background-color: white;
   margin-top: 0.6vw;
-  min-height: 7vw;
+  margin-bottom: 0.6vw;
 
   @media only screen and (max-width: 900px) {
     margin-top: 2.25vw;
-    min-height: 15vw;
+    margin-bottom: 2.25vw;
   }
 `;
 
 export const RoomSharing = styled.div`
-  height: 2.5vw;
   display: flex;
-  flex-direction: row;
   align-items: center;
   font-size: 1vw;
   font-weight: 600;
 
   @media only screen and (max-width: 900px) {
-    height: auto;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
     font-size: 3vw;
-    font-weight: 600;
   }
 
   img {
@@ -318,45 +309,28 @@ export const RoomSharing = styled.div`
 
 export const RoomQuantity = styled.div`
   width: 100%;
-  height: 3.5vw;
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
   align-items: flex-end;
-
-  @media only screen and (max-width: 900px) {
-    align-items: flex-end;
-  }
 `;
 
 export const RoomPriceContainer = styled.div`
-  width: 100%;
   display: flex;
   flex-direction: column;
-  align-self: flex-start;
-
-  @media only screen and (max-width: 900px) {
-    align-self: flex-start;
-  }
+  justify-content: flex-start;
+  align-items: flex-start;
 `;
 
 export const PriceObject = styled.div`
   padding-left: 5px;
   display: flex;
-  flex-direction: row;
-  align-self: flex-start;
   flex-wrap: wrap;
-
-  @media only screen and (max-width: 900px) {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-  }
+  justify-content: flex-start;
+  align-items: flex-start;
 `;
 
 export const Striked = styled.span`
   text-decoration: line-through;
-  grid-area: str;
   margin-right: 0.5vw;
   font-size: 1vw;
   font-weight: 600;
@@ -365,7 +339,6 @@ export const Striked = styled.span`
   width: 100%;
 
   @media only screen and (max-width: 900px) {
-    align-self: flex-end;
     margin-right: 2vw;
     font-size: unset;
     font-weight: unset;
@@ -375,21 +348,17 @@ export const Striked = styled.span`
 `;
 
 export const RoomPrice = styled.span`
-  grid-area: rp;
   font-size: 1.5vw;
   font-weight: 700;
-  align-self: flex-start;
   margin-right: 0.3vw;
 
   @media only screen and (max-width: 900px) {
     font-size: 4vw;
-    align-self: flex-end;
     margin-right: 1vw;
   }
 `;
 
 export const Discount = styled.span`
-  grid-area: dp;
   padding: 0.2vw;
   line-height: 1em;
   height: 1.4em;
@@ -398,18 +367,15 @@ export const Discount = styled.span`
   color: white;
   font-size: 0.8vw;
   font-weight: 600;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  text-align: center;
   border-radius: 2px;
 
   @media only screen and (max-width: 900px) {
-    padding: 0.5vw;
+    padding: 0.5vw 1vw;
     line-height: 1vw;
     width: auto;
     height: 2vw;
     font-size: 1.5vw;
-    display: unset;
     border-radius: 0px;
   }
 `;
@@ -435,7 +401,6 @@ export const RoomQty = styled.div`
   border-radius: 3px;
 
   @media only screen and (max-width: 900px) {
-    height: 3.5vw;
     height: 6vw;
     font-size: 3.5vw;
   }
