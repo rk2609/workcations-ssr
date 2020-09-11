@@ -33,6 +33,8 @@ const PropertyList = ({ loadElements }) => {
   const filteredMinPrice = useSelector(selectSelectedMinPrice);
   const filteredMaxPrice = useSelector(selectSelectedMaxPrice);
 
+  console.log(propertyList);
+
   return (
     <Container>
       <PropertyListContainer>

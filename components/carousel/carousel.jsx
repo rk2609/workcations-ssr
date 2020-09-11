@@ -76,7 +76,7 @@ const Carousel = ({ slug, type, city, state }) => {
 
       propertyList.forEach((property) => {
         if (
-          property.type === type &&
+          property.location.state === state &&
           property.slug !== slug &&
           sluglist.indexOf(property.slug) === -1 &&
           list.length < 5
@@ -88,7 +88,7 @@ const Carousel = ({ slug, type, city, state }) => {
 
       propertyList.forEach((property) => {
         if (
-          property.location.state === state &&
+          property.type === type &&
           property.slug !== slug &&
           sluglist.indexOf(property.slug) === -1 &&
           list.length < 5
