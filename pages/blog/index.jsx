@@ -300,6 +300,33 @@ const BlogCollection = () => {
               </Tags>
             </GridItem>
           </Link>
+
+          <Link href="/blog/panoramic-treks-around-kasol" passHref>
+            <GridItem>
+              <Title>Workcation In Kasol? Unwind with Some Nearby Treks</Title>
+              <ImageCon>
+                <Image
+                  src="/panoramic-treks-around-kasol/panoramic-treks-around-kasol.jpg"
+                  alt="Workcation In Kasol? Unwind with Some Nearby Treks"
+                />
+              </ImageCon>
+              <Description>
+                What would be better to indulge in a trekking experience over a
+                weekend? Panoramic trekking destinations around kasol you
+                couldn't afford to miss.While in offices, you tend to break free
+                from stress by taking small chai breaks. How about you do
+                something more adventurous? While on workcation in Kasol, you
+                can unwind by going on these beautiful treks. They are close by
+                and a great way to feel refreshed.
+              </Description>
+              <ReadMore>Read More</ReadMore>
+              <Date>12th Sep 2020</Date>
+              <Tags>
+                <span>Kasol</span>
+                <span>Trekking</span>
+              </Tags>
+            </GridItem>
+          </Link>
         </Grid>
       </BlogContainer>
     </Layout>

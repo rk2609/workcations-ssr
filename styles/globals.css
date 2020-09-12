@@ -1564,3 +1564,7 @@ img {
 .thumbnail-container::-webkit-scrollbar {
   display: none;
 }
+
+.remove-scrollbar::-webkit-scrollbar {
+  display: none;
+}

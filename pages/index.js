@@ -5,6 +5,7 @@ import Head from "next/head";
 import Layout from "../components/layout/layout";
 
 import Hero from "../components/hero/hero";
+import HomePage from "../containers/homepage/homepage";
 import Outlook from "../components/outlook/outlook";
 import Destinations from "../components/destinations/destinations";
 import Recreational from "../components/recreational/recreational";
@@ -42,6 +43,7 @@ const Home = () => {
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <Hero />
+
       <Outlook />
       {loadElements ? <Destinations /> : null}
       {loadElements ? <Recreational /> : null}
@@ -61,3 +63,5 @@ export const getStaticProps = async () => {
 };
 
 export default Home;
+
+/* <HomePage loadElements={loadElements} /> */
