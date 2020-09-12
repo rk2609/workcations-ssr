@@ -4,7 +4,6 @@ import PropertyDetailsContainer from "../../style-components/property-page-conta
 
 export const Container = styled(PropertyDetailsContainer)`
   @media only screen and (max-width: 900px) {
-    display: none;
   }
 `;
 

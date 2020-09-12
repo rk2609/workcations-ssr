@@ -97,12 +97,14 @@ export const Content = styled.div`
 export const About = styled.div`
   margin-bottom: 2vw;
 
-  @media only screen and (max-width: 900px) {
-    display: none;
-  }
-
   p {
     font-weight: 300;
+  }
+
+  @media only screen and (max-width: 900px) {
+    p {
+      font-weight: 400;
+    }
   }
 `;
 
