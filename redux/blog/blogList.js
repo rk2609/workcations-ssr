@@ -1,5 +1,12 @@
 const BlogsList = [
   {
+    slug: "make-the-most-of-your-workcation-in-kasol",
+    title: "Make The Most Of Your Workcation In Kasol",
+    description: `Planning for a workcation in Kasol? Here is a list of activities you can experience to make the most of your workcation in Kasol. We have discussed it quite a few times that Kasol is the numero uno choice for workcations ( a long staycation combining work and vacation). Owing to its pristine natural beauty, quiet surroundings and awesome arrangements for travellers, we see no reason why not to visit this hilly destination to unwind.`,
+    date: "14th Sep 2020",
+    tags: ["Kasol", "Workcations"],
+  },
+  {
     slug: "panoramic-treks-around-kasol",
     title: "Workcation In Kasol? Unwind with Some Nearby Treks",
     description: `What would be better to indulge in a trekking experience over a weekend? Panoramic trekking destinations around kasol you couldn't afford to miss.While in offices, you tend to break free from stress by taking small chai breaks. How about you do something more adventurous? While on workcation in Kasol, you can unwind by going on these beautiful treks. They are close by and a great way to feel refreshed.`,
