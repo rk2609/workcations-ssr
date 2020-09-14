@@ -21,6 +21,7 @@ export const Card = styled.a`
   display: flex;
   flex-direction: column;
   margin-right: 2.5vw;
+  box-shadow: 0px 0px 3px #707070;
 
   @media only screen and (max-width: 600px) {
     width: 40vw;

@@ -23,10 +23,6 @@ const Blogs = () => (
             }}
           />
           <Title>{title}</Title>
-          <Description>
-            {description}
-            <ReadMore>+</ReadMore>
-          </Description>
         </Card>
       </Link>
     ))}

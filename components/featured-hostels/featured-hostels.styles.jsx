@@ -3,16 +3,48 @@ import styled from "styled-components";
 export const Container = styled.div`
   /* types-container */
   width: 80vw;
+  display: grid;
+  grid-template-columns: 1fr 40px;
+  grid-column-gap: 15px;
+  margin-top: 2vw;
+
+  @media only screen and (max-width: 600px) {
+    grid-template-columns: 1fr;
+    width: 90vw;
+    margin-top: 4vw;
+  }
+`;
+
+export const FlexContainer = styled.div`
+  scroll-behavior: smooth;
+  width: 100%;
   display: flex;
   flex-direction: row;
   align-items: center;
   overflow: scroll;
-  margin-top: 2vw;
   padding: 2vw 0;
+`;
 
-  @media only screen and (max-width: 600px) {
-    width: 90vw;
-    margin-top: 4vw;
+export const ArrowContainer = styled.div`
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 2px;
+
+  @media only screen and (max-width: 900px) {
+    height: 7vw;
+    display: none;
+  }
+
+  svg {
+    height: 2.5vw;
+
+    @media only screen and (max-width: 900px) {
+      height: 4vw;
+    }
   }
 `;
 
@@ -24,7 +56,6 @@ export const Card = styled.a`
   border-radius: 10px;
   box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.16);
   margin-right: 4vw;
-  align-self: stretch;
 
   @media only screen and (max-width: 600px) {
     width: 30vw;
@@ -133,22 +164,18 @@ export const Location = styled.div`
   }
 `;
 
-export const MoreProperties = styled.div`
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+export const MoreProperties = styled.a`
   padding: 15px;
-  font-size: 1.4vw;
+  font-size: 1vw;
   font-weight: 600;
-  background-color: rgba(255, 107, 108, 0.8);
+  background-color: rgba(255, 107, 108, 0.9);
   color: white;
   position: relative;
   border-radius: 10px;
+  flex-shrink: 0;
 
   @media only screen and (max-width: 600px) {
-    font-size: 2.5vw;
+    display: none;
   }
 
   span {
