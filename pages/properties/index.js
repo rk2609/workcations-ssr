@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Head from "next/head";
 import { useDispatch, useSelector } from "react-redux";
+import { useRouter } from "next/router";
 
 import { setPropertyListStart } from "../../redux/property/properties.actions";
 import { selectPropertyList } from "../../redux/property/properties.selectors";
@@ -15,6 +16,9 @@ import { Container, Heading } from "../../styles/properties/style";
 import Layout from "../../components/layout/layout";
 
 const Properties = () => {
+  const router = useRouter();
+  const { cities, max, min, states, types } = router.query;
+
   const dispatch = useDispatch();
   const propertyList = useSelector(selectPropertyList);
 
@@ -53,6 +57,41 @@ const Properties = () => {
     };
   }, [handleScroll]);
 
+  const handleFilter = (states, cities, min, max, types) => {
+    console.log(states, cities, min, max, types);
+    let queryLink = "?";
+
+    if (states && states.length) {
+      queryLink += "&states=" + states[0];
+      for (let i = 1; i < states.length; i++) {
+        queryLink += "-" + states[i];
+      }
+    }
+
+    if (cities && cities.length) {
+      queryLink += "&cities=" + cities[0];
+      for (let i = 1; i < cities.length; i++) {
+        queryLink += "-" + cities[i];
+      }
+    }
+
+    if (types && types.length) {
+      queryLink += "&types=" + types[0];
+      for (let i = 1; i < types.length; i++) {
+        queryLink += "-" + types[i];
+      }
+    }
+
+    if (min) {
+      queryLink += "&min=" + min;
+    }
+
+    if (max) {
+      queryLink += "&max=" + max;
+    }
+    router.push(`${encodeURI(queryLink)}`, undefined, { shallow: true });
+  };
+
   return (
     <Layout>
       <Head>
@@ -64,8 +103,22 @@ const Properties = () => {
         <Heading>
           find your <span>Workcation</span>
         </Heading>
-        <Filters />
-        <PropertyList loadElements={loadElements} />
+        <Filters
+          citiesLink={cities}
+          statesLink={states}
+          typesLink={types}
+          minLink={min}
+          maxLink={max}
+          handleFilter={handleFilter}
+        />
+        <PropertyList
+          cities={cities}
+          states={states}
+          types={types}
+          min={min}
+          max={max}
+          loadElements={loadElements}
+        />
       </Container>
     </Layout>
   );

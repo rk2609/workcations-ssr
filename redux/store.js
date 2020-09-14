@@ -17,9 +17,9 @@ const middlewares = [
   sagaMiddleware,
 ];
 
-if (process.env.NODE_ENV === "development") {
+/*if (process.env.NODE_ENV === "development") {
   middlewares.push(logger);
-}
+}*/
 
 const bindMiddleware = (middleware) => {
   if (process.env.NODE_ENV !== "production") {

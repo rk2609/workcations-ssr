@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 
 import {
   Container,
@@ -12,135 +13,41 @@ import {
   Location,
 } from "./featured-stays.style";
 
-const FeaturedStays = () => (
+const FeaturedStays = ({ featured, propertyList }) => (
   <Container>
-    <Card>
-      <Image style={{ backgroundImage: `url(/prop-image.jpg)` }}>
-        <ImageContainer>
-          <Type>Camps</Type>
-          <Price>
-            1200
-            <span>/night</span>
-          </Price>
-        </ImageContainer>
-      </Image>
-      <Details>
-        <Title>Workcations 1101 - Hotel in Kasol</Title>
-        <Location>Kasol, Himachal Pradesh</Location>
-      </Details>
-    </Card>
-
-    <Card>
-      <Image style={{ backgroundImage: `url(/prop-image.jpg)` }}>
-        <ImageContainer>
-          <Type>Camps</Type>
-          <Price>
-            1200
-            <span>/night</span>
-          </Price>
-        </ImageContainer>
-      </Image>
-      <Details>
-        <Title>Workcations 1101 - Hotel in Kasol</Title>
-        <Location>Kasol, Himachal Pradesh</Location>
-      </Details>
-    </Card>
-
-    <Card>
-      <Image style={{ backgroundImage: `url(/prop-image.jpg)` }}>
-        <ImageContainer>
-          <Type>Camps</Type>
-          <Price>
-            1200
-            <span>/night</span>
-          </Price>
-        </ImageContainer>
-      </Image>
-      <Details>
-        <Title>Workcations 1101 - Hotel in Kasol</Title>
-        <Location>Kasol, Himachal Pradesh</Location>
-      </Details>
-    </Card>
-
-    <Card>
-      <Image style={{ backgroundImage: `url(/prop-image.jpg)` }}>
-        <ImageContainer>
-          <Type>Camps</Type>
-          <Price>
-            1200
-            <span>/night</span>
-          </Price>
-        </ImageContainer>
-      </Image>
-      <Details>
-        <Title>Workcations 1101 - Hotel in Kasol</Title>
-        <Location>Kasol, Himachal Pradesh</Location>
-      </Details>
-    </Card>
-
-    <Card>
-      <Image style={{ backgroundImage: `url(/prop-image.jpg)` }}>
-        <ImageContainer>
-          <Type>Camps</Type>
-          <Price>
-            1200
-            <span>/night</span>
-          </Price>
-        </ImageContainer>
-      </Image>
-      <Details>
-        <Title>Workcations 1101 - Hotel in Kasol</Title>
-        <Location>Kasol, Himachal Pradesh</Location>
-      </Details>
-    </Card>
-
-    <Card>
-      <Image style={{ backgroundImage: `url(/prop-image.jpg)` }}>
-        <ImageContainer>
-          <Type>Camps</Type>
-          <Price>
-            1200
-            <span>/night</span>
-          </Price>
-        </ImageContainer>
-      </Image>
-      <Details>
-        <Title>Workcations 1101 - Hotel in Kasol</Title>
-        <Location>Kasol, Himachal Pradesh</Location>
-      </Details>
-    </Card>
-
-    <Card>
-      <Image style={{ backgroundImage: `url(/prop-image.jpg)` }}>
-        <ImageContainer>
-          <Type>Camps</Type>
-          <Price>
-            1200
-            <span>/night</span>
-          </Price>
-        </ImageContainer>
-      </Image>
-      <Details>
-        <Title>Workcations 1101 - Hotel in Kasol</Title>
-        <Location>Kasol, Himachal Pradesh</Location>
-      </Details>
-    </Card>
-
-    <Card>
-      <Image style={{ backgroundImage: `url(/prop-image.jpg)` }}>
-        <ImageContainer>
-          <Type>Camps</Type>
-          <Price>
-            1200
-            <span>/night</span>
-          </Price>
-        </ImageContainer>
-      </Image>
-      <Details>
-        <Title>Workcations 1101 - Hotel in Kasol</Title>
-        <Location>Kasol, Himachal Pradesh</Location>
-      </Details>
-    </Card>
+    {propertyList
+      .filter((property) => property.featured === "TRUE")
+      .map((property, i) =>
+        featured > i ? (
+          <Link
+            key={property.slug}
+            href={`/property/${property.slug}`}
+            passHref
+          >
+            <Card key={property.slug} target="_blank">
+              <Image
+                style={{
+                  backgroundImage: `url(https://www.wanderon.in/workcations/${property.slug}/${property.images[0]}.jpg)`,
+                }}
+              >
+                <ImageContainer>
+                  <Type>{property.type}</Type>
+                  <Price>
+                    {property.long}
+                    <span>/night</span>
+                  </Price>
+                </ImageContainer>
+              </Image>
+              <Details>
+                <Title>{property.title}</Title>
+                <Location>
+                  {property.location.city}, {property.location.state}
+                </Location>
+              </Details>
+            </Card>
+          </Link>
+        ) : null
+      )}
   </Container>
 );
 

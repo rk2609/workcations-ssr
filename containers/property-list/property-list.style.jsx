@@ -49,6 +49,8 @@ export const FilterItem = styled.a`
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
+
   img {
     height: 60%;
   }

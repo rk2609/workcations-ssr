@@ -14,7 +14,7 @@ export const Container = styled.div`
   }
 `;
 
-export const Card = styled.div`
+export const Card = styled.a`
   /*   featured-card   */
   width: 25vw;
   border-radius: 10px;
@@ -71,6 +71,7 @@ export const Type = styled.div`
   align-items: center;
   justify-content: center;
   margin: 1vw 0 0 1vw;
+  text-transform: capitalize;
 
   @media only screen and (max-width: 600px) {
     width: 6vw;

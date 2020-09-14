@@ -8,6 +8,8 @@ import {
   setSelectedStateList,
   initializeTypeList,
   setSelectedTypeList,
+  initializeDestinationList,
+  setSelectedDestinationList,
   initializeMinPrice,
   setSelectedMinPrice,
   initializeMaxPrice,
@@ -19,6 +21,8 @@ import {
   selectSelectedStateList,
   selectTypeList,
   selectSelectedTypeList,
+  selectDestinationList,
+  selectSelectedDestinationList,
   selectMinPrice,
   selectSelectedMinPrice,
   selectMaxPrice,
@@ -38,7 +42,14 @@ import {
   FilterList,
 } from "./filters.style";
 
-const Filters = () => {
+const Filters = ({
+  citiesLink,
+  statesLink,
+  typesLink,
+  minLink,
+  maxLink,
+  handleFilter,
+}) => {
   const propertyList = useSelector(selectPropertyList);
   const dispatch = useDispatch();
 
@@ -51,32 +62,56 @@ const Filters = () => {
   useEffect(() => {
     if (propertyList && propertyList.length) {
       dispatch(initializeStateList());
+      if (statesLink) {
+        dispatch(setSelectedStateList(statesLink.split("-")));
+      }
+
       dispatch(initializeTypeList());
+      if (typesLink) {
+        dispatch(setSelectedTypeList(typesLink.split("-")));
+      }
+
+      dispatch(initializeDestinationList());
+      if (citiesLink) {
+        dispatch(setSelectedDestinationList(citiesLink.split("-")));
+      }
+
       dispatch(initializeMinPrice());
+      if (minLink) {
+        dispatch(setSelectedMinPrice(Number(minLink)));
+      }
+
       dispatch(initializeMaxPrice());
+      if (maxLink) {
+        dispatch(setSelectedMaxPrice(Number(maxLink)));
+      }
     }
   }, [dispatch, propertyList]);
 
   const states = useSelector(selectStateList);
   const types = useSelector(selectTypeList);
+  const cities = useSelector(selectDestinationList);
   const minPrice = useSelector(selectMinPrice);
   const maxPrice = useSelector(selectMaxPrice);
   const filteredStates = useSelector(selectSelectedStateList);
   const filteredTypes = useSelector(selectSelectedTypeList);
+  const filteredCities = useSelector(selectSelectedDestinationList);
   const filteredMinPrice = useSelector(selectSelectedMinPrice);
   const filteredMaxPrice = useSelector(selectSelectedMaxPrice);
 
-  useEffect(() => {
+  /*useEffect(() => {
     return () => {
       dispatch(setSelectedStateList([]));
       dispatch(setSelectedTypeList([]));
+      dispatch(setSelectedDestinationList([]));
       dispatch(setSelectedMinPrice(minPrice));
       dispatch(setSelectedMaxPrice(maxPrice));
     };
-  }, [dispatch, minPrice, maxPrice]);
+  }, [dispatch, minPrice, maxPrice]);*/
 
   const [selectedStates, setSelectedStates] = useState(filteredStates);
   const [selectedTypes, setSelectedTypes] = useState(filteredTypes);
+  const [selectedCities, setSelectedCities] = useState(filteredCities);
   const [selectedMinPrice, setSelectedMinPriceLocal] = useState(
     filteredMinPrice
   );
@@ -96,6 +131,10 @@ const Filters = () => {
   }, [dispatch, selectedTypes]);
 
   useEffect(() => {
+    dispatch(setSelectedDestinationList(selectedCities));
+  }, [dispatch, selectedCities]);
+
+  useEffect(() => {
     dispatch(setSelectedMinPrice(selectedMinPrice));
   }, [dispatch, selectedMinPrice]);
 
@@ -104,11 +143,49 @@ const Filters = () => {
   }, [dispatch, selectedMaxPrice]);
 
   useEffect(() => {
+    if (statesLink) {
+      setSelectedStates(statesLink.split("-"));
+    }
+  }, [statesLink]);
+
+  useEffect(() => {
+    if (typesLink) {
+      setSelectedTypes(typesLink.split("-"));
+    }
+  }, [typesLink]);
+
+  useEffect(() => {
+    if (citiesLink) {
+      setSelectedCities(citiesLink.split("-"));
+    }
+  }, [citiesLink]);
+
+  useEffect(() => {
+    if (minLink) {
+      setSelectedMinPriceLocal(Number(minLink));
+    }
+  }, [minLink]);
+
+  useEffect(() => {
+    if (maxLink) {
+      setSelectedMaxPriceLocal(Number(maxLink));
+    }
+  }, [maxLink]);
+
+  useEffect(() => {
     dispatch(filterProperties());
+    handleFilter(
+      selectedStates,
+      selectedCities,
+      selectedMinPrice,
+      selectedMaxPrice,
+      selectedTypes
+    );
   }, [
     dispatch,
     filteredStates,
     filteredTypes,
+    filteredCities,
     filteredMinPrice,
     filteredMaxPrice,
   ]);
@@ -175,21 +252,18 @@ const Filters = () => {
                 label={state + "@" + stateCount[i]}
                 handleChange={() => {
                   let newSelectedStates = [];
-
-                  if (selectedStates.indexOf(state) !== -1) {
-                    const index = selectedStates.indexOf(state);
-                    for (let i = 0; i < selectedStates.length; i++) {
-                      if (index !== i) {
-                        newSelectedStates.push(selectedStates[i]);
-                      }
-                    }
-                  } else {
+                  if (selectedStates.indexOf(state) === -1) {
                     for (let i = 0; i < selectedStates.length; i++) {
                       newSelectedStates.push(selectedStates[i]);
                     }
                     newSelectedStates.push(state);
+                  } else {
+                    for (let i = 0; i < selectedStates.length; i++) {
+                      if (state !== selectedStates[i]) {
+                        newSelectedStates.push(selectedStates[i]);
+                      }
+                    }
                   }
-
                   setSelectedStates(newSelectedStates);
                 }}
                 checked={selectedStates.indexOf(state) !== -1}
@@ -207,21 +281,18 @@ const Filters = () => {
                 label={type + "@" + typeCount[i]}
                 handleChange={() => {
                   let newSelectedTypes = [];
-
-                  if (selectedTypes.indexOf(type) !== -1) {
-                    const index = selectedTypes.indexOf(type);
-                    for (let i = 0; i < selectedTypes.length; i++) {
-                      if (index !== i) {
-                        newSelectedTypes.push(selectedTypes[i]);
-                      }
-                    }
-                  } else {
+                  if (selectedTypes.indexOf(type) === -1) {
                     for (let i = 0; i < selectedTypes.length; i++) {
                       newSelectedTypes.push(selectedTypes[i]);
                     }
                     newSelectedTypes.push(type);
+                  } else {
+                    for (let i = 0; i < selectedTypes.length; i++) {
+                      if (type !== selectedTypes[i]) {
+                        newSelectedTypes.push(selectedTypes[i]);
+                      }
+                    }
                   }
-
                   setSelectedTypes(newSelectedTypes);
                 }}
                 checked={selectedTypes.indexOf(type) !== -1}

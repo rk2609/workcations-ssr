@@ -72,6 +72,7 @@ export const GridItem = styled.a`
   box-shadow: 0px 0px 5px 1px #00000030;
   padding: 0px 0px 10px 0px;
   border-radius: 5px;
+  cursor: pointer;
 `;
 
 export const Title = styled.div`

@@ -16,7 +16,7 @@ export const Container = styled.div`
   }
 `;
 
-export const Card = styled.div`
+export const Card = styled.a`
   /* type-card */
   flex-shrink: 0;
   width: 19vw;
@@ -24,6 +24,7 @@ export const Card = styled.div`
   border-radius: 10px;
   box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.16);
   margin-right: 4vw;
+  align-self: stretch;
 
   @media only screen and (max-width: 600px) {
     width: 30vw;
@@ -129,5 +130,31 @@ export const Location = styled.div`
 
   @media only screen and (max-width: 600px) {
     font-size: 2vw;
+  }
+`;
+
+export const MoreProperties = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  font-size: 1.4vw;
+  font-weight: 600;
+  background-color: rgba(255, 107, 108, 0.8);
+  color: white;
+  position: relative;
+  border-radius: 10px;
+
+  @media only screen and (max-width: 600px) {
+    font-size: 2.5vw;
+  }
+
+  span {
+    position: absolute;
+    right: -0.5vw;
+    width: 12vw;
+    height: 2vw;
   }
 `;

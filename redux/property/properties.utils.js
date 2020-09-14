@@ -1,19 +1,12 @@
 import Properties from "./properties";
 
-const SelectDestinations = (list) =>
-  list
-    .map((property) => property.location.city.toLowerCase())
-    .filter((value, index, self) => {
-      return self.indexOf(value) === index;
-    });
-
-const capitalise = (s) => s.charAt(0).toUpperCase() + s.slice(1);
-
 export const GetDestinationOptions = (list) =>
   list && list.length
-    ? SelectDestinations(list).map((destination) => {
-        return { label: capitalise(destination), value: destination };
-      })
+    ? list
+        .map((property) => property.location.city.toLowerCase())
+        .filter((value, index, self) => {
+          return self.indexOf(value) === index;
+        })
     : [];
 
 export const GetStateOptions = (list) =>
@@ -103,7 +96,9 @@ export const FilterProperties = (
   types,
   typeListAll,
   min,
-  max
+  max,
+  cities,
+  cityListAll
 ) => {
   let stateList = [];
   if (states.length > 0) {
@@ -117,9 +112,16 @@ export const FilterProperties = (
   } else {
     typeList = typeListAll.map((type) => type.toLowerCase());
   }
+  let cityList = [];
+  if (cities.length > 0) {
+    cityList = cities.map((city) => city.toLowerCase());
+  } else {
+    cityList = cityListAll.map((city) => city.toLowerCase());
+  }
 
   const list = [];
   const finalList = [];
+  const cityFilterList = [];
   const priceList = [];
 
   propertyList.forEach((property) => {
@@ -135,6 +137,12 @@ export const FilterProperties = (
   });
 
   finalList.forEach((property) => {
+    if (cityList.indexOf(property.location.city.toLowerCase()) !== -1) {
+      cityFilterList.push(property);
+    }
+  });
+
+  cityFilterList.forEach((property) => {
     if (Number(property.long) >= min && Number(property.long) <= max) {
       priceList.push(property);
     }
@@ -177,6 +185,7 @@ const getProperties = async (url, requestOptions) =>
           long: item.gsx$long.$t,
           ultralong: item.gsx$ultralong.$t,
           visibility: item.gsx$visibility.$t,
+          featured: item.gsx$featured.$t,
         };
       });
     });

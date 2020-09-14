@@ -101,7 +101,9 @@ const propertyReducer = (state = INITIAL_STATE, action) => {
           state.selectedTypeList,
           state.typeList,
           state.selectedMinPrice,
-          state.selectedMaxPrice
+          state.selectedMaxPrice,
+          state.selectedDestinationList,
+          state.destinationList
         ),
       };
     case PropertiesActionTypes.GET_PROPERTY_SUCCESS:

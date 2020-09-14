@@ -19,7 +19,7 @@ export const Container = styled.div`
   }
 `;
 
-export const Card = styled.div`
+export const Card = styled.a`
   /* states-card */
   width: 26vw;
   height: 18vw;

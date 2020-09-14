@@ -50,7 +50,7 @@ export const SubHeading = styled.span`
   }
 `;
 
-export const Button = styled.div`
+export const Button = styled.a`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -62,6 +62,7 @@ export const Button = styled.div`
   font-size: 1.2vw;
   width: 12vw;
   margin: 5vw 0 2vw 0;
+  cursor: pointer;
 
   @media only screen and (max-width: 600px) {
     font-size: 3vw;
