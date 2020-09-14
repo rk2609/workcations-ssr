@@ -19,7 +19,7 @@ import {
   ReadMore,
 } from "../../components/blogs/blog.style";
 
-import BlogsList from "./blogList";
+import BlogsList from "../../redux/blog/blogList";
 
 const BlogCollection = () => {
   const isServer = typeof window === "undefined";

@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 
-import BlogsList from "../../pages/blog/blogList";
+import BlogsList from "../../redux/blog/blogList";
 
 import {
   Container,
