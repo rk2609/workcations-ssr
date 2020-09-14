@@ -88,7 +88,9 @@ const Hero = ({ propertyList }) => {
                 setShowList(true);
               }}
               onBlur={() => {
-                setShowList(false);
+                setTimeout(() => {
+                  setShowList(false);
+                }, 300);
               }}
             />
             <SearchItems showList={showList} className="remove-scrollbar">
