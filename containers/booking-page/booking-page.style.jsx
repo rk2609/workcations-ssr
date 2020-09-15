@@ -152,14 +152,15 @@ export const CartTotal = styled.div`
     }
   }
 
-  div:nth-child(4) {
+  div:last-child {
     font-weight: 600;
     color: #ff6b6c;
   }
 `;
 
-export const Line = styled.div`
+export const Line = styled.hr`
   width: 300px;
+  color: transparent;
   border-bottom: 1px solid #cccccc;
 `;
 

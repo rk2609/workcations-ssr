@@ -94,6 +94,9 @@ const BookingPage = ({ data, bookingSlug }) => {
     salesPerson,
     customer,
     bookingId,
+    breakfast,
+    lunch,
+    dinner,
   } = data;
 
   const checkInDate = new Date(checkIn);
@@ -358,35 +361,147 @@ const BookingPage = ({ data, bookingSlug }) => {
                   </SummaryItem>
                 ))}
                 <CartTotal>
+                  {breakfast &&
+                  breakfast.state &&
+                  Number(breakfast.value) > 0 ? (
+                    <div>
+                      <span>Breakfast</span>
+                      <span>
+                        {(
+                          Number(breakfast.value) *
+                          Number(totalPax.value) *
+                          Math.round(getNoOfDays(checkInDate, checkOutDate))
+                        ).toLocaleString("en-IN", {
+                          maximumFractionDigits: 2,
+                          style: "currency",
+                          currency: "INR",
+                        })}
+                      </span>
+                    </div>
+                  ) : null}
+                  {lunch && lunch.state && Number(lunch.value) > 0 ? (
+                    <div>
+                      <span>Lunch</span>
+                      <span>
+                        {(
+                          Number(lunch.value) *
+                          Number(totalPax.value) *
+                          Math.round(getNoOfDays(checkInDate, checkOutDate))
+                        ).toLocaleString("en-IN", {
+                          maximumFractionDigits: 2,
+                          style: "currency",
+                          currency: "INR",
+                        })}
+                      </span>
+                    </div>
+                  ) : null}
+                  {dinner && dinner.state && Number(dinner.value) > 0 ? (
+                    <div>
+                      <span>Dinner</span>
+                      <span>
+                        {(
+                          Number(dinner.value) *
+                          Number(totalPax.value) *
+                          Math.round(getNoOfDays(checkInDate, checkOutDate))
+                        ).toLocaleString("en-IN", {
+                          maximumFractionDigits: 2,
+                          style: "currency",
+                          currency: "INR",
+                        })}
+                      </span>
+                    </div>
+                  ) : null}
                   <div>
                     <span>Total</span>
-                    <span>
-                      {TotalAmount.toLocaleString("en-IN", {
-                        maximumFractionDigits: 2,
-                        style: "currency",
-                        currency: "INR",
-                      })}
-                    </span>
+                    {breakfast ? (
+                      <span>
+                        {(
+                          TotalAmount +
+                          (Number(breakfast.value) +
+                            Number(lunch.value) +
+                            Number(dinner.value)) *
+                            Number(totalPax.value) *
+                            Math.round(getNoOfDays(checkInDate, checkOutDate))
+                        ).toLocaleString("en-IN", {
+                          maximumFractionDigits: 2,
+                          style: "currency",
+                          currency: "INR",
+                        })}
+                      </span>
+                    ) : (
+                      <span>
+                        {TotalAmount.toLocaleString("en-IN", {
+                          maximumFractionDigits: 2,
+                          style: "currency",
+                          currency: "INR",
+                        })}
+                      </span>
+                    )}
                   </div>
                   <div>
                     <span>
                       Discount(
-                      {(
-                        ((TotalAmount - Number(amount) / 1.05) * 100) /
-                        TotalAmount
-                      ).toFixed(2)}
+                      {breakfast ? (
+                        <Fragment>
+                          {(
+                            ((TotalAmount +
+                              (Number(breakfast.value) +
+                                Number(lunch.value) +
+                                Number(dinner.value)) *
+                                Number(totalPax.value) *
+                                Math.round(
+                                  getNoOfDays(checkInDate, checkOutDate)
+                                ) -
+                              Number(amount) / 1.05) *
+                              100) /
+                            (TotalAmount +
+                              (Number(breakfast.value) +
+                                Number(lunch.value) +
+                                Number(dinner.value)) *
+                                Number(totalPax.value) *
+                                Math.round(
+                                  getNoOfDays(checkInDate, checkOutDate)
+                                ))
+                          ).toFixed(2)}
+                        </Fragment>
+                      ) : (
+                        <Fragment>
+                          {(
+                            ((TotalAmount - Number(amount) / 1.05) * 100) /
+                            TotalAmount
+                          ).toFixed(2)}
+                        </Fragment>
+                      )}
                       %)
                     </span>
-                    <span>
-                      {(TotalAmount - Number(amount) / 1.05).toLocaleString(
-                        "en-IN",
-                        {
+                    {breakfast ? (
+                      <span>
+                        {(
+                          TotalAmount +
+                          (Number(breakfast.value) +
+                            Number(lunch.value) +
+                            Number(dinner.value)) *
+                            Number(totalPax.value) *
+                            Math.round(getNoOfDays(checkInDate, checkOutDate)) -
+                          Number(amount) / 1.05
+                        ).toLocaleString("en-IN", {
                           maximumFractionDigits: 2,
                           style: "currency",
                           currency: "INR",
-                        }
-                      )}
-                    </span>
+                        })}
+                      </span>
+                    ) : (
+                      <span>
+                        {(TotalAmount - Number(amount) / 1.05).toLocaleString(
+                          "en-IN",
+                          {
+                            maximumFractionDigits: 2,
+                            style: "currency",
+                            currency: "INR",
+                          }
+                        )}
+                      </span>
+                    )}
                   </div>
                   <div>
                     <span>GST(5%)</span>
