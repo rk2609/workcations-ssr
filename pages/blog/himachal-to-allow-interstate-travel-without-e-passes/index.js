@@ -104,7 +104,7 @@ const BlogItem = () => {
           {loadElements ? (
             <ImageCon>
               <Image
-                src="/himachal-to-allow-interstate-travel-without-e-passes/e-pass.png"
+                src="/himachal-to-allow-interstate-travel-without-e-passes/e-pass.jpg"
                 alt="E-Pass"
               />
               <Caption></Caption>
@@ -192,18 +192,6 @@ const BlogItem = () => {
             <ImageCon>
               <Image
                 src="/himachal-to-allow-interstate-travel-without-e-passes/remote-work-1.jpg"
-                alt="Remote Work"
-              />
-              <Caption></Caption>
-            </ImageCon>
-          ) : (
-            <ImageCon></ImageCon>
-          )}
-
-          {loadElements ? (
-            <ImageCon>
-              <Image
-                src="/himachal-to-allow-interstate-travel-without-e-passes/remote-work-2.jpg"
                 alt="Remote Work"
               />
               <Caption></Caption>
