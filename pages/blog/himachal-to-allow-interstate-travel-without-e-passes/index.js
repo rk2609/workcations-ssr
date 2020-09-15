@@ -77,7 +77,7 @@ const BlogItem = () => {
           </Tags>
           <BlogTitle>
             True or Not: Himachal Pradesh To Allow Inter-State Travel Without
-            E-passe and COVID Report?
+            E-pass and COVID Report?
           </BlogTitle>
           <SocialShare
             slug={"himachal-to-allow-interstate-travel-without-e-passes"}
