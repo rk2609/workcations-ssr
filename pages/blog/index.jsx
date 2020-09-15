@@ -52,7 +52,7 @@ const BlogCollection = () => {
         <Heading>Your Workcations Guide</Heading>
         <Grid>
           {BlogsList.map(({ slug, title, description, tags, date }) => (
-            <Link key={slug} href={`/blog/${slug}`}>
+            <Link key={slug} href={`/blog/${slug}`} passHref>
               <GridItem key={slug}>
                 <Title>{title}</Title>
                 <ImageCon>

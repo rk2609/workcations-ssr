@@ -1,5 +1,13 @@
 const BlogsList = [
   {
+    slug: "himachal-to-allow-interstate-travel-without-e-passes",
+    title:
+      "True or Not: Himachal Pradesh To Allow Inter-State Travel Without E-passes?",
+    description: `New Himachal Pradesh Travel Guidelines: The government announced new travel guidelines and allowed interstate movement without e-passes. In a big announcement on Tuesday 15 September, the Himachal Pradesh government granted permission to resume the inter-state travel without an e-pass. The state borders of Himachal Pradesh were shut for more than five months due to the COVID-19 pandemic.`,
+    date: "16th Sep 2020",
+    tags: ["Himachal Guidelines", "E-Pass"],
+  },
+  {
     slug: "make-the-most-of-your-workcation-in-kasol",
     title: "Make The Most Of Your Workcation In Kasol",
     description: `Planning for a workcation in Kasol? Here is a list of activities you can experience to make the most of your workcation in Kasol. We have discussed it quite a few times that Kasol is the numero uno choice for workcations ( a long staycation combining work and vacation). Owing to its pristine natural beauty, quiet surroundings and awesome arrangements for travellers, we see no reason why not to visit this hilly destination to unwind.`,

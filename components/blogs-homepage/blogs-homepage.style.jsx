@@ -35,6 +35,9 @@ export const Image = styled.div`
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
+  display: flex;
+  align-items: flex-end;
+  padding-bottom: 5px;
 
   @media only screen and (max-width: 600px) {
     width: 40vw;
@@ -44,7 +47,6 @@ export const Image = styled.div`
 
 export const Title = styled.div`
   /* blogs-title */
-  height: 3.3vw;
   color: white;
   font-size: 1vw;
   font-weight: 600;
@@ -52,8 +54,7 @@ export const Title = styled.div`
   margin-top: -4vw;
 
   @media only screen and (max-width: 600px) {
-    height: 9vw;
-    font-size: 3vw;
+    font-size: 2.7vw;
     padding: 0 1vw;
     margin-top: -9vw;
   }

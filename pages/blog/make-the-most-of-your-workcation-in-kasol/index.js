@@ -45,7 +45,7 @@ const BlogItem = () => {
         <title>Make The Most Of Your Workcation In Kasol</title>
         <meta
           name="description"
-          content="Planning for a workcation in Kasol? Here is a list of activities you can experience to make the most of your workcation in Kasol.  "
+          content="Planning for a workcation in Kasol? Here is a list of activities you can experience to make the most of your workcation in Kasol."
         />
         <meta
           name="keywords"
@@ -57,7 +57,7 @@ const BlogItem = () => {
         />
         <meta
           property="og:description"
-          content="Planning for a workcation in Kasol? Here is a list of activities you can experience to make the most of your workcation in Kasol.  "
+          content="Planning for a workcation in Kasol? Here is a list of activities you can experience to make the most of your workcation in Kasol."
         />
         <meta
           property="og:title"

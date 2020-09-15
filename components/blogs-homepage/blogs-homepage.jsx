@@ -19,10 +19,11 @@ const Blogs = () => (
         <Card key={slug} target="_blank">
           <Image
             style={{
-              backgroundImage: `linear-gradient(to top,rgba(0,0,0,.7) 15%,rgba(0,0,0,0) 30%),url(/${slug}/${slug}.jpg)`,
+              backgroundImage: `linear-gradient(to top,rgba(0,0,0,.7) 15%,rgba(0,0,0,0) 40%),url(/${slug}/${slug}.jpg)`,
             }}
-          />
-          <Title>{title}</Title>
+          >
+            <Title>{title}</Title>
+          </Image>
         </Card>
       </Link>
     ))}
