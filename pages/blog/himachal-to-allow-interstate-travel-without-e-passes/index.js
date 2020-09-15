@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { TwitterTweetEmbed } from "react-twitter-embed";
 import Head from "next/head";
 
 import Layout from "../../../components/layout/layout";
@@ -102,13 +103,7 @@ const BlogItem = () => {
             Is it true tourists will not require any E-Pass to enter Himachal?
           </SubHeading>
           {loadElements ? (
-            <ImageCon>
-              <Image
-                src="/himachal-to-allow-interstate-travel-without-e-passes/e-pass.jpg"
-                alt="E-Pass"
-              />
-              <Caption></Caption>
-            </ImageCon>
+            <TwitterTweetEmbed tweetId={"1305879066696974336"} />
           ) : (
             <ImageCon></ImageCon>
           )}
