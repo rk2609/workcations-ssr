@@ -45,7 +45,7 @@ const BlogItem = () => {
       <Head>
         <title>
           True or Not: Himachal Pradesh To Allow Inter-State Travel Without
-          E-passes?
+          E-pass and COVID Report?
         </title>
         <meta
           name="description"
@@ -65,7 +65,7 @@ const BlogItem = () => {
         />
         <meta
           property="og:title"
-          content="True or Not: Himachal Pradesh To Allow Inter-State Travel Without E-passes?"
+          content="True or Not: Himachal Pradesh To Allow Inter-State Travel Without E-pass and COVID Report?"
         />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
@@ -77,7 +77,7 @@ const BlogItem = () => {
           </Tags>
           <BlogTitle>
             True or Not: Himachal Pradesh To Allow Inter-State Travel Without
-            E-passes?
+            E-passe and COVID Report?
           </BlogTitle>
           <SocialShare
             slug={"himachal-to-allow-interstate-travel-without-e-passes"}
@@ -85,7 +85,7 @@ const BlogItem = () => {
           <ImageCon>
             <Image
               src="/himachal-to-allow-interstate-travel-without-e-passes/himachal-to-allow-interstate-travel-without-e-passes.jpg"
-              alt="Big News: Himachal Pradesh To Allow Inter-State Travel Without E-passes?"
+              alt="Big News: Himachal Pradesh To Allow Inter-State Travel Without E-pass and COVID Report?"
             />
             <Caption></Caption>
           </ImageCon>
@@ -158,7 +158,7 @@ const BlogItem = () => {
 
           <SubHeading>
             How will the Himachal government implement these new travel
-            guidelines in the States?
+            guidelines in the State?
           </SubHeading>
           {loadElements ? (
             <ImageCon>
@@ -181,6 +181,14 @@ const BlogItem = () => {
             from all places together. Likely there are chances of conflicts
             between state authorities and local unions who are worried about the
             spread of the pandemic due to these new Himachal Travel Guidelines.
+            <br />
+            <br />
+            <li>
+              Local administration is a real game-changer here - they are
+              implementing their own rules since the border movement has started
+              after the Indian Government started to issue the unlock
+              guidelines.
+            </li>
           </Text>
 
           {loadElements ? (
