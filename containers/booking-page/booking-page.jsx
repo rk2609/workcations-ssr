@@ -237,6 +237,9 @@ const BookingPage = ({ data, bookingSlug }) => {
       travelersNames,
       travelersPhones,
       travelersGenders,
+      breakfast,
+      lunch,
+      dinner,
     };
 
     submitUserData(data).then((res) => {
