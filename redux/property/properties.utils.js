@@ -35,7 +35,7 @@ export const GetMinPrice = (list) =>
 export const GetMaxPrice = (list) =>
   list && list.length
     ? Math.max(...list.map((property) => Number(property.long)))
-    : 10000;
+    : 11500;
 
 export const GetPropertyList = () =>
   Properties.map((property) => {
