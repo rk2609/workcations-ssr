@@ -517,7 +517,7 @@ const BookingPage = ({ data, bookingSlug }) => {
                     </span>
                   </div>
                   <Line />
-                  <div>
+                  <div style={{ fontWeight: "600", color: "#ff6c6b" }}>
                     <span>Grand Total</span>
                     <span>
                       {Number(amount).toLocaleString("en-IN", {

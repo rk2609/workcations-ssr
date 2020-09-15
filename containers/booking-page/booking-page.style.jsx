@@ -151,14 +151,9 @@ export const CartTotal = styled.div`
     span:first-child {
     }
   }
-
-  div:last-child {
-    font-weight: 600;
-    color: #ff6b6c;
-  }
 `;
 
-export const Line = styled.hr`
+export const Line = styled.div`
   width: 300px;
   color: transparent;
   border-bottom: 1px solid #cccccc;
