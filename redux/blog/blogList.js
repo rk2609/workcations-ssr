@@ -2,7 +2,7 @@ const BlogsList = [
   {
     slug: "himachal-to-allow-interstate-travel-without-e-passes",
     title:
-      "True or Not: Himachal Pradesh To Allow Inter-State Travel Without E-pass and COVID Report?",
+      "Confirmed: Himachal Pradesh To Allow Inter-State Travel Without E-pass and COVID Report!",
     description: `New Himachal Pradesh Travel Guidelines: The government announced new travel guidelines and allowed interstate movement without e-passes. In a big announcement on Tuesday 15 September, the Himachal Pradesh government granted permission to resume the inter-state travel without an e-pass. The state borders of Himachal Pradesh were shut for more than five months due to the COVID-19 pandemic.`,
     date: "16th Sep 2020",
     tags: ["Himachal Guidelines", "E-Pass"],

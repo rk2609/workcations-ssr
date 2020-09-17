@@ -44,8 +44,8 @@ const BlogItem = () => {
     <Layout>
       <Head>
         <title>
-          True or Not: Himachal Pradesh To Allow Inter-State Travel Without
-          E-pass and COVID Report?
+          Confirmed: Himachal Pradesh To Allow Inter-State Travel Without E-pass
+          and COVID Report!
         </title>
         <meta
           name="description"
@@ -65,7 +65,7 @@ const BlogItem = () => {
         />
         <meta
           property="og:title"
-          content="True or Not: Himachal Pradesh To Allow Inter-State Travel Without E-pass and COVID Report?"
+          content="Confirmed: Himachal Pradesh To Allow Inter-State Travel Without E-pass and COVID Report!"
         />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
@@ -76,8 +76,8 @@ const BlogItem = () => {
             <span>E-Pass</span>
           </Tags>
           <BlogTitle>
-            True or Not: Himachal Pradesh To Allow Inter-State Travel Without
-            E-pass and COVID Report?
+            Confirmed: Himachal Pradesh To Allow Inter-State Travel Without
+            E-pass and COVID Report!
           </BlogTitle>
           <SocialShare
             slug={"himachal-to-allow-interstate-travel-without-e-passes"}
@@ -89,6 +89,17 @@ const BlogItem = () => {
             />
             <Caption></Caption>
           </ImageCon>
+          <Text>
+            <strong>Edit:</strong>2 days after the news of E -Pass cancellation
+            for Inter-State Movement to Himachal came out, the travel process
+            has seemed to ease out. As per our ground reports, the checkpoints
+            at Swaarghat, Bajaura, and Parmanu have been removed. The vehicles
+            are being let into the state borders of Himachal without an E Pass
+            or COVID-19 Negative certificate. However, the vehicle number is
+            being registered by the officials at the check post. Previously, all
+            the documents including E Pass and COVID certificates were being
+            examined here at these checkpoints.
+          </Text>
           <Text>
             In a big announcement on Tuesday 15 September, the Himachal Pradesh
             government granted permission to resume the inter-state travel

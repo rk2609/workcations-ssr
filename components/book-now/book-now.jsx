@@ -607,7 +607,7 @@ const BookNow = ({
                 {breakfast > 0 ? (
                   <CheckBox
                     name="breakfast"
-                    label={"Breakfast @ INR " + breakfast + "/day"}
+                    label={"Breakfast @ INR " + breakfast + "/person/day"}
                     handleChange={() => {
                       if (breakfastBox) {
                         setBreakfast(false);
@@ -621,7 +621,7 @@ const BookNow = ({
                 {lunch > 0 ? (
                   <CheckBox
                     name="lunch"
-                    label={"Lunch @ INR " + lunch + "/day"}
+                    label={"Lunch @ INR " + lunch + "/person/day"}
                     handleChange={() => {
                       if (lunchBox) {
                         setLunch(false);
@@ -635,7 +635,7 @@ const BookNow = ({
                 {dinner > 0 ? (
                   <CheckBox
                     name="dinner"
-                    label={"Dinner @ INR " + dinner + "/day"}
+                    label={"Dinner @ INR " + dinner + "/person/day"}
                     handleChange={() => {
                       if (dinnerBox) {
                         setDinner(false);
