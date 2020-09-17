@@ -5,15 +5,13 @@ import { Flex, FlexItem, Ques, Ans } from "./faq.style";
 const FAQ = [
   {
     Q: "Is the COVID-19 RT-PCR negative report compulsory? ",
-    A:
-      "Yes, it is mandatory to carry a hard copy of negative COVID-19 RT-PCR test report.",
+    A: "No. Except for Uttrakhand COVID-19 negative report is not compulsory.",
   },
 
   {
     Q:
       "Is it mandatory to carry the E-permit of the state authority that I am travelling to?",
-    A:
-      "Yes, it is absolutely necessary that you carry the approved E-permit of the state authority that you are travelling to.",
+    A: "No. Excpet for Uttarakhand you need not carry or apply for any e-Pass.",
   },
 
   {
@@ -32,7 +30,7 @@ const FAQ = [
   {
     Q: "What all documents do I need to carry?",
     A:
-      "We insist you to carry hard copies of ICMR approved COVID RT-PCR negative test report, the E-permit pass for the state you’re travelling to, original address proof and govt. issued ID proof.",
+      "You need to carry a Govenment issued ID Proof for check In purpose. If you are visiting Uttarakhand you also need to carry COVIND-19 negative RT-PCR report, your e-Pass & address proof.",
   },
 
   {

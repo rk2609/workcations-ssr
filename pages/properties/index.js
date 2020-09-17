@@ -58,7 +58,6 @@ const Properties = () => {
   }, [handleScroll]);
 
   const handleFilter = (states, cities, min, max, types) => {
-    console.log(states, cities, min, max, types);
     let queryLink = "?";
 
     if (states && states.length) {
