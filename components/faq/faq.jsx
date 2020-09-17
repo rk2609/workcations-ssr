@@ -11,7 +11,7 @@ const FAQ = [
   {
     Q:
       "Is it mandatory to carry the E-permit of the state authority that I am travelling to?",
-    A: "No. Excpet for Uttarakhand you need not carry or apply for any e-Pass.",
+    A: "No. Except for Uttarakhand you need not carry or apply for any e-Pass.",
   },
 
   {
