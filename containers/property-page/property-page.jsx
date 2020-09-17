@@ -68,7 +68,12 @@ const PropertyPage = ({
         </Title>
         <Container>
           <Gallery loadElements={loadElements} images={images} slug={slug} />
-          <Facilities facilities={features} />
+          <Facilities
+            breakfast={breakfast}
+            lunch={lunch}
+            dinner={dinner}
+            facilities={features}
+          />
           <BookNowContainer>
             <BookNow
               inventory={inventory}
@@ -160,7 +165,7 @@ const PropertyPage = ({
               />
               <EmptySpace />
               <Heading>Important Information</Heading>
-              <ImportantInformation />
+              <ImportantInformation state={state} />
               <EmptySpace />
               <Heading>FAQs</Heading>
               <Faqs heading={false} />
