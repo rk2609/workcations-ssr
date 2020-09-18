@@ -1,5 +1,13 @@
 const BlogsList = [
   {
+    slug: "reasons-to-choose-bir-for-workcation",
+    title:
+      "Pristine Paradise: Here’s Why You Should Go For A Workcation To Bir",
+    description: `Want to plan a calming and exciting Workation in Bir? Here are things that makes Bir a perfect destination for a workcation. Beautiful mountains, lush green foliage, authentic cuisine, awesome weather, outdoorsy activities – don’t these factors make for a perfect vacation? Book your long stay or a workcation (a vacation and work) at a beautiful destination and maintain a great work-life balance.`,
+    date: "18th Sep 2020",
+    tags: ["Bir Billing", "Workcations"],
+  },
+  {
     slug: "himachal-to-allow-interstate-travel-without-e-passes",
     title:
       "Confirmed: Himachal Pradesh To Allow Inter-State Travel Without E-pass and COVID Report!",
