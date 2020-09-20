@@ -177,7 +177,7 @@ const BlogItem = () => {
           {loadElements ? (
             <ImageCon>
               <Image
-                src="/reasons-to-plan-workation-in-pauri/khirsu.jpg"
+                src="/reasons-to-plan-workation-in-pauri/khirsu-new.jpg"
                 alt="Khirsu"
               />
               <Caption></Caption>
