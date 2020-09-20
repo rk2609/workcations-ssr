@@ -47,7 +47,7 @@ const BlogItem = () => {
         </title>
         <meta
           name="description"
-          content=" Want to plan a calming and exciting Workation in Bir? Here are things that makes Bir a perfect destination for a workcation"
+          content="Want to plan a calming and exciting Workation in Bir? Here are things that makes Bir a perfect destination for a workcation"
         />
         <meta
           name="keywords"
@@ -59,7 +59,7 @@ const BlogItem = () => {
         />
         <meta
           property="og:description"
-          content=" Want to plan a calming and exciting Workation in Bir? Here are things that makes Bir a perfect destination for a workcation"
+          content="Want to plan a calming and exciting Workation in Bir? Here are things that makes Bir a perfect destination for a workcation"
         />
         <meta
           property="og:title"

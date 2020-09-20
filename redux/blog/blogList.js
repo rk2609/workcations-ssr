@@ -1,5 +1,12 @@
 const BlogsList = [
   {
+    slug: "reasons-to-plan-workation-in-pauri",
+    title: "Five Reasons to Work and Vacay in Pauri",
+    description: `Want to plan a peaceful workation in Pauri? Here are the five reasons which make pauri the best pick for Workcation. Not only Pauri's pristine beauty but the breathtaking view of dusks enchants tourists. Situated at the height of 1814 m in the Garhwal region, this beautiful hill station is surrounded by lush forests, waterfalls, spiritual places, and whatnot. `,
+    date: "20th Sep 2020",
+    tags: ["Workcations", "Pauri"],
+  },
+  {
     slug: "reasons-to-choose-bir-for-workcation",
     title:
       "Pristine Paradise: Here’s Why You Should Go For A Workcation To Bir",
