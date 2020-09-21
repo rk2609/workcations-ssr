@@ -58,6 +58,19 @@ const Home = () => {
       <Head>
         <title>Workcations - Think Remote Work! Think Workcations!</title>
         <link rel="icon" href="/favicon.ico" />
+        <meta
+          name="description"
+          content="Enjoy work and vacations from Peaceful destinations with Fast wi-fi and homely meals. We are committed to provide chill and productive work environment at affordable prices."
+        />
+        <meta property="og:image" content="/logo.png" />
+        <meta
+          property="og:description"
+          content="Enjoy work and vacations from Peaceful destinations with Fast wi-fi and homely meals. We are committed to provide chill and productive work environment at affordable prices."
+        />
+        <meta
+          property="og:title"
+          content="Workcations - Think Remote Work! Think Workcations!"
+        />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <Hero propertyList={propertyList} />
