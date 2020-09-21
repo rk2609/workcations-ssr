@@ -40,6 +40,7 @@ export const Image = styled.div`
   @media only screen and (max-width: 600px) {
     width: 42vw;
     height: 28vw;
+    border-radius: 10px 10px 0px 0px;
   }
 `;
 
@@ -48,7 +49,6 @@ export const ImageContainer = styled.div`
   width: 100%;
   height: 100%;
   border-radius: 10px;
-  background-color: rgba(0, 0, 0, 0.15);
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -74,10 +74,13 @@ export const Type = styled.div`
   text-transform: capitalize;
 
   @media only screen and (max-width: 600px) {
-    width: 6vw;
-    height: 2vw;
-    font-size: 1vw;
-    margin: 2vw 0 0 2vw;
+    width: auto;
+    padding: 1.5vw 1vw;
+    height: auto;
+    font-size: 2vw;
+    margin: 2vw 0 0 -1vw;
+    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.3);
+    border-radius: 0px 50px 50px 0px;
   }
 `;
 

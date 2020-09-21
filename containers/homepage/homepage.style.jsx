@@ -65,11 +65,10 @@ export const Button = styled.a`
   cursor: pointer;
 
   @media only screen and (max-width: 600px) {
-    font-size: 3vw;
     padding: 1vw 0vw;
-    font-size: 2vw;
+    font-size: 2.5vw;
     width: 30vw;
-    height: 5vw;
-    margin: 5vw 0;
+    height: 8vw;
+    margin: 3vw 0vw 0vw 0vw;
   }
 `;

@@ -33,19 +33,6 @@ export default class MyDocument extends Document {
             }}
           />
           <meta charSet="utf-8" />
-          <meta
-            name="description"
-            content="Enjoy work and vacations from Peaceful destinations with Fast wi-fi and homely meals. We are committed to provide chill and productive work environment at affordable prices."
-          />
-          <meta property="og:image" content="/logo.png" />
-          <meta
-            property="og:description"
-            content="Enjoy work and vacations from Peaceful destinations with Fast wi-fi and homely meals. We are committed to provide chill and productive work environment at affordable prices."
-          />
-          <meta
-            property="og:title"
-            content="Workcations - Think Remote Work! Think Workcations!"
-          />
           <link
             href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap"
             rel="stylesheet"

@@ -23,6 +23,11 @@ export const FlexContainer = styled.div`
   align-items: center;
   overflow: scroll;
   padding: 2vw 0;
+
+  @media only screen and (max-width: 900px) {
+    width: 90vw;
+    max-width: 90vw;
+  }
 `;
 
 export const ArrowContainer = styled.div`
@@ -58,7 +63,7 @@ export const Card = styled.a`
   margin-right: 4vw;
 
   @media only screen and (max-width: 600px) {
-    width: 30vw;
+    width: 40vw;
     margin-right: 3vw;
   }
 `;
@@ -77,8 +82,9 @@ export const Image = styled.div`
   border-radius: 10px;
 
   @media only screen and (max-width: 600px) {
-    width: 30vw;
-    height: 22vw;
+    width: 40vw;
+    height: 35vw;
+    border-radius: 10px 10px 0px 0px;
   }
 `;
 
@@ -96,8 +102,8 @@ export const ImageLong = styled.div`
   border-radius: 10px;
 
   @media only screen and (max-width: 600px) {
-    width: 30vw;
-    height: 35vw;
+    width: 40vw;
+    height: 45vw;
     border-radius: 10px 10px 0px 0px;
   }
 `;
@@ -119,6 +125,7 @@ export const Price = styled.span`
     font-size: 3vw;
     width: 14vw;
     height: 5vw;
+    margin: 0 -1vw 5vw 0;
   }
 
   span {
@@ -138,7 +145,7 @@ export const Details = styled.div`
   padding: 0.5vw;
 
   @media only screen and (max-width: 600px) {
-    padding: 1vw;
+    padding: 1vw 2vw;
   }
 `;
 
@@ -149,7 +156,7 @@ export const Title = styled.div`
   margin-bottom: 0.2vw;
 
   @media only screen and (max-width: 600px) {
-    font-size: 2.5vw;
+    font-size: 3vw;
   }
 `;
 
@@ -160,7 +167,7 @@ export const Location = styled.div`
   text-transform: capitalize;
 
   @media only screen and (max-width: 600px) {
-    font-size: 2vw;
+    font-size: 2.2vw;
   }
 `;
 
