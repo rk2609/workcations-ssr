@@ -165,10 +165,8 @@ const PropertyPage = ({
               />
               <EmptySpace />
               <Heading>Important Information</Heading>
-              <ImportantInformation state={state} />
+              <ImportantInformation />
               <EmptySpace />
-              <Heading>FAQs</Heading>
-              <Faqs heading={false} />
             </Details>
           ) : null}
         </Container>
@@ -178,3 +176,6 @@ const PropertyPage = ({
 };
 
 export default PropertyPage;
+
+/*               <Heading>FAQs</Heading>
+              <Faqs heading={false} /> */
