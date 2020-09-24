@@ -299,39 +299,35 @@ const getProperty = async (url, requestOptions) =>
     });
 
 export const getPropertiesListExcel = async () => {
-  const url =
-    "https://spreadsheets.google.com/feeds/list/14sxSAFqgV2o3xTlK2nghOxXhecij8FGQlZpECee45gM/1/public/values?alt=json";
+  var myHeaders = new Headers();
+  myHeaders.append("Content-Type", "application/json");
+  const url = "https://taxilead.herokuapp.com/properties";
 
-  const requestOptions = {
+  var requestOptions = {
     method: "GET",
+    headers: myHeaders,
     redirect: "follow",
   };
 
-  return await getProperties(url, requestOptions);
+  return await fetch(url, requestOptions)
+    .then((response) => response.json())
+    .then((result) => result)
+    .catch((error) => error);
 };
 
 export const getPropertyExcel = async (slug) => {
-  let sheetNo = 5;
+  var myHeaders = new Headers();
+  myHeaders.append("Content-Type", "application/json");
+  const url = "https://taxilead.herokuapp.com/property/" + slug;
 
-  await getProperties(
-    "https://spreadsheets.google.com/feeds/list/14sxSAFqgV2o3xTlK2nghOxXhecij8FGQlZpECee45gM/1/public/values?alt=json",
-    {
-      method: "GET",
-      redirect: "follow",
-    }
-  ).then((res) => {
-    sheetNo = res.map((item) => item.slug).indexOf(slug) + 3;
-  });
-
-  const url =
-    "https://spreadsheets.google.com/feeds/list/14sxSAFqgV2o3xTlK2nghOxXhecij8FGQlZpECee45gM/" +
-    sheetNo +
-    "/public/values?alt=json";
-
-  const requestOptions = {
+  var requestOptions = {
     method: "GET",
+    headers: myHeaders,
     redirect: "follow",
   };
 
-  return await getProperty(url, requestOptions);
+  return await fetch(url, requestOptions)
+    .then((response) => response.json())
+    .then((result) => result)
+    .catch((error) => error);
 };
