@@ -1,5 +1,19 @@
 const BlogsList = [
   {
+    slug: "reasons-to-choose-manali-for-workation",
+    title: "Why Manali Is Our Fave Workcation Spot?",
+    description: `Seriously need reasons to choose Manali for workcation? Check out our seven reasons which make Manali the perfect workation spot! Come October and Manali is opening its doors for all of us. Touted as India’s one of the most popular tourist destinations, Manali is beautiful, romantic and cozy to spend long stays and vacations. Not just that, why not take a break from your mundane routine and go on a workcation, a unique trip that is a combination of work and vacation.`,
+    date: "24th Sep 2020",
+    tags: ["Workcations", "Manali"],
+  },
+  {
+    slug: "wanderon-zoomcar-discount-offers",
+    title: "WanderOn X Zoomcar: Discount Offers Which You Cannot Miss",
+    description: `Canceling your travel plans due to safe transportation? Book a trip with us and get amazing discount offers on sanitized cabs from Zoomcar. Good news for all the Wanderers, Team WanderOn has collaborated with the biggest self-drive car service provider Zoomcar for some exclusive discount offers.`,
+    date: "24th Sep 2020",
+    tags: ["Zoom Car", "Discount Offer"],
+  },
+  {
     slug: "reasons-to-plan-workation-in-pauri",
     title: "Five Reasons to Work and Vacay in Pauri",
     description: `Want to plan a peaceful workation in Pauri? Here are the five reasons which make pauri the best pick for Workcation. Not only Pauri's pristine beauty but the breathtaking view of dusks enchants tourists. Situated at the height of 1814 m in the Garhwal region, this beautiful hill station is surrounded by lush forests, waterfalls, spiritual places, and whatnot. `,
