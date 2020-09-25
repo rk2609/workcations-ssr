@@ -67,11 +67,6 @@ export const selectFilteredProperties = createSelector(
   (properties) => properties.filteredList
 );
 
-export const selectProperty = createSelector(
-  [selectProperties],
-  (properties) => properties.property
-);
-
 export const selectBookingPopup = createSelector(
   [selectProperties],
   (properties) => properties.bookingPopup

@@ -58,25 +58,6 @@ export const filterProperties = () => ({
   type: PropertiesActionTypes.FILTER_PROPERTIES,
 });
 
-export const getPropertyStart = (slug) => ({
-  type: PropertiesActionTypes.GET_PROPERTY_START,
-  payload: slug,
-});
-
-export const getPropertySuccess = (property) => ({
-  type: PropertiesActionTypes.GET_PROPERTY_SUCCESS,
-  payload: property,
-});
-
-export const getPropertyFailure = (error) => ({
-  type: PropertiesActionTypes.GET_PROPERTY_FAILURE,
-  payload: error,
-});
-
-export const unsetProperty = () => ({
-  type: PropertiesActionTypes.UNSET_PROPERTY,
-});
-
 export const showBookingPopup = () => ({
   type: PropertiesActionTypes.SHOW_BOOKING_POPUP,
 });

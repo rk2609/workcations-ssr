@@ -8,7 +8,7 @@ import Layout from "../../components/layout/layout";
 const getBookingId = async (bookingId) => {
   var myHeaders = new Headers();
   myHeaders.append("Content-Type", "application/json");
-  const url = "https://taxilead.herokuapp.com/getBookingUser/" + bookingId;
+  const url = "https://data.workcations.in/getBookingUser/" + bookingId;
 
   var requestOptions = {
     method: "GET",

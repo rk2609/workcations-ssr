@@ -7,9 +7,7 @@ import {
   selectFilteredProperties,
   selectSelectedStateList,
   selectSelectedTypeList,
-  selectMinPrice,
   selectSelectedMinPrice,
-  selectMaxPrice,
   selectSelectedMaxPrice,
   selectSelectedDestinationList,
 } from "../../redux/property/properties.selectors";
@@ -49,8 +47,6 @@ const PropertyList = ({ loadElements, cities, states, types, min, max }) => {
 
   const propertyList = useSelector(selectPropertyList);
   const filteredProperties = useSelector(selectFilteredProperties);
-  const minPrice = useSelector(selectMinPrice);
-  const maxPrice = useSelector(selectMaxPrice);
   const filteredStates = useSelector(selectSelectedStateList);
   const filteredTypes = useSelector(selectSelectedTypeList);
   const filteredMinPrice = useSelector(selectSelectedMinPrice);
@@ -64,8 +60,8 @@ const PropertyList = ({ loadElements, cities, states, types, min, max }) => {
         filteredStates.length === 0 &&
         filteredTypes.length === 0 &&
         filteredCities.length === 0 &&
-        filteredMinPrice === minPrice &&
-        filteredMaxPrice === maxPrice ? (
+        !filteredMinPrice &&
+        !filteredMaxPrice ? (
           propertyList.map((property, i) =>
             property.visibility === "TRUE" && (loadElements || i < 6) ? (
               <PropertyItem key={property.slug} {...property} />

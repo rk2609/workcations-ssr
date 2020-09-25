@@ -77,7 +77,11 @@ const FiltersMobile = ({
       str += "&max=" + maxLink;
     }
 
-    return str;
+    if (str.length > 1) {
+      return encodeURI(str);
+    }
+
+    return encodeURI("");
   });
 
   useEffect(() => {
@@ -151,8 +155,26 @@ const FiltersMobile = ({
     filteredMaxPrice
   );
 
-  const range = { min: minPrice, max: maxPrice };
-  const start = [selectedMinPrice, selectedMaxPrice];
+  const [range, setRange] = useState({ min: 0, max: 1000 });
+  const [start, setStart] = useState([minPrice, maxPrice]);
+
+  useEffect(() => {
+    if (minPrice < maxPrice) {
+      setRange({ min: minPrice, max: maxPrice });
+    }
+  }, [minPrice, maxPrice]);
+
+  useEffect(() => {
+    if (selectedMinPrice && selectedMaxPrice) {
+      setStart([selectedMinPrice, selectedMaxPrice]);
+    } else if (selectedMinPrice) {
+      setStart([selectedMinPrice, maxPrice]);
+    } else if (selectedMaxPrice) {
+      setStart([minPrice, selectedMaxPrice]);
+    } else {
+      setStart([minPrice, maxPrice]);
+    }
+  }, [selectedMinPrice, selectedMaxPrice, minPrice, maxPrice]);
 
   useEffect(() => {
     dispatch(setSelectedStateList(selectedStates));
@@ -193,13 +215,13 @@ const FiltersMobile = ({
   }, [citiesLink]);
 
   useEffect(() => {
-    if (minLink && Number(minLink) > minPrice) {
+    if (minLink) {
       setSelectedMinPriceLocal(Number(minLink));
     }
   }, [minLink]);
 
   useEffect(() => {
-    if (maxLink && Number(maxLink) < maxPrice) {
+    if (maxLink) {
       setSelectedMaxPriceLocal(Number(maxLink));
     }
   }, [maxLink]);

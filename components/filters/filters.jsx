@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import Nouislider from "nouislider-react";
 
 import {
-  setPropertyListStart,
   initializeStateList,
   setSelectedStateList,
   initializeTypeList,
@@ -54,12 +53,6 @@ const Filters = ({
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (propertyList.length === 0) {
-      dispatch(setPropertyListStart());
-    }
-  }, [dispatch, propertyList]);
-
-  useEffect(() => {
     if (propertyList && propertyList.length) {
       dispatch(initializeStateList());
       if (statesLink) {
@@ -99,16 +92,6 @@ const Filters = ({
   const filteredMinPrice = useSelector(selectSelectedMinPrice);
   const filteredMaxPrice = useSelector(selectSelectedMaxPrice);
 
-  /*useEffect(() => {
-    return () => {
-      dispatch(setSelectedStateList([]));
-      dispatch(setSelectedTypeList([]));
-      dispatch(setSelectedDestinationList([]));
-      dispatch(setSelectedMinPrice(minPrice));
-      dispatch(setSelectedMaxPrice(maxPrice));
-    };
-  }, [dispatch, minPrice, maxPrice]);*/
-
   const [selectedStates, setSelectedStates] = useState(filteredStates);
   const [selectedTypes, setSelectedTypes] = useState(filteredTypes);
   const [selectedCities, setSelectedCities] = useState(filteredCities);
@@ -118,9 +101,26 @@ const Filters = ({
   const [selectedMaxPrice, setSelectedMaxPriceLocal] = useState(
     filteredMaxPrice
   );
+  const [range, setRange] = useState({ min: 0, max: 1000 });
+  const [start, setStart] = useState([minPrice, maxPrice]);
 
-  const range = { min: minPrice, max: maxPrice };
-  const start = [selectedMinPrice, selectedMaxPrice];
+  useEffect(() => {
+    if (minPrice < maxPrice) {
+      setRange({ min: minPrice, max: maxPrice });
+    }
+  }, [minPrice, maxPrice]);
+
+  useEffect(() => {
+    if (selectedMinPrice && selectedMaxPrice) {
+      setStart([selectedMinPrice, selectedMaxPrice]);
+    } else if (selectedMinPrice) {
+      setStart([selectedMinPrice, maxPrice]);
+    } else if (selectedMaxPrice) {
+      setStart([minPrice, selectedMaxPrice]);
+    } else {
+      setStart([minPrice, maxPrice]);
+    }
+  }, [selectedMinPrice, selectedMaxPrice, minPrice, maxPrice]);
 
   useEffect(() => {
     dispatch(setSelectedStateList(selectedStates));

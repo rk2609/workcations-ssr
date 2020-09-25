@@ -88,7 +88,12 @@ const Properties = () => {
     if (max) {
       queryLink += "&max=" + max;
     }
-    router.push(`${encodeURI(queryLink)}`, undefined, { shallow: true });
+
+    if (queryLink.length > 1) {
+      router.replace(`${encodeURI(queryLink)}`, undefined, { shallow: true });
+    } else {
+      router.replace(`${encodeURI("")}`, undefined, { shallow: true });
+    }
   };
 
   return (

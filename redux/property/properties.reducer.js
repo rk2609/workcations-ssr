@@ -15,15 +15,14 @@ const INITIAL_STATE = {
   typeList: [],
   selectedTypeList: [],
   minPrice: 0,
-  selectedMinPrice: 0,
-  maxPrice: 10000,
-  selectedMaxPrice: 10000,
+  selectedMinPrice: null,
+  maxPrice: 0,
+  selectedMaxPrice: null,
   destinationList: [],
   selectedDestinationList: [],
   duration: "long",
   propertyList: [],
   filteredList: [],
-  property: null,
   bookingPopup: false,
 };
 
@@ -53,7 +52,6 @@ const propertyReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         minPrice: GetMinPrice(state.propertyList),
-        selectedMinPrice: GetMinPrice(state.propertyList),
       };
     case PropertiesActionTypes.SET_SELECTED_MIN_PRICE:
       return {
@@ -64,7 +62,6 @@ const propertyReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         maxPrice: GetMaxPrice(state.propertyList),
-        selectedMaxPrice: GetMaxPrice(state.propertyList),
       };
     case PropertiesActionTypes.SET_SELECTED_MAX_PRICE:
       return {
@@ -97,29 +94,11 @@ const propertyReducer = (state = INITIAL_STATE, action) => {
         filteredList: FilterProperties(
           state.propertyList,
           state.selectedStateList,
-          state.stateList,
           state.selectedTypeList,
-          state.typeList,
           state.selectedMinPrice,
           state.selectedMaxPrice,
-          state.selectedDestinationList,
-          state.destinationList
+          state.selectedDestinationList
         ),
-      };
-    case PropertiesActionTypes.GET_PROPERTY_SUCCESS:
-      return {
-        ...state,
-        property: action.payload,
-      };
-    case PropertiesActionTypes.GET_PROPERTY_FAILURE:
-      return {
-        ...state,
-        property: "error",
-      };
-    case PropertiesActionTypes.UNSET_PROPERTY:
-      return {
-        ...state,
-        property: null,
       };
     case PropertiesActionTypes.SHOW_BOOKING_POPUP:
       return {

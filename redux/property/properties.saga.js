@@ -3,27 +3,12 @@ import { PropertiesActionTypes } from "./properties.action-types";
 import {
   setPropertyListSuccess,
   setPropertyListFailure,
-  getPropertySuccess,
-  getPropertyFailure,
 } from "./properties.actions";
-import { getPropertiesListExcel, getPropertyExcel } from "./properties.utils";
-
-export function* getProperty({ payload: slug }) {
-  try {
-    const property = yield getPropertyExcel(slug);
-    yield put(getPropertySuccess(property));
-  } catch (error) {
-    yield put(getPropertyFailure(error));
-  }
-}
-
-export function* onGetPropertyStart() {
-  yield takeLatest(PropertiesActionTypes.GET_PROPERTY_START, getProperty);
-}
+import { getPropertiesList } from "./properties.utils";
 
 export function* getProperties() {
   try {
-    const properties = yield getPropertiesListExcel();
+    const properties = yield getPropertiesList();
     yield put(setPropertyListSuccess(properties));
   } catch (error) {
     yield put(setPropertyListFailure(error));
@@ -38,5 +23,5 @@ export function* onGetPropertiesStart() {
 }
 
 export function* propertySagas() {
-  yield all([call(onGetPropertiesStart), call(onGetPropertyStart)]);
+  yield all([call(onGetPropertiesStart)]);
 }

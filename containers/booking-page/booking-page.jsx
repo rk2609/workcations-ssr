@@ -69,7 +69,7 @@ const submitUserData = async (data) => {
   };
 
   return await fetch(
-    "https://cors-anywhere.herokuapp.com/https://taxilead.herokuapp.com/submitUserData",
+    "https://data.workcations.in/submitUserData",
     requestOptions
   )
     .then((response) => response.text())
@@ -763,7 +763,7 @@ const BookingPage = ({ data, bookingSlug }) => {
         ) : (
           <DownloadContainer>
             <DownloadInvoice
-              href={`https://taxilead.herokuapp.com/pdf/${bookingSlug}`}
+              href={`https://data.workcations.in/pdf/${bookingSlug}`}
               target="_blank"
               rel="noopener noreferrer"
             >

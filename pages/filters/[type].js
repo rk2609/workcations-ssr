@@ -41,7 +41,11 @@ const MobileFilter = () => {
       queryLink += "&max=" + max;
     }
 
-    return encodeURI(queryLink);
+    if (queryLink.length > 1) {
+      return encodeURI(queryLink);
+    }
+
+    return encodeURI("");
   };
 
   return (
@@ -50,6 +54,7 @@ const MobileFilter = () => {
         <title>Filter By {type}</title>
         <link rel="icon" href="/favicon.ico" />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <meta name="robots" content="noindex" />
       </Head>
       <FiltersMobile
         citiesLink={cities}
