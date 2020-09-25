@@ -110,6 +110,15 @@ const propertyReducer = (state = INITIAL_STATE, action) => {
         ...state,
         bookingPopup: false,
       };
+    case PropertiesActionTypes.RESET_FILTER:
+      return {
+        ...state,
+        selectedStateList: [],
+        selectedTypeList: [],
+        selectedMinPrice: null,
+        selectedMaxPrice: null,
+        selectedDestinationList: [],
+      };
     default:
       return state;
   }

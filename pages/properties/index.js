@@ -3,7 +3,10 @@ import Head from "next/head";
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/router";
 
-import { setPropertyListStart } from "../../redux/property/properties.actions";
+import {
+  setPropertyListStart,
+  resetFilters,
+} from "../../redux/property/properties.actions";
 import { selectPropertyList } from "../../redux/property/properties.selectors";
 
 import { toggleContactPopupPosition } from "../../redux/contact-popup/contact-popup.actions";

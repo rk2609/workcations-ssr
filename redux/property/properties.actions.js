@@ -79,3 +79,7 @@ export const setPropertyListFailure = (error) => ({
   type: PropertiesActionTypes.SET_PROPERTY_LIST_FAILURE,
   payload: error,
 });
+
+export const resetFilters = () => ({
+  type: PropertiesActionTypes.RESET_FILTER,
+});
