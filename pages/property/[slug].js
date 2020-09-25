@@ -86,7 +86,7 @@ export const getStaticPaths = async () => {
 
   const getPropertiesListExcel = async () => {
     const url =
-      "https://spreadsheets.google.com/feeds/list/14sxSAFqgV2o3xTlK2nghOxXhecij8FGQlZpECee45gM/1/public/values?alt=json";
+      "https://spreadsheets.google.com/feeds/list/1ElB8__7-aR5ncoxSsWgtmbaInzxCE5eiww6WL6s1Vhs/1/public/values?alt=json";
 
     const requestOptions = {
       method: "GET",
@@ -289,7 +289,7 @@ export const getStaticProps = async ({ params }) => {
     let sheetNo = 5;
 
     await getProperties(
-      "https://spreadsheets.google.com/feeds/list/14sxSAFqgV2o3xTlK2nghOxXhecij8FGQlZpECee45gM/1/public/values?alt=json",
+      "https://spreadsheets.google.com/feeds/list/1ElB8__7-aR5ncoxSsWgtmbaInzxCE5eiww6WL6s1Vhs/1/public/values?alt=json",
       {
         method: "GET",
         redirect: "follow",
@@ -299,7 +299,7 @@ export const getStaticProps = async ({ params }) => {
     });
 
     const url =
-      "https://spreadsheets.google.com/feeds/list/14sxSAFqgV2o3xTlK2nghOxXhecij8FGQlZpECee45gM/" +
+      "https://spreadsheets.google.com/feeds/list/1ElB8__7-aR5ncoxSsWgtmbaInzxCE5eiww6WL6s1Vhs/" +
       sheetNo +
       "/public/values?alt=json";
 
