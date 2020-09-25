@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import Link from "next/link";
 
 import { Container, Card, Text, Title, Count } from "./featured-states.style";
@@ -10,14 +10,22 @@ const FeaturedStates = ({ propertyList }) => (
         <Text>
           <Title>himachal pradesh</Title>
           <Count>
-            {
-              propertyList.filter(
-                (property) =>
-                  property.location.state === "himachal pradesh" &&
-                  property.visibility === "TRUE"
-              ).length
-            }{" "}
-            Properties
+            {propertyList.filter(
+              (property) =>
+                property.location.state === "himachal pradesh" &&
+                property.visibility === "TRUE"
+            ).length > 0 ? (
+              <Fragment>
+                {
+                  propertyList.filter(
+                    (property) =>
+                      property.location.state === "himachal pradesh" &&
+                      property.visibility === "TRUE"
+                  ).length
+                }{" "}
+                Properties
+              </Fragment>
+            ) : null}
           </Count>
         </Text>
       </Card>
@@ -28,32 +36,22 @@ const FeaturedStates = ({ propertyList }) => (
         <Text>
           <Title>uttarakhand</Title>
           <Count>
-            {
-              propertyList.filter(
-                (property) =>
-                  property.location.state === "uttarakhand" &&
-                  property.visibility === "TRUE"
-              ).length
-            }{" "}
-            Properties
-          </Count>
-        </Text>
-      </Card>
-    </Link>
-
-    <Link href="/properties?states=rajasthan" passHref>
-      <Card style={{ backgroundImage: `url(rajasthan.png)` }}>
-        <Text>
-          <Title>rajasthan</Title>
-          <Count>
-            {
-              propertyList.filter(
-                (property) =>
-                  property.location.state === "rajasthan" &&
-                  property.visibility === "TRUE"
-              ).length
-            }{" "}
-            Properties
+            {propertyList.filter(
+              (property) =>
+                property.location.state === "uttarakhand" &&
+                property.visibility === "TRUE"
+            ).length > 0 ? (
+              <Fragment>
+                {
+                  propertyList.filter(
+                    (property) =>
+                      property.location.state === "uttarakhand" &&
+                      property.visibility === "TRUE"
+                  ).length
+                }{" "}
+                Properties
+              </Fragment>
+            ) : null}
           </Count>
         </Text>
       </Card>
@@ -64,32 +62,22 @@ const FeaturedStates = ({ propertyList }) => (
         <Text>
           <Title>goa</Title>
           <Count>
-            {
-              propertyList.filter(
-                (property) =>
-                  property.location.state === "goa" &&
-                  property.visibility === "TRUE"
-              ).length
-            }{" "}
-            Properties
-          </Count>
-        </Text>
-      </Card>
-    </Link>
-
-    <Link href="/properties?states=maharashtra" passHref>
-      <Card style={{ backgroundImage: `url(maharashtra.png)` }}>
-        <Text>
-          <Title>maharashtra</Title>
-          <Count>
-            {
-              propertyList.filter(
-                (property) =>
-                  property.location.state === "maharashtra" &&
-                  property.visibility === "TRUE"
-              ).length
-            }{" "}
-            Properties
+            {propertyList.filter(
+              (property) =>
+                property.location.state === "goa" &&
+                property.visibility === "TRUE"
+            ).length > 0 ? (
+              <Fragment>
+                {
+                  propertyList.filter(
+                    (property) =>
+                      property.location.state === "goa" &&
+                      property.visibility === "TRUE"
+                  ).length
+                }{" "}
+                Properties
+              </Fragment>
+            ) : null}
           </Count>
         </Text>
       </Card>
@@ -100,14 +88,74 @@ const FeaturedStates = ({ propertyList }) => (
         <Text>
           <Title>karnataka</Title>
           <Count>
-            {
-              propertyList.filter(
-                (property) =>
-                  property.location.state === "karnataka" &&
-                  property.visibility === "TRUE"
-              ).length
-            }{" "}
-            Properties
+            {propertyList.filter(
+              (property) =>
+                property.location.state === "karnataka" &&
+                property.visibility === "TRUE"
+            ).length > 0 ? (
+              <Fragment>
+                {
+                  propertyList.filter(
+                    (property) =>
+                      property.location.state === "karnataka" &&
+                      property.visibility === "TRUE"
+                  ).length
+                }{" "}
+                Properties
+              </Fragment>
+            ) : null}
+          </Count>
+        </Text>
+      </Card>
+    </Link>
+
+    <Link href="/properties?states=maharashtra" passHref>
+      <Card style={{ backgroundImage: `url(maharashtra.png)` }}>
+        <Text>
+          <Title>maharashtra</Title>
+          <Count>
+            {propertyList.filter(
+              (property) =>
+                property.location.state === "maharashtra" &&
+                property.visibility === "TRUE"
+            ).length > 0 ? (
+              <Fragment>
+                {
+                  propertyList.filter(
+                    (property) =>
+                      property.location.state === "maharashtra" &&
+                      property.visibility === "TRUE"
+                  ).length
+                }{" "}
+                Properties
+              </Fragment>
+            ) : null}
+          </Count>
+        </Text>
+      </Card>
+    </Link>
+
+    <Link href="/properties?states=rajasthan" passHref>
+      <Card style={{ backgroundImage: `url(rajasthan.png)` }}>
+        <Text>
+          <Title>rajasthan</Title>
+          <Count>
+            {propertyList.filter(
+              (property) =>
+                property.location.state === "rajasthan" &&
+                property.visibility === "TRUE"
+            ).length > 0 ? (
+              <Fragment>
+                {
+                  propertyList.filter(
+                    (property) =>
+                      property.location.state === "rajasthan" &&
+                      property.visibility === "TRUE"
+                  ).length
+                }{" "}
+                Properties
+              </Fragment>
+            ) : null}
           </Count>
         </Text>
       </Card>

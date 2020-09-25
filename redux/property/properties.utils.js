@@ -155,6 +155,7 @@ export const GetPropertyData = (slug) => {
   return Properties.filter((property) => property.slug === slug);
 };
 
+/*
 const getProperties = async (url, requestOptions) =>
   await fetch(url, requestOptions)
     .then((res) => res.text())
@@ -298,10 +299,12 @@ const getProperty = async (url, requestOptions) =>
       ];
     });
 
+    */
+
 export const getPropertiesListExcel = async () => {
   var myHeaders = new Headers();
   myHeaders.append("Content-Type", "application/json");
-  const url = "https://taxilead.herokuapp.com/properties";
+  const url = "https://data.workcations.in/properties";
 
   var requestOptions = {
     method: "GET",
@@ -318,7 +321,7 @@ export const getPropertiesListExcel = async () => {
 export const getPropertyExcel = async (slug) => {
   var myHeaders = new Headers();
   myHeaders.append("Content-Type", "application/json");
-  const url = "https://taxilead.herokuapp.com/property/" + slug;
+  const url = "https://data.workcations.in/property/" + slug;
 
   var requestOptions = {
     method: "GET",
