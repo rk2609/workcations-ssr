@@ -1,5 +1,12 @@
 const BlogsList = [
   {
+    slug: "guide-for-workcation-at-lonavala",
+    title: "Pack Your Bags & Have A Workcation At Lonavala",
+    description: `Planning for a much awaited workcation at Lonavala? Here is list of activities which you should explore at your staycation at lonavala. Lonavala to Punekars and Mumbaikars is what Hamptons to New Yorkers! Who doesn’t like the lush green mountains, hillocks, cascades, dams, museums and multiple other attractions of Lonavala? `,
+    date: "26th Sep 2020",
+    tags: ["Workcations", "Lonavala"],
+  },
+  {
     slug: "reasons-to-choose-manali-for-workation",
     title: "Why Manali Is Our Fave Workcation Spot?",
     description: `Seriously need reasons to choose Manali for workcation? Check out our seven reasons which make Manali the perfect workation spot! Come October and Manali is opening its doors for all of us. Touted as India’s one of the most popular tourist destinations, Manali is beautiful, romantic and cozy to spend long stays and vacations. Not just that, why not take a break from your mundane routine and go on a workcation, a unique trip that is a combination of work and vacation.`,
