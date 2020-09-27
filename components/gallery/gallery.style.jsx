@@ -65,6 +65,7 @@ export const ThumbnailContainer = styled.div`
   margin-top: 10px;
 
   @media only screen and (max-width: 900px) {
+    max-width: 100%;
     margin-top: 10px;
     grid-template-columns: 1fr;
   }
