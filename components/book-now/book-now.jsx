@@ -119,8 +119,8 @@ const BookNow = ({
   const today = new Date();
   let endDateInitial = new Date();
 
-  if (minDuration <= 16) {
-    endDateInitial.setDate(today.getDate() + 16);
+  if (!minDuration) {
+    endDateInitial.setDate(today.getDate() + 1);
   } else {
     endDateInitial.setDate(today.getDate() + minDuration);
   }
