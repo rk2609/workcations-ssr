@@ -58,7 +58,7 @@ export const GalleryArrow = styled.div`
 
 export const ThumbnailContainer = styled.div`
   width: 100%;
-  max-width: 100%;
+  max-width: 50vw;
   display: grid;
   grid-template-columns: 30px 1fr 30px;
   column-gap: 10px;
@@ -97,6 +97,7 @@ export const ArrowContainer = styled.div`
 export const Thumbnails = styled.div`
   height: 5vw;
   width: 100%;
+  max-width: calc(50vw - 80px);
   display: flex;
   flex-direction: row;
   overflow: scroll;

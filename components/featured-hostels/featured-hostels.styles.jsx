@@ -17,7 +17,8 @@ export const Container = styled.div`
 
 export const FlexContainer = styled.div`
   scroll-behavior: smooth;
-  width: 100%;
+  width: calc(80vw - 60px);
+  max-width: calc(80vw - 60px);
   display: flex;
   flex-direction: row;
   align-items: center;
