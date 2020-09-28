@@ -1,5 +1,12 @@
 const BlogsList = [
   {
+    slug: "reasons-to-plan-workation-in-pushkar",
+    title: "Workcation in Pushkar - A Rejuvenating Option for Work and Vacay",
+    description: `Planning for a work and vacation in Rajwada style? Then nothing can beat a Workation in Pushkar, a perfect serene getaway in home of Lord Brahma. The glory, history, and rich culture of Pushkar do not need any introduction. This ancient town located in Rajasthan has been popularly known for its spiritual significance, as a very rare Lord Brahma temple is located here.`,
+    date: "28th Sep 2020",
+    tags: ["Workcations", "Pushkar"],
+  },
+  {
     slug: "guide-for-workcation-at-lonavala",
     title: "Pack Your Bags & Have A Workcation At Lonavala",
     description: `Planning for a much awaited workcation at Lonavala? Here is list of activities which you should explore at your staycation at lonavala. Lonavala to Punekars and Mumbaikars is what Hamptons to New Yorkers! Who doesn’t like the lush green mountains, hillocks, cascades, dams, museums and multiple other attractions of Lonavala? `,
