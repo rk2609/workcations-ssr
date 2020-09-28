@@ -1,67 +1,25 @@
 import styled from "styled-components";
 
-const Paragraph = styled.div`
-  text-align: justify;
-  line-height: 2;
-  padding: 0px;
-`;
-
-const Container = styled.div`
-  background-color: white;
-  margin: 0px auto;
-  width: 80%;
-  border-radius: 0px;
-  padding: 20px 80px;
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 15px;
-  overflow-x: hidden;
-
-  @media screen and (max-width: 950px) {
-    width: 100%;
-  }
+export const BlogContainer = styled.div`
+  width: 88vw;
+  margin: 50px auto;
+  padding-top: 20px;
 
   @media screen and (max-width: 650px) {
-    padding-left: 20px;
-    padding-right: 20px;
-  }
-
-  hr {
-    width: 100%;
-    background-color: #00000010;
-    height: 0px;
-    border: 0px;
-    margin: 0px auto;
-
-    @media screen and (max-width: 650px) {
-      height: 3px;
-    }
+    width: 100vw;
   }
 `;
 
-export const BlogContainer = styled(Container)`
-  display: grid;
-  width: 88%;
-  grid-template-columns: 1fr;
-  grid-gap: 0px 0px;
-  padding-bottom: 0px;
-  margin-top: 50px;
-
-  @media screen and (max-width: 650px) {
-    padding-left: 0px;
-    padding-right: 0px;
-  }
-`;
-
-export const BlogContent = styled(Container)`
+export const BlogContent = styled.div`
   width: 80%;
   margin: 0px auto;
-  padding: 0px;
-  display: flex;
-  flex-direction: column;
+
+  @media screen and (max-width: 650px) {
+    width: 100%;
+  }
 `;
 
-export const BlogSidebar = styled(Container)`
+export const BlogSidebar = styled.div`
   background-color: #ff6b6c;
   width: 100%;
   display: none;
@@ -76,8 +34,12 @@ export const BlogTitle = styled.div`
   text-transform: capitalize;
   font-size: 25px;
   font-weight: 700;
-  margin: 10px 0px;
+  margin: 25px auto;
   width: 100%;
+
+  @media screen and (max-width: 650px) {
+    width: 90%;
+  }
 `;
 
 export const Tags = styled.div`
@@ -100,38 +62,40 @@ export const Tags = styled.div`
       color: white;
     }
   }
+
+  @media screen and (max-width: 650px) {
+    width: 90%;
+    margin: 0px auto;
+  }
 `;
 
-export const Text = styled(Paragraph)`
-  padding: 0px;
+export const Text = styled.div`
   font-size: 0.9em;
   line-height: 1.7em;
+  text-align: justify;
+  padding: 0px;
+  margin: 20px auto;
 
   a {
     text-decoration: none;
     color: #ff6b6c;
     padding-left: 0.3em;
   }
+
+  @media screen and (max-width: 650px) {
+    width: 90%;
+  }
 `;
 
-const getImageWidth = (props) => {
-  if (props.width) {
-    return props.width;
-  }
-
-  return 75;
-};
-
 export const ImageCon = styled.div`
-  width: ${getImageWidth}%;
-  margin: 0px auto;
+  width: 75%;
+  margin: 20px auto;
   display: flex;
   flex-direction: column;
   box-shadow: 0px 0px 5px #bbbbbb;
 
   @media screen and (max-width: 650px) {
-    width: calc(100% + 40px);
-    margin-left: -20px;
+    width: 100%;
   }
 `;
 
@@ -162,16 +126,12 @@ export const Caption = styled.div`
   text-align: center;
 `;
 
-const getMarginTop = (props) => {
-  if (props.margin) {
-    if (window.screen.width > 800) return props.margin;
-    return props.margin / 2;
-  }
-  return 0;
-};
-
 export const SubHeading = styled.div`
+  margin-top: 40px;
   font-weight: 600;
   text-transform: capitalize;
-  margin-top: ${getMarginTop}px;
+
+  @media screen and (max-width: 650px) {
+    margin-left: 5%;
+  }
 `;

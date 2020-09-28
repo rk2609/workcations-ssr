@@ -16,6 +16,12 @@ export const ButtonsContainer = styled.div`
   border-bottom: 1.5px solid #00000020;
   margin-bottom: 20px;
 
+  @media screen and (max-width: 650px) {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
   span {
     font-size: 16px;
     color: #ff6b6c;
