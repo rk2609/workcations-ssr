@@ -10,7 +10,7 @@ const Inclusions = ({ inclusions, features, breakfast, lunch, dinner }) => {
       "Daily Homely Meals:\n- Breakfast: 1 item + Bread Toast + Tea/Coffee\n- Lunch: 1 Veg Curry + 1 Seasonal Veg + Rice/Chapati + Salad/Pickle\n- Evening Tea/Coffee\n- Dinner: 1 Dal + 1 Seasonal Veg + Rice/Chapati + Salad/Pickle"
     );
   } else if (breakfast === 0) {
-    inclusionsAll.push("Daily Breakfast & Evening Tea");
+    inclusionsAll.push("Daily Breakfast");
   }
 
   if (features.indexOf("wifi") > -1) {

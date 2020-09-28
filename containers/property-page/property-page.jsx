@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect } from "react";
 
 import Head from "next/head";
 
@@ -54,6 +54,17 @@ const PropertyPage = ({
   upload,
   houseRules,
 }) => {
+  useEffect(() => {
+    if (loadElements) {
+      const imageLinks = inventory.map((room) => room.image);
+      for (let i = 0; i < imageLinks.length; i++) {
+        imageLinks[i].forEach((image) => {
+          fetch(`https://www.wanderon.in/workcations/${slug}/${image}.jpg`);
+        });
+      }
+    }
+  }, [loadElements]);
+
   return (
     <Fragment>
       <Head>

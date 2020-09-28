@@ -9,6 +9,7 @@ import {
   FeaturedHotels,
 } from "../../components/featured-hostels/featured-hostels";
 import Blogs from "../../components/blogs-homepage/blogs-homepage";
+import PressRelease from "../../components/press-release/press-release";
 
 import {
   MegaContainer,
@@ -115,6 +116,10 @@ const HomePage = ({ screenWidth, loadElements, propertyList }) => {
             and Travel
           </SubHeading>
           {loadElements ? <Blogs /> : null}
+        </SubContainer>
+        <SubContainer>
+          <Heading>In Media</Heading>
+          {loadElements ? <PressRelease /> : null}
         </SubContainer>
       </Container>
     </MegaContainer>
