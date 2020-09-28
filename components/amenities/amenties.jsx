@@ -22,7 +22,7 @@ const Amenities = (value) => {
     },
     {
       title: "daily meals",
-      text: "Daily Meals",
+      text: "Homely Meals",
       image: "/amenities/homely-meals.svg",
     },
     {
@@ -97,6 +97,61 @@ const Amenities = (value) => {
       title: "bonfire",
       text: "Bonfire (on Request)",
       image: "/amenities/bonfire.svg",
+    },
+    {
+      title: "bonfire request",
+      text: "Bonfire (on Request)",
+      image: "/amenities/bonfire.svg",
+    },
+    {
+      title: "bonfire request",
+      text: "Bonfire (on Request)",
+      image: "/amenities/bonfire.svg",
+    },
+    {
+      title: "lawn",
+      text: "Lawn",
+      image: "/amenities/lawn.svg",
+    },
+    {
+      title: "bonfire paid",
+      text: "Bonfire (Paid)",
+      image: "/amenities/bonfire-paid.svg",
+    },
+    {
+      title: "washing machine",
+      text: "Washing Machine",
+      image: "/amenities/washing-machine.svg",
+    },
+    {
+      title: "refrigerator",
+      text: "Refrigerator",
+      image: "/amenities/refrigerator.svg",
+    },
+    {
+      title: "kitchen",
+      text: "Kitchen",
+      image: "/amenities/kitchen.svg",
+    },
+    {
+      title: "table chair setup",
+      text: "Table & Chair Setup",
+      image: "/amenities/table-chair.svg",
+    },
+    {
+      title: "forest view",
+      text: "Forest View",
+      image: "/amenities/forest-view.svg",
+    },
+    {
+      title: "lake view",
+      text: "Lake View",
+      image: "/amenities/lake-view.svg",
+    },
+    {
+      title: "riverside location",
+      text: "Riverside Location",
+      image: "/amenities/riverside.svg",
     },
   ];
   return (

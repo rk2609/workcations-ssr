@@ -5,7 +5,7 @@ const words = [
   "^200 High Speed Internet",
   "^200 Sanitized Stays",
   "^200 Work Friendly Spaces",
-  "^200 Nutritious Meals",
+  "^200 Homely Meals",
 ];
 
 import { Container } from "./typing.style";
