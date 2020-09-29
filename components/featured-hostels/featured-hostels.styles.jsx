@@ -6,7 +6,7 @@ export const Container = styled.div`
   display: grid;
   grid-template-columns: 1fr 40px;
   grid-column-gap: 15px;
-  margin-top: 2vw;
+  margin-top: 20px;
 
   @media only screen and (max-width: 600px) {
     grid-template-columns: 1fr;
@@ -22,7 +22,7 @@ export const FlexContainer = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  overflow: scroll;
+  overflow-x: scroll;
   padding: 2vw 0;
 
   @media only screen and (max-width: 900px) {
@@ -32,7 +32,8 @@ export const FlexContainer = styled.div`
 `;
 
 export const ArrowContainer = styled.div`
-  height: 100%;
+  height: 14.75vw;
+  margin: auto 0px;
   background-color: rgba(0, 0, 0, 0);
   display: flex;
   align-items: center;

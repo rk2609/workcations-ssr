@@ -3,13 +3,13 @@ import styled from "styled-components";
 export const HeroContainer = styled.div`
   /* cover */
   width: 100%;
-  height: 50vw;
+  height: calc(100vh - 50px);
   background-image: url("/hero/hero1500.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 
-  @media only screen and (max-width: 600px) {
+  @media only screen and (max-width: 769px) {
     background-position: top;
     height: 60vh;
     background-image: url("/hero/hero700.jpg");
@@ -26,7 +26,7 @@ export const Container = styled.div`
   align-items: flex-end;
   justify-content: flex-start;
 
-  @media only screen and (max-width: 600px) {
+  @media only screen and (max-width: 769px) {
     flex-direction: column;
     align-items: center;
     justify-content: flex-end;
@@ -44,7 +44,7 @@ export const SearchBox = styled.div`
   border-radius: 10px;
   margin: 0 15vw 10vw 15vw;
 
-  @media only screen and (max-width: 600px) {
+  @media only screen and (max-width: 769px) {
     margin: 0;
     width: 80vw;
     padding: 5vw 0;
@@ -58,7 +58,7 @@ export const Heading = styled.span`
   align-self: flex-start;
   padding-left: 2.5vw;
 
-  @media only screen and (max-width: 600px) {
+  @media only screen and (max-width: 769px) {
     font-size: 3.6vw;
     padding-left: 5vw;
   }
@@ -71,7 +71,7 @@ export const Text = styled.span`
   padding-left: 2.5vw;
   font-weight: 100;
 
-  @media only screen and (max-width: 600px) {
+  @media only screen and (max-width: 769px) {
     display: none;
   }
 `;
@@ -81,7 +81,7 @@ export const SearchContainer = styled.div`
   margin: 3.5vw 0 2.5vw 0;
   position: relative;
 
-  @media only screen and (max-width: 600px) {
+  @media only screen and (max-width: 769px) {
     width: 70vw;
     margin: 3vw 0;
   }
@@ -95,7 +95,7 @@ export const Search = styled.input`
   padding: 0.8vw 1vw;
   margin: 0px;
 
-  @media only screen and (max-width: 600px) {
+  @media only screen and (max-width: 769px) {
     width: 70vw;
     font-size: 2vw;
     padding: 1.2vw 2vw;
@@ -116,7 +116,7 @@ export const SearchItems = styled.div`
   flex-wrap: nowrap;
   transition: display 0.3s ease-in-out;
 
-  @media only screen and (max-width: 600px) {
+  @media only screen and (max-width: 769px) {
     max-height: 30vh;
   }
 `;
@@ -135,7 +135,7 @@ export const SearchItem = styled.a`
     font-weight: 600;
   }
 
-  @media only screen and (max-width: 600px) {
+  @media only screen and (max-width: 769px) {
     font-size: 3vw;
     border-top: 0.5px solid #707070;
   }
@@ -155,7 +155,7 @@ export const Button = styled.div`
   border-radius: 5px;
   text-transform: uppercase;
 
-  @media only screen and (max-width: 600px) {
+  @media only screen and (max-width: 769px) {
     width: 70vw;
     font-size: 3vw;
     padding: 1vw 0vw;
@@ -169,7 +169,7 @@ export const Features = styled.div`
   font-weight: 600;
   margin-bottom: 23.5vw;
 
-  @media only screen and (max-width: 600px) {
+  @media only screen and (max-width: 769px) {
     font-size: 5vw;
     margin: 8vh 0 6vh 0;
   }

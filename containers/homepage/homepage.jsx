@@ -118,7 +118,7 @@ const HomePage = ({ screenWidth, loadElements, propertyList }) => {
           {loadElements ? <Blogs /> : null}
         </SubContainer>
         <SubContainer>
-          <Heading>In Media</Heading>
+          <Heading>Featured On</Heading>
           {loadElements ? <PressRelease /> : null}
         </SubContainer>
       </Container>

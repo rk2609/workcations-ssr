@@ -31,7 +31,7 @@ const FeaturedStays = ({ featured, propertyList }) => (
                 }}
               >
                 <ImageContainer>
-                  <Type>{property.type}</Type>
+                  <Type type={property.type}>{property.type}</Type>
                   <Price>
                     {property.long}
                     <span>/night</span>

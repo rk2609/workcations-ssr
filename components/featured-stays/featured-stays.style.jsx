@@ -66,7 +66,16 @@ export const Type = styled.div`
   font-size: 0.9vw;
   line-height: 1vw;
   font-weight: 400;
-  background-color: #ff6b6c;
+  background-color: ${(props) =>
+    props.type === "homestay"
+      ? "#ff4500"
+      : props.type === "hostel"
+      ? "#11c170"
+      : props.type === "hotel"
+      ? "#ea0042"
+      : props.type === "resort"
+      ? "#9449ea"
+      : "#0089ea"};
   display: flex;
   align-items: center;
   justify-content: center;

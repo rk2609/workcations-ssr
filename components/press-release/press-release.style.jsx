@@ -7,7 +7,7 @@ export const Container = styled.div`
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  margin: 2vw 0;
+  margin: 2vw 0 6vw 0;
 
   @media only screen and (max-width: 600px) {
     justify-content: space-around;
