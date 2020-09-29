@@ -11,7 +11,7 @@ export const Container = styled.a`
   border-radius: 5px;
   padding: 0.5vw;
   cursor: pointer;
-  height: 100%;
+  margin-bottom: 3vw;
 
   @media only screen and (max-width: 900px) {
     padding: 1vw;

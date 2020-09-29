@@ -408,11 +408,44 @@ const BookNow = ({
             {inventory.map((room, i) => (
               <RoomCard key={room.type}>
                 <ImageCon>
-                  <RoomImage
-                    style={{
-                      backgroundImage: `url(https://www.wanderon.in/workcations/${slug}/${room.image[0]}.jpg)`,
-                    }}
-                  />
+                  {room.size !== "-1" ||
+                  room.balcony !== "-1" ||
+                  room.view !== "-1" ||
+                  room.features[0] !== "-1" ? (
+                    <RoomImage
+                      style={{
+                        backgroundImage: `url(https://www.wanderon.in/workcations/${slug}/${room.image[0]}.jpg)`,
+                      }}
+                      onClick={() => {
+                        setRoomPopup({
+                          size: room.size,
+                          balcony: room.balcony,
+                          view: room.view,
+                          features: room.features,
+                          images: room.image,
+                          isOpen: true,
+                          closePopup: () => {
+                            setRoomPopup({
+                              size: "-1",
+                              balcony: "-1",
+                              view: "-1",
+                              features: ["-1"],
+                              images: [],
+                              isOpen: false,
+                              closePopup: () => {},
+                            });
+                          },
+                        });
+                      }}
+                    />
+                  ) : (
+                    <RoomImage
+                      style={{
+                        backgroundImage: `url(https://www.wanderon.in/workcations/${slug}/${room.image[0]}.jpg)`,
+                      }}
+                    />
+                  )}
+
                   {room.size !== "-1" ||
                   room.view !== "-1" ||
                   room.balcony !== "-1" ? (

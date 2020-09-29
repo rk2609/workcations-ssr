@@ -174,9 +174,9 @@ export const RoomsContainer = styled.div`
   background-color: #f5f5f5;
   box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 3px;
   border-radius: 5px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-items: center;
   overflow: scroll;
   padding-bottom: 1vw;
 
@@ -218,6 +218,7 @@ export const RoomImage = styled.div`
   background-repeat: no-repeat;
   background-size: cover;
   border-radius: 5px;
+  cursor: pointer;
 
   @media only screen and (max-width: 900px) {
     height: 17vw;

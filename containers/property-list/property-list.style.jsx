@@ -12,11 +12,13 @@ export const Container = styled.div`
 
 export const PropertyListContainer = styled.div`
   width: 100%;
-  display: flex;
+  /*display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
+  flex-wrap: wrap;*/
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
   justify-content: flex-start;
-  gap: 3vw;
+  column-gap: 3vw;
 
   @media only screen and (max-width: 900px) {
     display: grid;
