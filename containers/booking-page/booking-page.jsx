@@ -97,6 +97,8 @@ const BookingPage = ({ data, bookingSlug }) => {
     breakfast,
     lunch,
     dinner,
+    transportation,
+    remarks,
   } = data;
 
   const checkInDate = new Date(checkIn);
@@ -240,6 +242,8 @@ const BookingPage = ({ data, bookingSlug }) => {
       breakfast,
       lunch,
       dinner,
+      transportation,
+      remarks,
     };
 
     submitUserData(data).then((res) => {
