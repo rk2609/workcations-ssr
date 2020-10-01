@@ -1,5 +1,13 @@
 const BlogsList = [
   {
+    slug: "reasons-to-plan-workcation-in-gokarna",
+    title:
+      "Bangalore Techies, Reasons Why You Should Have A Workcation In Gokarna",
+    description: `Stuck in the Hustle and Bustle of the IT city! Finally, We got you a perfect solution, A Workation in Gokarna. Idyllic beaches, picturesque temples, serene surroundings —Gokarna is all these things. A small and quiet temple town in Karnataka, Gokarna is one of our favourite picks for weekend getaways and fun vacations.`,
+    date: "01st Oct 2020",
+    tags: ["Workcations", "GoKarna"],
+  },
+  {
     slug: "reasons-to-plan-workation-in-pushkar",
     title: "Workcation in Pushkar - A Rejuvenating Option for Work and Vacay",
     description: `Planning for a work and vacation in Rajwada style? Then nothing can beat a Workation in Pushkar, a perfect serene getaway in home of Lord Brahma. The glory, history, and rich culture of Pushkar do not need any introduction. This ancient town located in Rajasthan has been popularly known for its spiritual significance, as a very rare Lord Brahma temple is located here.`,

@@ -6,8 +6,8 @@ export const Container = styled.div`
   flex-direction: row;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: space-between;
-  margin: 2vw 0 6vw 0;
+  justify-content: space-around;
+  margin: 2vw 0 2vw 0;
 
   @media only screen and (max-width: 600px) {
     justify-content: space-around;
@@ -23,6 +23,7 @@ export const Card = styled.a`
   img {
     width: 70%;
     height: auto;
+    margin-bottom: 4vw;
   }
 
   @media only screen and (max-width: 600px) {
