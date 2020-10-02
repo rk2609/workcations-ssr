@@ -58,7 +58,7 @@ const PropertyList = ({ loadElements, cities, states, types, min, max }) => {
   useEffect(() => {
     setTimeout(() => {
       setFooter(true);
-    }, 2500);
+    }, 6500);
   }, []);
 
   return (
