@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import Link from "next/link";
 
@@ -53,9 +53,17 @@ const PropertyList = ({ loadElements, cities, states, types, min, max }) => {
   const filteredMaxPrice = useSelector(selectSelectedMaxPrice);
   const filteredCities = useSelector(selectSelectedDestinationList);
 
+  const [showFooter, setFooter] = useState(false);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setFooter(true);
+    }, 2500);
+  }, []);
+
   return (
     <Container>
-      <PropertyListContainer>
+      <PropertyListContainer loadElements={showFooter}>
         {filteredProperties.length === 0 &&
         filteredStates.length === 0 &&
         filteredTypes.length === 0 &&
