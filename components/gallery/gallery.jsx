@@ -12,7 +12,7 @@ import {
 const Gallery = ({ images, slug, loadElements }) => {
   const thumbnailContainer = useRef(null);
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [count, setCount] = useState(9);
+  const [count, setCount] = useState(200);
 
   useEffect(() => {
     if (loadElements) {
