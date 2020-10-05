@@ -40,7 +40,7 @@ const PropertyItem = ({
           <MainImage
             style={{
               backgroundImage:
-                "url(https://www.wanderon.in/workcations/" +
+                "url(https://cdn.workcations.in/" +
                 slug +
                 "/" +
                 currentImage +
@@ -53,7 +53,7 @@ const PropertyItem = ({
             <SmallImage
               style={{
                 backgroundImage:
-                  "url(https://www.wanderon.in/workcations/" +
+                  "url(https://cdn.workcations.in/" +
                   slug +
                   "/" +
                   images[0] +
@@ -66,7 +66,7 @@ const PropertyItem = ({
             <SmallImage
               style={{
                 backgroundImage:
-                  "url(https://www.wanderon.in/workcations/" +
+                  "url(https://cdn.workcations.in/" +
                   slug +
                   "/" +
                   images[1] +
@@ -79,7 +79,7 @@ const PropertyItem = ({
             <SmallImage
               style={{
                 backgroundImage:
-                  "url(https://www.wanderon.in/workcations/" +
+                  "url(https://cdn.workcations.in/" +
                   slug +
                   "/" +
                   images[2] +
@@ -92,7 +92,7 @@ const PropertyItem = ({
             <SmallImage
               style={{
                 backgroundImage:
-                  "url(https://www.wanderon.in/workcations/" +
+                  "url(https://cdn.workcations.in/" +
                   slug +
                   "/" +
                   images[3] +

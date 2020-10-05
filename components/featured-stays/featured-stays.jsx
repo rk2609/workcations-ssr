@@ -27,7 +27,7 @@ const FeaturedStays = ({ featured, propertyList }) => (
             <Card key={property.slug} target="_blank">
               <Image
                 style={{
-                  backgroundImage: `linear-gradient(to top,rgba(0,0,0,.7) 15%,rgba(0,0,0,0) 35%),url(https://www.wanderon.in/workcations/${property.slug}/${property.images[0]}.jpg)`,
+                  backgroundImage: `linear-gradient(to top,rgba(0,0,0,.7) 15%,rgba(0,0,0,0) 35%),url(https://cdn.workcations.in/${property.slug}/${property.images[0]}.jpg)`,
                 }}
               >
                 <ImageContainer>

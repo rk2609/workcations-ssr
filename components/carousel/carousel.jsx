@@ -119,7 +119,7 @@ const Carousel = ({ slug, type, city, state }) => {
                   <Image
                     style={{
                       backgroundImage:
-                        "url(https://www.wanderon.in/workcations/" +
+                        "url(https://cdn.workcations.in/" +
                         property.slug +
                         "/" +
                         property.images[0] +
@@ -155,7 +155,7 @@ const Carousel = ({ slug, type, city, state }) => {
                   <Image
                     style={{
                       backgroundImage:
-                        "url(https://www.wanderon.in/workcations/" +
+                        "url(https://cdn.workcations.in/" +
                         property.slug +
                         "/" +
                         property.images[0] +

@@ -299,7 +299,7 @@ const BookingPage = ({ data, bookingSlug }) => {
                   <SummaryItem key={i}>
                     <Image
                       src={
-                        "https://www.wanderon.in/workcations/" +
+                        "https://cdn.workcations.in/" +
                         property.slug +
                         "/" +
                         cartItem.image +

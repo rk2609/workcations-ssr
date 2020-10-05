@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 
 import {
   Container,
@@ -12,6 +12,13 @@ import {
 const Gallery = ({ images, slug, loadElements }) => {
   const thumbnailContainer = useRef(null);
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [count, setCount] = useState(9);
+
+  useEffect(() => {
+    if (loadElements) {
+      setCount(200);
+    }
+  }, [loadElements]);
 
   const nextSlide = () => {
     if (currentSlide !== images.length - 1) {
@@ -45,7 +52,7 @@ const Gallery = ({ images, slug, loadElements }) => {
     <Container>
       <HeroImage
         style={{
-          backgroundImage: `url(https://www.wanderon.in/workcations/${slug}/${images[currentSlide]}.jpg)`,
+          backgroundImage: `url(https://cdn.workcations.in/${slug}/${images[currentSlide]}.jpg)`,
         }}
       >
         <GalleryArrow>
@@ -76,11 +83,21 @@ const Gallery = ({ images, slug, loadElements }) => {
 
         <Thumbnails ref={thumbnailContainer} className="thumbnail-container">
           {images.map((image, i) =>
-            i === currentSlide ? (
+            i === currentSlide && i < count ? (
               <div
                 key={image}
                 style={{
-                  backgroundImage: `url(https://www.wanderon.in/workcations/${slug}/${image}.jpg)`,
+                  backgroundImage: `url(https://cdn.workcations.in/${slug}/${image}.jpg)`,
+                }}
+                onClick={() => {
+                  activeSlide(i);
+                }}
+              ></div>
+            ) : i < count ? (
+              <div
+                key={image}
+                style={{
+                  backgroundImage: `linear-gradient(to top,rgba(0,0,0,0.45) 0%,rgba(0,0,0,0.45) 100%),url(https://cdn.workcations.in/${slug}/${image}.jpg)`,
                 }}
                 onClick={() => {
                   activeSlide(i);
@@ -90,7 +107,7 @@ const Gallery = ({ images, slug, loadElements }) => {
               <div
                 key={image}
                 style={{
-                  backgroundImage: `linear-gradient(to top,rgba(0,0,0,0.45) 0%,rgba(0,0,0,0.45) 100%),url(https://www.wanderon.in/workcations/${slug}/${image}.jpg)`,
+                  backgroundImage: `linear-gradient(to top,rgba(0,0,0,0.45) 0%,rgba(0,0,0,0.45) 100%)`,
                 }}
                 onClick={() => {
                   activeSlide(i);

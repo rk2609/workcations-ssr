@@ -193,7 +193,7 @@ const BookNowPopup = ({
                 <SummaryItem key={i}>
                   <Image
                     src={
-                      "https://www.wanderon.in/workcations/" +
+                      "https://cdn.workcations.in/" +
                       slug +
                       "/" +
                       cartItem.image +

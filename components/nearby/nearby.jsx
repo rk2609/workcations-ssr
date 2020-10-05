@@ -17,9 +17,7 @@ const Nearby = ({ nearby }) => (
           <GridImage
             style={{
               backgroundImage:
-                "url(https://www.wanderon.in/workcations/nearby/" +
-                item.image +
-                ".jpg)",
+                "url(https://cdn.workcations.in/nearby/" + item.image + ".jpg)",
             }}
           />
           <TextContainer>
