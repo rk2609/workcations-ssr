@@ -14,24 +14,91 @@ export const Container = styled.div`
   }
 `;
 
-export const HeroImage = styled.div`
+export const SlickContainer = styled.div`
   height: 30vw;
   width: 50vw;
-  border-radius: 10px;
-  background-size: cover;
-  cursor: pointer;
-  background-position: center center;
-  background-repeat: no-repeat;
-  box-shadow: 0px 3px 20px rgba(0, 0, 0, 0.29);
   margin-bottom: 0.5vw;
-  display: flex;
-  align-items: center;
-  transition: all 0.6s ease-in-out;
+  border-radius: 10px;
+  background: #d5d5d5;
+  background-image: linear-gradient(
+    to right,
+    #d5d5d5 0%,
+    #f1f1f1 20%,
+    #d5d5d5 40%,
+    #d5d5d5 100%
+  );
+  -webkit-animation-duration: 1s;
+  -webkit-animation-fill-mode: forwards;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-name: placeHolderShimmer;
+  -webkit-animation-timing-function: linear;
+  background-repeat: no-repeat;
+  background-size: 800px 1040px;
+  position: relative;
+
+  @keyframes placeHolderShimmer {
+    0% {
+      background-position: -468px 0;
+    }
+    100% {
+      background-position: 468px 0;
+    }
+  }
 
   @media only screen and (max-width: 900px) {
     height: 50vw;
     width: 90vw;
     margin-bottom: 1.5vw;
+  }
+`;
+
+export const SlickContainer2 = styled.div`
+  height: 3.7vw;
+  width: 90%;
+
+  @media only screen and (max-width: 900px) {
+    height: 7vw;
+    width: 100%;
+  }
+`;
+
+export const HeroImage = styled.div`
+  height: 30vw;
+  width: 50vw;
+
+  @media only screen and (max-width: 900px) {
+    height: 50vw;
+    width: 90vw;
+  }
+
+  div {
+    height: 100%;
+    border-radius: 10px;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+  }
+`;
+
+export const ThumbnailImage = styled.div`
+  height: 3.7vw;
+  width: 7vw;
+  cursor: pointer;
+  margin-right: 50px;
+
+  @media only screen and (max-width: 900px) {
+    height: 7vw;
+    width: 12vw;
+  }
+
+  div {
+    width: 90%;
+    background-color: #d5d5d5;
+    height: 100%;
+    border-radius: 3px;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
   }
 `;
 
@@ -59,10 +126,9 @@ export const GalleryArrow = styled.div`
 export const ThumbnailContainer = styled.div`
   width: 100%;
   max-width: 50vw;
-  display: grid;
-  grid-template-columns: 30px 1fr 30px;
-  column-gap: 10px;
   margin-top: 10px;
+  display: flex;
+  justify-content: center;
 
   @media only screen and (max-width: 900px) {
     max-width: 100%;

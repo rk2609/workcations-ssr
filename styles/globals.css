@@ -1568,3 +1568,15 @@ img {
 .remove-scrollbar::-webkit-scrollbar {
   display: none;
 }
+
+.slick-prev:before,
+.slick-next:before {
+  color: #444444;
+}
+
+@media only screen and (max-width: 900px) {
+  .slick-prev:before,
+  .slick-next:before {
+    display: none;
+  }
+}

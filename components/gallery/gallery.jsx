@@ -1,8 +1,12 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, Fragment } from "react";
+import Slider from "react-slick";
 
 import {
   Container,
+  SlickContainer,
   HeroImage,
+  SlickContainer2,
+  ThumbnailImage,
   GalleryArrow,
   ThumbnailContainer,
   ArrowContainer,
@@ -10,46 +14,100 @@ import {
 } from "./gallery.style";
 
 const Gallery = ({ images, slug, loadElements }) => {
-  const thumbnailContainer = useRef(null);
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [count, setCount] = useState(200);
+  const mainSlider = useRef(null);
+  const thumbnailSlider = useRef(null);
 
-  useEffect(() => {
-    if (loadElements) {
-      setCount(200);
-    }
-  }, [loadElements]);
-
-  const nextSlide = () => {
-    if (currentSlide !== images.length - 1) {
-      setCurrentSlide(currentSlide + 1);
-    } else {
-      setCurrentSlide(0);
-    }
+  const settings = {
+    dots: false,
+    arrows: false,
+    lazyLoad: true,
+    infinite: true,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    initialSlide: 0,
+    speed: 500,
+    cssEase: "linear",
+    autoplay: true,
+    autoplaySpeed: 2500,
+    pauseOnHover: false,
   };
 
-  const nextThumbnail = () => {
-    thumbnailContainer.current.scrollLeft += 200;
-  };
-
-  const previousThumbnail = () => {
-    thumbnailContainer.current.scrollLeft -= 200;
-  };
-
-  const previousSlide = () => {
-    if (currentSlide !== 0) {
-      setCurrentSlide(currentSlide - 1);
-    } else {
-      setCurrentSlide(images.length - 1);
-    }
-  };
-
-  const activeSlide = (i) => {
-    setCurrentSlide(i);
+  const settings2 = {
+    dots: false,
+    arrows: true,
+    lazyLoad: true,
+    infinite: true,
+    slidesToShow: 7,
+    slidesToScroll: 1,
+    swipeToSlide: true,
+    focusOnSelect: true,
+    initialSlide: 0,
+    speed: 500,
+    cssEase: "linear",
+    autoplay: true,
+    autoplaySpeed: 2500,
+    pauseOnHover: false,
+    afterChange: (index) => {
+      setCurrentSlide(index);
+    },
   };
 
   return (
     <Container>
+      <SlickContainer>
+        <Slider
+          asNavFor={thumbnailSlider ? thumbnailSlider.current : null}
+          ref={mainSlider}
+          {...settings}
+        >
+          {images.map((image) => (
+            <HeroImage key={image}>
+              <div
+                style={{
+                  backgroundImage: `url(https://cdn.workcations.in/${slug}/${image}.jpg)`,
+                }}
+              ></div>
+            </HeroImage>
+          ))}
+        </Slider>
+      </SlickContainer>
+      <ThumbnailContainer>
+        <div></div>
+        <SlickContainer2>
+          <Slider
+            asNavFor={mainSlider ? mainSlider.current : null}
+            ref={thumbnailSlider}
+            {...settings2}
+          >
+            {images.map((image, i) => (
+              <ThumbnailImage key={`thumbnail${i}`}>
+                {i === currentSlide ? (
+                  <div
+                    style={{
+                      backgroundImage: `url(https://cdn.workcations.in/${slug}/${image}.jpg)`,
+                    }}
+                  ></div>
+                ) : (
+                  <div
+                    style={{
+                      backgroundImage: `linear-gradient(to top,rgba(0,0,0,0.45) 0%,rgba(0,0,0,0.45) 100%),url(https://cdn.workcations.in/${slug}/${image}.jpg)`,
+                    }}
+                  ></div>
+                )}
+              </ThumbnailImage>
+            ))}
+          </Slider>
+        </SlickContainer2>
+        <div></div>
+      </ThumbnailContainer>
+    </Container>
+
+    /* asNavFor={mainRef} */
+
+    /* asNavFor={thumbnailRef} */
+
+    /*<Container>
       <HeroImage
         style={{
           backgroundImage: `url(https://cdn.workcations.in/${slug}/${images[currentSlide]}.jpg)`,
@@ -122,7 +180,7 @@ const Gallery = ({ images, slug, loadElements }) => {
           </svg>
         </ArrowContainer>
       </ThumbnailContainer>
-    </Container>
+    </Container>*/
   );
 };
 
