@@ -1,4 +1,5 @@
-import React from "react";
+import React, { Fragment } from "react";
+import Link from "next/link";
 
 import { useDispatch, useSelector } from "react-redux";
 import { toggleContactPopupHidden } from "../../redux/contact-popup/contact-popup.actions";
@@ -7,7 +8,7 @@ import {
   selectPopupPosition,
 } from "../../redux/contact-popup/contact-popup.selectors";
 
-import { Container } from "./call.style";
+import { Container, ContainerMobile } from "./call.style";
 
 const CallIcon = () => {
   const dispatch = useDispatch();
@@ -15,13 +16,24 @@ const CallIcon = () => {
   const iconPosition = useSelector(selectPopupPosition);
 
   return (
-    <Container
-      onClick={() => dispatch(toggleContactPopupHidden())}
-      hidden={hidden}
-      iconPosition={iconPosition}
-    >
-      <img src="/phone.svg" alt="Request a Call Back" />
-    </Container>
+    <Fragment>
+      <Container
+        onClick={() => dispatch(toggleContactPopupHidden())}
+        hidden={hidden}
+        iconPosition={iconPosition}
+      >
+        <img src="/phone.svg" alt="Request a Call Back" />
+      </Container>
+      <Link href="tel:8814871652" passHref>
+        <ContainerMobile
+          otarget="_blank"
+          hidden={hidden}
+          iconPosition={iconPosition}
+        >
+          <img src="/phone.svg" alt="Request a Call Back" />
+        </ContainerMobile>
+      </Link>
+    </Fragment>
   );
 };
 
