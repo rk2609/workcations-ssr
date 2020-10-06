@@ -28,9 +28,6 @@ const Gallery = ({ images, slug, loadElements }) => {
     initialSlide: 0,
     speed: 500,
     cssEase: "linear",
-    autoplay: true,
-    autoplaySpeed: 2500,
-    pauseOnHover: false,
   };
 
   const settings2 = {
@@ -45,9 +42,6 @@ const Gallery = ({ images, slug, loadElements }) => {
     initialSlide: 0,
     speed: 500,
     cssEase: "linear",
-    autoplay: true,
-    autoplaySpeed: 2500,
-    pauseOnHover: false,
     afterChange: (index) => {
       setCurrentSlide(index);
     },
