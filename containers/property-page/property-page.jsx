@@ -54,7 +54,7 @@ const PropertyPage = ({
   upload,
   houseRules,
 }) => {
-  useEffect(() => {
+  /*useEffect(() => {
     if (loadElements) {
       const imageLinks = inventory.map((room) => room.image);
       for (let i = 0; i < imageLinks.length; i++) {
@@ -63,7 +63,7 @@ const PropertyPage = ({
         });
       }
     }
-  }, [loadElements]);
+  }, [loadElements]);*/
 
   return (
     <Fragment>
