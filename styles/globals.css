@@ -1571,7 +1571,7 @@ img {
 
 .slick-prev:before,
 .slick-next:before {
-  color: #444444;
+  color: #333333;
 }
 
 @media only screen and (max-width: 900px) {
