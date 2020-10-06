@@ -62,8 +62,8 @@ export default class MyDocument extends Document {
             type="text/css"
             href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
           />
-          <link rel="preconnect" href="https://cdn.workcations.in" />
-          <link rel="dns-prefetch" href="https://cdn.workcations.in" />
+          <link rel="preconnect" href="https://assets.workcations.in" />
+          <link rel="dns-prefetch" href="https://assets.workcations.in" />
         </Head>
         <body>
           <Main className="root" />

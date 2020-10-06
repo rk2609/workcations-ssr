@@ -28,6 +28,7 @@ const Gallery = ({ images, slug, loadElements }) => {
     initialSlide: 0,
     speed: 500,
     cssEase: "linear",
+    fade: true,
   };
 
   const settings2 = {
@@ -59,7 +60,7 @@ const Gallery = ({ images, slug, loadElements }) => {
             <HeroImage key={image}>
               <div
                 style={{
-                  backgroundImage: `url(https://cdn.workcations.in/${slug}/${image}.jpg)`,
+                  backgroundImage: `url(https://assets.workcations.in/${slug}/${image}.jpg)`,
                 }}
               ></div>
             </HeroImage>
@@ -79,13 +80,13 @@ const Gallery = ({ images, slug, loadElements }) => {
                 {i === currentSlide ? (
                   <div
                     style={{
-                      backgroundImage: `url(https://cdn.workcations.in/${slug}/${image}.jpg)`,
+                      backgroundImage: `url(https://assets.workcations.in/${slug}/${image}.jpg)`,
                     }}
                   ></div>
                 ) : (
                   <div
                     style={{
-                      backgroundImage: `linear-gradient(to top,rgba(0,0,0,0.45) 0%,rgba(0,0,0,0.45) 100%),url(https://cdn.workcations.in/${slug}/${image}.jpg)`,
+                      backgroundImage: `linear-gradient(to top,rgba(0,0,0,0.45) 0%,rgba(0,0,0,0.45) 100%),url(https://assets.workcations.in/${slug}/${image}.jpg)`,
                     }}
                   ></div>
                 )}
@@ -104,7 +105,7 @@ const Gallery = ({ images, slug, loadElements }) => {
     /*<Container>
       <HeroImage
         style={{
-          backgroundImage: `url(https://cdn.workcations.in/${slug}/${images[currentSlide]}.jpg)`,
+          backgroundImage: `url(https://assets.workcations.in/${slug}/${images[currentSlide]}.jpg)`,
         }}
       >
         <GalleryArrow>
@@ -139,7 +140,7 @@ const Gallery = ({ images, slug, loadElements }) => {
               <div
                 key={image}
                 style={{
-                  backgroundImage: `url(https://cdn.workcations.in/${slug}/${image}.jpg)`,
+                  backgroundImage: `url(https://assets.workcations.in/${slug}/${image}.jpg)`,
                 }}
                 onClick={() => {
                   activeSlide(i);
@@ -149,7 +150,7 @@ const Gallery = ({ images, slug, loadElements }) => {
               <div
                 key={image}
                 style={{
-                  backgroundImage: `linear-gradient(to top,rgba(0,0,0,0.45) 0%,rgba(0,0,0,0.45) 100%),url(https://cdn.workcations.in/${slug}/${image}.jpg)`,
+                  backgroundImage: `linear-gradient(to top,rgba(0,0,0,0.45) 0%,rgba(0,0,0,0.45) 100%),url(https://assets.workcations.in/${slug}/${image}.jpg)`,
                 }}
                 onClick={() => {
                   activeSlide(i);

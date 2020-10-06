@@ -299,7 +299,7 @@ const BookingPage = ({ data, bookingSlug }) => {
                   <SummaryItem key={i}>
                     <Image
                       src={
-                        "https://cdn.workcations.in/" +
+                        "https://assets.workcations.in/" +
                         property.slug +
                         "/" +
                         cartItem.image +

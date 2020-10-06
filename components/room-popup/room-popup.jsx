@@ -79,7 +79,7 @@ const RoomPopup = ({
           {images.length > 1 ? (
             <Gallery
               style={{
-                backgroundImage: `url(https://cdn.workcations.in/${slug}/${images[currentSlide]}.jpg)`,
+                backgroundImage: `url(https://assets.workcations.in/${slug}/${images[currentSlide]}.jpg)`,
               }}
             >
               <GalleryArrow>
@@ -104,7 +104,7 @@ const RoomPopup = ({
           ) : isOpen ? (
             <Gallery
               style={{
-                backgroundImage: `url(https://cdn.workcations.in/${slug}/${images[0]}.jpg)`,
+                backgroundImage: `url(https://assets.workcations.in/${slug}/${images[0]}.jpg)`,
               }}
             ></Gallery>
           ) : null}

@@ -31,6 +31,13 @@ export const Card = styled.a`
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
+  background-image: linear-gradient(
+    to right,
+    #d5d5d5 0%,
+    #f1f1f1 20%,
+    #d5d5d5 40%,
+    #d5d5d5 100%
+  );
 
   @media only screen and (max-width: 600px) {
     flex-shrink: 0;

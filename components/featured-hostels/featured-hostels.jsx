@@ -38,7 +38,7 @@ const FeaturedHostels = ({ propertyList }) => {
               <Card key={property.slug} target="_blank">
                 <ImageLong
                   style={{
-                    backgroundImage: `url(https://cdn.workcations.in/${property.slug}/${property.images[0]}.jpg)`,
+                    backgroundImage: `url(https://assets.workcations.in/${property.slug}/${property.images[0]}.jpg)`,
                   }}
                 >
                   <Price>
@@ -93,7 +93,7 @@ const FeaturedVillas = ({ propertyList }) => {
               <Card key={property.slug} target="_blank">
                 <Image
                   style={{
-                    backgroundImage: `url(https://cdn.workcations.in/${property.slug}/${property.images[0]}.jpg)`,
+                    backgroundImage: `url(https://assets.workcations.in/${property.slug}/${property.images[0]}.jpg)`,
                   }}
                 >
                   <Price>
@@ -148,7 +148,7 @@ const FeaturedHotels = ({ propertyList }) => {
               <Card key={property.slug} target="_blank">
                 <ImageLong
                   style={{
-                    backgroundImage: `url(https://cdn.workcations.in/${property.slug}/${property.images[0]}.jpg)`,
+                    backgroundImage: `url(https://assets.workcations.in/${property.slug}/${property.images[0]}.jpg)`,
                   }}
                 >
                   <Price>
