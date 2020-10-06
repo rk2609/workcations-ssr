@@ -178,6 +178,26 @@ const BlogItem = () => {
             space.
           </Text>
 
+          <SubHeading>Streamlining the company culture</SubHeading>
+          {loadElements ? (
+            <ImageCon>
+              <Image
+                src="/reasons-to-setup-remote-office/company-culture.jpg"
+                alt="Company Culture"
+              />
+              <Caption></Caption>
+            </ImageCon>
+          ) : (
+            <ImageCon></ImageCon>
+          )}
+          <Text>
+            Often a company or a start-up finds ways to appreciate the efforts
+            put in by employees. Why not offer them a nice workcation at a
+            picturesque location. Make your employees feel blessed by sending
+            them on long workcation trips and let them enjoy work a bit more
+            than before.
+          </Text>
+
           <Text>
             In the end, workcations combine work as well as vacation. It’s
             always a good idea to take care of yourself while chasing work
