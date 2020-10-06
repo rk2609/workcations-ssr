@@ -8,13 +8,28 @@ import { GA_TRACKING_ID } from "../components/ga";
     />*/
 
 export default class MyDocument extends Document {
-  render() {
+  static getInitialProps({ renderPage }) {
     const sheet = new ServerStyleSheet();
-    const main = sheet.collectStyles(<Main />);
+
+    function handleCollectStyles(App) {
+      return (props) => {
+        return sheet.collectStyles(<App {...props} />);
+      };
+    }
+
+    const page = renderPage((App) => handleCollectStyles(App));
     const styleTags = sheet.getStyleElement();
+    return { ...page, styleTags };
+  }
+
+  render() {
+    /*const sheet = new ServerStyleSheet();
+    const main = sheet.collectStyles(<Main />);
+    const styleTags = sheet.getStyleElement();*/
     return (
       <html lang="en">
         <Head>
+          {this.props.styleTags}
           {/* Global Site Tag (gtag.js) - Google Analytics */}
           <script
             async
@@ -49,10 +64,9 @@ export default class MyDocument extends Document {
           />
           <link rel="preconnect" href="https://cdn.workcations.in" />
           <link rel="dns-prefetch" href="https://cdn.workcations.in" />
-          {styleTags}
         </Head>
         <body>
-          <div className="root">{main}</div>
+          <Main className="root" />
           <NextScript />
         </body>
       </html>
