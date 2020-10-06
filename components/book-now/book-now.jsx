@@ -144,6 +144,7 @@ const BookNow = ({
     images: [],
     isOpen: false,
     closePopup: () => {},
+    start: false,
   });
 
   const getNoOfDays = (date1, date2) => {
@@ -433,8 +434,10 @@ const BookNow = ({
                               images: [],
                               isOpen: false,
                               closePopup: () => {},
+                              start: false,
                             });
                           },
+                          start: true,
                         });
                       }}
                     />
@@ -483,8 +486,10 @@ const BookNow = ({
                                   images: [],
                                   isOpen: false,
                                   closePopup: () => {},
+                                  start: false,
                                 });
                               },
+                              start: true,
                             });
                           }}
                         >

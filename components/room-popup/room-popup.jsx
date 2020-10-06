@@ -19,8 +19,15 @@ const RoomPopup = ({
   isOpen,
   closePopup,
   slug,
+  start,
 }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
+
+  useEffect(() => {
+    if (start) {
+      setCurrentSlide(0);
+    }
+  }, [start]);
 
   const nextSlide = () => {
     if (currentSlide !== images.length - 1) {
