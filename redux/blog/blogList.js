@@ -1,5 +1,13 @@
 const BlogsList = [
   {
+    slug: "reasons-to-setup-remote-office",
+    title:
+      "How Setting Up A Workplace at Remote Location with Employees Is A Good Idea?",
+    description: `Workcation for team or working from remote location with team? These terms sound interesting isn’t? Here are few reasons to plan a staycation with team. Regular is boring. One of the best ways to increase productivity amongst your employees is to provide them with an environment that is relaxing and stimulating at the same time. The pandemic has already had an adverse effect on the mental health of the people.`,
+    date: "05th Oct 2020",
+    tags: ["Workcations", "Remote Office"],
+  },
+  {
     slug: "reasons-to-plan-workcation-in-gokarna",
     title:
       "Bangalore Techies, Reasons Why You Should Have A Workcation In Gokarna",
