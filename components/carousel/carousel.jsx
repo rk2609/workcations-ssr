@@ -119,7 +119,7 @@ const Carousel = ({ slug, type, city, state }) => {
                   <Image
                     style={{
                       backgroundImage:
-                        "url(https://assets.workcations.in/" +
+                        "url(https://d1xmqx9e0b6ljd.cloudfront.net/" +
                         property.slug +
                         "/" +
                         property.images[0] +
@@ -155,7 +155,7 @@ const Carousel = ({ slug, type, city, state }) => {
                   <Image
                     style={{
                       backgroundImage:
-                        "url(https://assets.workcations.in/" +
+                        "url(https://d1xmqx9e0b6ljd.cloudfront.net/" +
                         property.slug +
                         "/" +
                         property.images[0] +

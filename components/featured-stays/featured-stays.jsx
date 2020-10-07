@@ -23,6 +23,8 @@ const FeaturedStays = ({ featured, propertyList }) => {
     setTiles(new Array(featured).fill(true));
   }, [featured]);
 
+  console.log(propertyList);
+
   return (
     <Container>
       {propertyList.length > 0 ? (
@@ -40,7 +42,7 @@ const FeaturedStays = ({ featured, propertyList }) => {
                     <ImageShimmer>
                       <Image
                         style={{
-                          backgroundImage: `linear-gradient(to top,rgba(0,0,0,.7) 15%,rgba(0,0,0,0) 35%),url(https://assets.workcations.in/${property.slug}/${property.images[0]}.jpg)`,
+                          backgroundImage: `linear-gradient(to top,rgba(0,0,0,.7) 15%,rgba(0,0,0,0) 35%),url(https://d1xmqx9e0b6ljd.cloudfront.net/${property.slug}/${property.images[0]}.jpg)`,
                         }}
                       >
                         <ImageContainer>

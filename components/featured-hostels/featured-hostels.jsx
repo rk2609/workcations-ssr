@@ -51,7 +51,7 @@ const FeaturedHostels = ({ propertyList }) => {
                     <ImageLongShimmer>
                       <ImageLong
                         style={{
-                          backgroundImage: `url(https://assets.workcations.in/${property.slug}/${property.images[0]}.jpg)`,
+                          backgroundImage: `url(https://d1xmqx9e0b6ljd.cloudfront.net/${property.slug}/${property.images[0]}.jpg)`,
                         }}
                       >
                         <Price>
@@ -119,7 +119,7 @@ const FeaturedVillas = ({ propertyList }) => {
                     <ImageShimmer>
                       <Image
                         style={{
-                          backgroundImage: `url(https://assets.workcations.in/${property.slug}/${property.images[0]}.jpg)`,
+                          backgroundImage: `url(https://d1xmqx9e0b6ljd.cloudfront.net/${property.slug}/${property.images[0]}.jpg)`,
                         }}
                       >
                         <Price>
@@ -187,7 +187,7 @@ const FeaturedHotels = ({ propertyList }) => {
                     <ImageLongShimmer>
                       <ImageLong
                         style={{
-                          backgroundImage: `url(https://assets.workcations.in/${property.slug}/${property.images[0]}.jpg)`,
+                          backgroundImage: `url(https://d1xmqx9e0b6ljd.cloudfront.net/${property.slug}/${property.images[0]}.jpg)`,
                         }}
                       >
                         <Price>

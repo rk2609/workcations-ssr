@@ -193,7 +193,7 @@ const BookNowPopup = ({
                 <SummaryItem key={i}>
                   <Image
                     src={
-                      "https://assets.workcations.in/" +
+                      "https://d1xmqx9e0b6ljd.cloudfront.net/" +
                       slug +
                       "/" +
                       cartItem.image +

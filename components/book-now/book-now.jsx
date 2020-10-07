@@ -415,7 +415,7 @@ const BookNow = ({
                   room.features[0] !== "-1" ? (
                     <RoomImage
                       style={{
-                        backgroundImage: `url(https://assets.workcations.in/${slug}/${room.image[0]}.jpg)`,
+                        backgroundImage: `url(https://d1xmqx9e0b6ljd.cloudfront.net/${slug}/${room.image[0]}.jpg)`,
                       }}
                       onClick={() => {
                         setRoomPopup({
@@ -444,7 +444,7 @@ const BookNow = ({
                   ) : (
                     <RoomImage
                       style={{
-                        backgroundImage: `url(https://assets.workcations.in/${slug}/${room.image[0]}.jpg)`,
+                        backgroundImage: `url(https://d1xmqx9e0b6ljd.cloudfront.net/${slug}/${room.image[0]}.jpg)`,
                       }}
                     />
                   )}

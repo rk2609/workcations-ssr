@@ -10,6 +10,7 @@
   "dependencies": {
     "@zeit/next-css": "1.0.1",
     "emailjs-com": "2.6.3",
+    "fuse.js": "6.4.1",
     "next": "9.5.2",
     "next-google-fonts": "^1.2.1",
     "next-redux-wrapper": "^6.0.2",

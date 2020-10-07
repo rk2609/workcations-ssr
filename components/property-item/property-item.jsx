@@ -43,7 +43,7 @@ const PropertyItem = ({
             <MainImage
               style={{
                 backgroundImage:
-                  "url(https://assets.workcations.in/" +
+                  "url(https://d1xmqx9e0b6ljd.cloudfront.net/" +
                   slug +
                   "/" +
                   currentImage +
@@ -59,7 +59,7 @@ const PropertyItem = ({
                 <SmallImage
                   style={{
                     backgroundImage:
-                      "url(https://assets.workcations.in/" +
+                      "url(https://d1xmqx9e0b6ljd.cloudfront.net/" +
                       slug +
                       "/" +
                       image +
