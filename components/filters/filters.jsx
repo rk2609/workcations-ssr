@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, Fragment } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Nouislider from "nouislider-react";
 
@@ -30,6 +30,8 @@ import {
 } from "../../redux/property/properties.selectors";
 
 import { CheckBoxFilter } from "../checkbox/checkbox";
+
+import FiltersPlaceHolder from "../filters-placeholder/filters-placeholder";
 
 import {
   FiltersTopContainer,
@@ -218,90 +220,96 @@ const Filters = ({
   });
 
   return (
-    <FiltersTopContainer>
-      <Headline>
-        find your <span>Workcation</span>
-      </Headline>
-      <FiltersContainer>
-        <FilterWrapper>
-          <FilterTitle>Pricing</FilterTitle>
-          <PriceFilter>
-            <Nouislider
-              range={range}
-              start={start}
-              step={100}
-              connect
-              tooltips
-              animate
-              margin={300}
-              onChange={(values) => {
-                setSelectedMinPriceLocal(Number(values[0]));
-                setSelectedMaxPriceLocal(Number(values[1]));
-              }}
-            />
-            <span>price per night</span>
-          </PriceFilter>
-        </FilterWrapper>
-        <FilterWrapper>
-          <FilterTitle>States</FilterTitle>
-          <FilterList>
-            {states.map((state, i) => (
-              <CheckBoxFilter
-                key={"state" + (i + 1)}
-                name={state}
-                label={state + "@" + stateCount[i]}
-                handleChange={() => {
-                  let newSelectedStates = [];
-                  if (selectedStates.indexOf(state) === -1) {
-                    for (let i = 0; i < selectedStates.length; i++) {
-                      newSelectedStates.push(selectedStates[i]);
-                    }
-                    newSelectedStates.push(state);
-                  } else {
-                    for (let i = 0; i < selectedStates.length; i++) {
-                      if (state !== selectedStates[i]) {
-                        newSelectedStates.push(selectedStates[i]);
+    <Fragment>
+      {propertyList.length > 0 ? (
+        <FiltersTopContainer>
+          <Headline>
+            find your <span>Workcation</span>
+          </Headline>
+          <FiltersContainer>
+            <FilterWrapper>
+              <FilterTitle>Pricing</FilterTitle>
+              <PriceFilter>
+                <Nouislider
+                  range={range}
+                  start={start}
+                  step={100}
+                  connect
+                  tooltips
+                  animate
+                  margin={300}
+                  onChange={(values) => {
+                    setSelectedMinPriceLocal(Number(values[0]));
+                    setSelectedMaxPriceLocal(Number(values[1]));
+                  }}
+                />
+                <span>price per night</span>
+              </PriceFilter>
+            </FilterWrapper>
+            <FilterWrapper>
+              <FilterTitle>States</FilterTitle>
+              <FilterList>
+                {states.map((state, i) => (
+                  <CheckBoxFilter
+                    key={"state" + (i + 1)}
+                    name={state}
+                    label={state + "@" + stateCount[i]}
+                    handleChange={() => {
+                      let newSelectedStates = [];
+                      if (selectedStates.indexOf(state) === -1) {
+                        for (let i = 0; i < selectedStates.length; i++) {
+                          newSelectedStates.push(selectedStates[i]);
+                        }
+                        newSelectedStates.push(state);
+                      } else {
+                        for (let i = 0; i < selectedStates.length; i++) {
+                          if (state !== selectedStates[i]) {
+                            newSelectedStates.push(selectedStates[i]);
+                          }
+                        }
                       }
-                    }
-                  }
-                  setSelectedStates(newSelectedStates);
-                }}
-                checked={selectedStates.indexOf(state) !== -1}
-              />
-            ))}
-          </FilterList>
-        </FilterWrapper>
-        <FilterWrapper>
-          <FilterTitle>Property Type</FilterTitle>
-          <FilterList>
-            {types.map((type, i) => (
-              <CheckBoxFilter
-                key={"type" + (i + 1)}
-                name={type}
-                label={type + "@" + typeCount[i]}
-                handleChange={() => {
-                  let newSelectedTypes = [];
-                  if (selectedTypes.indexOf(type) === -1) {
-                    for (let i = 0; i < selectedTypes.length; i++) {
-                      newSelectedTypes.push(selectedTypes[i]);
-                    }
-                    newSelectedTypes.push(type);
-                  } else {
-                    for (let i = 0; i < selectedTypes.length; i++) {
-                      if (type !== selectedTypes[i]) {
-                        newSelectedTypes.push(selectedTypes[i]);
+                      setSelectedStates(newSelectedStates);
+                    }}
+                    checked={selectedStates.indexOf(state) !== -1}
+                  />
+                ))}
+              </FilterList>
+            </FilterWrapper>
+            <FilterWrapper>
+              <FilterTitle>Property Type</FilterTitle>
+              <FilterList>
+                {types.map((type, i) => (
+                  <CheckBoxFilter
+                    key={"type" + (i + 1)}
+                    name={type}
+                    label={type + "@" + typeCount[i]}
+                    handleChange={() => {
+                      let newSelectedTypes = [];
+                      if (selectedTypes.indexOf(type) === -1) {
+                        for (let i = 0; i < selectedTypes.length; i++) {
+                          newSelectedTypes.push(selectedTypes[i]);
+                        }
+                        newSelectedTypes.push(type);
+                      } else {
+                        for (let i = 0; i < selectedTypes.length; i++) {
+                          if (type !== selectedTypes[i]) {
+                            newSelectedTypes.push(selectedTypes[i]);
+                          }
+                        }
                       }
-                    }
-                  }
-                  setSelectedTypes(newSelectedTypes);
-                }}
-                checked={selectedTypes.indexOf(type) !== -1}
-              />
-            ))}
-          </FilterList>
-        </FilterWrapper>
-      </FiltersContainer>
-    </FiltersTopContainer>
+                      setSelectedTypes(newSelectedTypes);
+                    }}
+                    checked={selectedTypes.indexOf(type) !== -1}
+                  />
+                ))}
+              </FilterList>
+            </FilterWrapper>
+          </FiltersContainer>
+        </FiltersTopContainer>
+      ) : (
+        <FiltersPlaceHolder />
+      )}
+    </Fragment>
   );
 };
 

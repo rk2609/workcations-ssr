@@ -70,6 +70,35 @@ export const Card = styled.a`
   }
 `;
 
+export const ImageShimmer = styled.div`
+  /* type-image */
+  width: 19vw;
+  height: 14.75vw;
+  border-radius: 10px 10px 0px 0px;
+  background-color: #d5d5d5;
+  background: #d5d5d5;
+  background-image: linear-gradient(
+    to right,
+    #d5d5d5 0%,
+    #f1f1f1 20%,
+    #d5d5d5 40%,
+    #d5d5d5 100%
+  );
+  -webkit-animation-duration: 1s;
+  -webkit-animation-fill-mode: forwards;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-name: placeHolderShimmer;
+  -webkit-animation-timing-function: linear;
+  background-repeat: no-repeat;
+  background-size: 800px 1040px;
+  position: relative;
+
+  @media only screen and (max-width: 600px) {
+    width: 40vw;
+    height: 35vw;
+  }
+`;
+
 export const Image = styled.div`
   /* type-image */
   width: 19vw;
@@ -81,12 +110,40 @@ export const Image = styled.div`
   align-items: flex-end;
   justify-content: flex-end;
   color: white;
-  border-radius: 10px;
+  border-radius: 10px 10px 0px 0px;
 
   @media only screen and (max-width: 600px) {
     width: 40vw;
     height: 35vw;
-    border-radius: 10px 10px 0px 0px;
+  }
+`;
+
+export const ImageLongShimmer = styled.div`
+  /* type-image */
+  width: 19vw;
+  height: 14.75vw;
+  border-radius: 10px 10px 0px 0px;
+  background-color: #d5d5d5;
+  background: #d5d5d5;
+  background-image: linear-gradient(
+    to right,
+    #d5d5d5 0%,
+    #f1f1f1 20%,
+    #d5d5d5 40%,
+    #d5d5d5 100%
+  );
+  -webkit-animation-duration: 1s;
+  -webkit-animation-fill-mode: forwards;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-name: placeHolderShimmer;
+  -webkit-animation-timing-function: linear;
+  background-repeat: no-repeat;
+  background-size: 800px 1040px;
+  position: relative;
+
+  @media only screen and (max-width: 600px) {
+    width: 40vw;
+    height: 45vw;
   }
 `;
 
@@ -101,12 +158,11 @@ export const ImageLong = styled.div`
   align-items: flex-end;
   justify-content: flex-end;
   color: white;
-  border-radius: 10px;
+  border-radius: 10px 10px 0px 0px;
 
   @media only screen and (max-width: 600px) {
     width: 40vw;
     height: 45vw;
-    border-radius: 10px 10px 0px 0px;
   }
 `;
 

@@ -13,6 +13,7 @@ import {
 } from "../../redux/property/properties.selectors";
 
 import PropertyItem from "../../components/property-item/property-item";
+import PropertyItemPlaceHolder from "../../components/property-item-placeholder/property-item-placeholder";
 
 import {
   PropertyListContainer,
@@ -21,6 +22,8 @@ import {
   FilterMobile,
   FilterItem,
 } from "./property-list.style";
+
+const ListArray = new Array(6).fill(true);
 
 const PropertyList = ({ loadElements, cities, states, types, min, max }) => {
   let queryLink = "?";
@@ -53,51 +56,53 @@ const PropertyList = ({ loadElements, cities, states, types, min, max }) => {
   const filteredMaxPrice = useSelector(selectSelectedMaxPrice);
   const filteredCities = useSelector(selectSelectedDestinationList);
 
-  const [showFooter, setFooter] = useState(false);
-
-  useEffect(() => {
-    setTimeout(() => {
-      setFooter(true);
-    }, 6500);
-  }, []);
-
   return (
     <Container>
-      <PropertyListContainer loadElements={showFooter}>
-        {filteredProperties.length === 0 &&
-        filteredStates.length === 0 &&
-        filteredTypes.length === 0 &&
-        filteredCities.length === 0 &&
-        !filteredMinPrice &&
-        !filteredMaxPrice ? (
-          propertyList.map((property, i) =>
-            property.visibility === "TRUE" && (loadElements || i < 6) ? (
-              <PropertyItem key={property.slug} {...property} />
-            ) : null
-          )
-        ) : filteredProperties.length === 0 ? (
+      <PropertyListContainer>
+        {propertyList.length > 0 ? (
           <Fragment>
-            {/*
-
-              <NoResult>
-              Sorry! We don't have any properties that match your choices
-              <span>See all of our properties below</span>
-            </NoResult>
-            
-            
-            */}
-            {propertyList.map((property, i) =>
-              property.visibility === "TRUE" && (loadElements || i < 6) ? (
-                <PropertyItem key={property.slug} {...property} />
-              ) : null
+            {filteredProperties.length === 0 &&
+            filteredStates.length === 0 &&
+            filteredTypes.length === 0 &&
+            filteredCities.length === 0 &&
+            !filteredMinPrice &&
+            !filteredMaxPrice ? (
+              propertyList.map((property, i) =>
+                property.visibility === "TRUE" && (loadElements || i < 6) ? (
+                  <PropertyItem key={property.slug} {...property} />
+                ) : null
+              )
+            ) : filteredProperties.length === 0 ? (
+              <Fragment>
+                {/*
+  
+                <NoResult>
+                Sorry! We don't have any properties that match your choices
+                <span>See all of our properties below</span>
+              </NoResult>
+              
+              
+              */}
+                {propertyList.map((property, i) =>
+                  property.visibility === "TRUE" && (loadElements || i < 6) ? (
+                    <PropertyItem key={property.slug} {...property} />
+                  ) : null
+                )}
+              </Fragment>
+            ) : (
+              filteredProperties.map((property, i) =>
+                property.visibility === "TRUE" && (loadElements || i < 6) ? (
+                  <PropertyItem key={property.slug} {...property} />
+                ) : null
+              )
             )}
           </Fragment>
         ) : (
-          filteredProperties.map((property, i) =>
-            property.visibility === "TRUE" && (loadElements || i < 6) ? (
-              <PropertyItem key={property.slug} {...property} />
-            ) : null
-          )
+          <Fragment>
+            {ListArray.map((item, i) => (
+              <PropertyItemPlaceHolder key={`property${i + 1}`} />
+            ))}
+          </Fragment>
         )}
       </PropertyListContainer>
       <FilterMobile>

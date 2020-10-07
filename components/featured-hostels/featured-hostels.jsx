@@ -1,5 +1,11 @@
-import React, { useRef } from "react";
+import React, { useRef, Fragment } from "react";
 import Link from "next/link";
+
+import {
+  FeaturedHostelsPlaceHolder,
+  FeaturedVillasPlaceHolder,
+  FeaturedHotelsPlaceHolder,
+} from "../featured-hostels-placeholder/featured-hostels-placeholder";
 
 import {
   Container,
@@ -7,13 +13,17 @@ import {
   ArrowContainer,
   Card,
   Image,
+  ImageShimmer,
   ImageLong,
+  ImageLongShimmer,
   Price,
   Details,
   Title,
   Location,
   MoreProperties,
 } from "./featured-hostels.styles";
+
+const List = new Array(6).fill(true);
 
 const FeaturedHostels = ({ propertyList }) => {
   const cardsContainer = useRef(null);
@@ -25,36 +35,49 @@ const FeaturedHostels = ({ propertyList }) => {
   return (
     <Container>
       <FlexContainer ref={cardsContainer} className="remove-scrollbar">
-        {propertyList
-          .filter((property) => property.visibility === "TRUE")
-          .filter((property) => property.type === "hostel")
-          .filter((property, i) => i < 6)
-          .map((property) => (
-            <Link
-              key={property.slug}
-              href={`/property/${property.slug}`}
-              passHref
-            >
-              <Card key={property.slug} target="_blank">
-                <ImageLong
-                  style={{
-                    backgroundImage: `url(https://assets.workcations.in/${property.slug}/${property.images[0]}.jpg)`,
-                  }}
+        {propertyList.length > 0 ? (
+          <Fragment>
+            {propertyList
+              .filter((property) => property.visibility === "TRUE")
+              .filter((property) => property.type === "hostel")
+              .filter((property, i) => i < 6)
+              .map((property) => (
+                <Link
+                  key={property.slug}
+                  href={`/property/${property.slug}`}
+                  passHref
                 >
-                  <Price>
-                    {property.long}
-                    <span>/night</span>
-                  </Price>
-                </ImageLong>
-                <Details>
-                  <Title>{property.title}</Title>
-                  <Location>
-                    {property.location.city}, {property.location.state}
-                  </Location>
-                </Details>
-              </Card>
-            </Link>
-          ))}
+                  <Card key={property.slug} target="_blank">
+                    <ImageLongShimmer>
+                      <ImageLong
+                        style={{
+                          backgroundImage: `url(https://assets.workcations.in/${property.slug}/${property.images[0]}.jpg)`,
+                        }}
+                      >
+                        <Price>
+                          {property.long}
+                          <span>/night</span>
+                        </Price>
+                      </ImageLong>
+                    </ImageLongShimmer>
+                    <Details>
+                      <Title>{property.title}</Title>
+                      <Location>
+                        {property.location.city}, {property.location.state}
+                      </Location>
+                    </Details>
+                  </Card>
+                </Link>
+              ))}
+          </Fragment>
+        ) : (
+          <Fragment>
+            {List.map((item, i) => (
+              <FeaturedHostelsPlaceHolder key={`hostel${i + 1}`} />
+            ))}
+          </Fragment>
+        )}
+
         <Link href="/properties?types=hostel" passHref>
           <MoreProperties target="_blank">
             Explore All Hostels<span></span>
@@ -80,36 +103,49 @@ const FeaturedVillas = ({ propertyList }) => {
   return (
     <Container>
       <FlexContainer ref={cardsContainer} className="remove-scrollbar">
-        {propertyList
-          .filter((property) => property.visibility === "TRUE")
-          .filter((property) => property.type === "villa")
-          .filter((property, i) => i < 6)
-          .map((property) => (
-            <Link
-              key={property.slug}
-              href={`/property/${property.slug}`}
-              passHref
-            >
-              <Card key={property.slug} target="_blank">
-                <Image
-                  style={{
-                    backgroundImage: `url(https://assets.workcations.in/${property.slug}/${property.images[0]}.jpg)`,
-                  }}
+        {propertyList.length > 0 ? (
+          <Fragment>
+            {propertyList
+              .filter((property) => property.visibility === "TRUE")
+              .filter((property) => property.type === "villa")
+              .filter((property, i) => i < 6)
+              .map((property) => (
+                <Link
+                  key={property.slug}
+                  href={`/property/${property.slug}`}
+                  passHref
                 >
-                  <Price>
-                    {property.long}
-                    <span>/night</span>
-                  </Price>
-                </Image>
-                <Details>
-                  <Title>{property.title}</Title>
-                  <Location>
-                    {property.location.city}, {property.location.state}
-                  </Location>
-                </Details>
-              </Card>
-            </Link>
-          ))}
+                  <Card key={property.slug} target="_blank">
+                    <ImageShimmer>
+                      <Image
+                        style={{
+                          backgroundImage: `url(https://assets.workcations.in/${property.slug}/${property.images[0]}.jpg)`,
+                        }}
+                      >
+                        <Price>
+                          {property.long}
+                          <span>/night</span>
+                        </Price>
+                      </Image>
+                    </ImageShimmer>
+                    <Details>
+                      <Title>{property.title}</Title>
+                      <Location>
+                        {property.location.city}, {property.location.state}
+                      </Location>
+                    </Details>
+                  </Card>
+                </Link>
+              ))}
+          </Fragment>
+        ) : (
+          <Fragment>
+            {List.map((item, i) => (
+              <FeaturedVillasPlaceHolder key={`villa${i + 1}`} />
+            ))}
+          </Fragment>
+        )}
+
         <Link href="/properties?types=villa" passHref>
           <MoreProperties target="_blank">
             Explore All Villas<span></span>
@@ -135,36 +171,49 @@ const FeaturedHotels = ({ propertyList }) => {
   return (
     <Container>
       <FlexContainer ref={cardsContainer} className="remove-scrollbar">
-        {propertyList
-          .filter((property) => property.visibility === "TRUE")
-          .filter((property) => property.type === "hotel")
-          .filter((property, i) => i < 6)
-          .map((property) => (
-            <Link
-              key={property.slug}
-              href={`/property/${property.slug}`}
-              passHref
-            >
-              <Card key={property.slug} target="_blank">
-                <ImageLong
-                  style={{
-                    backgroundImage: `url(https://assets.workcations.in/${property.slug}/${property.images[0]}.jpg)`,
-                  }}
+        {propertyList.length > 0 ? (
+          <Fragment>
+            {propertyList
+              .filter((property) => property.visibility === "TRUE")
+              .filter((property) => property.type === "hotel")
+              .filter((property, i) => i < 6)
+              .map((property) => (
+                <Link
+                  key={property.slug}
+                  href={`/property/${property.slug}`}
+                  passHref
                 >
-                  <Price>
-                    {property.long}
-                    <span>/night</span>
-                  </Price>
-                </ImageLong>
-                <Details>
-                  <Title>{property.title}</Title>
-                  <Location>
-                    {property.location.city}, {property.location.state}
-                  </Location>
-                </Details>
-              </Card>
-            </Link>
-          ))}
+                  <Card key={property.slug} target="_blank">
+                    <ImageLongShimmer>
+                      <ImageLong
+                        style={{
+                          backgroundImage: `url(https://assets.workcations.in/${property.slug}/${property.images[0]}.jpg)`,
+                        }}
+                      >
+                        <Price>
+                          {property.long}
+                          <span>/night</span>
+                        </Price>
+                      </ImageLong>
+                    </ImageLongShimmer>
+                    <Details>
+                      <Title>{property.title}</Title>
+                      <Location>
+                        {property.location.city}, {property.location.state}
+                      </Location>
+                    </Details>
+                  </Card>
+                </Link>
+              ))}
+          </Fragment>
+        ) : (
+          <Fragment>
+            {List.map((item, i) => (
+              <FeaturedHotelsPlaceHolder key={`hotel${i + 1}`} />
+            ))}
+          </Fragment>
+        )}
+
         <Link href="/properties?types=hotel" passHref>
           <MoreProperties target="_blank">
             Explore All Hotels<span></span>

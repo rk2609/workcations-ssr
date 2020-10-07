@@ -19,7 +19,6 @@ export const PropertyListContainer = styled.div`
   grid-template-columns: 1fr 1fr 1fr;
   justify-content: flex-start;
   column-gap: 3vw;
-  min-height: ${(props) => (props.loadElements ? "0px" : "100vh")};
 
   @media only screen and (max-width: 900px) {
     display: grid;

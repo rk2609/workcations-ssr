@@ -74,6 +74,7 @@ export const HeroImage = styled.div`
   div {
     height: 100%;
     border-radius: 10px;
+    background-color: white;
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;

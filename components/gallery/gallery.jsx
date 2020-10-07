@@ -27,7 +27,7 @@ const Gallery = ({ images, slug, loadElements }) => {
     slidesToScroll: 1,
     initialSlide: 0,
     speed: 500,
-    cssEase: "linear",
+    cssEase: "ease-in-out",
     fade: true,
   };
 
@@ -42,9 +42,12 @@ const Gallery = ({ images, slug, loadElements }) => {
     focusOnSelect: true,
     initialSlide: 0,
     speed: 500,
-    cssEase: "linear",
+    cssEase: "ease-in-out",
     afterChange: (index) => {
       setCurrentSlide(index);
+      if (mainSlider) {
+        mainSlider.current.slickGoTo(index);
+      }
     },
   };
 

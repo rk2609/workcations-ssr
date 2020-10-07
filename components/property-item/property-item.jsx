@@ -5,9 +5,11 @@ import {
   Container,
   ImageContainer,
   MainImage,
+  MainImageShimmer,
   Type,
   SmallImageContainer,
   SmallImage,
+  SmallImageShimmer,
   Details,
   Title,
   DetailsContainer,
@@ -37,71 +39,38 @@ const PropertyItem = ({
     <Link href={"/property/" + slug} passHref>
       <Container target="_blank">
         <ImageContainer>
-          <MainImage
-            style={{
-              backgroundImage:
-                "url(https://assets.workcations.in/" +
-                slug +
-                "/" +
-                currentImage +
-                ".jpg)",
-            }}
-          >
-            <Type tag={type}>{type}</Type>
-          </MainImage>
+          <MainImageShimmer>
+            <MainImage
+              style={{
+                backgroundImage:
+                  "url(https://assets.workcations.in/" +
+                  slug +
+                  "/" +
+                  currentImage +
+                  ".jpg)",
+              }}
+            >
+              <Type tag={type}>{type}</Type>
+            </MainImage>
+          </MainImageShimmer>
           <SmallImageContainer>
-            <SmallImage
-              style={{
-                backgroundImage:
-                  "url(https://assets.workcations.in/" +
-                  slug +
-                  "/" +
-                  images[0] +
-                  ".jpg)",
-              }}
-              onMouseEnter={() => {
-                setCurrent(images[0]);
-              }}
-            />
-            <SmallImage
-              style={{
-                backgroundImage:
-                  "url(https://assets.workcations.in/" +
-                  slug +
-                  "/" +
-                  images[1] +
-                  ".jpg)",
-              }}
-              onMouseEnter={() => {
-                setCurrent(images[1]);
-              }}
-            />
-            <SmallImage
-              style={{
-                backgroundImage:
-                  "url(https://assets.workcations.in/" +
-                  slug +
-                  "/" +
-                  images[2] +
-                  ".jpg)",
-              }}
-              onMouseEnter={() => {
-                setCurrent(images[2]);
-              }}
-            />
-            <SmallImage
-              style={{
-                backgroundImage:
-                  "url(https://assets.workcations.in/" +
-                  slug +
-                  "/" +
-                  images[3] +
-                  ".jpg)",
-              }}
-              onMouseEnter={() => {
-                setCurrent(images[3]);
-              }}
-            />
+            {images.map((image, i) => (
+              <SmallImageShimmer key={`${slug}-image-${i + 1}`}>
+                <SmallImage
+                  style={{
+                    backgroundImage:
+                      "url(https://assets.workcations.in/" +
+                      slug +
+                      "/" +
+                      image +
+                      ".jpg)",
+                  }}
+                  onMouseEnter={() => {
+                    setCurrent(image);
+                  }}
+                />
+              </SmallImageShimmer>
+            ))}
           </SmallImageContainer>
         </ImageContainer>
         <Details>
