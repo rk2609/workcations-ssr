@@ -97,7 +97,7 @@ export const Search = styled.input`
 
   @media only screen and (max-width: 769px) {
     width: 70vw;
-    font-size: 2vw;
+    font-size: 3vw;
     padding: 1.2vw 2vw;
   }
 
