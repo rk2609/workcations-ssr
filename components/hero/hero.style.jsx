@@ -76,7 +76,7 @@ export const Text = styled.span`
   }
 `;
 
-export const SearchContainer = styled.div`
+export const SearchContainer = styled.form`
   width: 25vw;
   margin: 3.5vw 0 2.5vw 0;
   position: relative;
@@ -99,6 +99,21 @@ export const Search = styled.input`
     width: 70vw;
     font-size: 2vw;
     padding: 1.2vw 2vw;
+  }
+
+  &&::placeholder {
+    color: ${(props) => (props.searchError ? "red" : "#666666")};
+    opacity: 1; /* Firefox */
+  }
+
+  &&:-ms-input-placeholder {
+    /* Internet Explorer 10-11 */
+    color: red;
+  }
+
+  &&::-ms-input-placeholder {
+    /* Microsoft Edge */
+    color: red;
   }
 `;
 
@@ -141,19 +156,19 @@ export const SearchItem = styled.a`
   }
 `;
 
-export const Button = styled.div`
+export const Button = styled.input`
   /* button */
   width: 25vw;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.6vw;
-  font-weight: 600;
+  font-size: 1.5vw;
+  font-weight: 400;
   background-color: #ff6b6c;
   color: white;
   padding: 0.5vw 0vw;
   border-radius: 5px;
-  text-transform: uppercase;
+  margin-top: 20px;
 
   @media only screen and (max-width: 769px) {
     width: 70vw;

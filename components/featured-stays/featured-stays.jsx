@@ -23,8 +23,6 @@ const FeaturedStays = ({ featured, propertyList }) => {
     setTiles(new Array(featured).fill(true));
   }, [featured]);
 
-  console.log(propertyList);
-
   return (
     <Container>
       {propertyList.length > 0 ? (

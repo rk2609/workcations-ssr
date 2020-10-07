@@ -80,9 +80,10 @@ const HomePage = ({ screenWidth, loadElements, propertyList }) => {
           <SubHeading>
             Check out these wide range of Hostels for pocket friendly stays!
           </SubHeading>
-          {loadElements ? (
+          <FeaturedHostels propertyList={propertyList} />
+          {/*loadElements ? (
             <FeaturedHostels propertyList={propertyList} />
-          ) : null}
+          ) : null*/}
           <Link href="/properties?types=hostel" passHref>
             <Button target="_blank">Explore All Hostels</Button>
           </Link>
@@ -93,7 +94,8 @@ const HomePage = ({ screenWidth, loadElements, propertyList }) => {
             Villa Stays to Cater all your Family needs! Group of Friends? Hop
             On!
           </SubHeading>
-          {loadElements ? <FeaturedVillas propertyList={propertyList} /> : null}
+          <FeaturedVillas propertyList={propertyList} />
+          {/*loadElements ? <FeaturedVillas propertyList={propertyList} /> : null*/}
           <Link href="/properties?types=villa" passHref>
             <Button target="_blank">Explore All Villas</Button>
           </Link>
@@ -104,7 +106,8 @@ const HomePage = ({ screenWidth, loadElements, propertyList }) => {
             We have got your budgets sorted. Check In to the most Comfortable
             Hotel Properties
           </SubHeading>
-          {loadElements ? <FeaturedHotels propertyList={propertyList} /> : null}
+          <FeaturedHotels propertyList={propertyList} />
+          {/*loadElements ? <FeaturedHotels propertyList={propertyList} /> : null*/}
           <Link href="/properties?types=hotel" passHref>
             <Button target="_blank">Explore All Hotels</Button>
           </Link>
