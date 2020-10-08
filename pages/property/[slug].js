@@ -53,7 +53,8 @@ export const getStaticPaths = async () => {
   const getPropertiesListExcel = async () => {
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
-    const url = "https://data.workcations.in/properties";
+    const url =
+      "https://1sdx3eq12j.execute-api.ap-south-1.amazonaws.com/dev/properties";
 
     var requestOptions = {
       method: "GET",
@@ -87,7 +88,9 @@ export const getStaticProps = async ({ params }) => {
   const getPropertyExcel = async (slug) => {
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
-    const url = "https://data.workcations.in/property/" + slug;
+    const url =
+      "https://1sdx3eq12j.execute-api.ap-south-1.amazonaws.com/dev/property/" +
+      slug;
 
     var requestOptions = {
       method: "GET",
