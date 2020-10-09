@@ -169,7 +169,7 @@ const PropertyPage = ({
                   <Essentials {...essentials} />
                 </Content>
               </div>
-
+              <Maps title={title} latlong={latlong} />
               <Heading>Similar Properties</Heading>
               <SimilarProperties
                 slug={slug}
