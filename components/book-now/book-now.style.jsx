@@ -565,16 +565,18 @@ export const DurationWrapper = styled.div`
   justify-content: center;
   width: 100%;
   margin-bottom: 1vw;
-  box-shadow: 0px 0px 3px #888888;
+  box-shadow: 0px 0px 3px 0px #aaaaaa;
   border-radius: 3px;
 
   @media only screen and (max-width: 900px) {
+    width: 90%;
+    margin-bottom: 0vw;
   }
 `;
 
 export const DurationItem = styled.div`
   font-size: 1vw;
-  font-weight: 600;
+  font-weight: ${(props) => (props.isActive ? "600" : "400")};
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
@@ -610,13 +612,15 @@ export const DurationItem = styled.div`
   }
 
   @media only screen and (max-width: 900px) {
+    font-size: 3.2vw;
+    padding: 1.5vw 0;
   }
 
   span {
     font-size: 0.8vw;
-    font-weight: 400;
 
     @media only screen and (max-width: 900px) {
+      font-size: 2.2vw;
     }
   }
 `;
