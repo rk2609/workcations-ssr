@@ -49,6 +49,8 @@ import {
   CostingValue,
   PaymentButton,
   EmptyCartAlert,
+  DurationWrapper,
+  DurationItem,
 } from "./book-now.style";
 
 const mappingTree = [
@@ -132,6 +134,30 @@ const BookNow = ({
   const [endDate, setEndDate] = useState(endDateInitial);
   const [minEndDate, setMinEndDate] = useState(endDateMinInitial);
 
+  const [duration, setDuration] = useState("week");
+  const [durationActive, setDurationActive] = useState([false, true, false]);
+  const [disabled, setDisabled] = useState([false, false, false]);
+
+  useEffect(() => {
+    if (minDuration > 20) {
+      setDisabled([true, true, false]);
+    } else if (minDuration > 6) {
+      setDisabled([true, false, false]);
+    } else {
+      setDisabled([false, false, false]);
+    }
+  }, [minDuration]);
+
+  useEffect(() => {
+    if (duration === "short") {
+      setDurationActive([true, false, false]);
+    } else if (duration === "week") {
+      setDurationActive([false, true, false]);
+    } else {
+      setDurationActive([false, false, true]);
+    }
+  }, [duration]);
+
   const [breakfastBox, setBreakfast] = useState(false);
   const [lunchBox, setLunch] = useState(false);
   const [dinnerBox, setDinner] = useState(false);
@@ -163,6 +189,99 @@ const BookNow = ({
       setEndDate(minEndDate);
     }
   }, [minEndDate, endDate]);
+
+  useEffect(() => {
+    if (
+      Math.round(getNoOfDays(startDate, endDate)) < 7 &&
+      duration !== "short"
+    ) {
+      setDuration("short");
+    } else if (
+      Math.round(getNoOfDays(startDate, endDate)) > 6 &&
+      Math.round(getNoOfDays(startDate, endDate)) < 21 &&
+      duration !== "week"
+    ) {
+      setDuration("week");
+    } else if (
+      Math.round(getNoOfDays(startDate, endDate)) > 20 &&
+      duration !== "month"
+    ) {
+      setDuration("month");
+    }
+  }, [startDate, endDate]);
+
+  const durationUpdated = (dur) => {
+    let selectedDate = new Date(startDate);
+
+    if (dur === "short" && Math.round(getNoOfDays(startDate, endDate)) > 6) {
+      if (minDuration > 1) {
+        selectedDate.setDate(selectedDate.getDate() + minDuration);
+      } else {
+        selectedDate.setDate(selectedDate.getDate() + 1);
+      }
+    } else if (
+      dur === "week" &&
+      (Math.round(getNoOfDays(startDate, endDate)) < 7 ||
+        Math.round(getNoOfDays(startDate, endDate)) > 20)
+    ) {
+      if (minDuration > 7) {
+        selectedDate.setDate(selectedDate.getDate() + minDuration);
+      } else {
+        selectedDate.setDate(selectedDate.getDate() + 7);
+      }
+    } else if (
+      dur === "month" &&
+      Math.round(getNoOfDays(startDate, endDate)) < 21
+    ) {
+      if (minDuration > 21) {
+        selectedDate.setDate(selectedDate.getDate() + minDuration);
+      } else {
+        selectedDate.setDate(selectedDate.getDate() + 21);
+      }
+    }
+
+    setEndDate(selectedDate);
+  };
+
+  /*useEffect(() => {
+    let selectedDate = new Date(startDate);
+
+    if (
+      duration === "short" &&
+      Math.round(getNoOfDays(startDate, endDate)) > 6
+    ) {
+      if (minDuration > 1) {
+        selectedDate.setDate(selectedDate.getDate() + minDuration);
+      } else {
+        selectedDate.setDate(selectedDate.getDate() + 1);
+      }
+    }
+
+    if (
+      duration === "week" &&
+      (Math.round(getNoOfDays(startDate, endDate)) < 7 ||
+        Math.round(getNoOfDays(startDate, endDate)) > 20)
+    ) {
+      if (minDuration > 7) {
+        selectedDate.setDate(selectedDate.getDate() + minDuration);
+      } else {
+        selectedDate.setDate(selectedDate.getDate() + 7);
+      }
+    }
+
+    if (
+      duration === "month" &&
+      Math.round(getNoOfDays(startDate, endDate)) < 21
+    ) {
+      if (minDuration > 21) {
+        selectedDate.setDate(selectedDate.getDate() + minDuration);
+      } else {
+        selectedDate.setDate(selectedDate.getDate() + 21);
+      }
+    }
+
+    setEndDate(selectedDate);
+  }, [duration]);*/
 
   const [emptyCartAlert, setEmptyCartAlert] = useState(false);
 
@@ -359,6 +478,44 @@ const BookNow = ({
         <SubContainer>
           <Top>
             <Heading>Book With Us!</Heading>
+            <DurationWrapper>
+              <DurationItem
+                isActive={durationActive[0]}
+                isDisabled={disabled[0]}
+                onClick={() => {
+                  if (!disabled[0] && duration !== "short") {
+                    setDuration("short");
+                    durationUpdated("short");
+                  }
+                }}
+              >
+                Short Stay<span>(1-6 days)</span>
+              </DurationItem>
+              <DurationItem
+                isActive={durationActive[1]}
+                isDisabled={disabled[1]}
+                onClick={() => {
+                  if (!disabled[1] && duration !== "week") {
+                    setDuration("week");
+                    durationUpdated("week");
+                  }
+                }}
+              >
+                Weekly Stay<span>(7-20 days)</span>
+              </DurationItem>
+              <DurationItem
+                isActive={durationActive[2]}
+                isDisabled={disabled[2]}
+                onClick={() => {
+                  if (!disabled[2] && duration !== "month") {
+                    setDuration("month");
+                    durationUpdated("month");
+                  }
+                }}
+              >
+                Monthly Stay<span>(20+ days)</span>
+              </DurationItem>
+            </DurationWrapper>
             <CinCoutContainer>
               <CinCoutWrapper>
                 <CinCoutHeading>Check-In</CinCoutHeading>
@@ -402,6 +559,9 @@ const BookNow = ({
               </CinCoutWrapper>
             </CinCoutContainer>
             <Disclaimer>Discounted Prices for Longer Stays</Disclaimer>
+            <Disclaimer>
+              Prices not valid for dates 15th Dec - 05th Jan
+            </Disclaimer>
             <Line />
             <CinCoutHeading>Select Rooms</CinCoutHeading>
           </Top>

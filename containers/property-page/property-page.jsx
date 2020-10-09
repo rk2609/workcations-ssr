@@ -14,6 +14,7 @@ import Essentials from "../../components/essentials/essentials";
 import Faqs from "../../components/faq/faq";
 import ImportantInformation from "../../components/important-information/important-information";
 import BookNow from "../../components/book-now/book-now";
+import Maps from "../../components/maps/maps";
 
 import PropertyDetailsContainer from "../../style-components/property-page-container/property-page-container.style";
 
@@ -53,6 +54,7 @@ const PropertyPage = ({
   download,
   upload,
   houseRules,
+  latlong,
 }) => {
   /*useEffect(() => {
     if (loadElements) {
@@ -167,6 +169,7 @@ const PropertyPage = ({
                   <Essentials {...essentials} />
                 </Content>
               </div>
+
               <Heading>Similar Properties</Heading>
               <SimilarProperties
                 slug={slug}
@@ -190,3 +193,5 @@ export default PropertyPage;
 
 /*               <Heading>FAQs</Heading>
               <Faqs heading={false} /> */
+
+/*<Maps title={title} latlong={latlong} />*/

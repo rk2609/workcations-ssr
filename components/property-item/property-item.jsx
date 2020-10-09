@@ -110,7 +110,16 @@ const PropertyItem = ({
               </AmenitiesContainer>
             </DetailsWrapper>
             <Pricing>
-              <span>₹ {long}/-</span> per night
+              <span>
+                {(Number(short) * 7).toLocaleString("en-IN", {
+                  style: "currency",
+                  currency: "INR",
+                  maximumFractionDigits: 0,
+                  minimumFractionDigits: 0,
+                })}
+                /-
+              </span>
+              per week
             </Pricing>
           </DetailsContainer>
         </Details>

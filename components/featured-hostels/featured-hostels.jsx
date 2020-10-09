@@ -55,8 +55,16 @@ const FeaturedHostels = ({ propertyList }) => {
                         }}
                       >
                         <Price>
-                          {property.long}
-                          <span>/night</span>
+                          {(Number(property.short) * 7).toLocaleString(
+                            "en-IN",
+                            {
+                              style: "currency",
+                              currency: "INR",
+                              maximumFractionDigits: 0,
+                              minimumFractionDigits: 0,
+                            }
+                          )}
+                          <span>/week</span>
                         </Price>
                       </ImageLong>
                     </ImageLongShimmer>
@@ -123,8 +131,16 @@ const FeaturedVillas = ({ propertyList }) => {
                         }}
                       >
                         <Price>
-                          {property.long}
-                          <span>/night</span>
+                          {(Number(property.short) * 7).toLocaleString(
+                            "en-IN",
+                            {
+                              style: "currency",
+                              currency: "INR",
+                              maximumFractionDigits: 0,
+                              minimumFractionDigits: 0,
+                            }
+                          )}
+                          <span>/week</span>
                         </Price>
                       </Image>
                     </ImageShimmer>
@@ -191,8 +207,16 @@ const FeaturedHotels = ({ propertyList }) => {
                         }}
                       >
                         <Price>
-                          {property.long}
-                          <span>/night</span>
+                          {(Number(property.short) * 7).toLocaleString(
+                            "en-IN",
+                            {
+                              style: "currency",
+                              currency: "INR",
+                              maximumFractionDigits: 0,
+                              minimumFractionDigits: 0,
+                            }
+                          )}
+                          <span>/week</span>
                         </Price>
                       </ImageLong>
                     </ImageLongShimmer>

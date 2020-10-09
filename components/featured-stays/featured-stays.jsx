@@ -46,8 +46,16 @@ const FeaturedStays = ({ featured, propertyList }) => {
                         <ImageContainer>
                           <Type type={property.type}>{property.type}</Type>
                           <Price>
-                            {property.long}
-                            <span>/night</span>
+                            {(Number(property.short) * 7).toLocaleString(
+                              "en-IN",
+                              {
+                                style: "currency",
+                                currency: "INR",
+                                maximumFractionDigits: 0,
+                                minimumFractionDigits: 0,
+                              }
+                            )}
+                            <span>/week</span>
                           </Price>
                         </ImageContainer>
                       </Image>

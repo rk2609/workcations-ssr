@@ -156,9 +156,9 @@ const Amenities = (value) => {
   ];
   return (
     <Fragment>
-      {mappingTree.map((treeItem) =>
+      {mappingTree.map((treeItem, i) =>
         value.value === treeItem.title ? (
-          <Container key={treeItem.title}>
+          <Container key={treeItem.title + i}>
             <img src={treeItem.image} alt={treeItem.title} />
             <span>{treeItem.text}</span>
           </Container>

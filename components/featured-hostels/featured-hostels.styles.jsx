@@ -169,27 +169,29 @@ export const ImageLong = styled.div`
 export const Price = styled.span`
   /* type-price */
   font-size: 1.6vw;
-  font-weight: 600;
+  font-weight: 400;
   background-color: #ff6b6c;
-  width: 8vw;
+  width: auto;
   height: 3vw;
   border-radius: 0px 5px 5px 0px;
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 0 -0.5vw 1vw 0;
+  padding: 0 0.5vw;
 
   @media only screen and (max-width: 600px) {
     font-size: 3vw;
-    width: 14vw;
+    width: auto;
     height: 5vw;
     margin: 0 -1vw 5vw 0;
+    padding: 0 1.5vw;
   }
 
   span {
     /* type-per-night */
     font-size: 1.2vw;
-    font-weight: 400;
+    font-weight: 300;
 
     @media only screen and (max-width: 600px) {
       font-size: 2vw;

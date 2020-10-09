@@ -559,3 +559,64 @@ export const EmptyCartAlert = styled.div`
     padding: 20px 30px;
   }
 `;
+
+export const DurationWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 1vw;
+  box-shadow: 0px 0px 3px #888888;
+  border-radius: 3px;
+
+  @media only screen and (max-width: 900px) {
+  }
+`;
+
+export const DurationItem = styled.div`
+  font-size: 1vw;
+  font-weight: 600;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  width: 33%;
+  padding: 0.2vw 0;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+
+  color: ${(props) =>
+    props.isDisabled
+      ? "#6a6a6a"
+      : props.isActive
+      ? "rgb(255, 255, 255)"
+      : "rgb(255, 128, 127)"};
+
+  background-color: ${(props) =>
+    props.isDisabled
+      ? "#f8f7f8"
+      : props.isActive
+      ? "rgba(255, 128, 127, 1)"
+      : "rgba(255, 128, 127, 0.2)"};
+
+  &&:first-child {
+    width: 34%;
+    border-radius: 3px 0px 0px 3px;
+  }
+
+  &&:last-child {
+    width: 34%;
+    border-radius: 0px 3px 3px 0px;
+  }
+
+  @media only screen and (max-width: 900px) {
+  }
+
+  span {
+    font-size: 0.8vw;
+    font-weight: 400;
+
+    @media only screen and (max-width: 900px) {
+    }
+  }
+`;
