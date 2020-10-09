@@ -562,7 +562,7 @@ export const EmptyCartAlert = styled.div`
 
 export const DurationWrapper = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   width: 100%;
   margin-bottom: 1vw;
   box-shadow: 0px 0px 3px 0px #aaaaaa;
@@ -602,12 +602,10 @@ export const DurationItem = styled.div`
       : "rgba(255, 128, 127, 0.2)"};
 
   &&:first-child {
-    width: 34%;
     border-radius: 3px 0px 0px 3px;
   }
 
   &&:last-child {
-    width: 34%;
     border-radius: 0px 3px 3px 0px;
   }
 

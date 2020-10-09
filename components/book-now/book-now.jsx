@@ -121,8 +121,8 @@ const BookNow = ({
   const today = new Date();
   let endDateInitial = new Date();
 
-  if (!minDuration) {
-    endDateInitial.setDate(today.getDate() + 1);
+  if (!minDuration || minDuration <= 7) {
+    endDateInitial.setDate(today.getDate() + 7);
   } else {
     endDateInitial.setDate(today.getDate() + minDuration);
   }
