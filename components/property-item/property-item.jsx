@@ -27,8 +27,11 @@ const PropertyItem = ({
   slug,
   type,
   features,
+  ultrashort,
   short,
+  normal,
   long,
+  ultralong,
   images,
   location,
 }) => {
@@ -111,7 +114,7 @@ const PropertyItem = ({
             </DetailsWrapper>
             <Pricing>
               <span>
-                {(Number(short) * 7).toLocaleString("en-IN", {
+                {Number(ultrashort).toLocaleString("en-IN", {
                   style: "currency",
                   currency: "INR",
                   maximumFractionDigits: 0,
@@ -119,7 +122,7 @@ const PropertyItem = ({
                 })}
                 /-
               </span>
-              per week
+              per day
             </Pricing>
           </DetailsContainer>
         </Details>

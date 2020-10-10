@@ -1,65 +1,158 @@
-import React from "react";
-import { Map, InfoWindow, Marker, GoogleApiWrapper } from "google-maps-react";
+import React, { useEffect, useState, useRef } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import useSupercluster from "use-supercluster";
+import Link from "next/link";
 
-import { Container } from "./maps.style";
+import { setPropertyListStart } from "../../redux/property/properties.actions";
+import { selectPropertyList } from "../../redux/property/properties.selectors";
 
-const containerStyle = {
-  position: "relative",
-  width: "100%",
-  height: "100%",
-  borderRadius: "5px",
-  boxShadow: "0px 0px 3px rgba(0, 0, 0, 0.2)",
-};
+import { Container, MainMarker, AuxMarker, ClusterMarker } from "./maps.style";
 
-const mapStyles = {
-  width: "100%",
-  height: "100%",
-  borderRadius: "5px",
-};
+import GoogleMapReact from "google-map-react";
 
-var myStyles = [
-  {
-    featureType: "poi",
-    elementType: "labels",
-    stylers: [{ visibility: "off" }],
-  },
-];
+const MarkerNew = ({ children }) => children;
 
-const Maps = ({ google, latlong, title }) => {
+const Maps = ({ latlong, title, slug }) => {
+  const dispatch = useDispatch();
+  const propertyList = useSelector(selectPropertyList);
+
+  const [filteredList, setFilteredList] = useState([]);
+
+  const [bounds, setBounds] = useState(null);
+  const [zoom, setZoom] = useState(12);
+
+  const mapRef = useRef();
+
+  useEffect(() => {
+    if (propertyList.length === 0) {
+      dispatch(setPropertyListStart());
+    }
+  }, [dispatch, propertyList]);
+
+  useEffect(() => {
+    setFilteredList(
+      propertyList.filter(
+        (item) => item.slug !== slug && item.visibility === "TRUE"
+      )
+    );
+  }, [propertyList]);
+
+  const [points, setPoints] = useState([]);
+
+  useEffect(() => {
+    if (filteredList && filteredList.length > 1) {
+      const pointsArray = filteredList.map((item) => {
+        return {
+          type: "Feature",
+          properties: {
+            cluster: false,
+            crimeId: item.slug,
+            category: item.type,
+            title: item.title,
+          },
+          geometry: {
+            type: "Point",
+            coordinates: [
+              parseFloat(Number(item.latlong[1]) - 0.0005),
+              parseFloat(Number(item.latlong[0]) + 0.0005),
+            ],
+          },
+        };
+      });
+      setPoints(pointsArray);
+    }
+  }, [filteredList]);
+
   const latLong = latlong.split(", ");
+
+  const { clusters, supercluster } = useSupercluster({
+    points,
+    bounds,
+    zoom,
+    options: { radius: 75, maxZoom: 20 },
+  });
+
   return (
     <Container>
-      <Map
-        google={google}
-        zoom={14}
-        style={mapStyles}
-        styles={myStyles}
-        containerStyle={containerStyle}
-        initialCenter={{
+      <GoogleMapReact
+        bootstrapURLKeys={{ key: "AIzaSyBAVnqm6RoXqOOBe88VqV5aDaRFgL-YSQc" }}
+        defaultCenter={{
           lat: Number(latLong[0]) + 0.0005,
           lng: Number(latLong[1]) - 0.0005,
         }}
+        defaultZoom={12}
+        onChange={({ zoom, bounds }) => {
+          setZoom(zoom);
+          setBounds([
+            bounds.nw.lng,
+            bounds.se.lat,
+            bounds.se.lng,
+            bounds.nw.lat,
+          ]);
+        }}
+        yesIWantToUseGoogleMapApiInternals
+        onGoogleApiLoaded={({ map }) => {
+          mapRef.current = map;
+        }}
       >
-        <Marker
-          position={{
-            lat: Number(latLong[0]) + 0.0005,
-            lng: Number(latLong[1]) - 0.0005,
-          }}
-          title={title}
-          name={title}
-          animation={google.maps.Animation.BOUNCE}
-          icon={{
-            url: "/logo.png",
-            anchor: new google.maps.Point(32, 32),
-            scaledSize: new google.maps.Size(40, 40),
-          }}
-        />
-      </Map>
+        <MainMarker
+          lat={Number(latLong[0]) + 0.0005}
+          lng={Number(latLong[1]) - 0.0005}
+        >
+          <img src="/logo.png" />
+          <span>{title}</span>
+        </MainMarker>
+        {clusters.map((cluster) => {
+          const [longitude, latitude] = cluster.geometry.coordinates;
+          const {
+            cluster: isCluster,
+            point_count: pointCount,
+          } = cluster.properties;
+
+          if (isCluster) {
+            return (
+              <MarkerNew
+                key={`cluster-${cluster.id}`}
+                lat={latitude}
+                lng={longitude}
+              >
+                <ClusterMarker
+                  className="cluster-marker"
+                  style={{
+                    width: `${10 + (pointCount / points.length) * 20}px`,
+                    height: `${10 + (pointCount / points.length) * 20}px`,
+                  }}
+                  onClick={() => {}}
+                >
+                  {pointCount}
+                </ClusterMarker>
+              </MarkerNew>
+            );
+          }
+
+          return (
+            <MarkerNew
+              key={`crime-${cluster.properties.crimeId}`}
+              lat={latitude}
+              lng={longitude}
+            >
+              <AuxMarker>
+                <img src="/logo-black.png" alt="crime doesn't pay" />
+                <span>
+                  <Link
+                    href={`/property/${cluster.properties.crimeId}`}
+                    passHref
+                  >
+                    <a target="_blank">{cluster.properties.title}</a>
+                  </Link>
+                </span>
+              </AuxMarker>
+            </MarkerNew>
+          );
+        })}
+      </GoogleMapReact>
     </Container>
   );
 };
 
-export default GoogleApiWrapper({
-  apiKey: "AIzaSyBAVnqm6RoXqOOBe88VqV5aDaRFgL-YSQc",
-  language: "en",
-})(Maps);
+export default Maps;

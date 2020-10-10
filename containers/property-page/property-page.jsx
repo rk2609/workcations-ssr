@@ -48,13 +48,14 @@ const PropertyPage = ({
   breakfast,
   lunch,
   dinner,
-  loadElements,
   checkIn,
   checkOut,
   download,
   upload,
   houseRules,
   latlong,
+  properties,
+  loadElements,
 }) => {
   /*useEffect(() => {
     if (loadElements) {
@@ -169,7 +170,7 @@ const PropertyPage = ({
                   <Essentials {...essentials} />
                 </Content>
               </div>
-              <Maps title={title} latlong={latlong} />
+              <Maps slug={slug} title={title} latlong={latlong} />
               <Heading>Similar Properties</Heading>
               <SimilarProperties
                 slug={slug}

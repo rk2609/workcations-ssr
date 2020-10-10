@@ -44,3 +44,88 @@ export const Container = styled.div`
     height: 35vh;
   }
 `;
+
+export const MainMarker = styled.div`
+  width: 12vw;
+  display: flex;
+  flex-wrap: nowrap;
+
+  img {
+    width: 3vw;
+  }
+
+  span {
+    display: flex;
+    justify-content: center;
+    padding: 0 0.2vw;
+    align-items: center;
+    background-color: white;
+    text-align: center;
+    border-radius: 3px;
+    font-weight: 500;
+    color: #777777;
+    font-size: 0.8vw;
+    box-shadow: 0px 0px 3px #cccccc;
+  }
+
+  @media only screen and (max-width: 900px) {
+    width: 40vw;
+
+    img {
+      width: 10vw;
+    }
+
+    span {
+      font-size: 2vw;
+    }
+  }
+`;
+
+export const AuxMarker = styled.div`
+  width: 10vw;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+
+  img {
+    width: 2vw;
+  }
+
+  span {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    padding: 0.3vw 0.2vw;
+    align-items: center;
+    background-color: white;
+    text-align: center;
+    border-radius: 3px;
+    font-weight: 400;
+    color: #777777;
+    font-size: 0.6vw;
+    box-shadow: 0px 0px 3px #cccccc;
+  }
+
+  @media only screen and (max-width: 900px) {
+    width: 32vw;
+
+    img {
+      width: 8vw;
+    }
+
+    span {
+      font-size: 2vw;
+      padding: 1vw 0.3vw;
+    }
+  }
+`;
+
+export const ClusterMarker = styled.div`
+  color: #fff;
+  background: #ff6c6b;
+  border-radius: 50%;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;

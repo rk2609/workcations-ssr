@@ -55,16 +55,13 @@ const FeaturedHostels = ({ propertyList }) => {
                         }}
                       >
                         <Price>
-                          {(Number(property.short) * 7).toLocaleString(
-                            "en-IN",
-                            {
-                              style: "currency",
-                              currency: "INR",
-                              maximumFractionDigits: 0,
-                              minimumFractionDigits: 0,
-                            }
-                          )}
-                          <span>/week</span>
+                          {Number(property.ultrashort).toLocaleString("en-IN", {
+                            style: "currency",
+                            currency: "INR",
+                            maximumFractionDigits: 0,
+                            minimumFractionDigits: 0,
+                          })}
+                          <span>/night</span>
                         </Price>
                       </ImageLong>
                     </ImageLongShimmer>
@@ -131,16 +128,13 @@ const FeaturedVillas = ({ propertyList }) => {
                         }}
                       >
                         <Price>
-                          {(Number(property.short) * 7).toLocaleString(
-                            "en-IN",
-                            {
-                              style: "currency",
-                              currency: "INR",
-                              maximumFractionDigits: 0,
-                              minimumFractionDigits: 0,
-                            }
-                          )}
-                          <span>/week</span>
+                          {Number(property.ultrashort).toLocaleString("en-IN", {
+                            style: "currency",
+                            currency: "INR",
+                            maximumFractionDigits: 0,
+                            minimumFractionDigits: 0,
+                          })}
+                          <span>/night</span>
                         </Price>
                       </Image>
                     </ImageShimmer>
@@ -207,16 +201,13 @@ const FeaturedHotels = ({ propertyList }) => {
                         }}
                       >
                         <Price>
-                          {(Number(property.short) * 7).toLocaleString(
-                            "en-IN",
-                            {
-                              style: "currency",
-                              currency: "INR",
-                              maximumFractionDigits: 0,
-                              minimumFractionDigits: 0,
-                            }
-                          )}
-                          <span>/week</span>
+                          {Number(property.ultrashort).toLocaleString("en-IN", {
+                            style: "currency",
+                            currency: "INR",
+                            maximumFractionDigits: 0,
+                            minimumFractionDigits: 0,
+                          })}
+                          <span>/night</span>
                         </Price>
                       </ImageLong>
                     </ImageLongShimmer>

@@ -558,7 +558,6 @@ const BookNow = ({
                 />
               </CinCoutWrapper>
             </CinCoutContainer>
-            <Disclaimer>Discounted Prices for Longer Stays</Disclaimer>
             <Disclaimer>
               Prices not valid for dates 15th Dec - 05th Jan
             </Disclaimer>
