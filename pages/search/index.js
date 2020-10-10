@@ -138,10 +138,10 @@ const Properties = () => {
         name: "location.state",
         weight: 1.4,
       },
-      {
+      /*{
         name: "filtersAll",
         weight: 2,
-      },
+      },*/
     ],
   };
 
