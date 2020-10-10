@@ -50,8 +50,18 @@ export const MainMarker = styled.div`
   display: flex;
   flex-wrap: nowrap;
 
+  @media only screen and (max-width: 900px) {
+    width: 40vw;
+  }
+
   img {
     width: 3vw;
+    height: 3vw;
+
+    @media only screen and (max-width: 900px) {
+      width: 10vw;
+      height: 10vw;
+    }
   }
 
   span {
@@ -66,16 +76,8 @@ export const MainMarker = styled.div`
     color: #777777;
     font-size: 0.8vw;
     box-shadow: 0px 0px 3px #cccccc;
-  }
 
-  @media only screen and (max-width: 900px) {
-    width: 40vw;
-
-    img {
-      width: 10vw;
-    }
-
-    span {
+    @media only screen and (max-width: 900px) {
       font-size: 2vw;
     }
   }
