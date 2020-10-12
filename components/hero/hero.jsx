@@ -43,7 +43,7 @@ const Hero = () => {
           <Text>India's most trusted community of Remote Workers!</Text>
           <SearchContainer onSubmit={searchFunction}>
             <Search
-              type="search"
+              type="text"
               value={searchQuery}
               placeholder={placeholderText}
               onChange={(e) => {
