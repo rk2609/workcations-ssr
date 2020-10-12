@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 import { useDispatch } from "react-redux";
 import { toggleContactPopupHidden } from "../../redux/contact-popup/contact-popup.actions";
@@ -7,36 +8,62 @@ import { toggleContactPopupHidden } from "../../redux/contact-popup/contact-popu
 import {
   Container,
   Logo,
+  LogoMobile,
   Menu,
   MenuOption,
   Hamburger,
   Line1,
   Line2,
   Line3,
+  SearchContainer,
+  Search,
+  SearchText,
+  SearchInput,
+  SearchIcon,
 } from "./header.style";
 
 const Header = () => {
+  const router = useRouter();
   const dispatch = useDispatch();
+
   const isServer = typeof window === "undefined";
 
-  const [headerPosition, setHeader] = useState({
-    visible: true,
-    prevScrollpos: isServer ? 0 : window.pageYOffset,
-  });
-
   const [open, setOpen] = useState(false);
+
+  const [searchValue, setSearchValue] = useState(
+    "search" in router.query ? router.query.search : ""
+  );
+  const [searchError, setSearchError] = useState(false);
+  const [placeholderText, setPlaceholder] = useState("Find Your Workcation...");
+
+  const [searchPos, setSearchPos] = useState(false);
+
+  useEffect(() => {
+    if(router.route.length > 1) {
+      setSearchPos(true);
+    }
+  }, [router])
+
+  const searchFunction = (e) => {
+    e.preventDefault();
+
+    if (searchValue.length === 0) {
+      setPlaceholder("Search Field can't be empty");
+      setSearchError(true);
+    } else {
+      router.push(`/search?search=${encodeURI(searchValue)}`);
+    }
+  };
 
   const menuOpen = () => {
     setOpen(!open);
   };
 
-  const { prevScrollpos, visible } = headerPosition;
-
   const handleScroll = () => {
-    const currentScrollPos = isServer ? 0 : window.pageYOffset;
-    const visible = prevScrollpos > currentScrollPos;
-
-    setHeader({ prevScrollpos: currentScrollPos, visible });
+    if (isServer || searchPos) return;
+    if((screen.height - window.pageYOffset) < 250) {
+      setSearchPos(true);
+    } 
   };
 
   useEffect(() => {
@@ -52,12 +79,33 @@ const Header = () => {
   }, [handleScroll]);
 
   return (
-    <Container visible={visible}>
+    <Container>
       <Link href="/" passHref>
         <Logo>
           <img src="/logo.svg" alt="Workcations" />
         </Logo>
       </Link>
+      <Link href="/" passHref>
+        <LogoMobile>
+          <img src="/logo-mobile.svg" alt="Workcations" />
+        </LogoMobile>
+      </Link>
+      <SearchContainer searchPos={searchPos}>
+        <Search onSubmit={searchFunction}>
+          <SearchInput
+            type="search"
+            value={searchValue}
+            placeholder={placeholderText}
+            onChange={(e) => {
+              setSearchValue(e.target.value);
+            }}
+            searchError={searchError}
+          />
+          <SearchIcon onClick={searchFunction}>
+            <img src="/search.svg" alt="search" />
+          </SearchIcon>
+        </Search>
+      </SearchContainer>
       <Menu open={open}>
         <Link href="/properties" passHref>
           <MenuOption>Destinations</MenuOption>
@@ -90,15 +138,9 @@ export default Header;
 
 /*
 
-<MenuOption
-          onClick={() => {
-            document.body.scrollTop = 0;
-            document.documentElement.scrollTop = 0;
-            setOpen(false);
-          }}
-          to="/"
-        >
-          Membership
-        </MenuOption>
-        
-        */
+<SearchText></SearchText>
+          <SearchIcon>
+            <img src="/search.svg" alt="search" />
+          </SearchIcon>
+
+          */

@@ -36,6 +36,13 @@ const Properties = () => {
   const router = useRouter();
   const { search } = router.query;
 
+  useEffect(() => {
+    if (!isServer) {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+    } 
+  }, [search]);
+
   const dispatch = useDispatch();
   const propertyList = useSelector(selectPropertyList);
 

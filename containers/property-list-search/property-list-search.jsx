@@ -39,18 +39,6 @@ const PropertyListSearch = ({ list, loadElements, pattern }) => {
 
   return (
     <Container>
-      <SearchContainer onSubmit={searchFunction}>
-        <Search
-          type="search"
-          value={searchQuery}
-          placeholder={placeholderText}
-          onChange={(e) => {
-            setSearchQuery(e.target.value);
-          }}
-          searchError={searchError}
-        />
-        <Button type="submit" value="Search" />
-      </SearchContainer>
       {propertyList.length > 0 ? (
         <Fragment>
           {list.length > 0 ? (
@@ -131,3 +119,25 @@ export default PropertyListSearch;
               ) : null
             )
           )}  */
+
+
+
+          /*
+
+
+
+
+          <SearchContainer onSubmit={searchFunction}>
+        <Search
+          type="search"
+          value={searchQuery}
+          placeholder={placeholderText}
+          onChange={(e) => {
+            setSearchQuery(e.target.value);
+          }}
+          searchError={searchError}
+        />
+        <Button type="submit" value="Search" />
+      </SearchContainer>
+
+      */

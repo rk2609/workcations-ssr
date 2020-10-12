@@ -57,6 +57,7 @@ export const MainMarker = styled.div`
   img {
     width: 3vw;
     height: 3vw;
+    z-index: 999;
 
     @media only screen and (max-width: 900px) {
       width: 10vw;
@@ -76,6 +77,7 @@ export const MainMarker = styled.div`
     color: #777777;
     font-size: 0.8vw;
     box-shadow: 0px 0px 3px #cccccc;
+    z-index: 999;
 
     @media only screen and (max-width: 900px) {
       font-size: 2vw;
