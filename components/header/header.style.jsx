@@ -23,7 +23,7 @@ export const Container = styled.div`
 export const Logo = styled.a`
   grid-area: logo;
   height: 50px;
-  width: 100%;
+  width: 10vw;
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -42,7 +42,7 @@ export const Logo = styled.a`
 export const LogoMobile = styled.a`
   grid-area: logo;
   height: 50px;
-  width: 100%;
+  width: 50%;
   display: none;
   align-items: center;
   justify-content: flex-start;

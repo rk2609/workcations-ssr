@@ -93,7 +93,7 @@ const Header = () => {
       <SearchContainer searchPos={searchPos}>
         <Search onSubmit={searchFunction}>
           <SearchInput
-            type="search"
+            type="text"
             value={searchValue}
             placeholder={placeholderText}
             onChange={(e) => {
