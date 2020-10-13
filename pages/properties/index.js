@@ -107,9 +107,6 @@ const Properties = () => {
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <Container>
-        <Heading>
-          find your <span>Workcation</span>
-        </Heading>
         <Filters
           citiesLink={cities}
           statesLink={states}

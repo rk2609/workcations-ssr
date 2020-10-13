@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, Fragment } from "react";
 import Link from "next/link";
 
 import {
@@ -34,6 +34,7 @@ const PropertyItem = ({
   ultralong,
   images,
   location,
+  duration
 }) => {
   const { city, state } = location;
   const [currentImage, setCurrent] = useState(images[0]);
@@ -113,16 +114,47 @@ const PropertyItem = ({
               </AmenitiesContainer>
             </DetailsWrapper>
             <Pricing>
+            {
+              duration === 'short' ?
+              <Fragment>
               <span>
-                {Number(ultrashort).toLocaleString("en-IN", {
-                  style: "currency",
-                  currency: "INR",
-                  maximumFractionDigits: 0,
-                  minimumFractionDigits: 0,
-                })}
-                /-
-              </span>
-              per day
+              {Number(ultrashort).toLocaleString("en-IN", {
+                style: "currency",
+                currency: "INR",
+                maximumFractionDigits: 0,
+                minimumFractionDigits: 0,
+              })}
+              /-
+            </span>
+            per day
+            </Fragment>
+            : duration === 'week' ?
+            <Fragment>
+            <span>
+            {(Number(short) * 7).toLocaleString("en-IN", {
+              style: "currency",
+              currency: "INR",
+              maximumFractionDigits: 0,
+              minimumFractionDigits: 0,
+            })}
+            /-
+          </span>
+          per week
+          </Fragment>
+          :
+          <Fragment>
+          <span>
+          {(Number(ultralong) * 30).toLocaleString("en-IN", {
+            style: "currency",
+            currency: "INR",
+            maximumFractionDigits: 0,
+            minimumFractionDigits: 0,
+          })}
+          /-
+        </span>
+        per month
+        </Fragment>
+            }
             </Pricing>
           </DetailsContainer>
         </Details>
