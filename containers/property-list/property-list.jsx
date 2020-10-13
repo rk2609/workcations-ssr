@@ -59,8 +59,8 @@ const PropertyList = ({ loadElements, cities, states, types, min, max }) => {
   const filteredMaxPrice = useSelector(selectSelectedMaxPrice);
   const filteredCities = useSelector(selectSelectedDestinationList);
 
-  const [duration, setDuration] = useState("short");
-  const [durationActive, setDurationActive] = useState([true, false, false]);
+  const [duration, setDuration] = useState("week");
+  const [durationActive, setDurationActive] = useState([false, true, false]);
 
   useEffect(() => {duration === "short" ? setDurationActive([true, false, false]) : duration === "week" ? setDurationActive([false, true, false]) : setDurationActive([false, false, true])}, [duration]);
 
