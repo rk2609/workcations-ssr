@@ -55,7 +55,7 @@ const FeaturedHostels = ({ propertyList }) => {
                         }}
                       >
                         <Price>
-                          {Number(property.ultrashort).toLocaleString("en-IN", {
+                          {Number(property.short).toLocaleString("en-IN", {
                             style: "currency",
                             currency: "INR",
                             maximumFractionDigits: 0,
@@ -128,7 +128,7 @@ const FeaturedVillas = ({ propertyList }) => {
                         }}
                       >
                         <Price>
-                          {Number(property.ultrashort).toLocaleString("en-IN", {
+                          {Number(property.short).toLocaleString("en-IN", {
                             style: "currency",
                             currency: "INR",
                             maximumFractionDigits: 0,
@@ -201,7 +201,7 @@ const FeaturedHotels = ({ propertyList }) => {
                         }}
                       >
                         <Price>
-                          {Number(property.ultrashort).toLocaleString("en-IN", {
+                          {Number(property.short).toLocaleString("en-IN", {
                             style: "currency",
                             currency: "INR",
                             maximumFractionDigits: 0,

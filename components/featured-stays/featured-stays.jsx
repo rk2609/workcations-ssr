@@ -46,7 +46,7 @@ const FeaturedStays = ({ featured, propertyList }) => {
                         <ImageContainer>
                           <Type type={property.type}>{property.type}</Type>
                           <Price>
-                            {Number(property.ultrashort).toLocaleString(
+                            {Number(property.short).toLocaleString(
                               "en-IN",
                               {
                                 style: "currency",
