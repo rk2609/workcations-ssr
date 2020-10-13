@@ -106,7 +106,7 @@ export const CarouselPrice = styled.span`
 
 export const CarouselDetails = styled.div`
   width: 100%;
-  height: 4.5vw;
+  min-height: 6vw;
   padding-left: 0.6vw;
   display: flex;
   flex-direction: column;
@@ -115,7 +115,7 @@ export const CarouselDetails = styled.div`
   border-radius: 0px 0px 5px 5px;
 
   @media only screen and (max-width: 900px) {
-    height: 10.8vw;
+    min-height: 13vw;
     padding-left: 1.46vw;
     justify-content: center;
     border-radius: 0px 0px 3px 3px;

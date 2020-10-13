@@ -36,6 +36,7 @@ export const Container = styled.div`
   border-radius: 5px;
   height: 26vw;
   box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.2);
+  margin-bottom: 30px;
 
   ${Light}
   ${Shimmer}
