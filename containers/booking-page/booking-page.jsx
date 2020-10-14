@@ -169,6 +169,20 @@ const BookingPage = ({ data, bookingSlug }) => {
       propertyId: Number(bookingId.split('-')[1]),
       propertyTitle: property.title
     });
+
+    import('react-facebook-pixel')
+      .then((x) => x.default)
+      .then((ReactPixel) => {
+        ReactPixel.init('717219922161498');
+
+        ReactPixel.track('Purchase', {
+          value: Number(amount),
+          currency: 'INR',
+          content_ids: [bookingId, Number(bookingId.split('-')[1])],
+          content_name: property.title,
+
+        });
+      });
   }, [])
 
   const [travelersNames, setTravelersNames] = useState([]);
