@@ -42,6 +42,16 @@ const ContactPopup = () => {
       action: "Contact Form Submitted",
       label: "Contact Form Submitted",
     });
+
+    import('react-facebook-pixel')
+      .then((x) => x.default)
+      .then((ReactPixel) => {
+        ReactPixel.init('717219922161498');
+
+        ReactPixel.trackCustom('Contact Form Submitted', {
+          action: 'Contact Form Submitted'
+        });
+      });
   };
 
   const dispatch = useDispatch();

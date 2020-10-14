@@ -68,6 +68,16 @@ const BookNowPopup = ({
       action: "Book Now Contact Form Submitted",
       label: "Book Now Contact Form Submitted",
     });
+
+    import('react-facebook-pixel')
+      .then((x) => x.default)
+      .then((ReactPixel) => {
+        ReactPixel.init('717219922161498');
+
+        ReactPixel.trackCustom('Book Now Contact Form Submitted', {
+          action: 'Book Now Contact Form Submitted'
+        });
+      });
   };
 
   const [formDetails, setDetails] = useState({

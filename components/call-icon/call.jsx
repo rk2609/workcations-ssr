@@ -23,6 +23,16 @@ const CallIcon = () => {
       action: "WhatsApp Button Clicked",
       label: "WhatsApp Button Clicked",
     });
+
+    import('react-facebook-pixel')
+      .then((x) => x.default)
+      .then((ReactPixel) => {
+        ReactPixel.init('717219922161498');
+
+        ReactPixel.trackCustom('WhatsApp Button Clicked', {
+          action: 'WhatsApp Button Clicked'
+        });
+      });
   };
 
   const sendCallNowEvent = () => {
@@ -31,6 +41,16 @@ const CallIcon = () => {
       action: "Call Now Button Clicked",
       label: "Call Now Button Clicked",
     });
+
+    import('react-facebook-pixel')
+      .then((x) => x.default)
+      .then((ReactPixel) => {
+        ReactPixel.init('717219922161498');
+
+        ReactPixel.trackCustom('Call Now Button Clicked', {
+          action: 'Call Now Button Clicked'
+        });
+      });
   };
 
   const sendRequestACallBackEvent = () => {
@@ -39,6 +59,16 @@ const CallIcon = () => {
       action: "Request A Call Back Button Clicked",
       label: "Request A Call Back Button Clicked",
     });
+
+    import('react-facebook-pixel')
+      .then((x) => x.default)
+      .then((ReactPixel) => {
+        ReactPixel.init('717219922161498');
+
+        ReactPixel.trackCustom('Request A Call Back Button Clicked', {
+          action: 'Request A Call Back Button Clicked'
+        });
+      });
   };
 
   const sendContactUsEvent = () => {
@@ -52,7 +82,6 @@ const CallIcon = () => {
       .then((x) => x.default)
       .then((ReactPixel) => {
         ReactPixel.init('717219922161498');
-        console.log('react pixel fired');
 
         ReactPixel.trackCustom('Contact Us Button Clicked', {
           action: 'Contact Us Button Clicked'
