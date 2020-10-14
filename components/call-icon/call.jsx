@@ -47,6 +47,17 @@ const CallIcon = () => {
       action: "Contact Us Button Clicked",
       label: "Contact Us Button Clicked",
     });
+
+    import('react-facebook-pixel')
+      .then((x) => x.default)
+      .then((ReactPixel) => {
+        ReactPixel.init('717219922161498');
+        console.log('react pixel fired');
+
+        ReactPixel.trackCustom('Contact Us Button Clicked', {
+          action: 'Contact Us Button Clicked'
+        });
+      });
   };
 
   return (
