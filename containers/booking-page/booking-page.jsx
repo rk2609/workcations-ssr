@@ -1,5 +1,6 @@
 import React, { useState, useEffect, Fragment } from "react";
 import Head from "next/head";
+import * as gtag from '../../components/ga';
 
 import FormInput from "../../components/form-input-text/form-input-text";
 
@@ -159,6 +160,16 @@ const BookingPage = ({ data, bookingSlug }) => {
     value: "",
     warningMessage: "",
   });
+
+  useEffect(() => {
+    gtag.purchase({
+      id: bookingId,
+      revenue: Number(amount),
+      tax: Number(amount*0.05/1.05),
+      propertyId: Number(bookingId.split('-')[1]),
+      propertyTitle: property.title
+    });
+  }, [])
 
   const [travelersNames, setTravelersNames] = useState([]);
   const [travelersPhones, setTravelersPhones] = useState([]);

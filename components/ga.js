@@ -12,3 +12,18 @@ export const event = ({ action, category, label }) => {
     event_label: label,
   });
 };
+
+export const purchase = ({id, revenue, tax, propertyId, propertyTitle}) => {
+  window.gtag("event", "purchase", {
+    transaction_id: id,
+    value: revenue,
+    currency: "INR",
+    tax: tax,
+    items: [
+      {
+        id: '' + propertyId,
+        name: propertyTitle,
+      }
+    ]
+  })
+}
