@@ -236,7 +236,7 @@ const BookNow = ({
       if (minDuration > 21) {
         selectedDate.setDate(selectedDate.getDate() + minDuration);
       } else {
-        selectedDate.setDate(selectedDate.getDate() + 21);
+        selectedDate.setDate(selectedDate.getDate() + 30);
       }
     }
 
