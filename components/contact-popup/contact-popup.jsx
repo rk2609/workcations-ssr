@@ -48,7 +48,7 @@ const ContactPopup = () => {
       .then((ReactPixel) => {
         ReactPixel.init('717219922161498');
 
-        ReactPixel.trackCustom('Contact Form Submitted', {
+        ReactPixel.track('Lead', {
           action: 'Contact Form Submitted'
         });
       });

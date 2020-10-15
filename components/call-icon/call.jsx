@@ -69,7 +69,7 @@ const CallIcon = () => {
       .then((ReactPixel) => {
         ReactPixel.init('717219922161498');
 
-        ReactPixel.trackCustom('WhatsApp Button Clicked', {
+        ReactPixel.track('Contact', {
           action: 'WhatsApp Button Clicked'
         });
       });
@@ -87,7 +87,7 @@ const CallIcon = () => {
       .then((ReactPixel) => {
         ReactPixel.init('717219922161498');
 
-        ReactPixel.trackCustom('Call Now Button Clicked', {
+        ReactPixel.track('Contact', {
           action: 'Call Now Button Clicked'
         });
       });
@@ -105,7 +105,7 @@ const CallIcon = () => {
       .then((ReactPixel) => {
         ReactPixel.init('717219922161498');
 
-        ReactPixel.trackCustom('Request A Call Back Button Clicked', {
+        ReactPixel.track('Contact', {
           action: 'Request A Call Back Button Clicked'
         });
       });
@@ -123,7 +123,7 @@ const CallIcon = () => {
       .then((ReactPixel) => {
         ReactPixel.init('717219922161498');
 
-        ReactPixel.trackCustom('Contact Us Button Clicked', {
+        ReactPixel.track('Contact', {
           action: 'Contact Us Button Clicked'
         });
       });

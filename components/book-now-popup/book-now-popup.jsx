@@ -74,7 +74,7 @@ const BookNowPopup = ({
       .then((ReactPixel) => {
         ReactPixel.init('717219922161498');
 
-        ReactPixel.trackCustom('Book Now Contact Form Submitted', {
+        ReactPixel.track('Lead', {
           action: 'Book Now Contact Form Submitted'
         });
       });
@@ -368,10 +368,42 @@ const BookNowPopup = ({
                   value="Request A CallBack"
                 />
                 <Buttons>
-                  <Button href={whatsAppLink} buttonColor={"#25D366"}>
+                  <Button onClick={() => {
+                    gtag.event({
+                      category: "Book Now WhatsApp Button Clicked",
+                      action: "Book Now WhatsApp Button Clicked",
+                      label: "Book Now WhatsApp Button Clicked",
+                    });
+                
+                    import('react-facebook-pixel')
+                      .then((x) => x.default)
+                      .then((ReactPixel) => {
+                        ReactPixel.init('717219922161498');
+                
+                        ReactPixel.track('Contact', {
+                          action: 'Book Now WhatsApp Button Clicked'
+                        });
+                      });
+                  }} href={whatsAppLink} buttonColor={"#25D366"}>
                     WhatsApp
                   </Button>
-                  <Button href="tel:8814871652" buttonColor={"#000000"}>
+                  <Button onClick={() => {
+                    gtag.event({
+                      category: "Book Now Call Now Button Clicked",
+                      action: "Book Now Call Now Button Clicked",
+                      label: "Book Now Call Now Button Clicked",
+                    });
+                
+                    import('react-facebook-pixel')
+                      .then((x) => x.default)
+                      .then((ReactPixel) => {
+                        ReactPixel.init('717219922161498');
+                
+                        ReactPixel.track('Contact', {
+                          action: 'Book Now Call Now Button Clicked'
+                        });
+                      });
+                  }} href="tel:8814871652" buttonColor={"#000000"}>
                     Call Now
                   </Button>
                 </Buttons>
