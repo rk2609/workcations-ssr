@@ -449,9 +449,9 @@ const BookingPage = ({ data, bookingSlug }) => {
                       <span>
                         {(
                           TotalAmount +
-                          (Number(breakfast.value) +
-                            Number(lunch.value) +
-                            Number(dinner.value)) *
+                          (Number(breakfast.value) * Number(breakfast.state) +
+                            Number(lunch.value) * Number(lunch.state) +
+                            Number(dinner.value) * Number(dinner.state)) *
                             Number(totalPax.value) *
                             Math.round(getNoOfDays(checkInDate, checkOutDate))
                         ).toLocaleString("en-IN", {
@@ -477,9 +477,9 @@ const BookingPage = ({ data, bookingSlug }) => {
                         <Fragment>
                           {(
                             ((TotalAmount +
-                              (Number(breakfast.value) +
-                                Number(lunch.value) +
-                                Number(dinner.value)) *
+                              (Number(breakfast.value) * Number(breakfast.state) +
+                              Number(lunch.value) * Number(lunch.state) +
+                              Number(dinner.value) * Number(dinner.state)) *
                                 Number(totalPax.value) *
                                 Math.round(
                                   getNoOfDays(checkInDate, checkOutDate)
@@ -487,9 +487,9 @@ const BookingPage = ({ data, bookingSlug }) => {
                               Number(amount) / 1.05) *
                               100) /
                             (TotalAmount +
-                              (Number(breakfast.value) +
-                                Number(lunch.value) +
-                                Number(dinner.value)) *
+                              (Number(breakfast.value) * Number(breakfast.state) +
+                              Number(lunch.value) * Number(lunch.state) +
+                              Number(dinner.value) * Number(dinner.state)) *
                                 Number(totalPax.value) *
                                 Math.round(
                                   getNoOfDays(checkInDate, checkOutDate)
@@ -510,9 +510,9 @@ const BookingPage = ({ data, bookingSlug }) => {
                       <span>
                         {(
                           TotalAmount +
-                          (Number(breakfast.value) +
-                            Number(lunch.value) +
-                            Number(dinner.value)) *
+                          (Number(breakfast.value) * Number(breakfast.state) +
+                          Number(lunch.value) * Number(lunch.state) +
+                          Number(dinner.value) * Number(dinner.state)) *
                             Number(totalPax.value) *
                             Math.round(getNoOfDays(checkInDate, checkOutDate)) -
                           Number(amount) / 1.05
