@@ -161,29 +161,6 @@ const BookingPage = ({ data, bookingSlug }) => {
     warningMessage: "",
   });
 
-  useEffect(() => {
-    gtag.purchase({
-      id: bookingId,
-      revenue: Number(amount),
-      tax: Number(amount*0.05/1.05),
-      propertyId: Number(bookingId.split('-')[1]),
-      propertyTitle: property.title
-    });
-
-    import('react-facebook-pixel')
-      .then((x) => x.default)
-      .then((ReactPixel) => {
-        ReactPixel.init('717219922161498');
-
-        ReactPixel.track('Purchase', {
-          value: Number(amount),
-          currency: 'INR',
-          content_ids: [bookingId, Number(bookingId.split('-')[1])],
-          content_name: property.title,
-
-        });
-      });
-  }, [])
 
   const [travelersNames, setTravelersNames] = useState([]);
   const [travelersPhones, setTravelersPhones] = useState([]);
@@ -237,6 +214,28 @@ const BookingPage = ({ data, bookingSlug }) => {
 
   const submitDataFinal = (event) => {
     event.preventDefault();
+
+    gtag.purchase({
+      id: bookingId,
+      revenue: Number(amount),
+      tax: Number(amount*0.05/1.05),
+      propertyId: Number(bookingId.split('-')[1]),
+      propertyTitle: property.title
+    });
+
+    import('react-facebook-pixel')
+      .then((x) => x.default)
+      .then((ReactPixel) => {
+        ReactPixel.init('717219922161498');
+
+        ReactPixel.track('Purchase', {
+          value: Number(amount),
+          currency: 'INR',
+          content_ids: [bookingId, Number(bookingId.split('-')[1])],
+          content_name: property.title,
+
+        });
+      });
 
     const data = {
       bookingSlug,
