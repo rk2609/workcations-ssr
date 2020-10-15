@@ -113,7 +113,7 @@ export const Heading = styled.h2`
   font-weight: 600;
   font-size: 1.7vw;
   line-height: 1.8vw;
-  margin-top: 0.5vw;
+  margin-tovwp: 0.5vw;
 
   @media only screen and (max-width: 900px) {
     font-size: 3vw;
@@ -132,6 +132,28 @@ export const Internet = styled.div`
     grid-template-columns: 3fr 1fr;
     margin-bottom: 4vw;
   }
+`;
+
+export const InternetNote = styled.div`
+font-size: 0.9vw;
+color: #777777;
+margin-bottom: 3vw;
+background-color: #efefef;
+padding: 1vw;
+border-radius: 5px;
+
+@media only screen and (max-width: 900px) {
+  font-size: 2.5vw;
+  color: #777777;
+  margin-bottom: 5vw;
+  padding: 3vw;
+  border-radius: 3px;
+  }
+
+b {
+  margin-right: 10px;
+  color: black;
+}
 `;
 
 export const EmptySpace = styled.div`

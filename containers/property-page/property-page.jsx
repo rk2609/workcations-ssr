@@ -29,6 +29,7 @@ import {
   Heading,
   Internet,
   EmptySpace,
+  InternetNote
 } from "./property-page.style";
 
 const PropertyPage = ({
@@ -115,6 +116,10 @@ const PropertyPage = ({
                         <p> Download Speed </p> <b> {download} Mbps</b>
                         <p> Upload Speed </p> <b> {upload} Mbps</b>
                       </Internet>
+                      <InternetNote>
+                      <b>Note:</b>Above mentioned internet speed is based on a speedtest result & should be taken only 
+                        as a reference. Actual speed depends on the ISP & may vary from time to time
+                        </InternetNote>
                     </Fragment>
                   ) : null}
                   {checkIn !== "-1" || houseRules[0] !== "-1" ? (
