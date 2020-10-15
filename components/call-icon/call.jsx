@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useState, useEffect } from "react";
 import Link from "next/link";
 import * as gtag from "../ga";
 
@@ -16,6 +16,46 @@ const CallIcon = () => {
   const hidden = useSelector(selectPopupHidden);
   const iconPosition = useSelector(selectPopupPosition);
   const [showMobilePopup, setMobilePopup] = useState(false);
+
+  const isServer = typeof window === "undefined";
+
+  const handleScroll = () => {
+    if (isServer || !showMobilePopup) return;
+    if((screen.height - window.pageYOffset) < 250) {
+      setMobilePopup(false);
+    } 
+  };
+
+  useEffect(() => {
+    if (!isServer) {
+      window.addEventListener("scroll", handleScroll);
+    }
+
+    return () => {
+      if (!isServer) {
+        window.removeEventListener("scroll", handleScroll);
+      }
+    };
+  }, [handleScroll]);
+
+  setTimeout(() => {
+    dispatch(toggleContactPopupHidden());
+    gtag.event({
+      category: "Popup after 5 minutes",
+      action: "Popup after 5 minutes",
+      label: "Popup after 5 minutes",
+    });
+
+    import('react-facebook-pixel')
+      .then((x) => x.default)
+      .then((ReactPixel) => {
+        ReactPixel.init('717219922161498');
+
+        ReactPixel.trackCustom('Popup after 5 minutes', {
+          action: 'Popup after 5 minutes'
+        });
+      });
+  }, 300000);
 
   const sendWhatsAppEvent = () => {
     gtag.event({
