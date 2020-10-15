@@ -38,7 +38,7 @@ const CallIcon = () => {
     };
   }, [handleScroll]);
 
-  setTimeout(() => {
+  /*setTimeout(() => {
     dispatch(toggleContactPopupHidden());
     gtag.event({
       category: "Popup after 5 minutes",
@@ -55,7 +55,7 @@ const CallIcon = () => {
           action: 'Popup after 5 minutes'
         });
       });
-  }, 300000);
+  }, 300000);*/
 
   const sendWhatsAppEvent = () => {
     gtag.event({
