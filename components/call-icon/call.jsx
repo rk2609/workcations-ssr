@@ -38,12 +38,16 @@ const CallIcon = () => {
     };
   }, [handleScroll]);
 
-  /*setTimeout(() => {
-    dispatch(toggleContactPopupHidden());
+  useEffect(() => {
+    let showPopup;
+    showPopup = setInterval(() => {
+      dispatch(toggleContactPopupHidden());
+    }, 300000);
+
     gtag.event({
-      category: "Popup after 5 minutes",
-      action: "Popup after 5 minutes",
-      label: "Popup after 5 minutes",
+      category: "Contact Form Popup after 5 minutes",
+      action: "Contact Form Popup after 5 minutes",
+      label: "Contact Form Popup after 5 minutes",
     });
 
     import('react-facebook-pixel')
@@ -51,11 +55,11 @@ const CallIcon = () => {
       .then((ReactPixel) => {
         ReactPixel.init('717219922161498');
 
-        ReactPixel.trackCustom('Popup after 5 minutes', {
-          action: 'Popup after 5 minutes'
+        ReactPixel.trackCustom('Contact Form Popup after 5 minutes', {
+          action: 'Contact Form Popup after 5 minutes'
         });
       });
-  }, 300000);*/
+  },[]);
 
   const sendWhatsAppEvent = () => {
     gtag.event({
