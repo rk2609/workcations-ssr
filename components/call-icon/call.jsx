@@ -42,23 +42,23 @@ const CallIcon = () => {
     let showPopup;
     showPopup = setInterval(() => {
       dispatch(toggleContactPopupHidden());
-    }, 300000);
-
-    gtag.event({
-      category: "Contact Form Popup after 5 minutes",
-      action: "Contact Form Popup after 5 minutes",
-      label: "Contact Form Popup after 5 minutes",
-    });
-
-    import('react-facebook-pixel')
-      .then((x) => x.default)
-      .then((ReactPixel) => {
-        ReactPixel.init('717219922161498');
-
-        ReactPixel.trackCustom('Contact Form Popup after 5 minutes', {
-          action: 'Contact Form Popup after 5 minutes'
-        });
+      
+      gtag.event({
+        category: "Contact Form Popup after 5 minutes",
+        action: "Contact Form Popup after 5 minutes",
+        label: "Contact Form Popup after 5 minutes",
       });
+  
+      import('react-facebook-pixel')
+        .then((x) => x.default)
+        .then((ReactPixel) => {
+          ReactPixel.init('717219922161498');
+  
+          ReactPixel.trackCustom('Contact Form Popup after 5 minutes', {
+            action: 'Contact Form Popup after 5 minutes'
+          });
+        });
+    }, 300000);
   },[]);
 
   const sendWhatsAppEvent = () => {
