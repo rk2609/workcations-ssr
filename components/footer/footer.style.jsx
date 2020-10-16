@@ -96,9 +96,11 @@ export const SubFooter = styled.div`
   align-items: center;
   background-color: #dd6061;
   font-weight: 600;
+  position: relative;
 
   a {
     text-decoration: none;
     color: white;
   }
 `;
+

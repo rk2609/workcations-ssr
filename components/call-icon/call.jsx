@@ -42,6 +42,8 @@ const CallIcon = () => {
     let showPopup;
     showPopup = setInterval(() => {
       dispatch(toggleContactPopupHidden());
+
+      console.log('Hey I am called');
       
       gtag.event({
         category: "Contact Form Popup after 5 minutes",

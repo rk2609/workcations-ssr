@@ -49,15 +49,14 @@ const Footer = () => (
         </div>
       </Connect>
     </Container>
-    <SubFooter>
-      <a
+    <a
         href="https://www.wanderon.in/"
         target="_blank"
         rel="noopener noreferrer"
       >
+    <SubFooter>
         A Unit of WanderOn
-      </a>
-    </SubFooter>
+    </SubFooter></a>
   </Fragment>
 );
 

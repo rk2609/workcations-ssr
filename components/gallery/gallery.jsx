@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect, Fragment } from "react";
 import Slider from "react-slick";
+import * as gtag from "../ga";
 
 import {
   Container,
@@ -17,6 +18,7 @@ const Gallery = ({ images, slug, loadElements }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const mainSlider = useRef(null);
   const thumbnailSlider = useRef(null);
+  const [lastImage, setLastImage] = useState(false);
 
   const settings = {
     dots: false,
@@ -44,6 +46,28 @@ const Gallery = ({ images, slug, loadElements }) => {
     speed: 500,
     cssEase: "ease-in-out",
     afterChange: (index) => {
+      if(index === (images.length - 1) && !lastImage) {
+
+        gtag.event({
+          category: "Content View - All Gallery Images Viewed",
+          action: "Content View - All Gallery Images Viewed",
+          label: "Content View - All Gallery Images Viewed",
+        });
+    
+        import('react-facebook-pixel')
+          .then((x) => x.default)
+          .then((ReactPixel) => {
+            ReactPixel.init('717219922161498');
+    
+            ReactPixel.track('ViewContent', {
+              action: 'All Gallery Images Viewed'
+            });
+          });
+          
+          setLastImage(true);
+      }
+
+
       setCurrentSlide(index);
       if (mainSlider) {
         mainSlider.current.slickGoTo(index);

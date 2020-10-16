@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
+import * as gtag from "../ga";
 
 import Typing from "../typing/typing";
 
@@ -31,6 +32,23 @@ const Hero = () => {
       setPlaceholder("Search Field can't be empty");
       setSearchError(true);
     } else {
+      
+      gtag.event({
+        category: "Search Function Called",
+        action: "Search Function Called",
+        label: "Search Function Called",
+      });
+  
+      import('react-facebook-pixel')
+        .then((x) => x.default)
+        .then((ReactPixel) => {
+          ReactPixel.init('717219922161498');
+  
+          ReactPixel.track('Search', {
+            action: 'Search Function Called'
+          });
+        });
+
       router.push(`/search?search=${encodeURI(searchQuery)}`);
     }
   };

@@ -1,6 +1,8 @@
 import React, { Fragment, useState, useEffect } from "react";
 import DatePicker from "react-datepicker";
 import { useDispatch, useSelector } from "react-redux";
+import * as emailjs from "emailjs-com";
+import * as gtag from "../ga";
 
 import { showBookingPopup } from "../../redux/property/properties.actions";
 import { selectBookingPopup } from "../../redux/property/properties.selectors";
@@ -109,6 +111,8 @@ const BookNow = ({
       };
     })
   );
+
+  const [addToCart, setAddToCart] = useState(false);
 
   const [totalPax, setTotalPax] = useState(null);
 
@@ -286,6 +290,25 @@ const BookNow = ({
   const [emptyCartAlert, setEmptyCartAlert] = useState(false);
 
   const addRoom = (roomIndex, sharingIndex) => {
+    if(!addToCart) {
+      gtag.event({
+        category: "Add To Cart",
+        action: "Add To Cart",
+        label: "Add To Cart",
+      });
+  
+      import('react-facebook-pixel')
+        .then((x) => x.default)
+        .then((ReactPixel) => {
+          ReactPixel.init('717219922161498');
+  
+          ReactPixel.track('AddToCart', {
+            action: 'Add To Cart Button Clicked'
+          });
+        });
+
+        setAddToCart(true);
+    }
     const newCount = cartDetails[roomIndex].rooms[sharingIndex].count + 1;
 
     let newTotal = 0;
@@ -389,6 +412,23 @@ const BookNow = ({
         setEmptyCartAlert(false);
       }, 4000);
     } else {
+
+      gtag.event({
+        category: "CheckOut Initiated Book Now Button Clicked",
+        action: "CheckOut Initiated Book Now Button Clicked",
+        label: "CheckOut Initiated Book Now Button Clicked",
+      });
+  
+      import('react-facebook-pixel')
+        .then((x) => x.default)
+        .then((ReactPixel) => {
+          ReactPixel.init('717219922161498');
+  
+          ReactPixel.track('InitiateCheckout', {
+            action: 'Book Now Button Clicked'
+          });
+        });
+
       dispatch(showBookingPopup());
       setEmptyCartAlert(false);
     }
