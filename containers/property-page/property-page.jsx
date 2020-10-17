@@ -15,6 +15,7 @@ import Faqs from "../../components/faq/faq";
 import ImportantInformation from "../../components/important-information/important-information";
 import BookNow from "../../components/book-now/book-now";
 import Maps from "../../components/maps/maps";
+import Calendar from "../../components/calendar/calendar";
 
 import PropertyDetailsContainer from "../../style-components/property-page-container/property-page-container.style";
 
@@ -29,7 +30,7 @@ import {
   Heading,
   Internet,
   EmptySpace,
-  InternetNote
+  InternetNote,
 } from "./property-page.style";
 
 const PropertyPage = ({
@@ -117,9 +118,11 @@ const PropertyPage = ({
                         <p> Upload Speed </p> <b> {upload} Mbps</b>
                       </Internet>
                       <InternetNote>
-                      <b>Note:</b>Above mentioned internet speed is based on a speedtest result & should be taken only 
-                        as a reference. Actual speed depends on the ISP & may vary from time to time
-                        </InternetNote>
+                        <b>Note:</b>Above mentioned internet speed is based on a
+                        speedtest result & should be taken only as a reference.
+                        Actual speed depends on the ISP & may vary from time to
+                        time
+                      </InternetNote>
                     </Fragment>
                   ) : null}
                   {checkIn !== "-1" || houseRules[0] !== "-1" ? (

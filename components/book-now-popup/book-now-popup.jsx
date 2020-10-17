@@ -69,13 +69,13 @@ const BookNowPopup = ({
       label: "Book Now Contact Form Submitted",
     });
 
-    import('react-facebook-pixel')
+    import("react-facebook-pixel")
       .then((x) => x.default)
       .then((ReactPixel) => {
-        ReactPixel.init('717219922161498');
+        ReactPixel.init("717219922161498");
 
-        ReactPixel.track('Lead', {
-          action: 'Book Now Contact Form Submitted'
+        ReactPixel.track("Lead", {
+          action: "Book Now Contact Form Submitted",
         });
       });
   };
@@ -124,7 +124,7 @@ const BookNowPopup = ({
     text += "\n";
   }
 
-  const whatsAppLink = "https://wa.me/919599615300?text=" + encodeURI(text);
+  const whatsAppLink = "https://wa.me/918814871652?text=" + encodeURI(text);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -155,7 +155,7 @@ const BookNowPopup = ({
       sendEvent();
 
       const waLeadUrl =
-        "https://panel.capiwha.com/send_message.php?apikey=L00RQROD2VU0ZOXC25YX&number=919599615300&text=" +
+        "https://panel.capiwha.com/send_message.php?apikey=L00RQROD2VU0ZOXC25YX&number=918814871652&text=" +
         encodeURI(waLeadText);
       fetch(waLeadUrl);
 
@@ -368,42 +368,50 @@ const BookNowPopup = ({
                   value="Request A CallBack"
                 />
                 <Buttons>
-                  <Button onClick={() => {
-                    gtag.event({
-                      category: "Book Now WhatsApp Button Clicked",
-                      action: "Book Now WhatsApp Button Clicked",
-                      label: "Book Now WhatsApp Button Clicked",
-                    });
-                
-                    import('react-facebook-pixel')
-                      .then((x) => x.default)
-                      .then((ReactPixel) => {
-                        ReactPixel.init('717219922161498');
-                
-                        ReactPixel.track('Contact', {
-                          action: 'Book Now WhatsApp Button Clicked'
-                        });
+                  <Button
+                    onClick={() => {
+                      gtag.event({
+                        category: "Book Now WhatsApp Button Clicked",
+                        action: "Book Now WhatsApp Button Clicked",
+                        label: "Book Now WhatsApp Button Clicked",
                       });
-                  }} href={whatsAppLink} buttonColor={"#25D366"}>
+
+                      import("react-facebook-pixel")
+                        .then((x) => x.default)
+                        .then((ReactPixel) => {
+                          ReactPixel.init("717219922161498");
+
+                          ReactPixel.track("Contact", {
+                            action: "Book Now WhatsApp Button Clicked",
+                          });
+                        });
+                    }}
+                    href={whatsAppLink}
+                    buttonColor={"#25D366"}
+                  >
                     WhatsApp
                   </Button>
-                  <Button onClick={() => {
-                    gtag.event({
-                      category: "Book Now Call Now Button Clicked",
-                      action: "Book Now Call Now Button Clicked",
-                      label: "Book Now Call Now Button Clicked",
-                    });
-                
-                    import('react-facebook-pixel')
-                      .then((x) => x.default)
-                      .then((ReactPixel) => {
-                        ReactPixel.init('717219922161498');
-                
-                        ReactPixel.track('Contact', {
-                          action: 'Book Now Call Now Button Clicked'
-                        });
+                  <Button
+                    onClick={() => {
+                      gtag.event({
+                        category: "Book Now Call Now Button Clicked",
+                        action: "Book Now Call Now Button Clicked",
+                        label: "Book Now Call Now Button Clicked",
                       });
-                  }} href="tel:8814871652" buttonColor={"#000000"}>
+
+                      import("react-facebook-pixel")
+                        .then((x) => x.default)
+                        .then((ReactPixel) => {
+                          ReactPixel.init("717219922161498");
+
+                          ReactPixel.track("Contact", {
+                            action: "Book Now Call Now Button Clicked",
+                          });
+                        });
+                    }}
+                    href="tel:8814871652"
+                    buttonColor={"#000000"}
+                  >
                     Call Now
                   </Button>
                 </Buttons>

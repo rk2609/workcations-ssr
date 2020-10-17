@@ -85,7 +85,7 @@ export const HeroImage = styled.div`
     span {
       font-size: 1.5vw;
       color: white;
-      background-color: rgba(0,0,0,0.8);
+      background-color: rgba(0, 0, 0, 0.8);
       margin: 0px 10px 10px 0px;
       border-radius: 5px;
       padding: 0.3vw 1vw;

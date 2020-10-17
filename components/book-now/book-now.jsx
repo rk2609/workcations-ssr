@@ -289,24 +289,24 @@ const BookNow = ({
   const [emptyCartAlert, setEmptyCartAlert] = useState(false);
 
   const addRoom = (roomIndex, sharingIndex) => {
-    if(!addToCart) {
+    if (!addToCart) {
       gtag.event({
         category: "Add To Cart",
         action: "Add To Cart",
         label: "Add To Cart",
       });
-  
-      import('react-facebook-pixel')
+
+      import("react-facebook-pixel")
         .then((x) => x.default)
         .then((ReactPixel) => {
-          ReactPixel.init('717219922161498');
-  
-          ReactPixel.track('AddToCart', {
-            action: 'Add To Cart Button Clicked'
+          ReactPixel.init("717219922161498");
+
+          ReactPixel.track("AddToCart", {
+            action: "Add To Cart Button Clicked",
           });
         });
 
-        setAddToCart(true);
+      setAddToCart(true);
     }
     const newCount = cartDetails[roomIndex].rooms[sharingIndex].count + 1;
 
@@ -411,20 +411,19 @@ const BookNow = ({
         setEmptyCartAlert(false);
       }, 4000);
     } else {
-
       gtag.event({
         category: "CheckOut Initiated Book Now Button Clicked",
         action: "CheckOut Initiated Book Now Button Clicked",
         label: "CheckOut Initiated Book Now Button Clicked",
       });
-  
-      import('react-facebook-pixel')
+
+      import("react-facebook-pixel")
         .then((x) => x.default)
         .then((ReactPixel) => {
-          ReactPixel.init('717219922161498');
-  
-          ReactPixel.track('InitiateCheckout', {
-            action: 'Book Now Button Clicked'
+          ReactPixel.init("717219922161498");
+
+          ReactPixel.track("InitiateCheckout", {
+            action: "Book Now Button Clicked",
           });
         });
 

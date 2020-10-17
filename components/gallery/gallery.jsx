@@ -46,27 +46,25 @@ const Gallery = ({ images, slug, loadElements }) => {
     speed: 500,
     cssEase: "ease-in-out",
     afterChange: (index) => {
-      if(index === (images.length - 1) && !lastImage) {
-
+      if (index === images.length - 1 && !lastImage) {
         gtag.event({
           category: "Content View - All Gallery Images Viewed",
           action: "Content View - All Gallery Images Viewed",
           label: "Content View - All Gallery Images Viewed",
         });
-    
-        import('react-facebook-pixel')
+
+        import("react-facebook-pixel")
           .then((x) => x.default)
           .then((ReactPixel) => {
-            ReactPixel.init('717219922161498');
-    
-            ReactPixel.track('ViewContent', {
-              action: 'All Gallery Images Viewed'
+            ReactPixel.init("717219922161498");
+
+            ReactPixel.track("ViewContent", {
+              action: "All Gallery Images Viewed",
             });
           });
-          
-          setLastImage(true);
-      }
 
+        setLastImage(true);
+      }
 
       setCurrentSlide(index);
       if (mainSlider) {
@@ -89,7 +87,11 @@ const Gallery = ({ images, slug, loadElements }) => {
                 style={{
                   backgroundImage: `url(https://d1xmqx9e0b6ljd.cloudfront.net/${slug}/${image}.jpg)`,
                 }}
-              ><span>{i + 1}/{images.length}</span></div>
+              >
+                <span>
+                  {i + 1}/{images.length}
+                </span>
+              </div>
             </HeroImage>
           ))}
         </Slider>

@@ -40,10 +40,10 @@ const Header = () => {
   const [searchPos, setSearchPos] = useState(false);
 
   useEffect(() => {
-    if(router.route.length > 1) {
+    if (router.route.length > 1) {
       setSearchPos(true);
     }
-  }, [router])
+  }, [router]);
 
   const searchFunction = (e) => {
     e.preventDefault();
@@ -52,23 +52,22 @@ const Header = () => {
       setPlaceholder("Search Field can't be empty");
       setSearchError(true);
     } else {
-
       gtag.event({
         category: "Search Function Called",
         action: "Search Function Called",
         label: "Search Function Called",
       });
-  
-      import('react-facebook-pixel')
+
+      import("react-facebook-pixel")
         .then((x) => x.default)
         .then((ReactPixel) => {
-          ReactPixel.init('717219922161498');
-  
-          ReactPixel.track('Search', {
-            action: 'Search Function Called'
+          ReactPixel.init("717219922161498");
+
+          ReactPixel.track("Search", {
+            action: "Search Function Called",
           });
         });
-        
+
       router.push(`/search?search=${encodeURI(searchValue)}`);
     }
   };
@@ -79,9 +78,9 @@ const Header = () => {
 
   const handleScroll = () => {
     if (isServer || searchPos) return;
-    if((screen.height - window.pageYOffset) < 250) {
+    if (screen.height - window.pageYOffset < 250) {
       setSearchPos(true);
-    } 
+    }
   };
 
   useEffect(() => {

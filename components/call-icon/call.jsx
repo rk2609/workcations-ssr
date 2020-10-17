@@ -9,7 +9,12 @@ import {
   selectPopupPosition,
 } from "../../redux/contact-popup/contact-popup.selectors";
 
-import { Container, ContainerMobile, PopupMobile, PopupItem } from "./call.style";
+import {
+  Container,
+  ContainerMobile,
+  PopupMobile,
+  PopupItem,
+} from "./call.style";
 
 const CallIcon = () => {
   const dispatch = useDispatch();
@@ -21,9 +26,9 @@ const CallIcon = () => {
 
   const handleScroll = () => {
     if (isServer || !showMobilePopup) return;
-    if((screen.height - window.pageYOffset) < 250) {
+    if (screen.height - window.pageYOffset < 250) {
       setMobilePopup(false);
-    } 
+    }
   };
 
   useEffect(() => {
@@ -42,24 +47,24 @@ const CallIcon = () => {
     let showPopup;
     showPopup = setTimeout(() => {
       dispatch(toggleContactPopupHidden());
-      
+
       gtag.event({
         category: "Contact Form Popup after 5 minutes",
         action: "Contact Form Popup after 5 minutes",
         label: "Contact Form Popup after 5 minutes",
       });
-  
-      import('react-facebook-pixel')
+
+      import("react-facebook-pixel")
         .then((x) => x.default)
         .then((ReactPixel) => {
-          ReactPixel.init('717219922161498');
-  
-          ReactPixel.trackCustom('Contact Form Popup after 5 minutes', {
-            action: 'Contact Form Popup after 5 minutes'
+          ReactPixel.init("717219922161498");
+
+          ReactPixel.trackCustom("Contact Form Popup after 5 minutes", {
+            action: "Contact Form Popup after 5 minutes",
           });
         });
     }, 300000);
-  },[]);
+  }, []);
 
   const sendWhatsAppEvent = () => {
     gtag.event({
@@ -68,13 +73,13 @@ const CallIcon = () => {
       label: "WhatsApp Button Clicked",
     });
 
-    import('react-facebook-pixel')
+    import("react-facebook-pixel")
       .then((x) => x.default)
       .then((ReactPixel) => {
-        ReactPixel.init('717219922161498');
+        ReactPixel.init("717219922161498");
 
-        ReactPixel.track('Contact', {
-          action: 'WhatsApp Button Clicked'
+        ReactPixel.track("Contact", {
+          action: "WhatsApp Button Clicked",
         });
       });
   };
@@ -86,13 +91,13 @@ const CallIcon = () => {
       label: "Call Now Button Clicked",
     });
 
-    import('react-facebook-pixel')
+    import("react-facebook-pixel")
       .then((x) => x.default)
       .then((ReactPixel) => {
-        ReactPixel.init('717219922161498');
+        ReactPixel.init("717219922161498");
 
-        ReactPixel.track('Contact', {
-          action: 'Call Now Button Clicked'
+        ReactPixel.track("Contact", {
+          action: "Call Now Button Clicked",
         });
       });
   };
@@ -104,13 +109,13 @@ const CallIcon = () => {
       label: "Request A Call Back Button Clicked",
     });
 
-    import('react-facebook-pixel')
+    import("react-facebook-pixel")
       .then((x) => x.default)
       .then((ReactPixel) => {
-        ReactPixel.init('717219922161498');
+        ReactPixel.init("717219922161498");
 
-        ReactPixel.track('Contact', {
-          action: 'Request A Call Back Button Clicked'
+        ReactPixel.track("Contact", {
+          action: "Request A Call Back Button Clicked",
         });
       });
   };
@@ -122,13 +127,13 @@ const CallIcon = () => {
       label: "Contact Us Button Clicked",
     });
 
-    import('react-facebook-pixel')
+    import("react-facebook-pixel")
       .then((x) => x.default)
       .then((ReactPixel) => {
-        ReactPixel.init('717219922161498');
+        ReactPixel.init("717219922161498");
 
-        ReactPixel.track('Contact', {
-          action: 'Contact Us Button Clicked'
+        ReactPixel.track("Contact", {
+          action: "Contact Us Button Clicked",
         });
       });
   };
@@ -145,43 +150,54 @@ const CallIcon = () => {
       >
         <img src="/phone.svg" alt="Request a Call Back" />
       </Container>
-        <ContainerMobile
+      <ContainerMobile
+        onClick={() => {
+          setMobilePopup(!showMobilePopup);
+          sendContactUsEvent();
+        }}
+        hidden={hidden}
+        iconPosition={iconPosition}
+      >
+        <img src="/phone.svg" alt="Request a Call Back" />
+      </ContainerMobile>
+      <PopupMobile isActive={showMobilePopup}>
+        <PopupItem
           onClick={() => {
             setMobilePopup(!showMobilePopup);
-            sendContactUsEvent();
+            dispatch(toggleContactPopupHidden());
+            sendRequestACallBackEvent();
           }}
-          hidden={hidden}
-          iconPosition={iconPosition}
         >
-          <img src="/phone.svg" alt="Request a Call Back" />
-        </ContainerMobile>
-      <PopupMobile isActive={showMobilePopup}>
-      <PopupItem onClick={() => {
-        setMobilePopup(!showMobilePopup);
-        dispatch(toggleContactPopupHidden());
-        sendRequestACallBackEvent();
-      }}>
-      <img src='/call-back.svg' alt="request a call back" />
-      <span>Request A Call Back</span>
-      </PopupItem>
-      <Link href="https://wa.me/919599615300?text=I'm%20interested%20in%20workcations" passHref>
-      <PopupItem target="_blank" onClick={() => {
-            setMobilePopup(!showMobilePopup);
-            sendWhatsAppEvent();
-          }}>
-      <img src='/whatsapp.svg' alt="whatsapp" />
-      <span>WhatsApp</span>
-      </PopupItem>
-      </Link>
-      <Link href="tel:8814871652" passHref>
-      <PopupItem target="_blank" onClick={() => {
-            setMobilePopup(!showMobilePopup);
-            sendCallNowEvent();
-          }}>
-      <img src='/call-now.svg' alt="call now" />
-      <span>Call Now</span>
-      </PopupItem>
-      </Link>
+          <img src="/call-back.svg" alt="request a call back" />
+          <span>Request A Call Back</span>
+        </PopupItem>
+        <Link
+          href="https://wa.me/918814871652?text=I'm%20interested%20in%20workcations"
+          passHref
+        >
+          <PopupItem
+            target="_blank"
+            onClick={() => {
+              setMobilePopup(!showMobilePopup);
+              sendWhatsAppEvent();
+            }}
+          >
+            <img src="/whatsapp.svg" alt="whatsapp" />
+            <span>WhatsApp</span>
+          </PopupItem>
+        </Link>
+        <Link href="tel:8814871652" passHref>
+          <PopupItem
+            target="_blank"
+            onClick={() => {
+              setMobilePopup(!showMobilePopup);
+              sendCallNowEvent();
+            }}
+          >
+            <img src="/call-now.svg" alt="call now" />
+            <span>Call Now</span>
+          </PopupItem>
+        </Link>
       </PopupMobile>
     </Fragment>
   );
