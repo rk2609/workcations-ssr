@@ -83,13 +83,13 @@ const Gallery = ({ images, slug, loadElements }) => {
           ref={mainSlider}
           {...settings}
         >
-          {images.map((image) => (
+          {images.map((image, i) => (
             <HeroImage key={image}>
               <div
                 style={{
                   backgroundImage: `url(https://d1xmqx9e0b6ljd.cloudfront.net/${slug}/${image}.jpg)`,
                 }}
-              ></div>
+              ><span>{i + 1}/{images.length}</span></div>
             </HeroImage>
           ))}
         </Slider>

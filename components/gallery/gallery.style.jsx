@@ -78,6 +78,25 @@ export const HeroImage = styled.div`
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+
+    span {
+      font-size: 1.5vw;
+      color: white;
+      background-color: rgba(0,0,0,0.8);
+      margin: 0px 10px 10px 0px;
+      border-radius: 5px;
+      padding: 0.3vw 1vw;
+
+      @media only screen and (max-width: 900px) {
+        font-size: 3.5vw;
+        font-weight: 600;
+        border-radius: 3px;
+        padding: 1vw 3vw;
+      }
+    }
   }
 `;
 
