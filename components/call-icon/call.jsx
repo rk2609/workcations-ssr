@@ -40,7 +40,7 @@ const CallIcon = () => {
 
   useEffect(() => {
     let showPopup;
-    showPopup = setInterval(() => {
+    showPopup = setTimeout(() => {
       dispatch(toggleContactPopupHidden());
 
       console.log('Hey I am called');

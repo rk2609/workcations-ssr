@@ -1,7 +1,6 @@
 import React, { Fragment, useState, useEffect } from "react";
 import DatePicker from "react-datepicker";
 import { useDispatch, useSelector } from "react-redux";
-import * as emailjs from "emailjs-com";
 import * as gtag from "../ga";
 
 import { showBookingPopup } from "../../redux/property/properties.actions";
