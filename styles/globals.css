@@ -1582,6 +1582,8 @@ img {
   }
 }
 
+/*******************    DatePicker.css     *******************/
+
 .DatePicker {
   position: relative;
   display: inline-block;
@@ -1654,7 +1656,7 @@ img {
 .Calendar {
   --cl-color-black: #444444;
   --cl-color-disabled: #d4d4d4;
-  --cl-color-error: #ff2929;
+  --cl-color-error: #ff6c6b;
   font-size: 10px;
   background: #fff;
   box-shadow: 0 1em 4em rgba(0, 0, 0, 0.07);
@@ -2037,11 +2039,13 @@ img {
 .Calendar__weekDays {
   display: flex;
   justify-content: space-between;
-  color: var(--cl-color-disabled);
+  color: white;
   font-size: 1.2em;
   margin-bottom: 0.7em;
   padding: 0 2.6em;
   position: relative;
+  background-color: #ff6c6b;
+  font-weight: 600;
 }
 
 .Calendar__weekDay {
@@ -2192,6 +2196,7 @@ img {
   background: transparent !important;
   cursor: default !important;
 }
+
 .Calendar__day.-selected {
   border-radius: 50%;
 }

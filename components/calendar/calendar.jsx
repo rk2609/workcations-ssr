@@ -9,6 +9,9 @@ const CalendarComponent = () => {
     to: null,
   });
 
+  console.log(selectedDayRange.from);
+  console.log(selectedDayRange.to);
+
   const maximumDate = {
     year: 2021,
     month: 3,
@@ -32,8 +35,6 @@ const CalendarComponent = () => {
       day: 7,
     },
   ];
-
-  console.log(selectedDayRange);
 
   return (
     <Container>

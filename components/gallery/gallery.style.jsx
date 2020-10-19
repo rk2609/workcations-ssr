@@ -123,15 +123,21 @@ export const ThumbnailImage = styled.div`
 `;
 
 export const GalleryArrow = styled.div`
-  width: 100%;
+  width: 94%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  position: absolute;
+  top: 45%;
+  left: 3%;
+  z-index: 1;
 
   svg {
     height: 3vw;
     fill: white;
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.5);
 
     @media only screen and (max-width: 900px) {
       height: 7vw;
