@@ -25,7 +25,7 @@ const Gallery = ({ images, slug, loadElements }) => {
     arrows: false,
     lazyLoad: true,
     infinite: true,
-    slidesToShow: 1,
+    slidesToShow: 3,
     slidesToScroll: 1,
     initialSlide: 0,
     speed: 500,
@@ -117,6 +117,10 @@ const Gallery = ({ images, slug, loadElements }) => {
                 <span>
                   {i + 1}/{images.length}
                 </span>
+                <img
+                  src={`https://d1xmqx9e0b6ljd.cloudfront.net/${slug}/${image}.jpg`}
+                  alt={`${slug} ${image}`}
+                />
               </div>
             </HeroImage>
           ))}
