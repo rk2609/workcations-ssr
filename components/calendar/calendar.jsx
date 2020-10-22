@@ -3,39 +3,12 @@ import DatePicker, { Calendar, utils } from "react-modern-calendar-datepicker";
 
 import { Container } from "./calendar.style";
 
-const CalendarComponent = () => {
-  const [selectedDayRange, setSelectedDayRange] = useState({
-    from: null,
-    to: null,
-  });
-
-  console.log(selectedDayRange.from);
-  console.log(selectedDayRange.to);
-
-  const maximumDate = {
-    year: 2021,
-    month: 3,
-    day: 31,
-  };
-
-  const disabledDays = [
-    {
-      year: 2020,
-      month: 11,
-      day: 20,
-    },
-    {
-      year: 2020,
-      month: 12,
-      day: 21,
-    },
-    {
-      year: 2021,
-      month: 1,
-      day: 7,
-    },
-  ];
-
+const CalendarComponent = ({
+  selectedDayRange,
+  setSelectedDayRange,
+  disabledDays,
+  maximumDate,
+}) => {
   return (
     <Container>
       <Calendar
