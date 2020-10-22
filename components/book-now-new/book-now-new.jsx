@@ -40,8 +40,6 @@ const BookNowNew = ({ inventory, slug, title, minDuration, type }) => {
     day: 31,
   };
 
-  console.log(inventory, slug, title, minDuration, type);
-
   const pricingArray = inventory.map((item) =>
     item.pricing.map((pricingItem, i) => {
       return {
@@ -127,8 +125,6 @@ const BookNowNew = ({ inventory, slug, title, minDuration, type }) => {
       return;
     }
   }, [minDuration]);
-
-  console.log(durationDisabled);
 
   return (
     <Container>
