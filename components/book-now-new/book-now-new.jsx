@@ -29,11 +29,6 @@ const getDatesBetween = (from, to) => {
 };
 
 const BookNowNew = ({ inventory, slug, title, minDuration, type }) => {
-  const [selectedDayRange, setSelectedDayRange] = useState({
-    from: null,
-    to: null,
-  });
-
   const maximumDate = {
     year: 2021,
     month: 3,
@@ -93,38 +88,57 @@ const BookNowNew = ({ inventory, slug, title, minDuration, type }) => {
       };
     });
 
-  const disabledDays = allDatesData
-    .filter((item) => item.availability <= 0)
-    .map((item) => {
-      return {
-        date: item.date,
-        year: Number(item.date.split("-")[0]),
-        month: Number(item.date.split("-")[1]),
-        day: Number(item.date.split("-")[2]),
-      };
-    });
+  const disabledDates = allDatesData.filter((item) => item.availability <= 0);
+
+  const disabledDays = disabledDates.map((item) => {
+    return {
+      date: item.date,
+      year: Number(item.date.split("-")[0]),
+      month: Number(item.date.split("-")[1]),
+      day: Number(item.date.split("-")[2]),
+    };
+  });
 
   const durationTypes = ["short", "weekly", "momthly"];
 
   const [duration, setDuration] = useState(1);
 
-  const [durationDisabled, setDurationDisabled] = useState([
-    false,
-    false,
-    false,
-  ]);
+  const startingDate = () => {
+    const allDatesLength = allDatesData.length;
 
-  useEffect(() => {
-    if (minDuration > 20) {
-      setDurationDisabled([true, true, false]);
-      setDuration(2);
-      return;
+    for (let i = 0; i < allDatesLength; i++) {
+      const startingDate = allDatesData[i].date;
+
+      const dateRange = getDatesBetween(
+        startingDate,
+        addDays(minDuration, startingDate)
+      );
+
+      const blockedDates = dateRange.filter(
+        (item) =>
+          disabledDates.map((dateItem) => dateItem.date).indexOf(item) !== -1
+      );
+
+      if (blockedDates.length === 0) {
+        return dateRange;
+      }
     }
-    if (minDuration > 6) {
-      setDurationDisabled([true, false, false]);
-      return;
-    }
-  }, [minDuration]);
+  };
+
+  const startingRange = startingDate();
+
+  const [selectedDayRange, setSelectedDayRange] = useState({
+    from: {
+      year: Number(startingRange[0].split("-")[0]),
+      month: Number(startingRange[0].split("-")[1]),
+      day: Number(startingRange[0].split("-")[2]),
+    },
+    to: {
+      year: Number(startingRange[startingRange.length - 1].split("-")[0]),
+      month: Number(startingRange[startingRange.length - 1].split("-")[1]),
+      day: Number(startingRange[startingRange.length - 1].split("-")[2]),
+    },
+  });
 
   return (
     <Container>
