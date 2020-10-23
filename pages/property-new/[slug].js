@@ -85,7 +85,8 @@ export const getStaticPaths = async () => {
     .filter(
       (item) =>
         item.params.slug !== "1342-resort-in-manali" &&
-        item.params.slug !== "4401-hostel-in-varkala"
+        item.params.slug !== "4401-hostel-in-varkala" &&
+        item.params.slug !== "1130-apartment-in-shimla"
     );
 
   return {
