@@ -364,7 +364,7 @@ const BookNow = ({
                 type: roomType.type,
                 image: roomType.image,
                 max: roomType.max,
-                isMaxed: roomType.isMaxed,
+                isMaxed: false,
                 rooms: roomType.rooms.map((roomSharing, j) =>
                   j === sharingIndex
                     ? {
