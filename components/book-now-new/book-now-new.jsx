@@ -1,7 +1,9 @@
 import React, { useState, useEffect, Fragment } from "react";
-import AddToCart from "../add-to-cart/add-to-cart";
 
 import Calendar from "../calendar/calendar";
+import AddToCart from "../add-to-cart/add-to-cart";
+import { CheckBox } from "../checkbox/checkbox";
+import FormInput from "../form-input-book-now/form-input-book-now";
 
 import {
   Container,
@@ -33,6 +35,14 @@ import {
   MinusButton,
   Quantity,
   PlusButton,
+  AddMeals,
+  AddMealsHeading,
+  AddMealsGrid,
+  CostingContainer,
+  CostingText,
+  CostingValue,
+  PaymentButton,
+  EmptyCartAlert,
 } from "./book-now-new.style";
 
 const arrAvg = (arr) => arr.reduce((a, b) => a + b, 0) / arr.length;
@@ -137,9 +147,13 @@ const BookNowNew = ({
   slug,
   title,
   minDuration,
+  breakfast,
+  lunch,
+  dinner,
   type,
   isServer,
 }) => {
+  console.log(type);
   const maximumDate = {
     year: 2021,
     month: 3,
@@ -589,6 +603,7 @@ const BookNowNew = ({
   );
 
   const [roomCount, setRoomCount] = useState(sharingCounts);
+  const [noOfPax, setNoOfPax] = useState(0);
 
   useEffect(() => {
     setRoomCount(sharingCounts);
@@ -618,6 +633,106 @@ const BookNowNew = ({
         )
       )
     );
+  };
+
+  useEffect(() => {
+    if (!!cartDetails && cartDetails.length > 0) {
+      setNoOfPax(
+        roomCount
+          .map((item, i) =>
+            item.map((subItem, j) => subItem * (cartDetails[i].occupancy + j))
+          )
+          .map((item) => item.reduce((a, b) => a + b, 0))
+          .reduce((a, b) => a + b, 0)
+      );
+    }
+  }, [roomCount]);
+
+  const [mealsIncluded, setMealsIncluded] = useState([false, false, false]);
+
+  useEffect(() => {
+    const newMealsIncluded = [];
+
+    if (breakfast.available && breakfast.value === 0) {
+      newMealsIncluded.push(true);
+    } else {
+      newMealsIncluded.push(false);
+    }
+
+    if (lunch.available && lunch.value === 0) {
+      newMealsIncluded.push(true);
+    } else {
+      newMealsIncluded.push(false);
+    }
+
+    if (dinner.available && dinner.value === 0) {
+      newMealsIncluded.push(true);
+    } else {
+      newMealsIncluded.push(false);
+    }
+
+    setMealsIncluded(newMealsIncluded);
+  }, [breakfast, lunch, dinner]);
+
+  const [totalPrice, setTotalPrice] = useState(0);
+
+  useEffect(() => {
+    if (!!cartDetails && cartDetails.length > 0) {
+      const roomsTotal = roomCount
+        .map((item, i) =>
+          item.map(
+            (subItem, j) =>
+              subItem *
+              (j === 0
+                ? getRoomPrice(i, pricingDuration)
+                : getExtraBedPrice(i, j - 1, pricingDuration))
+          )
+        )
+        .map((item) => item.reduce((a, b) => a + b, 0))
+        .reduce((a, b) => a + b, 0);
+      const breakfastPrice =
+        breakfast.available && mealsIncluded[0] ? noOfPax * breakfast.value : 0;
+      const lunchPrice =
+        lunch.available && mealsIncluded[1] ? noOfPax * lunch.value : 0;
+      const dinnerPrice =
+        dinner.available && mealsIncluded[2] ? noOfPax * dinner.value : 0;
+
+      setTotalPrice(
+        (roomsTotal + breakfastPrice + lunchPrice + dinnerPrice) *
+          cartDetails[0].pricing.length
+      );
+    }
+  }, [roomCount, noOfPax, mealsIncluded]);
+
+  const [emptyCartAlert, setEmptyCartAlert] = useState(false);
+  const [noOfPaxAlert, setNoOfPaxAlert] = useState(false);
+
+  const bookNow = () => {
+    if (!!cartDetails && cartDetails.length > 0) {
+      if (
+        roomCount
+          .map((item) => item.reduce((a, b) => a + b, 0))
+          .reduce((a, b) => a + b, 0) === 0
+      ) {
+        setNoOfPaxAlert(false);
+        setEmptyCartAlert(true);
+
+        setTimeout(() => {
+          setEmptyCartAlert(false);
+        }, 4000);
+      } else if (noOfPax === 0) {
+        setEmptyCartAlert(false);
+        setNoOfPaxAlert(true);
+
+        setTimeout(() => {
+          setNoOfPaxAlert(false);
+        }, 4000);
+      } else {
+        setEmptyCartAlert(false);
+        setNoOfPaxAlert(false);
+        console.log("book now");
+      }
+    }
   };
 
   return (
@@ -818,8 +933,102 @@ const BookNowNew = ({
               </Card>
             ))}
           </RoomsContainer>
+          {breakfast.available || lunch.available || dinner.available ? (
+            <AddMeals>
+              <AddMealsHeading>Meals</AddMealsHeading>
+              <AddMealsGrid>
+                {breakfast.available ? (
+                  <CheckBox
+                    name="breakfast"
+                    label={
+                      breakfast.value > 0
+                        ? `Breakfast @ INR ${breakfast.value}/person/day`
+                        : `Breakfast @ included in room price`
+                    }
+                    handleChange={() => {
+                      if (breakfast.value > 0) {
+                        setMealsIncluded(
+                          mealsIncluded.map((item, i) =>
+                            i === 0 ? !item : item
+                          )
+                        );
+                      }
+                    }}
+                    checked={mealsIncluded[0]}
+                  />
+                ) : null}
+                {lunch.available ? (
+                  <CheckBox
+                    name="lunch"
+                    label={
+                      lunch.value > 0
+                        ? `Lunch @ INR ${lunch.value}/person/day`
+                        : `Lunch @ included in room price`
+                    }
+                    handleChange={() => {
+                      if (lunch.value > 0) {
+                        setMealsIncluded(
+                          mealsIncluded.map((item, i) =>
+                            i === 1 ? !item : item
+                          )
+                        );
+                      }
+                    }}
+                    checked={mealsIncluded[1]}
+                  />
+                ) : null}
+                {dinner.available ? (
+                  <CheckBox
+                    name="dinner"
+                    label={
+                      dinner.value > 0
+                        ? `Dinner @ INR ${dinner.value}/person/day`
+                        : `Dinner @ included in room price`
+                    }
+                    handleChange={() => {
+                      if (dinner.value > 0) {
+                        setMealsIncluded(
+                          mealsIncluded.map((item, i) =>
+                            i === 2 ? !item : item
+                          )
+                        );
+                      }
+                    }}
+                    checked={mealsIncluded[2]}
+                  />
+                ) : null}
+              </AddMealsGrid>
+            </AddMeals>
+          ) : null}
+          {type === "apartment" || type === "villa" ? (
+            <FormInput
+              name="noOfPax"
+              type="number"
+              value={noOfPax}
+              handleChange={(e) => {
+                setNoOfPax(e.target.value);
+              }}
+              required
+              label="No Of Pax"
+            />
+          ) : null}
+          <div>
+            <CostingContainer>
+              <CostingText>Total Cost</CostingText>
+              <CostingValue>₹ {totalPrice}</CostingValue>
+            </CostingContainer>
+            <PaymentButton onClick={bookNow}>
+              <span>Book Now</span>
+            </PaymentButton>
+          </div>
         </SubContainer>
       ) : null}
+      <EmptyCartAlert active={emptyCartAlert}>
+        <span>Cart is Empty</span>
+      </EmptyCartAlert>
+      <EmptyCartAlert active={noOfPaxAlert}>
+        <span>Please Enter No of Pax</span>
+      </EmptyCartAlert>
     </Container>
   );
 };

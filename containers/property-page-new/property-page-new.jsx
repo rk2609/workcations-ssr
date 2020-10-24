@@ -270,6 +270,9 @@ const PropertyPage = ({ property, loadElements, isServer }) => {
               slug={slug}
               title={`Workcations ${id} - ${shortTitle}`}
               minDuration={Number(minDuration)}
+              breakfast={breakfast}
+              lunch={lunch}
+              dinner={dinner}
               type={propertyTypes[type]}
               isServer={isServer}
             />
