@@ -907,7 +907,7 @@ img {
   justify-content: center;
   align-items: center;
   display: flex;
-  z-index: 2147483647;
+  z-index: 900;
 }
 
 .react-datepicker__portal .react-datepicker__day-name,

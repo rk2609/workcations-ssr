@@ -4,6 +4,7 @@ import Calendar from "../calendar/calendar";
 import AddToCart from "../add-to-cart/add-to-cart";
 import { CheckBox } from "../checkbox/checkbox";
 import FormInput from "../form-input-book-now/form-input-book-now";
+import BookNowPopup from "../book-now-popup-new/book-now-popup-new";
 
 import {
   Container,
@@ -29,12 +30,6 @@ import {
   Striked,
   Price,
   Unit,
-  AddToCartButtons,
-  AddButton,
-  QuantityContainer,
-  MinusButton,
-  Quantity,
-  PlusButton,
   AddMeals,
   AddMealsHeading,
   AddMealsGrid,
@@ -153,7 +148,6 @@ const BookNowNew = ({
   type,
   isServer,
 }) => {
-  console.log(type);
   const maximumDate = {
     year: 2021,
     month: 3,
@@ -393,6 +387,7 @@ const BookNowNew = ({
   }, [selectedDayRange]);
 
   const [cartDetails, setCartDetails] = useState(null);
+  const [minDurationAlert, setMinDurationAlert] = useState(false);
 
   useEffect(() => {
     if (!!selectedDayRange.from && !!selectedDayRange.to) {
@@ -403,16 +398,29 @@ const BookNowNew = ({
         `${selectedDayRange.to.year}-${selectedDayRange.to.month}-${selectedDayRange.to.day}`
       );
       const datesList = allDatesData.map((item) => item.date);
-      setCartDetails(
-        inventory.map((room, i) => {
-          return {
-            id: room.id,
-            max: room.max,
-            name: room.name,
-            occupancy: room.occupancy,
-            unit: room.unit,
-            pricing: getDatesBetweenPricing(startingDate, endingDate).map(
-              (dateItem, j) => {
+
+      const newCartDetails = inventory.map((room, i) => {
+        return {
+          id: room.id,
+          max: room.max,
+          name: room.name,
+          occupancy: room.occupancy,
+          unit: room.unit,
+          images: room.images,
+          pricing: getDatesBetweenPricing(startingDate, endingDate).map(
+            (dateItem, j) => {
+              const index = datesList.indexOf(dateItem);
+              return {
+                date: dateItem,
+                available: allDatesData[index].pricing[i].available,
+                roomOnly: allDatesData[index].pricing[i].roomOnly,
+                extraBed: allDatesData[index].pricing[i].extraBed,
+              };
+            }
+          ),
+          available: Math.min(
+            ...getDatesBetweenPricing(startingDate, endingDate)
+              .map((dateItem, j) => {
                 const index = datesList.indexOf(dateItem);
                 return {
                   date: dateItem,
@@ -420,24 +428,46 @@ const BookNowNew = ({
                   roomOnly: allDatesData[index].pricing[i].roomOnly,
                   extraBed: allDatesData[index].pricing[i].extraBed,
                 };
-              }
-            ),
-            available: Math.min(
-              ...getDatesBetweenPricing(startingDate, endingDate)
-                .map((dateItem, j) => {
-                  const index = datesList.indexOf(dateItem);
-                  return {
-                    date: dateItem,
-                    available: allDatesData[index].pricing[i].available,
-                    roomOnly: allDatesData[index].pricing[i].roomOnly,
-                    extraBed: allDatesData[index].pricing[i].extraBed,
-                  };
-                })
-                .map((pricingItem) => pricingItem.available)
-            ),
-          };
-        })
-      );
+              })
+              .map((pricingItem) => pricingItem.available)
+          ),
+        };
+      });
+      setCartDetails(newCartDetails);
+
+      if (newCartDetails[0].pricing.length < minDuration) {
+        setMinDurationAlert(true);
+
+        setTimeout(() => {
+          setMinDurationAlert(false);
+        }, 4000);
+
+        const startingDate = new Date(
+          `${selectedDayRange.from.year}-${selectedDayRange.from.month}-${selectedDayRange.from.day}`
+        );
+
+        const dateRange = getDatesBetween(
+          startingDate,
+          addDays(minDuration, startingDate)
+        );
+
+        const blockedDates = dateRange.filter(
+          (item) =>
+            disabledDates.map((dateItem) => dateItem.date).indexOf(item) !== -1
+        );
+
+        if (blockedDates.length === 0) {
+          setStartingRange(dateRange);
+        } else {
+          if (dateRange.length < 6) {
+            setStartingRange(startingRangeShort);
+          } else if (dateRange.length < 21) {
+            setStartingRange(startingRangeWeekly);
+          } else {
+            setStartingRange(startingRangeMonthly);
+          }
+        }
+      }
     }
   }, [selectedDayRange]);
 
@@ -706,6 +736,7 @@ const BookNowNew = ({
 
   const [emptyCartAlert, setEmptyCartAlert] = useState(false);
   const [noOfPaxAlert, setNoOfPaxAlert] = useState(false);
+  const [bookNowPopup, setBookNowPopup] = useState(false);
 
   const bookNow = () => {
     if (!!cartDetails && cartDetails.length > 0) {
@@ -730,15 +761,15 @@ const BookNowNew = ({
       } else {
         setEmptyCartAlert(false);
         setNoOfPaxAlert(false);
-        console.log("book now");
+        setBookNowPopup(true);
       }
     }
   };
 
   return (
-    <Container>
-      {!isServer ? (
-        <Fragment>
+    <Fragment>
+      <Container>
+        {!isServer ? (
           <SubContainer>
             <Top>
               <Heading>Book With Us</Heading>
@@ -1031,15 +1062,35 @@ const BookNowNew = ({
               </PaymentButton>
             </div>
           </SubContainer>
-          <EmptyCartAlert active={emptyCartAlert}>
-            <span>Cart is Empty</span>
-          </EmptyCartAlert>
-          <EmptyCartAlert active={noOfPaxAlert}>
-            <span>Please Enter No of Pax</span>
-          </EmptyCartAlert>
-        </Fragment>
-      ) : null}
-    </Container>
+        ) : null}
+      </Container>
+      <EmptyCartAlert active={emptyCartAlert}>
+        <span>Cart is Empty</span>
+      </EmptyCartAlert>
+      <EmptyCartAlert active={noOfPaxAlert}>
+        <span>Please Enter No of Pax</span>
+      </EmptyCartAlert>
+      <EmptyCartAlert active={minDurationAlert}>
+        <span>This property can be booked for minimum {minDuration} days.</span>
+      </EmptyCartAlert>
+      <BookNowPopup
+        isActive={bookNowPopup}
+        closePopup={() => {
+          setBookNowPopup(false);
+        }}
+        title={title}
+        selectedDayRange={selectedDayRange}
+        roomCount={roomCount}
+        cartDetails={cartDetails}
+        slug={slug}
+        mappingTree={mappingTree}
+        getRoomSharing={getRoomSharing}
+        getRoomPrice={getRoomPrice}
+        getExtraBedPrice={getExtraBedPrice}
+        pricingDuration={pricingDuration}
+        totalPrice={totalPrice}
+      />
+    </Fragment>
   );
 };
 
