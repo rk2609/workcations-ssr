@@ -738,174 +738,121 @@ const BookNowNew = ({
   return (
     <Container>
       {!isServer ? (
-        <SubContainer>
-          <Top>
-            <Heading>Book With Us</Heading>
-            <DurationWrapper>
-              <DurationItem
-                isActive={duration === 0}
-                isDisabled={durationDisabled[0]}
-                onClick={() => {
-                  if (!durationDisabled[0] && duration !== 0) {
-                    setDuration(0);
-                    durationUpdated(0);
-                  }
-                }}
-              >
-                Short Stay<span>(1-6 days)</span>
-              </DurationItem>
-              <DurationItem
-                isActive={duration === 1}
-                isDisabled={durationDisabled[1]}
-                onClick={() => {
-                  if (!durationDisabled[1] && duration !== 1) {
-                    setDuration(1);
-                    durationUpdated(1);
-                  }
-                }}
-              >
-                Weekly Stay<span>(7-20 days)</span>
-              </DurationItem>
-              <DurationItem
-                isActive={duration === 2}
-                isDisabled={durationDisabled[2]}
-                onClick={() => {
-                  if (!durationDisabled[2] && duration !== 2) {
-                    setDuration(2);
-                    durationUpdated(2);
-                  }
-                }}
-              >
-                Monthly Stay<span>(20+ days)</span>
-              </DurationItem>
-            </DurationWrapper>
-            <Calendar
-              selectedDayRange={selectedDayRange}
-              setSelectedDayRange={setSelectedDayRange}
-              disabledDays={disabledDays}
-              maximumDate={maximumDate}
-            />
-            <Line />
-            <CinCoutHeading>Select Rooms</CinCoutHeading>
-          </Top>
-          <RoomsContainer className="rooms-container">
-            {inventory.map((room, i) => (
-              <Card key={`room no ${i + 1}`}>
-                <ImageContainer>
-                  <Image
-                    style={{
-                      backgroundImage: `url(https://d1xmqx9e0b6ljd.cloudfront.net/${slug}/${room.images[0]}.jpg)`,
-                    }}
-                  />
-                  <RoomFeatures>
-                    {!!cartDetails && cartDetails.length > 0 ? (
-                      <AvailableRooms>
-                        {cartDetails[i].available} {typesOfUnit[room.unit]}
-                        {cartDetails[i].available > 1 ? "s" : null} available!
-                      </AvailableRooms>
-                    ) : null}
-                    {room.size ? (
-                      <span>• Room Size: {room.size} sqft</span>
-                    ) : null}
-                    {room.balcony ? <span>• {room.balcony}</span> : null}
-                    {room.view.length > 0 && room.view[0] !== -1 ? (
-                      <span>
-                        • {typesOfViews[room.view[0]]}{" "}
-                        {room.view
-                          .filter((view, k) => k > 0)
-                          .map((view) => (
-                            <Fragment key={`view ${i}`}>
-                              & {typesOfViews[view]}
-                            </Fragment>
-                          ))}
-                      </span>
-                    ) : null}
-                    {room.kitchen ? <span>• {room.kitchen}</span> : null}
-                  </RoomFeatures>
-                </ImageContainer>
-                <Details>
-                  <Title>{room.name}</Title>
-                  <SharingItem key={`room ${i + 1} sharing 1`}>
-                    <Sharing>
-                      <img
-                        src={
-                          mappingImages[
-                            getRoomSharing(room.unit, room.occupancy)
-                          ]
-                        }
-                      />
-                      {mappingTree[getRoomSharing(room.unit, room.occupancy)]}
-                    </Sharing>
-                    <PricingContainer>
-                      <Pricing>
-                        {getRoomPrice(i, pricingDuration) <
-                        getRoomPrice(i, "ultraShort") ? (
-                          <Striked>₹ {getRoomPrice(i, "ultraShort")}</Striked>
-                        ) : null}
-                        <Price>
-                          ₹ {getRoomPrice(i, pricingDuration)}
-                          {getRoomPrice(i, pricingDuration) <
-                          getRoomPrice(i, "ultraShort") ? (
-                            <span>
-                              {Math.round(
-                                ((getRoomPrice(i, "ultraShort") -
-                                  getRoomPrice(i, pricingDuration)) *
-                                  100) /
-                                  getRoomPrice(i, "ultraShort")
-                              )}
-                              % off
-                            </span>
-                          ) : null}
-                        </Price>
-                        <Unit>per {typesOfUnit[room.unit]} per night</Unit>
-                      </Pricing>
+        <Fragment>
+          <SubContainer>
+            <Top>
+              <Heading>Book With Us</Heading>
+              <DurationWrapper>
+                <DurationItem
+                  isActive={duration === 0}
+                  isDisabled={durationDisabled[0]}
+                  onClick={() => {
+                    if (!durationDisabled[0] && duration !== 0) {
+                      setDuration(0);
+                      durationUpdated(0);
+                    }
+                  }}
+                >
+                  Short Stay<span>(1-6 days)</span>
+                </DurationItem>
+                <DurationItem
+                  isActive={duration === 1}
+                  isDisabled={durationDisabled[1]}
+                  onClick={() => {
+                    if (!durationDisabled[1] && duration !== 1) {
+                      setDuration(1);
+                      durationUpdated(1);
+                    }
+                  }}
+                >
+                  Weekly Stay<span>(7-20 days)</span>
+                </DurationItem>
+                <DurationItem
+                  isActive={duration === 2}
+                  isDisabled={durationDisabled[2]}
+                  onClick={() => {
+                    if (!durationDisabled[2] && duration !== 2) {
+                      setDuration(2);
+                      durationUpdated(2);
+                    }
+                  }}
+                >
+                  Monthly Stay<span>(20+ days)</span>
+                </DurationItem>
+              </DurationWrapper>
+              <Calendar
+                selectedDayRange={selectedDayRange}
+                setSelectedDayRange={setSelectedDayRange}
+                disabledDays={disabledDays}
+                maximumDate={maximumDate}
+              />
+              <Line />
+              <CinCoutHeading>Select Rooms</CinCoutHeading>
+            </Top>
+            <RoomsContainer className="rooms-container">
+              {inventory.map((room, i) => (
+                <Card key={`room no ${i + 1}`}>
+                  <ImageContainer>
+                    <Image
+                      style={{
+                        backgroundImage: `url(https://d1xmqx9e0b6ljd.cloudfront.net/${slug}/${room.images[0]}.jpg)`,
+                      }}
+                    />
+                    <RoomFeatures>
                       {!!cartDetails && cartDetails.length > 0 ? (
-                        <AddToCart
-                          sharingCount={roomCount[i][0]}
-                          roomCount={roomCount[i].reduce((a, b) => a + b, 0)}
-                          roomAvailable={cartDetails[i].available}
-                          addRoom={() => {
-                            addRoom(i, 0);
-                          }}
-                          removeRoom={() => {
-                            removeRoom(i, 0);
-                          }}
-                        />
+                        <AvailableRooms>
+                          {cartDetails[i].available} {typesOfUnit[room.unit]}
+                          {cartDetails[i].available > 1 ? "s" : null} available!
+                        </AvailableRooms>
                       ) : null}
-                    </PricingContainer>
-                  </SharingItem>
-                  {room.pricing[0].extraBed.map((item, j) => (
-                    <SharingItem key={`room ${i + 1} sharing ${j + 2}`}>
+                      {room.size ? (
+                        <span>• Room Size: {room.size} sqft</span>
+                      ) : null}
+                      {room.balcony ? <span>• {room.balcony}</span> : null}
+                      {room.view.length > 0 && room.view[0] !== -1 ? (
+                        <span>
+                          • {typesOfViews[room.view[0]]}{" "}
+                          {room.view
+                            .filter((view, k) => k > 0)
+                            .map((view) => (
+                              <Fragment key={`view ${i}`}>
+                                & {typesOfViews[view]}
+                              </Fragment>
+                            ))}
+                        </span>
+                      ) : null}
+                      {room.kitchen ? <span>• {room.kitchen}</span> : null}
+                    </RoomFeatures>
+                  </ImageContainer>
+                  <Details>
+                    <Title>{room.name}</Title>
+                    <SharingItem key={`room ${i + 1} sharing 1`}>
                       <Sharing>
                         <img
                           src={
                             mappingImages[
-                              getRoomSharing(room.unit, room.occupancy + j + 1)
+                              getRoomSharing(room.unit, room.occupancy)
                             ]
                           }
                         />
-                        {
-                          mappingTree[
-                            getRoomSharing(room.unit, room.occupancy + j + 1)
-                          ]
-                        }
+                        {mappingTree[getRoomSharing(room.unit, room.occupancy)]}
                       </Sharing>
                       <PricingContainer>
                         <Pricing>
-                          {getExtraBedPrice(i, j, pricingDuration) <
-                          getExtraBedPrice(i, j, "ultraShort") ? (
+                          {getRoomPrice(i, pricingDuration) <
+                          getRoomPrice(i, "ultraShort") ? (
                             <Striked>₹ {getRoomPrice(i, "ultraShort")}</Striked>
                           ) : null}
                           <Price>
-                            ₹ {getExtraBedPrice(i, j, pricingDuration)}
-                            {getExtraBedPrice(i, j, pricingDuration) <
-                            getExtraBedPrice(i, j, "ultraShort") ? (
+                            ₹ {getRoomPrice(i, pricingDuration)}
+                            {getRoomPrice(i, pricingDuration) <
+                            getRoomPrice(i, "ultraShort") ? (
                               <span>
                                 {Math.round(
-                                  ((getExtraBedPrice(i, j, "ultraShort") -
-                                    getExtraBedPrice(i, j, pricingDuration)) *
+                                  ((getRoomPrice(i, "ultraShort") -
+                                    getRoomPrice(i, pricingDuration)) *
                                     100) /
-                                    getExtraBedPrice(i, j, "ultraShort")
+                                    getRoomPrice(i, "ultraShort")
                                 )}
                                 % off
                               </span>
@@ -915,120 +862,183 @@ const BookNowNew = ({
                         </Pricing>
                         {!!cartDetails && cartDetails.length > 0 ? (
                           <AddToCart
-                            sharingCount={roomCount[i][j + 1]}
+                            sharingCount={roomCount[i][0]}
                             roomCount={roomCount[i].reduce((a, b) => a + b, 0)}
                             roomAvailable={cartDetails[i].available}
                             addRoom={() => {
-                              addRoom(i, j + 1);
+                              addRoom(i, 0);
                             }}
                             removeRoom={() => {
-                              removeRoom(i, j + 1);
+                              removeRoom(i, 0);
                             }}
                           />
                         ) : null}
                       </PricingContainer>
                     </SharingItem>
-                  ))}
-                </Details>
-              </Card>
-            ))}
-          </RoomsContainer>
-          {breakfast.available || lunch.available || dinner.available ? (
-            <AddMeals>
-              <AddMealsHeading>Meals</AddMealsHeading>
-              <AddMealsGrid>
-                {breakfast.available ? (
-                  <CheckBox
-                    name="breakfast"
-                    label={
-                      breakfast.value > 0
-                        ? `Breakfast @ INR ${breakfast.value}/person/day`
-                        : `Breakfast @ included in room price`
-                    }
-                    handleChange={() => {
-                      if (breakfast.value > 0) {
-                        setMealsIncluded(
-                          mealsIncluded.map((item, i) =>
-                            i === 0 ? !item : item
-                          )
-                        );
+                    {room.pricing[0].extraBed.map((item, j) => (
+                      <SharingItem key={`room ${i + 1} sharing ${j + 2}`}>
+                        <Sharing>
+                          <img
+                            src={
+                              mappingImages[
+                                getRoomSharing(
+                                  room.unit,
+                                  room.occupancy + j + 1
+                                )
+                              ]
+                            }
+                          />
+                          {
+                            mappingTree[
+                              getRoomSharing(room.unit, room.occupancy + j + 1)
+                            ]
+                          }
+                        </Sharing>
+                        <PricingContainer>
+                          <Pricing>
+                            {getExtraBedPrice(i, j, pricingDuration) <
+                            getExtraBedPrice(i, j, "ultraShort") ? (
+                              <Striked>
+                                ₹ {getRoomPrice(i, "ultraShort")}
+                              </Striked>
+                            ) : null}
+                            <Price>
+                              ₹ {getExtraBedPrice(i, j, pricingDuration)}
+                              {getExtraBedPrice(i, j, pricingDuration) <
+                              getExtraBedPrice(i, j, "ultraShort") ? (
+                                <span>
+                                  {Math.round(
+                                    ((getExtraBedPrice(i, j, "ultraShort") -
+                                      getExtraBedPrice(i, j, pricingDuration)) *
+                                      100) /
+                                      getExtraBedPrice(i, j, "ultraShort")
+                                  )}
+                                  % off
+                                </span>
+                              ) : null}
+                            </Price>
+                            <Unit>per {typesOfUnit[room.unit]} per night</Unit>
+                          </Pricing>
+                          {!!cartDetails && cartDetails.length > 0 ? (
+                            <AddToCart
+                              sharingCount={roomCount[i][j + 1]}
+                              roomCount={roomCount[i].reduce(
+                                (a, b) => a + b,
+                                0
+                              )}
+                              roomAvailable={cartDetails[i].available}
+                              addRoom={() => {
+                                addRoom(i, j + 1);
+                              }}
+                              removeRoom={() => {
+                                removeRoom(i, j + 1);
+                              }}
+                            />
+                          ) : null}
+                        </PricingContainer>
+                      </SharingItem>
+                    ))}
+                  </Details>
+                </Card>
+              ))}
+            </RoomsContainer>
+            {breakfast.available || lunch.available || dinner.available ? (
+              <AddMeals>
+                <AddMealsHeading>Meals</AddMealsHeading>
+                <AddMealsGrid>
+                  {breakfast.available ? (
+                    <CheckBox
+                      name="breakfast"
+                      label={
+                        breakfast.value > 0
+                          ? `Breakfast @ INR ${breakfast.value}/person/day`
+                          : `Breakfast @ included in room price`
                       }
-                    }}
-                    checked={mealsIncluded[0]}
-                  />
-                ) : null}
-                {lunch.available ? (
-                  <CheckBox
-                    name="lunch"
-                    label={
-                      lunch.value > 0
-                        ? `Lunch @ INR ${lunch.value}/person/day`
-                        : `Lunch @ included in room price`
-                    }
-                    handleChange={() => {
-                      if (lunch.value > 0) {
-                        setMealsIncluded(
-                          mealsIncluded.map((item, i) =>
-                            i === 1 ? !item : item
-                          )
-                        );
+                      handleChange={() => {
+                        if (breakfast.value > 0) {
+                          setMealsIncluded(
+                            mealsIncluded.map((item, i) =>
+                              i === 0 ? !item : item
+                            )
+                          );
+                        }
+                      }}
+                      checked={mealsIncluded[0]}
+                    />
+                  ) : null}
+                  {lunch.available ? (
+                    <CheckBox
+                      name="lunch"
+                      label={
+                        lunch.value > 0
+                          ? `Lunch @ INR ${lunch.value}/person/day`
+                          : `Lunch @ included in room price`
                       }
-                    }}
-                    checked={mealsIncluded[1]}
-                  />
-                ) : null}
-                {dinner.available ? (
-                  <CheckBox
-                    name="dinner"
-                    label={
-                      dinner.value > 0
-                        ? `Dinner @ INR ${dinner.value}/person/day`
-                        : `Dinner @ included in room price`
-                    }
-                    handleChange={() => {
-                      if (dinner.value > 0) {
-                        setMealsIncluded(
-                          mealsIncluded.map((item, i) =>
-                            i === 2 ? !item : item
-                          )
-                        );
+                      handleChange={() => {
+                        if (lunch.value > 0) {
+                          setMealsIncluded(
+                            mealsIncluded.map((item, i) =>
+                              i === 1 ? !item : item
+                            )
+                          );
+                        }
+                      }}
+                      checked={mealsIncluded[1]}
+                    />
+                  ) : null}
+                  {dinner.available ? (
+                    <CheckBox
+                      name="dinner"
+                      label={
+                        dinner.value > 0
+                          ? `Dinner @ INR ${dinner.value}/person/day`
+                          : `Dinner @ included in room price`
                       }
-                    }}
-                    checked={mealsIncluded[2]}
-                  />
-                ) : null}
-              </AddMealsGrid>
-            </AddMeals>
-          ) : null}
-          {type === "apartment" || type === "villa" ? (
-            <FormInput
-              name="noOfPax"
-              type="number"
-              value={noOfPax}
-              handleChange={(e) => {
-                setNoOfPax(e.target.value);
-              }}
-              required
-              label="No Of Pax"
-            />
-          ) : null}
-          <div>
-            <CostingContainer>
-              <CostingText>Total Cost</CostingText>
-              <CostingValue>₹ {totalPrice}</CostingValue>
-            </CostingContainer>
-            <PaymentButton onClick={bookNow}>
-              <span>Book Now</span>
-            </PaymentButton>
-          </div>
-        </SubContainer>
+                      handleChange={() => {
+                        if (dinner.value > 0) {
+                          setMealsIncluded(
+                            mealsIncluded.map((item, i) =>
+                              i === 2 ? !item : item
+                            )
+                          );
+                        }
+                      }}
+                      checked={mealsIncluded[2]}
+                    />
+                  ) : null}
+                </AddMealsGrid>
+              </AddMeals>
+            ) : null}
+            {type === "apartment" || type === "villa" ? (
+              <FormInput
+                name="noOfPax"
+                type="number"
+                value={noOfPax}
+                handleChange={(e) => {
+                  setNoOfPax(e.target.value);
+                }}
+                required
+                label="No Of Pax"
+              />
+            ) : null}
+            <div>
+              <CostingContainer>
+                <CostingText>Total Cost</CostingText>
+                <CostingValue>₹ {totalPrice}</CostingValue>
+              </CostingContainer>
+              <PaymentButton onClick={bookNow}>
+                <span>Book Now</span>
+              </PaymentButton>
+            </div>
+          </SubContainer>
+          <EmptyCartAlert active={emptyCartAlert}>
+            <span>Cart is Empty</span>
+          </EmptyCartAlert>
+          <EmptyCartAlert active={noOfPaxAlert}>
+            <span>Please Enter No of Pax</span>
+          </EmptyCartAlert>
+        </Fragment>
       ) : null}
-      <EmptyCartAlert active={emptyCartAlert}>
-        <span>Cart is Empty</span>
-      </EmptyCartAlert>
-      <EmptyCartAlert active={noOfPaxAlert}>
-        <span>Please Enter No of Pax</span>
-      </EmptyCartAlert>
     </Container>
   );
 };
