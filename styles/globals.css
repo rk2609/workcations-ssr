@@ -2281,6 +2281,7 @@ img {
   top: -6.2vw;
   height: 3.6vw;
   opacity: 0;
+  margin: 0px;
   cursor: pointer;
 }
 

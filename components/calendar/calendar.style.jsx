@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const Container = styled.div`
   text-align: center;
   margin: 0px;
+  padding: 0px;
 `;
 
 export const CheckInCheckOutContainer = styled.div`
