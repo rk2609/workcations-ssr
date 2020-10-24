@@ -108,7 +108,9 @@ const PropertyPage = ({
                 <Content>
                   <About>
                     <Heading>About</Heading>
-                    <p>{about}</p>
+                    {about.split("***").map((item, i) => (
+                      <p key={`about {i+1}`}>{item}</p>
+                    ))}
                   </About>
                   {upload !== -1 ? (
                     <Fragment>
