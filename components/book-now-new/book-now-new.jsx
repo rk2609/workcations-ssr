@@ -33,6 +33,7 @@ import {
   AddMeals,
   AddMealsHeading,
   AddMealsGrid,
+  Costing,
   CostingContainer,
   CostingText,
   CostingValue,
@@ -1052,7 +1053,7 @@ const BookNowNew = ({
                 label="No Of Pax"
               />
             ) : null}
-            <div>
+            <Costing>
               <CostingContainer>
                 <CostingText>Total Cost</CostingText>
                 <CostingValue>₹ {totalPrice}</CostingValue>
@@ -1060,7 +1061,7 @@ const BookNowNew = ({
               <PaymentButton onClick={bookNow}>
                 <span>Book Now</span>
               </PaymentButton>
-            </div>
+            </Costing>
           </SubContainer>
         ) : null}
       </Container>

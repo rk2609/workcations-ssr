@@ -392,17 +392,30 @@ export const AddMealsGrid = styled.div`
   font-size: 16px;
 `;
 
-export const CostingContainer = styled.div`
-  width: 22vw;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: flex-end;
-  margin: 0vw 0vw 1vw 0vw;
+export const Costing = styled.div`
+  width: 90%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 5px;
 
   @media only screen and (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+`;
+
+export const CostingContainer = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin: 0vw 0vw 0.5vw 0vw;
+
+  @media only screen and (max-width: 768px) {
+    flex-direction: row;
+    align-items: flex-end;
     width: 80vw;
-    margin: 0vw 0vw 4vw 0vw;
+    margin: 4vw 0vw 4vw 0vw;
   }
 `;
 
@@ -427,25 +440,28 @@ export const CostingValue = styled.span`
 `;
 
 export const PaymentButton = styled.div`
-  width: 22vw;
+  width: 100%;
   background-color: #ff6b6c;
   border-radius: 2px;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0.5vw 0vw;
-  margin-bottom: 1vw;
+  padding: 0.3vw 0vw;
+  margin-bottom: 0.5vw;
   cursor: pointer;
+
   @media only screen and (max-width: 900px) {
     width: 80vw;
     padding: 2vw 0vw;
     margin-bottom: 4vw;
   }
+
   span {
     font-weight: 600;
-    font-size: 1.5vw;
+    font-size: 1.3vw;
     color: white;
     text-transform: uppercase;
+
     @media only screen and (max-width: 900px) {
       font-size: 4vw;
     }
@@ -466,6 +482,7 @@ export const EmptyCartAlert = styled.div`
   border-radius: 5px;
   opacity: ${(props) => (props.active ? 1 : 0)};
   transition: all 0.5s ease-out;
+
   span {
     border-radius: 5px;
     border: 1px dotted red;
